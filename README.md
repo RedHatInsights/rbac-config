@@ -1,3 +1,3 @@
-# rbac_config
+# rbac-config
 
-Interim solution for housing decoupled RBAC service policy configs
+Repository for housing decoupled RBAC service policy configs
