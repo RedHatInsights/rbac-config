@@ -1,0 +1,19 @@
+{
+    "roles": [
+      {
+        "name": "Remediations Access",
+        "description": "An all access role which grants read and write permissions.",
+        "system": true,
+        "platform_default": true,
+        "version": 2,
+        "access": [
+          {
+            "permission": "remediations:*:*"
+          },
+          {
+            "permission": "inventory:*:*"
+          }
+        ]
+      }
+    ]
+  }
