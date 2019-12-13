@@ -1,14 +1,13 @@
 {
   "roles": [
     {
-      "name": "Compliance Access",
+      "name": "Sources Access",
       "description": "An all access role which grants read and write permissions.",
       "system": true,
-      "platform_default": true,
-      "version": 3,
+      "version": 2,
       "access": [
         {
-          "permission": "compliance:*:*"
+          "permission": "sources:*:*"
         },
         {
           "permission": "inventory:*:*"
