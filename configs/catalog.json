@@ -1,6 +1,21 @@
 {
   "roles": [
     {
+      "name": "Catalog Access",
+      "description": "An all access role which grants read and write permissions.",
+      "system": true,
+      "platform_default": false,
+      "version": 4,
+      "access": [
+        {
+          "permission": "catalog:*:*"
+        },
+        {
+          "permission": "inventory:*:*"
+        }
+      ]
+    },
+    {
       "name": "Catalog Administrator",
       "system": true,
       "version": 4,
@@ -70,9 +85,8 @@
     },
     {
       "name": "Catalog User",
-      "version": 5,
+      "version": 4,
       "system": true,
-      "platform_default": true,
       "description": "A catalog user roles grants read and order permissions",
       "access": [
         {
