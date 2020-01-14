@@ -1,6 +1,24 @@
 {
   "roles": [
     {
+      "name": "Approval User",
+      "description": "An approval user role which grants permissions to read/create a request.",
+      "system": true,
+      "platform_default": true,
+      "version": 1,
+      "access": [
+        {
+          "permission": "approval:requests:read"
+        },
+        {
+          "permission": "approval:requests:create"
+        },
+        {
+          "permission": "approval:actions:create"
+        }
+      ]
+    },
+    {
       "name": "Approval Administrator",
       "system": true,
       "version": 3,
