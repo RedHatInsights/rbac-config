@@ -5,7 +5,7 @@
       "description": "An approval user role which grants permissions to read/create a request.",
       "system": true,
       "platform_default": true,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "approval:requests:read"
