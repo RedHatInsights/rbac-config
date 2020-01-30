@@ -1,16 +1,14 @@
 {
   "roles": [
     {
-      "name": "Sources Access",
+      "name": "Migration Analytics Access",
       "description": "An all access role which grants read and write permissions.",
       "system": true,
+      "platform_default": true,
       "version": 2,
       "access": [
         {
-          "permission": "sources:*:*"
-        },
-        {
-          "permission": "inventory:*:*"
+          "permission": "migration-analytics:*:*"
         }
       ]
     }
