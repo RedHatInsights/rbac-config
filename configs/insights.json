@@ -5,13 +5,10 @@
       "description": "An all access role which grants read and write permissions.",
       "system": true,
       "platform_default": true,
-      "version": 4,
+      "version": 5,
       "access": [
         {
           "permission": "insights:*:*"
-        },
-        {
-          "permission": "inventory:*:*"
         }
       ]
     }
