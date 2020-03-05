@@ -1,0 +1,19 @@
+{
+  "roles": [
+    {
+      "name": "Remediations Access",
+      "description": "A role which grants read and write permissions.",
+      "system": true,
+      "platform_default": true,
+      "version": 3,
+      "access": [
+        {
+          "permission": "remediations:remediation:read"
+        },
+        {
+          "permission": "remediations:remediation:write"
+        }
+      ]
+    }
+  ]
+}

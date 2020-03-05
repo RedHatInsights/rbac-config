@@ -70,9 +70,10 @@
     },
     {
       "name": "Catalog User",
+      "version": 5,
       "system": true,
-      "version": 4,
       "description": "A catalog user roles grants read and order permissions",
+      "platform_default": true,
       "access": [
         {
           "permission": "catalog:portfolios:read"

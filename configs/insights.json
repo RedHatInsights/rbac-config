@@ -4,13 +4,11 @@
       "name": "Insights Access",
       "description": "An all access role which grants read and write permissions.",
       "system": true,
-      "version": 2,
+      "platform_default": true,
+      "version": 5,
       "access": [
         {
           "permission": "insights:*:*"
-        },
-        {
-          "permission": "inventory:*:*"
         }
       ]
     }
