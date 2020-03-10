@@ -1,8 +1,8 @@
 {
   "roles": [
     {
-      "name": "Compliance Access",
-      "description": "An all access role which grants read and write permissions.",
+      "name": "Compliance administrator",
+      "description": "Perform any available operation against any Compliance resource.",
       "system": true,
       "platform_default": true,
       "version": 5,

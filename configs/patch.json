@@ -1,8 +1,8 @@
 {
   "roles": [
     {
-      "name": "Patchman Access",
-      "description": "An all access role which grants read and write permissions.",
+      "name": "System patch manager administrator",
+      "description": "Perform any available operation against any System Patch Manager resource.",
       "system": true,
       "platform_default": true,
       "version": 2,

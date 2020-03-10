@@ -1,8 +1,8 @@
 {
   "roles": [
     {
-      "name": "Remediations Access",
-      "description": "A role which grants read and write permissions.",
+      "name": "Remediations user",
+      "description": "Perform create, view, update, delete operations against any Remediations resource.",
       "system": true,
       "platform_default": true,
       "version": 3,
