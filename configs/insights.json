@@ -1,11 +1,11 @@
 {
   "roles": [
     {
-      "name": "Insights Access",
-      "description": "An all access role which grants read and write permissions.",
+      "name": "Insights administrator",
+      "description": "Perform any available operation against any Insights resource.",
       "system": true,
       "platform_default": true,
-      "version": 5,
+      "version": 6,
       "access": [
         {
           "permission": "insights:*:*"
