@@ -4,7 +4,7 @@
       "name": "Approval Administrator",
       "system": true,
       "version": 4,
-      "description": "An Approval administrator role that grants create, read, update and destroy permissions",
+      "description": "An approval administrator role that grants permissions to manage workflows, requests, actions, and templates.",
       "access": [
         {
           "permission": "approval:templates:read",
@@ -56,6 +56,30 @@
         },
         {
           "permission": "approval:workflows:destroy",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "approval:workflows:link",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "approval:workflows:unlink",
           "resourceDefinitions": [
             {
               "attributeFilter": {
@@ -120,7 +144,7 @@
       "name": "Approval User",
       "system": true,
       "version": 4,
-      "description": "An approval user role which grants permissions to read/create a request.",
+      "description": "An approval user role which grants permissions to create/read/cancel a request, and read workflows.",
       "access": [
         {
           "permission": "approval:requests:read",
@@ -157,6 +181,30 @@
               }
             }
           ]
+        },
+        {
+          "permission": "approval:actions:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "user"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "approval:workflows:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "user"
+              }
+            }
+          ]
         }
       ]
     },
@@ -164,7 +212,7 @@
       "name": "Approval Approver",
       "system": true,
       "version": 4,
-      "description": "An Approval approver role that grants read and create permissions",
+      "description": "An approval approver role that grants permissions to read and approve requests.",
       "access": [
         {
           "permission": "approval:requests:read",
