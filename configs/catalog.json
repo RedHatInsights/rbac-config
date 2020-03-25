@@ -19,16 +19,7 @@
           ]
         },
         {
-          "permission": "catalog:portfolios:create",
-          "resourceDefinitions": [
-            {
-              "attributeFilter": {
-                "key": "scope",
-                "operation": "equal",
-                "value": "admin"
-              }
-            }
-          ]
+          "permission": "catalog:portfolios:create"
         },
         {
           "permission": "catalog:portfolios:update",
