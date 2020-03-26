@@ -55,7 +55,7 @@
           ]
         },
         {
-          "permission": "approval:workflows:destroy",
+          "permission": "approval:workflows:delete",
           "resourceDefinitions": [
             {
               "attributeFilter": {
@@ -145,6 +145,7 @@
       "system": true,
       "version": 4,
       "description": "An approval user role which grants permissions to create/read/cancel a request, and read workflows.",
+      "platform_default": true,
       "access": [
         {
           "permission": "approval:requests:read",
@@ -201,7 +202,7 @@
               "attributeFilter": {
                 "key": "scope",
                 "operation": "equal",
-                "value": "user"
+                "value": "admin"
               }
             }
           ]
