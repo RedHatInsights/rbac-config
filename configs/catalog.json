@@ -3,98 +3,332 @@
     {
       "name": "Catalog Administrator",
       "system": true,
-      "version": 4,
+      "version": 5,
       "description": "A catalog administrator roles grants create,read,update, delete and order permissions",
       "access": [
         {
-          "permission": "catalog:portfolios:read"
+          "permission": "catalog:portfolios:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
         },
         {
           "permission": "catalog:portfolios:create"
         },
         {
-          "permission": "catalog:portfolios:update"
+          "permission": "catalog:portfolios:update",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
         },
         {
-          "permission": "catalog:portfolios:delete"
+          "permission": "catalog:portfolios:delete",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
         },
         {
-          "permission": "catalog:portfolios:order"
+          "permission": "catalog:portfolios:order",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
         },
         {
-          "permission": "catalog:portfolio_items:read"
+          "permission": "catalog:portfolio_items:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
         },
         {
-          "permission": "catalog:portfolio_items:create"
+          "permission": "catalog:portfolio_items:create",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
         },
         {
-          "permission": "catalog:portfolio_items:update"
+          "permission": "catalog:portfolio_items:update",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
         },
         {
-          "permission": "catalog:portfolio_items:delete"
+          "permission": "catalog:portfolio_items:delete",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
         },
         {
-          "permission": "catalog:portfolio_items:order"
-        },
-        {
-          "permission": "catalog:orders:read"
-        },
-        {
-          "permission": "catalog:orders:write"
-        },
-        {
-          "permission": "catalog:orders:order"
-        },
-        {
-          "permission": "catalog:order_items:read"
-        },
-        {
-          "permission": "catalog:order_items:write"
-        },
-        {
-          "permission": "catalog:order_items:order"
-        },
-        {
-          "permission": "catalog:progress_messages:read"
-        },
-        {
-          "permission": "catalog:progress_messages:write"
-        },
-        {
-          "permission": "catalog:approval_requests:read"
-        },
-        {
-          "permission": "catalog:approval_requests:write"
-        }
-      ]
-    },
-    {
-      "name": "Catalog User",
-      "version": 5,
-      "system": true,
-      "description": "A catalog user roles grants read and order permissions",
-      "platform_default": true,
-      "access": [
-        {
-          "permission": "catalog:portfolios:read"
-        },
-        {
-          "permission": "catalog:portfolios:order"
-        },
-        {
-          "permission": "catalog:portfolio_items:read"
-        },
-        {
-          "permission": "catalog:portfolio_items:order"
+          "permission": "catalog:portfolio_items:order",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
         },
         {
           "permission": "catalog:orders:read",
           "resourceDefinitions": [
             {
               "attributeFilter": {
-                "value": "{{username}}",
-                "key": "owner",
-                "operation": "equal"
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:orders:write",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:orders:order",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:order_items:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:order_items:write",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:order_items:order",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:progress_messages:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:progress_messages:write",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:approval_requests:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:approval_requests:write",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Catalog User",
+      "system": true,
+      "version": 6,
+      "description": "A catalog user roles grants read and order permissions",
+      "platform_default": true,
+      "access": [
+        {
+          "permission": "catalog:portfolios:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "group"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:portfolios:write",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "group"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:portfolios:order",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "group"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:portfolio_items:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "group"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:portfolio_items:write",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "group"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:portfolio_items:order",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "group"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:orders:write"
+        },
+        {
+          "permission": "catalog:orders:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "user"
               }
             }
           ]
@@ -103,13 +337,16 @@
           "permission": "catalog:orders:order"
         },
         {
+          "permission": "catalog:order_items:write"
+        },
+        {
           "permission": "catalog:order_items:read",
           "resourceDefinitions": [
             {
               "attributeFilter": {
-                "value": "{{username}}",
-                "key": "owner",
-                "operation": "equal"
+                "key": "scope",
+                "operation": "equal",
+                "value": "user"
               }
             }
           ]
@@ -122,9 +359,9 @@
           "resourceDefinitions": [
             {
               "attributeFilter": {
-                "value": "{{username}}",
-                "key": "owner",
-                "operation": "equal"
+                "key": "scope",
+                "operation": "equal",
+                "value": "user"
               }
             }
           ]
@@ -134,9 +371,9 @@
           "resourceDefinitions": [
             {
               "attributeFilter": {
-                "value": "{{username}}",
-                "key": "owner",
-                "operation": "equal"
+                "key": "scope",
+                "operation": "equal",
+                "value": "user"
               }
             }
           ]
