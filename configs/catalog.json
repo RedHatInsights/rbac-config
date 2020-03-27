@@ -242,7 +242,7 @@
     {
       "name": "Catalog User",
       "system": true,
-      "version": 6,
+      "version": 7,
       "description": "A catalog user roles grants read and order permissions",
       "platform_default": true,
       "access": [
@@ -259,7 +259,7 @@
           ]
         },
         {
-          "permission": "catalog:portfolios:write",
+          "permission": "catalog:portfolios:update",
           "resourceDefinitions": [
             {
               "attributeFilter": {
@@ -295,7 +295,7 @@
           ]
         },
         {
-          "permission": "catalog:portfolio_items:write",
+          "permission": "catalog:portfolio_items:update",
           "resourceDefinitions": [
             {
               "attributeFilter": {
