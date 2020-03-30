@@ -1,12 +1,8 @@
-# rbac-config
+# Predefined roles and access for Insights Role Based Access Control README
 
-=========================================================================
-Predefined roles and access for Insights Role Based Access Control README
-=========================================================================
 
-~~~~~
 About
-~~~~~
+=====
 
 Repository for housing decoupled RBAC service roles configs. These roles will be seeded into each
 tenant/account.
@@ -37,7 +33,7 @@ for principals in a tenant), you have to add the platform_default flag and set i
 Set the version to 2 for the new role in order to trigger the seeding in the rbac service.
 
 Format of permissions
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 The permission should have the format of <application>:<resource>:<action>. There are no restrictions on the
 resource or action word, i.e. you could define any resource or action. It is up to the app team to determine how to use the
 resource and action themselves.
