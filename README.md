@@ -1,6 +1,5 @@
 # Predefined roles and access for Insights Role Based Access Control README
 
-
 About
 =====
 
