@@ -1,12 +1,10 @@
 # rbac-config
 
-=========================================================================
 Predefined roles and access for Insights Role Based Access Control README
-=========================================================================
+-------------------------------------------------------------------------
 
-~~~~~
 About
-~~~~~
+=====
 
 Repository for housing decoupled RBAC service roles configs. These roles will be seeded into each
 tenant/account.
