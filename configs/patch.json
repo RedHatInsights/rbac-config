@@ -1,0 +1,16 @@
+{
+  "roles": [
+    {
+      "name": "Patch administrator",
+      "description": "Perform any available operation against any Patch resource.",
+      "system": true,
+      "platform_default": true,
+      "version": 3,
+      "access": [
+        {
+          "permission": "patch:*:*"
+        }
+      ]
+    }
+  ]
+}
