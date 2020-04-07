@@ -1,16 +1,16 @@
 {
-    "roles": [
+  "roles": [
+    {
+      "name": "Policies administrator",
+      "description": "Perform any available operation against any Policies resource.",
+      "system": true,
+      "platform_default": true,
+      "version": 3,
+      "access": [
         {
-            "name": "Policies Access",
-            "description": "An all access role which grants read and write permissions.",
-            "system": true,
-            "platform_default": true,
-            "version": 3,
-            "access": [
-                {
-                    "permission": "policies:*:*"
-                }
-            ]
+          "permission": "policies:*:*"
         }
-    ]
+      ]
+    }
+  ]
 }
