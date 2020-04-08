@@ -3,7 +3,7 @@
     {
       "name": "Catalog Administrator",
       "system": true,
-      "version": 5,
+      "version": 6,
       "description": "A catalog administrator roles grants create,read,update, delete and order permissions",
       "access": [
         {
@@ -236,6 +236,9 @@
               }
             }
           ]
+        },
+        {
+          "permission": "catalog:tenant:update"
         }
       ]
     },
