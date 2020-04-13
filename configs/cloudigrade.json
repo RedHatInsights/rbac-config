@@ -1,0 +1,36 @@
+{
+    "roles": [{
+        "name": "Cloudigrade - Administrator",
+        "description": "A Cloudigrade administrator role that grants read and write permissions to everything.",
+        "system": true,
+        "version": 2,
+        "access": [{
+            "permission": "cloudigrade:*:*"
+        }]
+    }, {
+        "name": "Cloudigrade Account - Administrator",
+        "description": "A Cloudigrade role that grants read and write permissions to cloud accounts.",
+        "system": true,
+        "platform_default": true,
+        "version": 2,
+        "access": [{
+            "permission": "cloudigrade:account:*"
+        }]
+    }, {
+        "name": "Cloudigrade Account - Read",
+        "description": "A Cloudigrade role that grants read permissions to cloud accounts.",
+        "system": true,
+        "version": 2,
+        "access": [{
+            "permission": "cloudigrade:account:read"
+        }]
+    }, {
+        "name": "Cloudigrade Account - Write",
+        "description": "A Cloudigrade role that grants write permissions to cloud accounts.",
+        "system": true,
+        "version": 2,
+        "access": [{
+            "permission": "cloudigrade:account:write"
+        }]
+    }]
+}
