@@ -16,6 +16,14 @@
             "permission": "cost-management:rate:*"
         }]
     }, {
+        "name": "Cost Price List Viewer",
+        "description": "A cost management role that grants read permissions on price list rates.",
+        "system": true,
+        "version": 2,
+        "access": [{
+            "permission": "cost-management:rate:read"
+        }]
+    }, {
         "name": "Cost Cloud Viewer",
         "description": "A cost management role that grants read permissions on cost reports related to cloud sources.",
         "system": true,
