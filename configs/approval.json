@@ -3,7 +3,7 @@
     {
       "name": "Approval Administrator",
       "system": true,
-      "version": 4,
+      "version": 5,
       "description": "An approval administrator role that grants permissions to manage workflows, requests, actions, and templates.",
       "access": [
         {
@@ -111,6 +111,13 @@
                 "operation": "equal",
                 "value": "admin"
               }
+            },
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "group"
+              }
             }
           ]
         },
@@ -122,6 +129,13 @@
                 "key": "scope",
                 "operation": "equal",
                 "value": "admin"
+              }
+            },
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "group"
               }
             }
           ]
