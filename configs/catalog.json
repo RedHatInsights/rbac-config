@@ -280,7 +280,7 @@
           ]
         },
         {
-          "permission": "catalog:order_processes:write",
+          "permission": "catalog:order_processes:update",
           "resourceDefinitions": [
             {
               "attributeFilter": {
