@@ -1,0 +1,4 @@
+{
+    "remediation": ["read", "write"],
+    "*": ["*"]
+}
