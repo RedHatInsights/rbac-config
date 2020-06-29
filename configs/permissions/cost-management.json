@@ -1,0 +1,7 @@
+{
+    "aws.account": ["*"],
+    "azure.subscription_guid": ["*"],
+    "openshift.cluster": ["*"],
+    "rate": ["read", "*"],
+    "*": ["*"]
+}
