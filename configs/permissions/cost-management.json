@@ -3,5 +3,6 @@
     "azure.subscription_guid": ["*"],
     "openshift.cluster": ["*"],
     "rate": ["read", "*"],
-    "*": ["*"]
+    "*": ["*"],
+    "aws.organizational_unit": ["*"]
 }
