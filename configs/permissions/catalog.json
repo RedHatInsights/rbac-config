@@ -1,7 +1,7 @@
 {
     "approval_requests": ["read", "write"],
     "orders": ["read", "write", "order"],
-    "orders_items": ["read", "write", "order"],
+    "order_items": ["read", "write", "order"],
     "order_processes": ["create", "read", "link", "unlink", "update", "delete"],
     "portfolios": ["create", "read", "update", "delete", "order"],
     "portfolio_items": ["create", "read", "update", "delete", "order"],
