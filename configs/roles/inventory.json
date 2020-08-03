@@ -1,0 +1,29 @@
+{
+    "roles": [
+      {
+        "name": "Inventory Administrator",
+        "description": "An Inventory Administrator role that grants both read and write permissions.",
+        "system": true,
+        "platform_default": true,
+        "version": 1,
+        "access": [
+          {
+            "permission": "inventory:*:*"
+          }
+        ]
+      },
+      {
+        "name": "Inventory Viewer",
+        "description": "An Inventory Viewer role that grants read permissions.",
+        "system": true,
+        "platform_default": true,
+        "version": 1,
+        "access": [
+          {
+            "permission": "inventory:*:read"
+          }
+        ]
+      }
+    ]
+  }
+  
