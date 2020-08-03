@@ -16,7 +16,7 @@
       "name": "Inventory Viewer",
       "description": "An Inventory Viewer role that grants read-only permissions.",
       "system": true,
-      "platform_default": true,
+      "platform_default": false,
       "version": 1,
       "access": [
         {
