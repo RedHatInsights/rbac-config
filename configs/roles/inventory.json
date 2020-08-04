@@ -8,7 +8,10 @@
       "version": 1,
       "access": [
         {
-          "permission": "inventory:*:*"
+          "permission": "inventory:*:read"
+        },
+        {
+          "permission": "inventory:*:write"
         }
       ]
     },
