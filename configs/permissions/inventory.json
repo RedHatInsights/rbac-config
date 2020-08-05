@@ -1,3 +1,4 @@
 {
-    "*": ["*", "read", "write"]
+    "*": ["*"],
+    "host_data": ["read", "write"]
 }
