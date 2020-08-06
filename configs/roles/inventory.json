@@ -4,38 +4,11 @@
       "name": "Inventory Administrator",
       "description": "An Inventory Administrator role that grants read and write permissions to all Inventory resources.",
       "system": true,
-      "platform_default": false,
-      "version": 1,
-      "access": [
-        {
-          "permission": "inventory:*:*"
-        }
-      ]
-    },
-    {
-      "name": "Inventory Editor",
-      "description": "An Inventory Editor role that grants both read and write permissions.",
-      "system": true,
       "platform_default": true,
       "version": 1,
       "access": [
         {
-          "permission": "inventory:host:read"
-        },
-        {
-          "permission": "inventory:host:write"
-        }
-      ]
-    },
-    {
-      "name": "Inventory Viewer",
-      "description": "An Inventory Viewer role that grants read-only permissions.",
-      "system": true,
-      "platform_default": false,
-      "version": 1,
-      "access": [
-        {
-          "permission": "inventory:host:read"
+          "permission": "inventory:*:*"
         }
       ]
     }
