@@ -5,7 +5,7 @@
       "description": "An Inventory Administrator role that grants read and write permissions to all Inventory resources.",
       "system": true,
       "platform_default": true,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "inventory:*:*"
