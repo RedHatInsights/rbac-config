@@ -3,7 +3,7 @@
     {
       "name": "Catalog Administrator",
       "system": true,
-      "version": 7,
+      "version": 8,
       "description": "A catalog administrator roles grants create,read,update, delete and order permissions",
       "access": [
         {
@@ -268,7 +268,31 @@
           ]
         },
         {
+          "permission": "catalog:order_processes:link",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
           "permission": "catalog:order_processes:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "scope",
+                "operation": "equal",
+                "value": "admin"
+              }
+            }
+          ]
+        },
+        {
+          "permission": "catalog:order_processes:unlink",
           "resourceDefinitions": [
             {
               "attributeFilter": {
