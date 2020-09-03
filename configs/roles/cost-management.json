@@ -9,19 +9,19 @@
         }]
     }, {
         "name": "Cost Price List Administrator",
-        "description": "A cost management role that grants read and write permissions on price list rates.",
+        "description": "A cost management role that grants read and write permissions on cost models.",
         "system": true,
-        "version": 2,
+        "version": 3,
         "access": [{
-            "permission": "cost-management:rate:*"
+            "permission": "cost-management:cost_model:*"
         }]
     }, {
         "name": "Cost Price List Viewer",
-        "description": "A cost management role that grants read permissions on price list rates.",
+        "description": "A cost management role that grants read permissions on cost models.",
         "system": true,
-        "version": 2,
+        "version": 3,
         "access": [{
-            "permission": "cost-management:rate:read"
+            "permission": "cost-management:cost_model:read"
         }]
     }, {
         "name": "Cost Cloud Viewer",
