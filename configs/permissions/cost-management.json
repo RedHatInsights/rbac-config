@@ -1,8 +1,10 @@
 {
     "aws.account": ["*"],
+    "aws.organizational_unit": ["*"],
     "azure.subscription_guid": ["*"],
     "openshift.cluster": ["*"],
-    "rate": ["read", "*"],
+    "openshift.node": ["*"],
+    "openshift.project": ["*"],
+    "cost_model": ["read", "*"],
     "*": ["*"],
-    "aws.organizational_unit": ["*"]
 }
