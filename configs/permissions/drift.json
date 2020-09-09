@@ -1,3 +1,5 @@
 {
-    "*": ["*"]
+    "*": ["*"],
+    "comparisons": ["read"],
+    "baselines": ["read", "write"]
 }
