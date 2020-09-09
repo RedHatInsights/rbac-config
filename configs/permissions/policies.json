@@ -1,4 +1,4 @@
 {
-    "policies": ["read","write"]
+    "policies": ["read","write"],
     "*": ["*"]
 }
