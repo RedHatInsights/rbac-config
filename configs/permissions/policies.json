@@ -1,3 +1,4 @@
 {
+    "policies": ["read","write"],
     "*": ["*"]
 }
