@@ -8,7 +8,8 @@
       "version": 2,
       "access": [
         {
-          "permission": "subscriptions:*:*"
+          "permission": "subscriptions:*:*",
+          "permission": "inventory:*:read"
         }
       ]
     }
