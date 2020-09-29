@@ -1,4 +1,4 @@
 {
-    "*": ["read", "write", "*"],
+    "*": ["read", "*"],
     "hosts": ["read", "write", "*"]
 }
