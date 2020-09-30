@@ -1,3 +1,7 @@
 {
-    "*": ["*"]
+    "*": ["*"],
+    "disable-recommendations": ["write"],
+    "weekly-email": ["read"],
+    "recommendation-results": ["read"],
+    "exports": ["read"]
 }
