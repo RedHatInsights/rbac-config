@@ -1,5 +1,4 @@
 {
     "*": ["*"],
-    "notifications": ["read","write"],
-    "integrations": ["read","write"]
+    "notifications": ["read","write"]
 }
