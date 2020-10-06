@@ -8,10 +8,11 @@
       "version": 2,
       "access": [
         {
-          "permission": "remediations:*:*"
+          "permission": "remediations:*:*",
+          "permission": "inventory:*:read"
         }
       ]
-    },  
+    },
     {
       "name": "Remediations user",
       "description": "Perform create, view, update, delete operations against any Remediations resource.",

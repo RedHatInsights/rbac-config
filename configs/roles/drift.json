@@ -8,7 +8,8 @@
       "version": 6,
       "access": [
         {
-          "permission": "drift:*:*"
+          "permission": "drift:*:*",
+          "permission": "inventory:*:read"
         }
       ]
     }

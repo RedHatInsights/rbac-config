@@ -9,7 +9,8 @@
       "version": 7,
       "access": [
         {
-          "permission": "advisor:*:*"
+          "permission": "advisor:*:*",
+          "permission": "inventory:*:read"
         }
       ]
     }
