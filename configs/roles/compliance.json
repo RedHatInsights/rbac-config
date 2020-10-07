@@ -5,10 +5,12 @@
       "description": "Perform any available operation against any Compliance resource.",
       "system": true,
       "platform_default": true,
-      "version": 7,
+      "version": 8,
       "access": [
         {
-          "permission": "compliance:*:*",
+          "permission": "compliance:*:*"
+        },
+        {
           "permission": "inventory:*:read"
         }
       ]

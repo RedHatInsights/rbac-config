@@ -5,10 +5,12 @@
       "description": "Perform any available operation against any Remediations resource",
       "system": true,
       "platform_default": false,
-      "version": 3,
+      "version": 4,
       "access": [
         {
-          "permission": "remediations:*:*",
+          "permission": "remediations:*:*"
+        },
+        {
           "permission": "inventory:*:read"
         }
       ]

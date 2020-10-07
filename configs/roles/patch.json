@@ -5,10 +5,12 @@
       "description": "Perform any available operation against any Patch resource.",
       "system": true,
       "platform_default": true,
-      "version": 4,
+      "version": 5,
       "access": [
         {
-          "permission": "patch:*:*",
+          "permission": "patch:*:*"
+        },
+        {
           "permission": "inventory:*:read"
         }
       ]
