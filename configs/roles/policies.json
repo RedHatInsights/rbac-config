@@ -5,10 +5,12 @@
       "description": "Perform any available operation against any Policies resource.",
       "system": true,
       "platform_default": true,
-      "version": 4,
+      "version": 5,
       "access": [
         {
-          "permission": "policies:*:*",
+          "permission": "policies:*:*"
+        },
+        {
           "permission": "inventory:*:read"
         }
       ]

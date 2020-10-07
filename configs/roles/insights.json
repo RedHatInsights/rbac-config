@@ -6,10 +6,12 @@
       "description": "Perform any available operation against any advisor resource.",
       "system": true,
       "platform_default": true,
-      "version": 8,
+      "version": 9,
       "access": [
         {
-          "permission": "advisor:*:*",
+          "permission": "advisor:*:*"
+        },
+        {
           "permission": "inventory:*:read"
         }
       ]
