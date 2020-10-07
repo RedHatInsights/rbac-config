@@ -5,7 +5,7 @@
       "description": "Perform any available operation against any Subscription Watch resource.",
       "system": true,
       "platform_default": true,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "subscriptions:*:*",
