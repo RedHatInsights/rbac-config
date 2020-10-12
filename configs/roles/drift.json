@@ -5,10 +5,13 @@
       "description": "Perform any available operation against any Drift Analysis resource.",
       "system": true,
       "platform_default": true,
-      "version": 6,
+      "version": 8,
       "access": [
         {
           "permission": "drift:*:*"
+        },
+        {
+          "permission": "inventory:*:read"
         }
       ]
     }

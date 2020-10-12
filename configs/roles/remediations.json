@@ -5,13 +5,16 @@
       "description": "Perform any available operation against any Remediations resource",
       "system": true,
       "platform_default": false,
-      "version": 2,
+      "version": 4,
       "access": [
         {
           "permission": "remediations:*:*"
+        },
+        {
+          "permission": "inventory:*:read"
         }
       ]
-    },  
+    },
     {
       "name": "Remediations user",
       "description": "Perform create, view, update, delete operations against any Remediations resource.",

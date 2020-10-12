@@ -5,10 +5,13 @@
       "description": "Perform any available operation against any Subscription Watch resource.",
       "system": true,
       "platform_default": true,
-      "version": 2,
+      "version": 4,
       "access": [
         {
           "permission": "subscriptions:*:*"
+        },
+        {
+          "permission": "inventory:*:read"
         }
       ]
     }
