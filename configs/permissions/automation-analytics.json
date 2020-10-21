@@ -1,3 +1,7 @@
 {
-    "*": ["*", "read", "write"]
+    "*": [
+        {"verb":"read"},
+        {"verb":"write"},
+        {"verb":"*"}
+    ]
 }

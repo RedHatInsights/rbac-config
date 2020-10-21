@@ -1,7 +1,17 @@
 {
-    "*": ["*"],
-    "disable-recommendations": ["write"],
-    "weekly-email": ["read"],
-    "recommendation-results": ["read"],
-    "exports": ["read"]
+    "*": [
+        {"verb": "*"}
+    ],
+    "disable-recommendations": [
+        {"verb":"write"}
+    ],
+    "weekly-email": [
+        {"verb":"read"}
+    ],
+    "recommendation-results": [
+        {"verb":"read"}
+    ],
+    "exports": [
+        {"verb":"read"}
+    ]
 }

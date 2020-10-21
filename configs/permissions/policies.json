@@ -1,4 +1,9 @@
 {
-    "policies": ["read","write"],
-    "*": ["*"]
+    "policies": [
+        {"verb": "read"},
+        {"verb": "write"}
+    ],
+    "*": [
+        {"verb": "*"}
+    ]
 }

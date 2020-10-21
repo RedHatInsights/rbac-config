@@ -1,5 +1,11 @@
 {
-    "*": ["*"],
-    "comparisons": ["read"],
-    "baselines": ["read", "write"]
+    "*": [
+        {"verb": "*"}
+    ],
+    "comparisons": [
+        {"verb": "read"}
+    ],
+    "baselines": [
+        {"verb": "read"},
+        {"verb": "write"}]
 }

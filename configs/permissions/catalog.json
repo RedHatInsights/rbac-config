@@ -1,10 +1,46 @@
 {
-    "approval_requests": ["read", "write"],
-    "orders": ["read", "write", "order"],
-    "order_items": ["read", "write", "order"],
-    "order_processes": ["create", "read", "link", "unlink", "update", "delete"],
-    "portfolios": ["create", "read", "update", "delete", "order"],
-    "portfolio_items": ["create", "read", "update", "delete", "order"],
-    "progress_messages": ["read", "write"],
-    "tenants": ["read", "update"]
+    "approval_requests": [
+        {"verb":"read"},
+        {"verb":"write"}
+    ],
+    "orders": [
+        {"verb":"read"},
+        {"verb":"write"},
+        {"verb":"order"}
+    ],
+    "order_items": [
+        {"verb":"read"},
+        {"verb":"write"},
+        {"verb":"order"}
+    ],
+    "order_processes": [
+        {"verb": "create"},
+        {"verb": "read"},
+        {"verb": "link"},
+        {"verb": "unlink"},
+        {"verb": "update"},
+        {"verb": "delete"}
+    ],
+    "portfolios": [
+        {"verb": "create"},
+        {"verb": "read"},
+        {"verb": "update"},
+        {"verb": "delete"},
+        {"verb": "order"}
+    ],
+    "portfolio_items": [
+        {"verb": "create"},
+        {"verb": "read"},
+        {"verb": "update"},
+        {"verb": "delete"},
+        {"verb": "order"}
+    ],
+    "progress_messages": [
+        {"verb":"read"},
+        {"verb":"write"}
+    ],
+    "tenants": [
+        {"verb":"read"},
+        {"verb":"update"}
+    ]
 }
