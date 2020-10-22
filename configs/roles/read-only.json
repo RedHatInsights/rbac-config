@@ -1,0 +1,81 @@
+{
+  "roles": [
+    {
+      "name": "Read-only access",
+      "system": true,
+      "version": 2,
+      "description": "A role that grants read permissions.",
+      "access": [
+        {
+          "permission": "advisor:weekly-email:read"
+        },
+        {
+          "permission": "advisor:recommendation-results:read"
+        },
+        {
+          "permission": "advisor:exports:read"
+        },
+        {
+          "permission": "approval:templates:read"
+        },
+        {
+          "permission": "approval:workflows:read"
+        },
+        {
+          "permission": "approval:requests:read"
+        },
+        {
+          "permission": "approval:actions:read"
+        },
+        {
+          "permission": "automation-analytics:*:read"
+        },
+        {
+          "permission": "catalog:approval_requests:read"
+        },
+        {
+          "permission": "catalog:orders:read"
+        },
+        {
+          "permission": "catalog:order_items:read"
+        },
+        {
+          "permission": "catalog:order_processes:read"
+        },
+        {
+          "permission": "catalog:portfolios:read"
+        },
+        {
+          "permission": "catalog:portfolio_items:read"
+        },
+        {
+          "permission": "catalog:progress_messages:read"
+        },
+        {
+          "permission": "catalog:tenants:read"
+        },
+        {
+          "permission": "drift:comparisons:read"
+        },
+        {
+          "permission": "drift:baselines:read"
+        },
+        {
+          "permission": "inventory:*:read"
+        },
+        {
+          "permission": "notifications:notifications:read"
+        },
+        {
+          "permission": "policies:policies:read"
+        },
+        {
+          "permission": "remediations:remediation:read"
+        },
+        {
+          "permission": "vulnerability:*:read"
+        }
+      ]
+    }
+  ]
+}
