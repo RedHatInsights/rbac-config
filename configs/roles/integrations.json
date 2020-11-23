@@ -1,0 +1,16 @@
+{
+  "roles": [
+    {
+      "name": "Integrations administrator",
+      "description": "Perform any available operation against any Integrations resource.",
+      "system": true,
+      "platform_default": false,
+      "version": 2,
+      "access": [
+        {
+          "permission": "integrations:*:*"
+        }
+      ]
+    }
+  ]
+}
