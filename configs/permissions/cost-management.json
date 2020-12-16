@@ -26,8 +26,7 @@
     "cost_model": [
         {"verb":"*"},
         {"verb":"read"},
-        {"verb":"write"},
-        {"verb":"read"}
+        {"verb":"write"}
     ],
     "*": [
         {"verb":"*"}
