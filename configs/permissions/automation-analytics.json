@@ -1,7 +1,13 @@
 {
     "*": [
-        {"verb":"read"},
-        {"verb":"write"},
-        {"verb":"*"}
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        },
+        {
+            "verb": "*"
+        }
     ]
 }

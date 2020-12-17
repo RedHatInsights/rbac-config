@@ -1,21 +1,43 @@
 {
     "actions": [
-        {"verb":"create"},
-        {"verb":"read"}
+        {
+            "verb": "create"
+        },
+        {
+            "verb": "read"
+        }
     ],
     "requests": [
-        {"verb": "create"},
-        {"verb": "read"}
+        {
+            "verb": "create"
+        },
+        {
+            "verb": "read"
+        }
     ],
     "templates": [
-        {"verb":"read"}
+        {
+            "verb": "read"
+        }
     ],
     "workflows": [
-        {"verb":"create"},
-        {"verb":"read"},
-        {"verb":"update"},
-        {"verb":"delete"},
-        {"verb":"link"},
-        {"verb":"unlink"}
+        {
+            "verb": "create"
+        },
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "update"
+        },
+        {
+            "verb": "delete"
+        },
+        {
+            "verb": "link"
+        },
+        {
+            "verb": "unlink"
+        }
     ]
 }

@@ -1,34 +1,66 @@
 {
     "aws.account": [
-        {"verb":"*"},
-        {"verb":"read"}
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        }
     ],
     "aws.organizational_unit": [
-        {"verb":"*"},
-        {"verb":"read"}
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        }
     ],
     "azure.subscription_guid": [
-        {"verb":"*"},
-        {"verb":"read"}
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        }
     ],
     "openshift.cluster": [
-        {"verb":"*"},
-        {"verb":"read"}
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        }
     ],
     "openshift.node": [
-        {"verb":"*"},
-        {"verb":"read"}
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        }
     ],
     "openshift.project": [
-        {"verb":"*"},
-        {"verb":"read"}
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        }
     ],
     "cost_model": [
-        {"verb":"*"},
-        {"verb":"read"},
-        {"verb":"write"}
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
     ],
     "*": [
-        {"verb":"*"}
+        {
+            "verb": "*"
+        }
     ]
 }

@@ -1,17 +1,27 @@
 {
     "*": [
-        {"verb": "*"}
+        {
+            "verb": "*"
+        }
     ],
     "disable-recommendations": [
-        {"verb":"write"}
+        {
+            "verb": "write"
+        }
     ],
     "weekly-email": [
-        {"verb":"read"}
+        {
+            "verb": "read"
+        }
     ],
     "recommendation-results": [
-        {"verb":"read"}
+        {
+            "verb": "read"
+        }
     ],
     "exports": [
-        {"verb":"read"}
+        {
+            "verb": "read"
+        }
     ]
 }
