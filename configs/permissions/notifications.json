@@ -1,9 +1,4 @@
 {
-    "*": [
-        {
-            "verb": "*"
-        }
-    ],
     "notifications": [
         {
             "verb": "read"
