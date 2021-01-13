@@ -1,28 +1,22 @@
 {
   "roles": [
     {
-      "name": "Notifications Administrator",
+      "name": "Notifications administrator",
       "description": "Perform any available operation against notifications and integrations applications.",
       "system": true,
       "platform_default": false,
-      "version": 1,
+      "version": 3,
       "access": [
         {
-          "permission": "notifications:notifications:read"
+          "permission": "notifications:*:*"
         },
         {
-          "permission": "notifications:notifications:write"
-        },
-        {
-          "permission": "integrations:endpoints:read"
-        },
-        {
-          "permission": "integrations:endpoints:write"
+          "permission": "integrations:*:*"
         }
       ]
     },
     {
-      "name": "Notifications Viewer",
+      "name": "Notifications viewer",
       "description": "Read only access to notifications and integrations applications.",
       "system": true,
       "platform_default": true,
