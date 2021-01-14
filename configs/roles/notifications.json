@@ -2,7 +2,7 @@
   "roles": [
     {
       "name": "Notifications administrator",
-      "description": "Perform any available operation against notifications and integrations applications.",
+      "description": "Perform any available operation against Notifications and Integrations applications.",
       "system": true,
       "platform_default": false,
       "version": 3,
