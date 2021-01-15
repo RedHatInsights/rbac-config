@@ -23,6 +23,22 @@
             "verb": "read"
         }
     ],
+    "gcp.account": [
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        }
+    ],
+    "gcp.project": [
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        }
+    ],
     "openshift.cluster": [
         {
             "verb": "*"
