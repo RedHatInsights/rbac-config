@@ -34,6 +34,10 @@
             "permission": "cost-management:aws.organizational_unit:*"
         }, {
             "permission": "cost-management:azure.subscription_guid:*"
+        }, {
+            "permission": "cost-management:gcp.account:*"
+        }, {
+            "permission": "cost-management:gcp.project:*"
         }]
     }, {
         "name": "Cost OpenShift Viewer",
