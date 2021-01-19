@@ -1,4 +1,15 @@
 {
-    "*": ["*"],
-    "notifications": ["read","write"]
+    "notifications": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
+    "*": [
+        {
+            "verb": "*"
+        }
+    ]
 }

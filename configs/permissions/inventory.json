@@ -1,4 +1,21 @@
 {
-    "*": ["read", "*"],
-    "hosts": ["read", "write", "*"]
+    "*": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "*"
+        }
+    ],
+    "hosts": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        },
+        {
+            "verb": "*"
+        }
+    ]
 }

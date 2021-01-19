@@ -60,9 +60,11 @@ Add new permissions
 -------------------
 
 In the permissions directory, the json files define the supported permissions for each app. The file name indicates the name of the app.
-E.g. approval.json contains `"requests": ["create"]`, therefore, permission `"approval:requests:create"` is added to rbac Permission table.
+E.g. approval.json contains `"requests": [{"verb": "create"}]`, therefore, permission `"approval:requests:create"` is added to rbac Permission table.
 When trying to create custom roles, this `"approval:requests:create"` could be added to the access of the role.
-If you want the permission `"catalog:requests:*"` available for selection, catalog.json should contain `"requests": ["create", "*"]`.
+If you want the permission `"catalog:requests:*"` available for selection, catalog.json should contain `"requests": [{{"verb": "create"}, {"verb": "*"}]`.
+
+Adding a description to the permission could be done by adding a field `"Description"`, e.g., `"requests": [{"verb": "create", "description": "Describing the permission}]`
 
 Please check existing files for more samples.
 
