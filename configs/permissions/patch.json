@@ -3,5 +3,13 @@
         {
             "verb": "*"
         }
+    ],
+    "system": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
     ]
 }
