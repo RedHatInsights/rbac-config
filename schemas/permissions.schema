@@ -1,0 +1,37 @@
+{
+  "type": "object",
+  "patternProperties": {
+    "^.*$": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "verb": {
+            "type": "string",
+            "enum": [
+              "*",
+              "read",
+              "write",
+              "create",
+              "update",
+              "delete",
+              "link",
+              "unlink",
+              "order",
+              "execute"
+            ]
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "verb"
+        ],
+        "minProperties": 1
+      }
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": false
+}

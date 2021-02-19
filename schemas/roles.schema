@@ -1,0 +1,94 @@
+{
+  "type": "object",
+  "properties": {
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "system": {
+            "type": "boolean"
+          },
+          "platform_default": {
+            "type": "boolean"
+          },
+          "version": {
+            "type": "integer"
+          },
+          "access": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "permission": {
+                  "type": "string",
+                  "pattern": "^.*(:).*(:)(\*|read|write|create|update|delete|link|unlink|order|execute)$"
+                },
+                "resourceDefinitions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "attributeFilter": {
+                        "type": "object",
+                        "properties": {
+                          "key": {
+                            "type": "string"
+                          },
+                          "operation": {
+                            "type": "string",
+                            "enum": [
+                              "equal",
+                              "in"
+                            ]
+                          },
+                          "value": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "key",
+                          "operation",
+                          "value"
+                        ]
+                      }
+                    }
+                  },
+                  "minProperties": 1,
+                  "additionalProperties": false
+                }
+              },
+              "minProperties": 1,
+              "additionalProperties": false,
+              "required": [
+                "permission"
+              ]
+            }
+          },
+          "minProperties": 1,
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "description",
+            "system",
+            "platform_default",
+            "version",
+            "access"
+          ]
+        }
+      }
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": false,
+  "required": [
+    "roles"
+  ]
+}
