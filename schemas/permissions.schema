@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "patternProperties": {
+    "^.*$": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "verb": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "verb"
+        ],
+        "minProperties": 1
+      }
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": false
+}
