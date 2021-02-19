@@ -8,6 +8,9 @@
         "properties": {
           "verb": {
             "type": "string"
+          },
+          "description": {
+            "type": "string"
           }
         },
         "required": [
