@@ -7,7 +7,19 @@
         "type": "object",
         "properties": {
           "verb": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "*",
+              "read",
+              "write",
+              "create",
+              "update",
+              "delete",
+              "link",
+              "unlink",
+              "order",
+              "execute"
+            ]
           },
           "description": {
             "type": "string"
