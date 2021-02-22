@@ -1,0 +1,16 @@
+on:
+  push:
+    branches:
+      - master
+name: Config Conversion
+jobs:
+  convert_config:
+    name: Convert Config
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Converting config to configmaps
+        uses: RedHatInsights/rbac-config-actions@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch_name: master
