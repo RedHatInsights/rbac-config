@@ -13,4 +13,8 @@ jobs:
         uses: RedHatInsights/rbac-config-actions@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch_name: master
+          branch_name: configmaps
+      - name: Create a PR with Config Changes
+        run: hub pull-request --no-edit -b master -h configmaps
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
