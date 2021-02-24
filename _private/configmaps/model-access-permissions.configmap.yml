@@ -478,4 +478,4 @@ metadata:
   creationTimestamp: null
   name: model-access-permissions
   annotations:
-      qontract.recycle: "true"
+    qontract.recycle: "true"

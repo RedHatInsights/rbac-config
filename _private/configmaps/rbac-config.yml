@@ -1102,4 +1102,4 @@ metadata:
   creationTimestamp: null
   name: rbac-config
   annotations:
-      qontract.recycle: "true"
+    qontract.recycle: "true"
