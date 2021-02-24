@@ -1,0 +1,481 @@
+apiVersion: v1
+data:
+  advisor.json: |
+    {
+        "*": [
+            {
+                "verb": "*"
+            }
+        ],
+        "disable-recommendations": [
+            {
+                "verb": "write"
+            }
+        ],
+        "weekly-email": [
+            {
+                "verb": "read"
+            }
+        ],
+        "recommendation-results": [
+            {
+                "verb": "read"
+            }
+        ],
+        "exports": [
+            {
+                "verb": "read"
+            }
+        ]
+    }
+  approval.json: |
+    {
+        "actions": [
+            {
+                "verb": "create"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "requests": [
+            {
+                "verb": "create"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "templates": [
+            {
+                "verb": "read"
+            }
+        ],
+        "workflows": [
+            {
+                "verb": "create"
+            },
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "update"
+            },
+            {
+                "verb": "delete"
+            },
+            {
+                "verb": "link"
+            },
+            {
+                "verb": "unlink"
+            }
+        ]
+    }
+  automation-analytics.json: |
+    {
+        "*": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            },
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  catalog.json: |
+    {
+        "approval_requests": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            }
+        ],
+        "orders": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            },
+            {
+                "verb": "order"
+            }
+        ],
+        "order_items": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            },
+            {
+                "verb": "order"
+            }
+        ],
+        "order_processes": [
+            {
+                "verb": "create"
+            },
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "link"
+            },
+            {
+                "verb": "unlink"
+            },
+            {
+                "verb": "update"
+            },
+            {
+                "verb": "delete"
+            }
+        ],
+        "portfolios": [
+            {
+                "verb": "create"
+            },
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "update"
+            },
+            {
+                "verb": "delete"
+            },
+            {
+                "verb": "order"
+            }
+        ],
+        "portfolio_items": [
+            {
+                "verb": "create"
+            },
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "update"
+            },
+            {
+                "verb": "delete"
+            },
+            {
+                "verb": "order"
+            }
+        ],
+        "progress_messages": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            }
+        ],
+        "tenants": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "update"
+            }
+        ]
+    }
+  compliance.json: |
+    {
+        "*": [
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  cost-management.json: |
+    {
+        "aws.account": [
+            {
+                "verb": "*"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "aws.organizational_unit": [
+            {
+                "verb": "*"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "azure.subscription_guid": [
+            {
+                "verb": "*"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "gcp.account": [
+            {
+                "verb": "*"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "gcp.project": [
+            {
+                "verb": "*"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "openshift.cluster": [
+            {
+                "verb": "*"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "openshift.node": [
+            {
+                "verb": "*"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "openshift.project": [
+            {
+                "verb": "*"
+            },
+            {
+                "verb": "read"
+            }
+        ],
+        "cost_model": [
+            {
+                "verb": "*"
+            },
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            }
+        ],
+        "*": [
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  drift.json: |
+    {
+        "*": [
+            {
+                "verb": "*"
+            }
+        ],
+        "comparisons": [
+            {
+                "verb": "read"
+            }
+        ],
+        "baselines": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            }
+        ]
+    }
+  integrations.json: |
+    {
+        "endpoints": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            }
+        ],
+        "*": [
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  inventory.json: |
+    {
+        "*": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "*"
+            }
+        ],
+        "hosts": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            },
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  migration-analytics.json: |
+    {
+        "*": [
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  notifications.json: |
+    {
+        "notifications": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            }
+        ],
+        "*": [
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  patch.json: |
+    {
+        "*": [
+            {
+                "verb": "*"
+            }
+        ],
+        "system": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            }
+        ]
+    }
+  policies.json: |
+    {
+        "policies": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            }
+        ],
+        "*": [
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  remediations.json: |
+    {
+        "remediation": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            },
+            {
+                "verb": "execute"
+            }
+        ],
+        "*": [
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  sources.json: |
+    {
+        "*": ["*"]
+    }
+  subscriptions.json: |
+    {
+        "*": [
+            {
+                "verb": "*"
+            }
+        ]
+    }
+  vulnerability.json: |
+    {
+        "*": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            },
+            {
+                "verb": "*"
+            }
+        ],
+        "vulnerability_results": [
+            {
+                "verb": "read"
+            }
+        ],
+        "cve.business_risk": [
+            {
+                "verb": "write"
+            }
+        ],
+        "cve.status": [
+            {
+                "verb": "write"
+            }
+        ],
+        "cve_system.cve.status": [
+            {
+                "verb": "write"
+            }
+        ],
+        "report": [
+            {
+                "verb": "read"
+            },
+            {
+                "verb": "write"
+            }
+        ],
+        "system": [
+            {
+                "verb": "write"
+            }
+        ]
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: model-access-permissions
+  annotations:
+      qontract.recycle: "true"
