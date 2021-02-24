@@ -1,0 +1,10 @@
+{
+    "run": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ]
+}
