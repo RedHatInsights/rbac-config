@@ -28,7 +28,7 @@
               "properties": {
                 "permission": {
                   "type": "string",
-                  "pattern": "^.*(:).*(:)(\*|read|write|create|update|delete|link|unlink|order|execute)$"
+                  "pattern": "^.*(:).*(:)(\\*|read|write|create|update|delete|link|unlink|order|execute)$"
                 },
                 "resourceDefinitions": {
                   "type": "array",
