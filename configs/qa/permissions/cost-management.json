@@ -39,6 +39,14 @@
             "verb": "read"
         }
     ],
+    "ibm.account": [
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        }
+    ],
     "openshift.cluster": [
         {
             "verb": "*"
