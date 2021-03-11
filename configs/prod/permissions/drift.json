@@ -1,0 +1,20 @@
+{
+    "*": [
+        {
+            "verb": "*"
+        }
+    ],
+    "comparisons": [
+        {
+            "verb": "read"
+        }
+    ],
+    "baselines": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ]
+}

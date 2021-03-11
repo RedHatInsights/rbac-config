@@ -16,12 +16,14 @@ RBAC platform doc: https://platform-docs.cloud.paas.psi.redhat.com/backend/rbac.
 Development
 ===========
 
-After you clone the RBAC service repo, replace the contents in the insights-rbac/rbac/management/role/definitions folder 
-with the json files in the configs folder of rbac-config.
+After you clone the RBAC service repo, replace the contents in the insights-rbac/rbac/management/role/(definitions|permissions) folders
+with the json files in the `configs` folders of rbac-config.
 
 
 Contributing
 =============
+The RBAC config for permissions and roles are namespaced per environment in `/configs/(ci|qa|stage|prod)/`.
+Make the appropriate changes you need, per environement, based on when you need them to be promoted.
 
 Canned roles
 -------------
@@ -41,14 +43,14 @@ resource and action themselves.
 
 ~~~~~~~~~~
 Attention:
-The permission for the canned roles will also be supported automatically currently, but please add them in the configs/permissions folder. We will treat the ones not added there as permissions to be removed in the future.
+The permission for the canned roles will also be supported automatically currently, but please add them in the configs/<env>/permissions folder. We will treat the ones not added there as permissions to be removed in the future.
 See "Add new permissions" section below for more details.
 ~~~~~~~~~~
 
 Update roles
 
 When you update the role, please change the version number of the role for the service to pick up new features.
-If you update the name of the role, it will generate a new role but keep the old one. Please reach out to 
+If you update the name of the role, it will generate a new role but keep the old one. Please reach out to
 RBAC team to resolve this.
 
 Delete roles
@@ -70,5 +72,10 @@ Please check existing files for more samples.
 
 Deployment
 ==========
-When your PR is merged to master/qa/prod branch, it will take up to 1 day to seed new roles in CI/QA/PROD, as we have a daily task to update any new config. 
-If you need the roles available faster, please reach out to RBAC team.
+Once your PR is merged, an automated PR will be created with your changes applied as
+a ConfigMap in the templates within `/_private/configmaps/(ci|qa|stage|prod)/`
+for roles and permissions.
+
+Once this PR is merged, an MR will need to be created againts the corresponding
+`resourceTemplate`(s) and namespace(s) in `app-interface`: https://gitlab.cee.redhat.com/service/app-interface/-/blob/master/data/services/insights/rbac/deploy.yml
+to bump the `ref` which will deploy your changes to the specified environment(s).
