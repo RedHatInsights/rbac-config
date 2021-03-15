@@ -1,0 +1,5 @@
+kind: Template
+apiVersion: v1
+objects:
+-   annotations:
+    qontract.recycle: "true"
