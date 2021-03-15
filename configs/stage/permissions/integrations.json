@@ -1,0 +1,15 @@
+{
+    "endpoints": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
+    "*": [
+        {
+            "verb": "*"
+        }
+    ]
+}

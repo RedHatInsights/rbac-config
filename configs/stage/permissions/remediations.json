@@ -1,0 +1,18 @@
+{
+    "remediation": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        },
+        {
+            "verb": "execute"
+        }
+    ],
+    "*": [
+        {
+            "verb": "*"
+        }
+    ]
+}
