@@ -38,6 +38,8 @@
             "permission": "cost-management:gcp.account:*"
         }, {
             "permission": "cost-management:gcp.project:*"
+        }, {
+            "permission": "cost-management:ibm.account:*"
         }]
     }, {
         "name": "Cost OpenShift Viewer",
