@@ -302,6 +302,11 @@ objects:
               {
                   "verb": "write"
               }
+          ],
+          "historical-system-profiles": [
+              {
+                  "verb": "read"
+              }
           ]
       }
     integrations.json: |
@@ -374,6 +379,17 @@ objects:
               }
           ],
           "system": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ]
+      }
+    playbook-dispatcher.json: |
+      {
+          "run": [
               {
                   "verb": "read"
               },
