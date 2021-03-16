@@ -431,5 +431,5 @@ objects:
   metadata:
     creationTimestamp: null
     name: model-access-permissions
-  annotations:
-    qontract.recycle: "true"
+    annotations:
+      qontract.recycle: "true"
