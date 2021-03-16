@@ -242,6 +242,14 @@ objects:
                   "verb": "read"
               }
           ],
+          "ibm.account": [
+              {
+                  "verb": "*"
+              },
+              {
+                  "verb": "read"
+              }
+          ],
           "openshift.cluster": [
               {
                   "verb": "*"
@@ -500,5 +508,5 @@ objects:
   metadata:
     creationTimestamp: null
     name: model-access-permissions
-  annotations:
-    qontract.recycle: "true"
+    annotations:
+      qontract.recycle: "true"
