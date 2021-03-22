@@ -16,5 +16,10 @@
         {
             "verb": "write"
         }
+    ],
+    "historical-system-profiles": [
+	{
+	    "verb": "read"
+	}
     ]
 }
