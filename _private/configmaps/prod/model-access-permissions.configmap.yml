@@ -368,6 +368,17 @@ objects:
               }
           ]
       }
+    playbook-dispatcher.json: |
+      {
+          "run": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ]
+      }
     policies.json: |
       {
           "policies": [
