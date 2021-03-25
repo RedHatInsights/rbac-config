@@ -18,8 +18,8 @@
         }
     ],
     "historical-system-profiles": [
-	{
-	    "verb": "read"
-	}
+        {
+            "verb": "read"
+        }
     ]
 }
