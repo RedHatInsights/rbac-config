@@ -288,6 +288,11 @@ objects:
               {
                   "verb": "write"
               }
+          ],
+          "historical-system-profiles": [
+              {
+                  "verb": "read"
+              }
           ]
       }
     integrations.json: |
