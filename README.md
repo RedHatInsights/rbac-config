@@ -50,8 +50,9 @@ See "Add new permissions" section below for more details.
 Update roles
 
 When you update the role, please change the version number of the role for the service to pick up new features.
-If you update the name of the role, it will generate a new role but keep the old one. Please reach out to
-RBAC team to resolve this.
+If you need to update the name of a role, add or update the `display_name` field in the role config, as this is the
+the database value displayed in the UI. If you do not have this set, RBAC defaults `display_name` to the value
+of the `name` field in your role config.
 
 Delete roles
 
