@@ -2,10 +2,11 @@
   "roles": [
     {
       "name": "Subscription Watch administrator",
+      "display_name": "Subscriptions administrator",
       "description": "Perform any available operation against any Subscription Watch resource.",
       "system": true,
       "platform_default": true,
-      "version": 4,
+      "version": 5,
       "access": [
         {
           "permission": "subscriptions:*:*"
