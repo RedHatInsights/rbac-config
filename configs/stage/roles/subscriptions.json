@@ -3,7 +3,7 @@
     {
       "name": "Subscription Watch administrator",
       "display_name": "Subscriptions administrator",
-      "description": "Perform any available operation against any Subscription Watch resource.",
+      "description": "Perform any available operation against any Subscriptions resource.",
       "system": true,
       "platform_default": true,
       "version": 5,
