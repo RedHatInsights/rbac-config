@@ -1,4 +1,17 @@
 {
+    "reports": [
+        {
+            "verb": "read"
+        }
+    ],
+    "manifests": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
     "*": [
         {
             "verb": "*"
