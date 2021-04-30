@@ -467,6 +467,19 @@ objects:
       }
     subscriptions.json: |
       {
+          "reports": [
+              {
+                  "verb": "read"
+              }
+          ],
+          "manifests": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ],
           "*": [
               {
                   "verb": "*"
