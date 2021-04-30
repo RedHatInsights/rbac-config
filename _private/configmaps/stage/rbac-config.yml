@@ -805,6 +805,74 @@ objects:
           }
         ]
       }
+    config-manager.json: |
+      {
+        "roles": [
+          {
+            "name": "RHC Administrator",
+            "description": "Perform any operations on the service enablement dashboard",
+            "system": true,
+            "platform_default": false,
+            "version": 2,
+            "access": [
+              {
+                "permission": "config-manager:state:read"
+              },
+              {
+                "permission": "config-manager:state:write"
+              },
+              {
+                "permission": "config-manager:state-changes:read"
+              },
+              {
+                "permission": "inventory:*:read"
+              },
+              {
+                "permission": "playbook-dispatcher:run:read",
+                "resourceDefinitions": [
+                  {
+                    "attributeFilter": {
+                      "key": "service",
+                      "operation": "equal",
+                      "value": "config_manager"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "RHC Viewer",
+            "description": "Can view the service enablement dashboard",
+            "system": true,
+            "platform_default": true,
+            "version": 2,
+            "access": [
+              {
+                "permission": "config-manager:state:read"
+              },
+              {
+                "permission": "config-manager:state-changes:read"
+              },
+              {
+                "permission": "inventory:*:read"
+              },
+              {
+                "permission": "playbook-dispatcher:run:read",
+                "resourceDefinitions": [
+                  {
+                    "attributeFilter": {
+                      "key": "service",
+                      "operation": "equal",
+                      "value": "config_manager"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
     cost-management.json: |
       {
           "roles": [{
@@ -1089,13 +1157,32 @@ objects:
         "roles": [
           {
             "name": "Subscription Watch administrator",
-            "description": "Perform any available operation against any Subscription Watch resource.",
+            "display_name": "Subscriptions administrator",
+            "description": "Perform any available operation against any Subscriptions resource.",
             "system": true,
-            "platform_default": true,
-            "version": 4,
+            "platform_default": false,
+            "version": 5,
             "access": [
               {
                 "permission": "subscriptions:*:*"
+              },
+              {
+                "permission": "inventory:*:read"
+              }
+            ]
+          },
+          {
+            "name": "Subscriptions user",
+            "description": "View any Subscriptions resource.",
+            "system": true,
+            "platform_default": true,
+            "version": 1,
+            "access": [
+              {
+                "permission": "subscriptions:reports:read"
+              },
+              {
+                "permission": "subscriptions:manifests:read"
               },
               {
                 "permission": "inventory:*:read"

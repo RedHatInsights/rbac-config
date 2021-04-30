@@ -186,6 +186,22 @@ objects:
               }
           ]
       }
+    config-manager.json: |
+      {
+          "state": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ],
+          "state-changes": [
+              {
+                  "verb": "read"
+              }
+          ]
+      }
     cost-management.json: |
       {
           "aws.account": [
