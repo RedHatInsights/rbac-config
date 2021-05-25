@@ -1,0 +1,18 @@
+{
+    "roles": [
+      {
+        "name": "RBAC administrator",
+        "display_name": "RBAC administrator",
+        "description": "Perform any available operation against any non-RBAC resource.",
+        "system": true,
+        "platform_default": false,
+        "version": 1,
+        "access": [
+          {
+            "permission": "rbac:*:*"
+          }
+        ]
+      }
+    ]
+  }
+  
