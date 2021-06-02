@@ -1,9 +1,9 @@
 {
     "roles": [
       {
-        "name": "RBAC administrator",
-        "display_name": "RBAC administrator",
-        "description": "Perform any available operation against any non-RBAC resource.",
+        "name": "User Access Administrator",
+        "display_name": "User Access Administrator",
+        "description": "Grants a non-org administrator full access to configure and manage user access to services hosted on cloud.redhat.com. This role can only be viewed and assigned by Org administrators.",
         "system": true,
         "platform_default": false,
         "version": 1,
