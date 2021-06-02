@@ -1,9 +1,9 @@
 {
     "roles": [
       {
-        "name": "User Access Administrator",
-        "display_name": "User Access Administrator",
-        "description": "Grants a non-org administrator full access to configure and manage user access to services hosted on cloud.redhat.com. This role can only be viewed and assigned by Org administrators.",
+        "name": "User Access aministrator",
+        "display_name": "User Access administrator",
+        "description": "Grants a non-org admin full access to configure and manage user access to services hosted on cloud.redhat.com. This role can only be viewed and assigned by Organization Administrators.",
         "system": true,
         "platform_default": false,
         "version": 1,
