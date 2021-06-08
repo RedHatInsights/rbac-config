@@ -1078,6 +1078,13 @@ objects:
           }
         ]
       }
+    rbac.json: "{\n    \"roles\": [\n      {\n        \"name\": \"User Access administrator\",\n
+      \       \"display_name\": \"User Access administrator\",\n        \"description\":
+      \"Grants a non-org admin full access to configure and manage user access to services
+      hosted on cloud.redhat.com. This role can only be viewed and assigned by Organization
+      Administrators.\",\n        \"system\": true,\n        \"platform_default\": false,\n
+      \       \"version\": 1,\n        \"access\": [\n          {\n            \"permission\":
+      \"rbac:*:*\"\n          }\n        ]\n      }\n    ]\n  }\n  \n"
     remediations.json: |
       {
         "roles": [
