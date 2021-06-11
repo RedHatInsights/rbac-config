@@ -75,6 +75,20 @@ objects:
               }
           ]
       }
+    automation-analytics.json: |
+      {
+          "*": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              },
+              {
+                  "verb": "*"
+              }
+          ]
+      }
     catalog.json: |
       {
           "approval_requests": [
