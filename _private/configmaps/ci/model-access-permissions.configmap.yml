@@ -307,32 +307,12 @@ objects:
               }
           ]
       }
-    drift.json: |
-      {
-          "*": [
-              {
-                  "verb": "*"
-              }
-          ],
-          "comparisons": [
-              {
-                  "verb": "read"
-              }
-          ],
-          "baselines": [
-              {
-                  "verb": "read"
-              },
-              {
-                  "verb": "write"
-              }
-          ],
-          "historical-system-profiles": [
-              {
-                  "verb": "read"
-              }
-          ]
-      }
+    drift.json: "{\n    \"*\": [\n        {\n            \"verb\": \"*\"\n        }\n
+      \   ],\n    \"comparisons\": [\n        {\n            \"verb\": \"read\"\n        }\n
+      \   ],\n    \"baselines\": [\n        {\n            \"verb\": \"read\"\n        },\n
+      \       {\n            \"verb\": \"write\"\n        }\n    ],\n    \"historical-system-profiles\":
+      [\n        {\n            \"verb\": \"read\"\n        }\n    ],\n    \"notifications\":
+      [\n\t{\n\t    \"verb\": \"write\"\n\t}\n    ]\n}\n"
     integrations.json: |
       {
           "endpoints": [

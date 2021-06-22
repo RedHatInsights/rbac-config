@@ -323,6 +323,11 @@ objects:
               {
                   "verb": "read"
               }
+          ],
+          "notifications": [
+              {
+                  "verb": "write"
+              }
           ]
       }
     integrations.json: |
