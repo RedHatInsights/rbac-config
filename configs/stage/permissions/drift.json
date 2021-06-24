@@ -24,6 +24,9 @@
   ],
   "notifications": [
     {
+      "verb": "read"
+    },
+    {
       "verb": "write"
     }
   ]
