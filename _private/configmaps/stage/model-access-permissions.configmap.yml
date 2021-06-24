@@ -326,6 +326,9 @@ objects:
         ],
         "notifications": [
           {
+            "verb": "read"
+          },
+          {
             "verb": "write"
           }
         ]
