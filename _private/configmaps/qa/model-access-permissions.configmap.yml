@@ -465,6 +465,17 @@ objects:
               }
           ]
       }
+    ros.json: |
+      {
+          "*": [
+              {
+                  "verb": "*"
+              },
+              {
+                  "verb": "read"
+              }
+          ]
+      }
     sources.json: |
       {
           "*": [
