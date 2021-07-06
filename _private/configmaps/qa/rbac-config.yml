@@ -1155,6 +1155,41 @@ objects:
           }
         ]
       }
+    ros.json: |
+      {
+          "roles": [
+            {
+              "name": "Resource Optimization administrator",
+              "description": "Perform any available operation against any Resource Optimization resource.",
+              "system": true,
+              "platform_default": false,
+              "version": 1,
+              "access": [
+                {
+                  "permission": "ros:*:*"
+                },
+                {
+                  "permission": "inventory:*:read"
+                }
+              ]
+            },
+            {
+              "name": "Resource Optimization user",
+              "description": "A Resource Optimization user role that grants read only permission.",
+              "system": true,
+              "platform_default": true,
+              "version": 1,
+              "access": [
+                {
+                  "permission": "ros:*:read"
+                },
+                {
+                  "permission": "inventory:*:read"
+                }
+              ]
+            }
+          ]
+      }
     sources.json: |
       {
         "roles": [
