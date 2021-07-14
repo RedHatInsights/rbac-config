@@ -1,0 +1,22 @@
+{
+  "*": [
+    {
+      "verb": "*"
+    }
+  ],
+  "toggle-recommendations": [
+    {
+      "verb": "write"
+    }
+  ],
+  "recommendation-results": [
+    {
+      "verb": "read"
+    }
+  ],
+  "exports": [
+    {
+      "verb": "read"
+    }
+  ]
+}
