@@ -2,10 +2,11 @@
   "roles": [
     {
       "name": "RHC Administrator",
+      "display_name": "Red Hat connector administrator",
       "description": "Perform any operations on the service enablement dashboard",
       "system": true,
       "platform_default": false,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "config-manager:state:read"
@@ -35,10 +36,11 @@
     },
     {
       "name": "RHC Viewer",
+      "display_name": "Red Hat connector viewer",
       "description": "Can view the service enablement dashboard",
       "system": true,
       "platform_default": true,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "config-manager:state:read"
