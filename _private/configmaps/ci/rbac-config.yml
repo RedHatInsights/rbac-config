@@ -954,11 +954,11 @@ objects:
         "roles": [
           {
             "name": "Insights administrator",
-            "display_name": "Advisor administrator",
-            "description": "Perform any available operation against any advisor resource.",
+            "display_name": "RHEL Advisor administrator",
+            "description": "Perform any available operation against any RHEL Advisor resource.",
             "system": true,
             "platform_default": true,
-            "version": 9,
+            "version": 10,
             "access": [
               {
                 "permission": "advisor:*:*"
@@ -1038,6 +1038,24 @@ objects:
             ]
           }
   
+        ]
+      }
+    ocp-advisor.json: |
+      {
+        "roles": [
+          {
+            "name": "OCP Advisor administrator",
+            "display_name": "OCP Advisor administrator",
+            "description": "Perform any available operation against any OCP Advisor resource.",
+            "system": true,
+            "platform_default": true,
+            "version": 1,
+            "access": [
+              {
+                "permission": "ocp-advisor:*:*"
+              }
+            ]
+          }
         ]
       }
     patch.json: |
