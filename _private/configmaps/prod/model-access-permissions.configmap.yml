@@ -371,6 +371,17 @@ objects:
               }
           ]
       }
+    malware-detection.json: |
+      {
+          "*": [
+              {
+                  "verb": "*"
+              },
+              {
+                  "verb": "read"
+              }
+          ]
+      }
     migration-analytics.json: |
       {
           "*": [
