@@ -18,7 +18,8 @@
               "link",
               "unlink",
               "order",
-              "execute"
+              "execute",
+              "manage"
             ]
           },
           "description": {
