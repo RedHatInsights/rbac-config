@@ -17,7 +17,7 @@
             "verb": "read"
         },
         {
-            "verb": "manage"
+            "verb": "write"
         }
     ],
     "*": [
