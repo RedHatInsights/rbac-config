@@ -1260,6 +1260,9 @@ objects:
                 "permission": "subscriptions:manifests:read"
               },
               {
+                "permission": "subscriptions:organization:read"
+              },
+              {
                 "permission": "inventory:*:read"
               }
             ]

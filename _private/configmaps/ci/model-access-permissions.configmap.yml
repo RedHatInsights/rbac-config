@@ -522,6 +522,14 @@ objects:
                   "verb": "write"
               }
           ],
+          "organization": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ],
           "*": [
               {
                   "verb": "*"
