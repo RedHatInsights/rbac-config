@@ -569,6 +569,11 @@ objects:
                   "verb": "read"
               }
           ],
+          "report_and_export": [
+              {
+                  "verb": "read"
+              }
+          ],
           "system.opt_out": [
               {
                   "verb": "write"
