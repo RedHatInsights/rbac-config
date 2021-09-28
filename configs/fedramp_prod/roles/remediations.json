@@ -1,0 +1,58 @@
+{
+  "roles": [
+    {
+      "name": "Remediations administrator",
+      "description": "Perform any available operation against any Remediations resource",
+      "system": true,
+      "platform_default": false,
+      "version": 5,
+      "access": [
+        {
+          "permission": "remediations:*:*"
+        },
+        {
+          "permission": "inventory:*:read"
+        },
+        {
+          "permission": "playbook-dispatcher:run:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "service",
+                "operation": "equal",
+                "value": "remediations"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remediations user",
+      "description": "Perform create, view, update, delete operations against any Remediations resource.",
+      "system": true,
+      "platform_default": true,
+      "version": 5,
+      "access": [
+        {
+          "permission": "remediations:remediation:read"
+        },
+        {
+          "permission": "remediations:remediation:write"
+        },
+        {
+          "permission": "playbook-dispatcher:run:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "service",
+                "operation": "equal",
+                "value": "remediations"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

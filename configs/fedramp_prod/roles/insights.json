@@ -1,0 +1,20 @@
+{
+  "roles": [
+    {
+      "name": "Insights administrator",
+      "display_name": "Advisor administrator",
+      "description": "Perform any available operation against any advisor resource.",
+      "system": true,
+      "platform_default": true,
+      "version": 9,
+      "access": [
+        {
+          "permission": "advisor:*:*"
+        },
+        {
+          "permission": "inventory:*:read"
+        }
+      ]
+    }
+  ]
+}

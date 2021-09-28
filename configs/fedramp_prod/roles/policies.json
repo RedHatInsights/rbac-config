@@ -1,0 +1,19 @@
+{
+  "roles": [
+    {
+      "name": "Policies administrator",
+      "description": "Perform any available operation against any Policies resource.",
+      "system": true,
+      "platform_default": true,
+      "version": 5,
+      "access": [
+        {
+          "permission": "policies:*:*"
+        },
+        {
+          "permission": "inventory:*:read"
+        }
+      ]
+    }
+  ]
+}
