@@ -1,0 +1,201 @@
+kind: Template
+apiVersion: v1
+objects:
+- apiVersion: v1
+  data:
+    advisor.json: |
+      {
+          "*": [
+              {
+                  "verb": "*"
+              }
+          ],
+          "disable-recommendations": [
+              {
+                  "verb": "write"
+              }
+          ],
+          "weekly-email": [
+              {
+                  "verb": "read"
+              }
+          ],
+          "recommendation-results": [
+              {
+                  "verb": "read"
+              }
+          ],
+          "exports": [
+              {
+                  "verb": "read"
+              }
+          ]
+      }
+    compliance.json: |
+      {
+          "*": [
+              {
+                  "verb": "*"
+              }
+          ]
+      }
+    drift.json: |
+      {
+        "*": [
+          {
+            "verb": "*"
+          }
+        ],
+        "comparisons": [
+          {
+            "verb": "read"
+          }
+        ],
+        "baselines": [
+          {
+            "verb": "read"
+          },
+          {
+            "verb": "write"
+          }
+        ],
+        "historical-system-profiles": [
+          {
+            "verb": "read"
+          }
+        ],
+        "notifications": [
+          {
+            "verb": "read"
+          },
+          {
+            "verb": "write"
+          }
+        ]
+      }
+    inventory.json: |
+      {
+          "*": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "*"
+              }
+          ],
+          "hosts": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              },
+              {
+                  "verb": "*"
+              }
+          ]
+      }
+    patch.json: |
+      {
+          "*": [
+              {
+                  "verb": "*"
+              }
+          ],
+          "system": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ]
+      }
+    policies.json: |
+      {
+          "policies": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ],
+          "*": [
+              {
+                  "verb": "*"
+              }
+          ]
+      }
+    remediations.json: |
+      {
+          "remediation": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              },
+              {
+                  "verb": "execute"
+              }
+          ],
+          "*": [
+              {
+                  "verb": "*"
+              }
+          ]
+      }
+    vulnerability.json: |
+      {
+          "*": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              },
+              {
+                  "verb": "*"
+              }
+          ],
+          "vulnerability_results": [
+              {
+                  "verb": "read"
+              }
+          ],
+          "cve.business_risk_and_status": [
+              {
+                  "verb": "write"
+              }
+          ],
+          "system.cve.status": [
+              {
+                  "verb": "write"
+              }
+          ],
+          "advanced_report": [
+              {
+                  "verb": "read"
+              }
+          ],
+          "report_and_export": [
+              {
+                  "verb": "read"
+              }
+          ],
+          "system.opt_out": [
+              {
+                  "verb": "write"
+              },
+              {
+                  "verb": "read"
+              }
+          ]
+      }
+  kind: ConfigMap
+  metadata:
+    creationTimestamp: null
+    name: model-access-permissions
+    annotations:
+      qontract.recycle: "true"
