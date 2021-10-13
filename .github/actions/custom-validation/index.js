@@ -24,12 +24,14 @@ try {
         )
 
         permissionDetails.forEach(detail => {
+          let currentVerb = detail.verb
           let requires = detail.requires
+          let validVerbs = verbsForResource.filter(v => v !== currentVerb)
           if (requires) {
             requires.forEach(requiredVerb => {
-              let valid = verbsForResource.includes(requiredVerb)
+              let valid = validVerbs.includes(requiredVerb)
               if (!valid) {
-                let err = `The required verb "${requiredVerb}" is not one of ${JSON.stringify(verbsForResource)}`
+                let err = `The required verb "${requiredVerb}" is not one of ${JSON.stringify(validVerbs)}`
                 core.setFailed(err)
               }
             })
