@@ -22,6 +22,6 @@ jobs:
           json_schema: ./schemas/roles.schema
           json_path_pattern: configs/.*/roles/.*json$
       - name: Validate Permissions' Dependencies
-        uses: RedHatInsights/rbac-config-actions/validate-permission-dependencies@namespace
+        uses: RedHatInsights/rbac-config-actions/validate-permission-dependencies@main
         with:
           permissions_path_pattern: 'configs/**/*/permissions/*.json'
