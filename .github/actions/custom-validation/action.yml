@@ -1,0 +1,9 @@
+name: Custom Validation
+description: Additional validation not covered in the schema validation
+inputs:
+  permissions_path_pattern:
+    description: Where the permissions live
+    required: true
+runs:
+  using: node12
+  main: index.js

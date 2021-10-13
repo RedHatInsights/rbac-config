@@ -23,12 +23,16 @@
           },
           "description": {
             "type": "string"
+          },
+          "requires": {
+            "type": "array"
           }
         },
         "required": [
           "verb"
         ],
-        "minProperties": 1
+        "minProperties": 1,
+        "additionalProperties": false
       }
     }
   },

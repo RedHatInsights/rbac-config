@@ -21,3 +21,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           json_schema: ./schemas/roles.schema
           json_path_pattern: configs/.*/roles/.*json$
+      - name: Check out repository
+        uses: actions/checkout@v2
+      - name: Validate Requires Permissions
+        uses: ./.github/actions/custom-validation
+        with:
+          permissions_path_pattern: 'configs/**/*/permissions/*.json'
