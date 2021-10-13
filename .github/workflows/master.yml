@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Converting config to configmaps
-        uses: RedHatInsights/rbac-config-actions@main
+        uses: RedHatInsights/rbac-config-actions/convert-config@namespace
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch_name: configmaps
