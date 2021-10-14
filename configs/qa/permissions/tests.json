@@ -6,7 +6,7 @@
     {
       "verb": "write",
       "requires": [
-        "create"
+        "read"
       ]
     }
   ]
