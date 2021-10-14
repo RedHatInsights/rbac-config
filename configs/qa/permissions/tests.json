@@ -1,7 +1,7 @@
 {
   "tests": [
     {
-      "verb": "read"
+      "verb": "create"
     },
     {
       "verb": "write",
