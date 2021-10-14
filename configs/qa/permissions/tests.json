@@ -1,0 +1,13 @@
+{
+  "tests": [
+    {
+      "verb": "read"
+    },
+    {
+      "verb": "write",
+      "requires": [
+        "read"
+      ]
+    }
+  ]
+}
