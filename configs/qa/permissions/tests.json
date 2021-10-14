@@ -5,8 +5,7 @@
     },
     {
       "verb": "write",
-      "requires": [
-      ]
+      "requires": ""
     }
   ]
 }
