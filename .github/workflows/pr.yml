@@ -9,15 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Validate Permissions
+      - name: Validate Permissions Against Schema
         uses: RedHatInsights/json-schema-validator@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           json_schema: ./schemas/permissions.schema
           json_path_pattern: configs/.*/permissions/.*json$
-      - name: Validate Roles
+      - name: Validate Roles Against Schema
         uses: RedHatInsights/json-schema-validator@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           json_schema: ./schemas/roles.schema
           json_path_pattern: configs/.*/roles/.*json$
+      - name: Validate Permissions' Dependencies
+        uses: RedHatInsights/rbac-config-actions/validate-permission-dependencies@main
+        with:
+          permissions_path_pattern: 'configs/**/*/permissions/*.json'

@@ -67,7 +67,42 @@ E.g. approval.json contains `"requests": [{"verb": "create"}]`, therefore, permi
 When trying to create custom roles, this `"approval:requests:create"` could be added to the access of the role.
 If you want the permission `"catalog:requests:*"` available for selection, catalog.json should contain `"requests": [{{"verb": "create"}, {"verb": "*"}]`.
 
-Adding a description to the permission could be done by adding a field `"Description"`, e.g., `"requests": [{"verb": "create", "description": "Describing the permission}]`
+Adding a description to the permission could be done by adding a field `"description"`, e.g.,
+```json
+{
+  "requests": [
+    {
+      "verb": "create",
+      "description": "Describing the permission"
+    }
+  ]
+}
+```
+
+You may also explicitly define that one permission verb require another permission
+verb for the same application and resource type. This is defined as an additional
+field on the permission, similar to `"description"`, e.g.,
+```json
+{
+  "requests": [
+    {
+      "verb": "create",
+      "requires": [
+        "read"
+      ]
+    },
+    {
+      "verb": "read"
+    }
+  ]
+}
+```
+This will ensure that RBAC enforces a requirement so that whenever a custom role
+is created with the `app:requests:create` permission via the API, the `app:requests:read`
+permission must also be supplied in the request, otherwise the API will return a 400.
+
+The `requires` field is expected to be an array, and is restricted to verbs which
+exist for the current app/resource type.
 
 Please check existing files for more samples.
 
