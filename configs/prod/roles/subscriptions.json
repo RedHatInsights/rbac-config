@@ -2,13 +2,35 @@
   "roles": [
     {
       "name": "Subscription Watch administrator",
-      "description": "Perform any available operation against any Subscription Watch resource.",
+      "display_name": "Subscriptions administrator",
+      "description": "Perform any available operation against any Subscriptions resource.",
       "system": true,
-      "platform_default": true,
-      "version": 4,
+      "platform_default": false,
+      "version": 5,
       "access": [
         {
           "permission": "subscriptions:*:*"
+        },
+        {
+          "permission": "inventory:*:read"
+        }
+      ]
+    },
+    {
+      "name": "Subscriptions user",
+      "description": "View any Subscriptions resource.",
+      "system": true,
+      "platform_default": true,
+      "version": 1,
+      "access": [
+        {
+          "permission": "subscriptions:reports:read"
+        },
+        {
+          "permission": "subscriptions:manifests:read"
+        },
+        {
+          "permission": "subscriptions:organization:read"
         },
         {
           "permission": "inventory:*:read"
