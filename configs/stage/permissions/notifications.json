@@ -7,6 +7,11 @@
             "verb": "write"
         }
     ],
+    "events" : [
+        {
+            "verb": "read"
+        }
+    ],
     "*": [
         {
             "verb": "*"
