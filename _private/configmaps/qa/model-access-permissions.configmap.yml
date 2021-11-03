@@ -397,6 +397,11 @@ objects:
                   "verb": "write"
               }
           ],
+          "events" : [
+              {
+                  "verb": "read"
+              }
+          ],
           "*": [
               {
                   "verb": "*"

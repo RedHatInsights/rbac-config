@@ -1018,6 +1018,9 @@ objects:
                 "permission": "notifications:*:*"
               },
               {
+                "permission": "events:*:*"
+              },
+              {
                 "permission": "integrations:*:*"
               }
             ]
