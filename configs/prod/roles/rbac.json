@@ -12,6 +12,19 @@
           "permission": "rbac:*:*"
         }
       ]
+    },
+    {
+      "name": "User Access principal viewer",
+      "display_name": "User Access principal viewer",
+      "description": "Grants a non-org admin read access to principals within user access.",
+      "system": true,
+      "platform_default": false,
+      "version": 1,
+      "access": [
+        {
+          "permission": "rbac:principal:read"
+        }
+      ]
     }
   ]
 }
