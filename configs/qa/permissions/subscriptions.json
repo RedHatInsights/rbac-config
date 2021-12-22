@@ -20,6 +20,14 @@
             "verb": "write"
         }
     ],
+    "products": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
     "*": [
         {
             "verb": "*"
