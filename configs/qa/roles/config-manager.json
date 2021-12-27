@@ -9,6 +9,9 @@
       "version": 3,
       "access": [
         {
+          "permission": "config-manager:activation_keys:*"
+        },
+        {
           "permission": "config-manager:state:read"
         },
         {
@@ -42,6 +45,9 @@
       "platform_default": true,
       "version": 3,
       "access": [
+        {
+          "permission": "config-manager:activation_keys:read"
+        },
         {
           "permission": "config-manager:state:read"
         },
