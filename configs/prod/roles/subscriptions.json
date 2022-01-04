@@ -33,9 +33,6 @@
           "permission": "subscriptions:organization:read"
         },
         {
-          "permission": "subscriptions:products:read"
-        },
-        {
           "permission": "inventory:*:read"
         }
       ]
