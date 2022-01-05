@@ -5,6 +5,9 @@
         },
         {
             "verb": "write"
+        },
+        {
+            "verb": "*"
         }
     ],
     "state": [
