@@ -1,4 +1,15 @@
 {
+    "activation_keys": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        },
+        {
+            "verb": "*"
+        }
+    ],
     "state": [
         {
             "verb": "read"
