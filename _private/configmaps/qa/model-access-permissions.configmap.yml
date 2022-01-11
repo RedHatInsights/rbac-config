@@ -202,6 +202,17 @@ objects:
       }
     config-manager.json: |
       {
+          "activation_keys": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              },
+              {
+                  "verb": "*"
+              }
+          ],
           "state": [
               {
                   "verb": "read"
@@ -528,6 +539,14 @@ objects:
               }
           ],
           "organization": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ],
+          "products": [
               {
                   "verb": "read"
               },

@@ -814,8 +814,11 @@ objects:
             "description": "Perform any operations on the service enablement dashboard",
             "system": true,
             "platform_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
+              {
+                "permission": "config-manager:activation_keys:*"
+              },
               {
                 "permission": "config-manager:state:read"
               },
@@ -848,8 +851,11 @@ objects:
             "description": "Can view the service enablement dashboard",
             "system": true,
             "platform_default": true,
-            "version": 3,
+            "version": 4,
             "access": [
+              {
+                "permission": "config-manager:activation_keys:read"
+              },
               {
                 "permission": "config-manager:state:read"
               },
@@ -1104,10 +1110,10 @@ objects:
           {
             "name": "User Access administrator",
             "display_name": "User Access administrator",
-            "description": "Grants a non-org admin full access to configure and manage user access to services hosted on cloud.redhat.com. This role can only be viewed and assigned by Organization Administrators.",
+            "description": "Grants a non-org admin full access to configure and manage user access to services hosted on console.redhat.com. This role can only be viewed and assigned by Organization Administrators.",
             "system": true,
             "platform_default": false,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "rbac:*:*"
@@ -1264,7 +1270,7 @@ objects:
             "description": "View any Subscriptions resource.",
             "system": true,
             "platform_default": true,
-            "version": 2,
+            "version": 3,
             "access": [
               {
                 "permission": "subscriptions:reports:read"
@@ -1274,6 +1280,9 @@ objects:
               },
               {
                 "permission": "subscriptions:organization:read"
+              },
+              {
+                "permission": "subscriptions:products:read"
               },
               {
                 "permission": "inventory:*:read"
