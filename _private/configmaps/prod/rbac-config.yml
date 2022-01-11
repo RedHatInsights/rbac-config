@@ -1285,7 +1285,7 @@ objects:
             "description": "View any Subscriptions resource.",
             "system": true,
             "platform_default": true,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "subscriptions:reports:read"
@@ -1295,6 +1295,9 @@ objects:
               },
               {
                 "permission": "subscriptions:organization:read"
+              },
+              {
+                "permission": "subscriptions:products:read"
               },
               {
                 "permission": "inventory:*:read"
