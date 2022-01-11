@@ -814,8 +814,11 @@ objects:
             "description": "Perform any operations on the service enablement dashboard",
             "system": true,
             "platform_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
+              {
+                "permission": "config-manager:activation_keys:*"
+              },
               {
                 "permission": "config-manager:state:read"
               },
@@ -848,8 +851,11 @@ objects:
             "description": "Can view the service enablement dashboard",
             "system": true,
             "platform_default": true,
-            "version": 3,
+            "version": 4,
             "access": [
+              {
+                "permission": "config-manager:activation_keys:read"
+              },
               {
                 "permission": "config-manager:state:read"
               },
