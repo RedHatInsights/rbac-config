@@ -1314,10 +1314,37 @@ objects:
             "description": "Perform any available operation against any Vulnerability resource.",
             "system": true,
             "platform_default": true,
-            "version": 8,
+            "version": 9,
             "access": [
               {
                 "permission": "vulnerability:*:*"
+              },
+              {
+                "permission": "inventory:*:read"
+              },
+              {
+                "permission": "remediations:*:read"
+              },
+              {
+                "permission": "remediations:*:write"
+              }
+            ]
+          },
+          {
+            "name": "Vulnerability viewer",
+            "description": "Read any Vulnerability resource.",
+            "system": true,
+            "platform_default": false,
+            "version": 1,
+            "access": [
+              {
+                "permission": "vulnerability:vulnerability_results:read"
+              },
+              {
+                "permission": "vulnerability:system.opt_out:read"
+              },
+              {
+                "permission": "vulnerability:report_and_export:read"
               },
               {
                 "permission": "inventory:*:read"
