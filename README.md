@@ -106,18 +106,8 @@ exist for the current app/resource type.
 
 Please check existing files for more samples.
 
-Deployment
-==========
-Once your PR is merged, an automated PR will be created with your changes applied as
-a ConfigMap in the templates within `/_private/configmaps/(ci|qa|stage|prod)/`
-for roles and permissions.
-
-Once this PR is merged, an MR will need to be created againts the corresponding
-`resourceTemplate`(s) and namespace(s) in `app-interface`: https://gitlab.cee.redhat.com/service/app-interface/-/blob/master/data/services/insights/rbac/deploy.yml
-to bump the `ref` which will deploy your changes to the specified environment(s).
-
 Admin Role
-==========
+----------
 We added support for the new role flag "admin_default", similar to “platform_default”, to allow for admin roles to automatically be assigned to org admins (not admins via the RBAC admin role). By default we will have the "admin_default" flag set to false. An example of what an admin role only assigned to admins by default may look like:
 
 ```json
@@ -139,3 +129,14 @@ We added support for the new role flag "admin_default", similar to “platform_d
   ]
 }
 ```
+
+Deployment
+==========
+Once your PR is merged, an automated PR will be created with your changes applied as
+a ConfigMap in the templates within `/_private/configmaps/(ci|qa|stage|prod)/`
+for roles and permissions.
+
+Once this PR is merged, an MR will need to be created againts the corresponding
+`resourceTemplate`(s) and namespace(s) in `app-interface`: https://gitlab.cee.redhat.com/service/app-interface/-/blob/master/data/services/insights/rbac/deploy.yml
+to bump the `ref` which will deploy your changes to the specified environment(s).
+
