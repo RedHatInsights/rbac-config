@@ -82,7 +82,6 @@
             "description",
             "system",
             "platform_default",
-            "admin_default",
             "version",
             "access"
           ]
