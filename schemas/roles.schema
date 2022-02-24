@@ -18,6 +18,9 @@
           "platform_default": {
             "type": "boolean"
           },
+          "admin_default": {
+            "type": "boolean"
+          },
           "version": {
             "type": "integer"
           },
