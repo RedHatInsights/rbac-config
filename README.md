@@ -106,8 +106,8 @@ exist for the current app/resource type.
 
 Please check existing files for more samples.
 
-Admin Role
-----------
+Admin Default Role
+------------------
 We added support for the new role flag "admin_default", similar to “platform_default”, to allow for admin roles to automatically be assigned to org admins (not admins via the RBAC admin role). By default we will have the "admin_default" flag set to false. An example of what an admin role only assigned to admins by default may look like:
 
 ```json
