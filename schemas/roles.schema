@@ -18,6 +18,9 @@
           "platform_default": {
             "type": "boolean"
           },
+          "admin_default": {
+            "type": "boolean"
+          },
           "version": {
             "type": "integer"
           },
@@ -79,6 +82,7 @@
             "description",
             "system",
             "platform_default",
+            "admin_default",
             "version",
             "access"
           ]
