@@ -115,3 +115,27 @@ for roles and permissions.
 Once this PR is merged, an MR will need to be created againts the corresponding
 `resourceTemplate`(s) and namespace(s) in `app-interface`: https://gitlab.cee.redhat.com/service/app-interface/-/blob/master/data/services/insights/rbac/deploy.yml
 to bump the `ref` which will deploy your changes to the specified environment(s).
+
+Admin Role
+==========
+We added support for the new role flag "admin_default", similar to “platform_default”, to allow for admin roles to automatically be assigned to org admins (not admins via the RBAC admin role). By default we will have the "admin_default" flag set to false. An example of what an admin role only assigned to admins by default may look like:
+
+```json
+{
+  "roles": [
+    {
+      "name": "Service administrator",
+      "description": "Perform any available operation against any Service resource.",
+      "system": true,
+      "platform_default": false,
+      "admin_default": true,
+      "version": 1,
+      "access": [
+        {
+          "permission": "service:*:*"
+        }
+      ]
+    }
+  ]
+}
+```
