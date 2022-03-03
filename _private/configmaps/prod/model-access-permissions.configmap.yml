@@ -422,6 +422,29 @@ objects:
               }
           ]
       }
+    ocp-advisor.json: |
+      {
+        "*": [
+          {
+            "verb": "*"
+          }
+        ],
+        "toggle-recommendations": [
+          {
+            "verb": "write"
+          }
+        ],
+        "recommendation-results": [
+          {
+            "verb": "read"
+          }
+        ],
+        "exports": [
+          {
+            "verb": "read"
+          }
+        ]
+      }
     patch.json: |
       {
           "*": [
