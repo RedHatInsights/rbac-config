@@ -11,7 +11,7 @@ permissions for a principal. These roles cannot be modified from the UI or the A
 
 RBAC service repo: https://github.com/RedHatInsights/insights-rbac
 
-RBAC platform doc: https://platform-docs.cloud.paas.psi.redhat.com/backend/rbac.html
+RBAC platform doc: https://consoledot.pages.redhat.com/docs/dev/services/rbac.html
 
 Development
 ===========
