@@ -16,8 +16,8 @@ RBAC platform doc: https://consoledot.pages.redhat.com/docs/dev/services/rbac.ht
 Development
 ===========
 
-After you clone the RBAC service repo, replace the contents in the insights-rbac/rbac/management/role/(definitions|permissions) folders
-with the json files in the `configs` folders of rbac-config.
+After you clone the RBAC service repo, replace the contents in the `insights-rbac/rbac/management/role/(definitions|permissions)` folders
+with the json files in the `configs` folders of `rbac-config`.
 
 
 Contributing
