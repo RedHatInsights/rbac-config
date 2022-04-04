@@ -324,6 +324,7 @@ objects:
         "roles": [
           {
             "name": "Catalog Administrator",
+            "display_name": "Automation Services Catalog administrator",
             "system": true,
             "version": 8,
             "description": "A catalog administrator roles grants create,read,update, delete and order permissions",
@@ -641,6 +642,7 @@ objects:
           },
           {
             "name": "Catalog User",
+            "display_name": "Automation Services Catalog user",
             "system": true,
             "version": 8,
             "description": "A catalog user roles grants read and order permissions",
