@@ -1383,7 +1383,7 @@ objects:
             "description": "Perform any available operation against any Vulnerability resource.",
             "system": true,
             "platform_default": true,
-            "version": 10,
+            "version": 9,
             "access": [
               {
                 "permission": "vulnerability:*:*"
@@ -1404,7 +1404,7 @@ objects:
             "description": "Read any Vulnerability resource.",
             "system": true,
             "platform_default": false,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "vulnerability:vulnerability_results:read"
