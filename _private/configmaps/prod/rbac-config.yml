@@ -1355,7 +1355,7 @@ objects:
             "description": "Read any Vulnerability resource.",
             "system": true,
             "platform_default": false,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "vulnerability:vulnerability_results:read"
@@ -1368,6 +1368,9 @@ objects:
               },
               {
                 "permission": "inventory:*:read"
+              },
+              {
+                "permission": "vulnerability:advanced_report:read"
               }
             ]
           }
