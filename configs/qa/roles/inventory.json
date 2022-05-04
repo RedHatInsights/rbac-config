@@ -5,7 +5,8 @@
       "description": "Perform any available operation against any Inventory resource.",
       "system": true,
       "platform_default": true,
-      "version": 2,
+      "admin_default": true,
+      "version": 3,
       "access": [
         {
           "permission": "inventory:*:*"
