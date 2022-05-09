@@ -1382,8 +1382,9 @@ objects:
             "name": "Vulnerability administrator",
             "description": "Perform any available operation against any Vulnerability resource.",
             "system": true,
-            "platform_default": true,
-            "version": 9,
+            "platform_default": false,
+            "admin_default": true,
+            "version": 10,
             "access": [
               {
                 "permission": "vulnerability:*:*"
@@ -1403,8 +1404,9 @@ objects:
             "name": "Vulnerability viewer",
             "description": "Read any Vulnerability resource.",
             "system": true,
-            "platform_default": false,
-            "version": 2,
+            "platform_default": true,
+            "admin_default": false,
+            "version": 3,
             "access": [
               {
                 "permission": "vulnerability:vulnerability_results:read"
