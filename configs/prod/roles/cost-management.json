@@ -3,7 +3,8 @@
         "name": "Cost Administrator",
         "description": "A cost management administrator role that grants read and write permissions.",
         "system": true,
-        "version": 2,
+        "admin_default": true,
+        "version": 3,
         "access": [{
             "permission": "cost-management:*:*"
         }]
