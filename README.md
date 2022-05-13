@@ -130,9 +130,9 @@ We added support for the new role flag "admin_default", similar to “platform_d
 }
 ```
 
-External Role
+External Roles
 ---------------------
-We added support to define external role. In the `roles` directory, the external role could be defined as a regular role but without access/permission. The external role should have a field `external` defined, which has external id and external tenant. An example ocm role is displayed below.
+We added support to define external roles. In the `roles` directory, an external role can be defined as a regular role but without access/permissions. An external should have an object `external` defined, which has external `id` and external `tenant` fields. An example ocm role is displayed below.
 ```json
 {
   "roles": [
@@ -149,7 +149,7 @@ We added support to define external role. In the `roles` directory, the external
   ]
 }
 ```
-After the role is seeded into system. The role could be assigned to customer through group and the external team could use the external id of the rbac role to identify it as one of the role on their side.
+After the role is seeded into system, the role can be assigned to users through groups, and the external tenant team can use the external id of the RBAC role to identify it and map it to one of their roles.
 
 Deployment
 ==========
