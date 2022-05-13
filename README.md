@@ -130,6 +130,27 @@ We added support for the new role flag "admin_default", similar to “platform_d
 }
 ```
 
+External Role
+---------------------
+We added support to define external role. In the `roles` directory, the external role could be defined as a regular role but without access/permission. The external role should have a field `external` defined, which has external id and external tenant. An example ocm role is displayed below.
+```json
+{
+  "roles": [
+    {
+      "name": "OCM Cluster Owner",
+      "description": "This role provides cluster owner permission.",
+      "system": true,
+      "version": 2,
+      "external": {
+        "id": "ClusterOwner",
+        "tenant": "ocm"
+      }
+    }
+  ]
+}
+```
+After the role is seeded into system. The role could be assigned to customer through group and the external team could use the external id of the rbac role to identify it as one of the role on their side.
+
 Deployment
 ==========
 Once your PR is merged, an automated PR will be created with your changes applied as
