@@ -75,17 +75,42 @@
               ]
             }
           },
-          "minProperties": 1,
-          "additionalProperties": false,
-          "required": [
-            "name",
-            "description",
-            "system",
-            "platform_default",
-            "version",
-            "access"
-          ]
-        }
+          "external": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "tenant": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "tenant"
+            ]
+          }
+        },
+        "minProperties": 1,
+        "additionalProperties": false,
+        "oneOf": [
+          {
+            "required": [
+              "access"
+            ]
+          },
+          {
+            "required": [
+              "external"
+            ]
+          },
+        ],
+        "required": [
+          "name",
+          "description",
+          "system",
+          "version"
+        ]
       }
     }
   },
