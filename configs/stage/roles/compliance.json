@@ -48,7 +48,7 @@
       "name": "Compliance viewer",
       "description": "A Compliance role that grants read access to any Compliance resource.",
       "system": true,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "compliance:policy:read"
@@ -58,9 +58,6 @@
         },
         {
           "permission": "compliance:system:read"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     }
