@@ -103,7 +103,7 @@
             "required": [
               "external"
             ]
-          },
+          }
         ],
         "required": [
           "name",
