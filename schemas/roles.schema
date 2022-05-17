@@ -12,6 +12,9 @@
           "description": {
             "type": "string"
           },
+          "display_name": {
+            "type": "string"
+          },
           "system": {
             "type": "boolean"
           },
