@@ -1054,7 +1054,8 @@ objects:
             "description": "Perform any available operation against Notifications and Integrations applications.",
             "system": true,
             "platform_default": false,
-            "version": 3,
+            "admin_default": true,
+            "version": 4,
             "access": [
               {
                 "permission": "notifications:*:*"
