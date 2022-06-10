@@ -831,6 +831,9 @@ objects:
               },
               {
                 "permission": "inventory:*:read"
+              },
+              {
+                "permission": "remediations:remediation:read"
               }
             ]
           },
@@ -852,6 +855,9 @@ objects:
               },
               {
                 "permission": "inventory:*:read"
+              },
+              {
+                "permission": "remediations:remediation:read"
               }
             ]
           }
