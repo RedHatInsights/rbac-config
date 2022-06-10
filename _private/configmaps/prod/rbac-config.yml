@@ -1239,7 +1239,8 @@ objects:
               "description": "Perform any available operation against any Resource Optimization resource.",
               "system": true,
               "platform_default": false,
-              "version": 1,
+              "admin_default": true,
+              "version": 2,
               "access": [
                 {
                   "permission": "ros:*:*"
