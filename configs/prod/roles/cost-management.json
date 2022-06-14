@@ -28,7 +28,7 @@
         "name": "Cost Cloud Viewer",
         "description": "A cost management role that grants read permissions on cost reports related to cloud sources.",
         "system": true,
-        "version": 5,
+        "version": 6,
         "access": [{
             "permission": "cost-management:aws.account:*"
         }, {
