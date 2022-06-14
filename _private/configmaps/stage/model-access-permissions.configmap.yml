@@ -304,6 +304,14 @@ objects:
                   "verb": "read"
               }
           ],
+          "oci.payer_tenant_id": [
+              {
+                  "verb": "*"
+              },
+              {
+                  "verb": "read"
+              }
+          ],
           "openshift.cluster": [
               {
                   "verb": "*"
