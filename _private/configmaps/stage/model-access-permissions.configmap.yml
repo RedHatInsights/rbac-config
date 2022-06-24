@@ -606,6 +606,14 @@ objects:
               }
           ]
       }
+    tasks.json: |
+      {
+          "*": [
+              {
+                  "verb": "*"
+              }
+          ]
+      }
     vulnerability.json: |
       {
           "*": [
