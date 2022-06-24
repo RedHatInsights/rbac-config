@@ -1,0 +1,31 @@
+{
+  "roles": [
+    {
+      "name": "Tasks administrator",
+      "description": "Perform any available operation against any Tasks resource.",
+      "system": true,
+      "platform_default": false,
+      "version": 1,
+      "access": [
+        {
+          "permission": "tasks:*:*"
+        },
+        {
+          "permission": "inventory:*:read"
+        },
+        {
+          "permission": "playbook-dispatcher:run:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "service",
+                "operation": "equal",
+                "value": "tasks"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
