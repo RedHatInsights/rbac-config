@@ -5,8 +5,9 @@
       "display_name": "Subscriptions administrator",
       "description": "Perform any available operation against any Subscriptions resource.",
       "system": true,
+      "admin_default": true,
       "platform_default": false,
-      "version": 5,
+      "version": 6,
       "access": [
         {
           "permission": "subscriptions:*:*"
