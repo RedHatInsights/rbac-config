@@ -807,16 +807,17 @@ objects:
           }
         ]
       }
-    config-manager.json: |
+    config-manager.json: |-
       {
         "roles": [
           {
             "name": "RHC Administrator",
-            "display_name": "Red Hat connector administrator",
-            "description": "Perform any operations on the service enablement dashboard",
+            "display_name": "RHC administrator",
+            "description": "Perform any operations on RHC manager",
             "system": true,
+            "admin_default": true,
             "platform_default": false,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "config-manager:activation_keys:*"
@@ -844,16 +845,19 @@ objects:
                     }
                   }
                 ]
+              },
+              {
+                "permission": "subscriptions:organization:read"
               }
             ]
           },
           {
             "name": "RHC Viewer",
-            "display_name": "Red Hat connector viewer",
-            "description": "Can view the service enablement dashboard",
+            "display_name": "RHC viewer",
+            "description": "Can view the current configurations on RHC manager",
             "system": true,
             "platform_default": true,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "config-manager:activation_keys:read"
@@ -1284,7 +1288,7 @@ objects:
           }
         ]
       }
-    subscriptions.json: |
+    subscriptions.json: |-
       {
         "roles": [
           {
@@ -1292,8 +1296,9 @@ objects:
             "display_name": "Subscriptions administrator",
             "description": "Perform any available operation against any Subscriptions resource.",
             "system": true,
+            "admin_default": true,
             "platform_default": false,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "subscriptions:*:*"
