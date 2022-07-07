@@ -1146,6 +1146,59 @@ objects:
   
         ]
       }
+    ocm.json: |
+      {
+        "roles": [
+          {
+            "name": "OCM Cluster Editor",
+            "display_name": "OCM Cluster Editor",
+            "description": "Grants permission to edit clusters",
+            "system": true,
+            "platform_default": false,
+            "version": 2,
+            "external": {
+              "id": "ClusterEditor",
+              "tenant": "ocm"
+            }
+          },
+          {
+            "name": "OCM Cluster Provisioner",
+            "display_name": "OCM Cluster Provisioner",
+            "description": "Grants permission to provision clusters",
+            "system": true,
+            "platform_default": false,
+            "version": 2,
+            "external": {
+              "id": "ClusterProvisioner",
+              "tenant": "ocm"
+            }
+          },
+          {
+            "name": "OCM Cluster Viewer",
+            "display_name": "OCM Cluster Viewer",
+            "description": "Grants permission to view clusters",
+            "system": true,
+            "platform_default": false,
+            "version": 2,
+            "external": {
+              "id": "ClusterViewer",
+              "tenant": "ocm"
+            }
+          },
+          {
+            "name": "OCM Organization Admin",
+            "display_name": "OCM Organization Admin",
+            "description": "Grants administrative permissions associated organization's clusters",
+            "system": true,
+            "platform_default": false,
+            "version": 2,
+            "external": {
+              "id": "OrganizationAdmin",
+              "tenant": "ocm"
+            }
+          }
+        ]
+      }
     ocp-advisor.json: |
       {
         "roles": [
