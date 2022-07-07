@@ -863,7 +863,7 @@ objects:
           }
         ]
       }
-    config-manager.json: |-
+    config-manager.json: |
       {
         "roles": [
           {

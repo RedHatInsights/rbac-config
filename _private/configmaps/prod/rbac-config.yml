@@ -807,7 +807,7 @@ objects:
           }
         ]
       }
-    config-manager.json: |-
+    config-manager.json: |
       {
         "roles": [
           {
@@ -1288,7 +1288,7 @@ objects:
           }
         ]
       }
-    subscriptions.json: |-
+    subscriptions.json: |
       {
         "roles": [
           {
