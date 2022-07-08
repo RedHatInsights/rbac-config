@@ -812,32 +812,6 @@ objects:
             ]
           },
           {
-            "name": "Compliance reporter",
-            "description": "A Compliance role that grants read and export access to any Compliance resource.",
-            "system": true,
-            "version": 2,
-            "access": [
-              {
-                "permission": "compliance:report_export:read"
-              },
-              {
-                "permission": "compliance:policy:read"
-              },
-              {
-                "permission": "compliance:report:read"
-              },
-              {
-                "permission": "compliance:system:read"
-              },
-              {
-                "permission": "inventory:*:read"
-              },
-              {
-                "permission": "remediations:remediation:read"
-              }
-            ]
-          },
-          {
             "name": "Compliance viewer",
             "description": "A Compliance role that grants read access to any Compliance resource.",
             "system": true,
