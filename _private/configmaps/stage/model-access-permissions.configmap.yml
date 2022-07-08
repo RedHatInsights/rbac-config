@@ -228,11 +228,6 @@ objects:
             {
               "verb": "write"
             }
-          ],
-          "report_export": [
-            {
-              "verb": "read"
-            }
           ]
       }
     config-manager.json: |
