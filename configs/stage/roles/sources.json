@@ -5,6 +5,7 @@
       "description": "Perform any available operation against any Source",
       "system": true,
       "platform_default": false,
+      "admin_default": true,
       "version": 2,
       "access": [
         {
