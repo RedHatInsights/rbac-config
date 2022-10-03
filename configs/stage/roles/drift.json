@@ -5,7 +5,7 @@
       "description": "Perform any available operation against any Drift Analysis resource.",
       "system": true,
       "admin_default": true,
-      "version": 9,
+      "version": 10,
       "access": [
         {
           "permission": "drift:comparisons:read"
@@ -29,7 +29,7 @@
       "description": "Perform read only operation against Drift Analysis resources.",
       "system": true,
       "platform_default": true,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "drift:comparisons:read"
