@@ -979,11 +979,41 @@ objects:
             "name": "Drift analysis administrator",
             "description": "Perform any available operation against any Drift Analysis resource.",
             "system": true,
-            "platform_default": true,
-            "version": 8,
+            "admin_default": true,
+            "version": 9,
             "access": [
               {
-                "permission": "drift:*:*"
+                "permission": "drift:comparisons:read"
+              },
+              {
+                "permission": "drift:baselines:read"
+              },
+              {
+                "permission": "drift:baselines:write"
+              },
+              {
+                "permission": "drift:historical-system-profiles:read"
+              },
+              {
+                "permission": "inventory:*:read"
+              }
+            ]
+          },
+          {
+            "name": "Drift viewer",
+            "description": "Perform read only operation against Drift Analysis resources.",
+            "system": true,
+            "platform_default": true,
+            "version": 1,
+            "access": [
+              {
+                "permission": "drift:comparisons:read"
+              },
+              {
+                "permission": "drift:baselines:read"
+              },
+              {
+                "permission": "drift:historical-system-profiles:read"
               },
               {
                 "permission": "inventory:*:read"
@@ -1365,7 +1395,8 @@ objects:
             "description": "Perform any available operation against any Source",
             "system": true,
             "platform_default": false,
-            "version": 2,
+            "admin_default": true,
+            "version": 3,
             "access": [
               {
                 "permission": "sources:*:*"
