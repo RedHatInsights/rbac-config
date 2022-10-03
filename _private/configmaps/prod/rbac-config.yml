@@ -948,7 +948,7 @@ objects:
               "name": "Cost Cloud Viewer",
               "description": "A cost management role that grants read permissions on cost reports related to cloud sources.",
               "system": true,
-              "version": 5,
+              "version": 6,
               "access": [{
                   "permission": "cost-management:aws.account:*"
               }, {
@@ -959,6 +959,8 @@ objects:
                   "permission": "cost-management:gcp.account:*"
               }, {
                   "permission": "cost-management:gcp.project:*"
+              }, {
+                  "permission": "cost-management:oci.payer_tenant_id:*"
               }]
           }, {
               "name": "Cost OpenShift Viewer",
@@ -1310,7 +1312,8 @@ objects:
             "description": "Perform any available operation against any Source",
             "system": true,
             "platform_default": false,
-            "version": 2,
+            "admin_default": true,
+            "version": 3,
             "access": [
               {
                 "permission": "sources:*:*"
@@ -1360,6 +1363,38 @@ objects:
               },
               {
                 "permission": "inventory:*:read"
+              }
+            ]
+          }
+        ]
+      }
+    tasks.json: |
+      {
+        "roles": [
+          {
+            "name": "Tasks administrator",
+            "description": "Perform any available operation against any Tasks resource.",
+            "system": true,
+            "platform_default": false,
+            "version": 1,
+            "access": [
+              {
+                "permission": "tasks:*:*"
+              },
+              {
+                "permission": "inventory:*:read"
+              },
+              {
+                "permission": "playbook-dispatcher:run:read",
+                "resourceDefinitions": [
+                  {
+                    "attributeFilter": {
+                      "key": "service",
+                      "operation": "equal",
+                      "value": "tasks"
+                    }
+                  }
+                ]
               }
             ]
           }
