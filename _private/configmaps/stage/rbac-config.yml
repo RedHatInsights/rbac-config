@@ -1283,7 +1283,7 @@ objects:
             "description": "Grants a non-org admin read access to principals within user access.",
             "system": true,
             "platform_default": false,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "rbac:principal:read"
