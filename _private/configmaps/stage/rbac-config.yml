@@ -980,7 +980,7 @@ objects:
             "description": "Perform any available operation against any Drift Analysis resource.",
             "system": true,
             "admin_default": true,
-            "version": 10,
+            "version": 11,
             "access": [
               {
                 "permission": "drift:comparisons:read"
@@ -993,6 +993,12 @@ objects:
               },
               {
                 "permission": "drift:historical-system-profiles:read"
+              },
+              {
+                "permission": "drift:notifications:read"
+              },
+              {
+                "permission": "drift:notifications:write"
               },
               {
                 "permission": "inventory:*:read"
@@ -1014,6 +1020,9 @@ objects:
               },
               {
                 "permission": "drift:historical-system-profiles:read"
+              },
+              {
+                "permission": "drift:notifications:read"
               },
               {
                 "permission": "inventory:*:read"
@@ -1228,11 +1237,34 @@ objects:
             "name": "Patch administrator",
             "description": "Perform any available operation against any Patch resource.",
             "system": true,
-            "platform_default": true,
-            "version": 5,
+            "platform_default": false,
+            "admin_default": true,
+            "version": 6,
             "access": [
               {
                 "permission": "patch:*:*"
+              },
+              {
+                "permission": "inventory:*:read"
+              },
+              {
+                "permission": "remediations:*:read"
+              },
+              {
+                "permission": "remediations:*:write"
+              }
+            ]
+          },
+          {
+            "name": "Patch viewer",
+            "description": "Read any Patch resource.",
+            "system": true,
+            "platform_default": true,
+            "admin_default": false,
+            "version": 1,
+            "access": [
+              {
+                "permission": "patch:*:read"
               },
               {
                 "permission": "inventory:*:read"
