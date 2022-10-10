@@ -1010,7 +1010,7 @@ objects:
             "description": "Perform read only operation against Drift Analysis resources.",
             "system": true,
             "platform_default": true,
-            "version": 2,
+            "version": 3,
             "access": [
               {
                 "permission": "drift:comparisons:read"
