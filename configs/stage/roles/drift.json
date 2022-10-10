@@ -5,7 +5,7 @@
       "description": "Perform any available operation against any Drift Analysis resource.",
       "system": true,
       "admin_default": true,
-      "version": 10,
+      "version": 11,
       "access": [
         {
           "permission": "drift:comparisons:read"
@@ -18,6 +18,12 @@
         },
         {
           "permission": "drift:historical-system-profiles:read"
+        },
+        {
+          "permission": "drift:notifications:read"
+        },
+        {
+          "permission": "drift:notifications:write"
         },
         {
           "permission": "inventory:*:read"
@@ -39,6 +45,9 @@
         },
         {
           "permission": "drift:historical-system-profiles:read"
+        },
+        {
+          "permission": "drift:notifications:read"
         },
         {
           "permission": "inventory:*:read"
