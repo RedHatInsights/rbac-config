@@ -488,12 +488,20 @@ objects:
           "*": [
               {
                   "verb": "*"
+              },
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
               }
           ],
           "system": [
               {
-                  "verb": "read"
-              },
+                  "verb": "write"
+              }
+          ],
+          "template": [
               {
                   "verb": "write"
               }
