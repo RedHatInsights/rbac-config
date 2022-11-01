@@ -1,0 +1,15 @@
+{
+    "repositories": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
+    "*": [
+        {
+            "verb": "*"
+        }
+    ]
+}
