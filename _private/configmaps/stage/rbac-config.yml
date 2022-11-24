@@ -1272,7 +1272,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 7,
+            "version": 8,
             "access": [
               {
                 "permission": "patch:*:*"
@@ -1294,7 +1294,7 @@ objects:
             "system": true,
             "platform_default": true,
             "admin_default": false,
-            "version": 2,
+            "version": 3,
             "access": [
               {
                 "permission": "patch:*:read"
