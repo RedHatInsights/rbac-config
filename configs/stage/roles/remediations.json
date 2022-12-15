@@ -5,7 +5,8 @@
       "description": "Perform any available operation against any Remediations resource",
       "system": true,
       "platform_default": false,
-      "version": 5,
+      "admin_default": true,
+      "version": 6,
       "access": [
         {
           "permission": "remediations:*:*"
