@@ -17,5 +17,16 @@
         {
             "verb": "*"
         }
+    ],
+    "groups": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        },
+        {
+            "verb": "*"
+        }
     ]
 }
