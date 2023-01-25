@@ -257,6 +257,22 @@ objects:
               }
           ]
       }
+    content-sources.json: |
+      {
+          "repositories": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ],
+          "*": [
+              {
+                  "verb": "*"
+              }
+          ]
+      }
     cost-management.json: |
       {
           "aws.account": [
