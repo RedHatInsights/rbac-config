@@ -1212,8 +1212,8 @@ objects:
             "display_name": "OCM Cluster Provisioner",
             "description": "Grants permission to provision clusters",
             "system": true,
-            "platform_default": false,
-            "version": 2,
+            "platform_default": true,
+            "version": 3,
             "external": {
               "id": "ClusterProvisioner",
               "tenant": "ocm"
@@ -1224,8 +1224,8 @@ objects:
             "display_name": "OCM Cluster Viewer",
             "description": "Grants permission to view clusters",
             "system": true,
-            "platform_default": false,
-            "version": 2,
+            "platform_default": true,
+            "version": 3,
             "external": {
               "id": "ClusterViewer",
               "tenant": "ocm"
