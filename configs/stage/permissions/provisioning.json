@@ -1,0 +1,85 @@
+{
+	"source": [
+		{
+			"verb": "*"
+		},
+		{
+			"verb": "read"
+		}
+	],
+	"pubkey": [
+		{
+			"verb": "*"
+		},
+		{
+			"verb": "read"
+		},
+		{
+			"verb": "write",
+			"requires": [
+				"read"
+			]
+		}
+	],
+	"reservation": [
+		{
+			"verb": "*"
+		},
+		{
+			"verb": "read"
+		},
+		{
+			"verb": "write",
+			"requires": [
+				"read"
+			]
+		}
+	],
+	"reservation.aws": [
+		{
+			"verb": "*"
+		},
+		{
+			"verb": "read"
+		},
+		{
+			"verb": "write",
+			"requires": [
+				"read"
+			]
+		}
+	],
+	"reservation.azure": [
+		{
+			"verb": "*"
+		},
+		{
+			"verb": "read"
+		},
+		{
+			"verb": "write",
+			"requires": [
+				"read"
+			]
+		}
+	],
+	"reservation.gcp": [
+		{
+			"verb": "*"
+		},
+		{
+			"verb": "read"
+		},
+		{
+			"verb": "write",
+			"requires": [
+				"read"
+			]
+		}
+	],
+	"*": [
+		{
+			"verb": "*"
+		}
+	]
+}
