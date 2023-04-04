@@ -561,18 +561,92 @@ objects:
               }
           ]
       }
-    provisioning.json: "{\n\t\"source\": [\n\t\t{\n\t\t\t\"verb\": \"*\"\n\t\t},\n\t\t{\n\t\t\t\"verb\":
-      \"read\"\n\t\t}\n\t],\n\t\"pubkey\": [\n\t\t{\n\t\t\t\"verb\": \"*\"\n\t\t},\n\t\t{\n\t\t\t\"verb\":
-      \"read\"\n\t\t},\n\t\t{\n\t\t\t\"verb\": \"write\",\n\t\t\t\"requires\": [\n\t\t\t\t\"read\"\n\t\t\t]\n\t\t}\n\t],\n\t\"reservation\":
-      [\n\t\t{\n\t\t\t\"verb\": \"*\"\n\t\t},\n\t\t{\n\t\t\t\"verb\": \"read\"\n\t\t},\n\t\t{\n\t\t\t\"verb\":
-      \"write\",\n\t\t\t\"requires\": [\n\t\t\t\t\"read\"\n\t\t\t]\n\t\t}\n\t],\n\t\"reservation.aws\":
-      [\n\t\t{\n\t\t\t\"verb\": \"*\"\n\t\t},\n\t\t{\n\t\t\t\"verb\": \"read\"\n\t\t},\n\t\t{\n\t\t\t\"verb\":
-      \"write\",\n\t\t\t\"requires\": [\n\t\t\t\t\"read\"\n\t\t\t]\n\t\t}\n\t],\n\t\"reservation.azure\":
-      [\n\t\t{\n\t\t\t\"verb\": \"*\"\n\t\t},\n\t\t{\n\t\t\t\"verb\": \"read\"\n\t\t},\n\t\t{\n\t\t\t\"verb\":
-      \"write\",\n\t\t\t\"requires\": [\n\t\t\t\t\"read\"\n\t\t\t]\n\t\t}\n\t],\n\t\"reservation.gcp\":
-      [\n\t\t{\n\t\t\t\"verb\": \"*\"\n\t\t},\n\t\t{\n\t\t\t\"verb\": \"read\"\n\t\t},\n\t\t{\n\t\t\t\"verb\":
-      \"write\",\n\t\t\t\"requires\": [\n\t\t\t\t\"read\"\n\t\t\t]\n\t\t}\n\t],\n\t\"*\":
-      [\n\t\t{\n\t\t\t\"verb\": \"*\"\n\t\t}\n\t]\n}\n"
+    provisioning.json: |
+      {
+          "source": [
+              {
+                "verb": "*"
+              },
+              {
+                "verb": "read"
+              }
+          ],
+          "pubkey": [
+              {
+                "verb": "*"
+              },
+              {
+                "verb": "read"
+              },
+              {
+                "verb": "write",
+                "requires": [
+                  "read"
+                ]
+              }
+          ],
+          "reservation": [
+              {
+                "verb": "*"
+              },
+              {
+                "verb": "read"
+              },
+              {
+                "verb": "write",
+                "requires": [
+                  "read"
+                ]
+              }
+          ],
+          "reservation.aws": [
+              {
+                "verb": "*"
+              },
+              {
+                "verb": "read"
+              },
+              {
+                "verb": "write",
+                "requires": [
+                  "read"
+                ]
+              }
+          ],
+          "reservation.azure": [
+              {
+                "verb": "*"
+              },
+              {
+                "verb": "read"
+              },
+              {
+                "verb": "write",
+                "requires": [
+                  "read"
+                ]
+              }
+          ],
+          "reservation.gcp": [
+              {
+                "verb": "*"
+              },
+              {
+                "verb": "read"
+              },
+              {
+                "verb": "write",
+                "requires": [
+                  "read"
+                ]
+              }
+          ],
+          "*": [
+              {
+                "verb": "*"
+              }
+          ]
+      }
     remediations.json: |
       {
           "remediation": [
