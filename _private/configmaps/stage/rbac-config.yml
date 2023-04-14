@@ -1313,11 +1313,32 @@ objects:
             "name": "Policies administrator",
             "description": "Perform any available operation against any Policies resource.",
             "system": true,
-            "platform_default": true,
-            "version": 5,
+            "admin_default": true,
+            "version": 6,
             "access": [
               {
+                "permission": "policies:policies:read"
+              },
+              {
+                "permission": "policies:policies:write"
+              },
+              {
+                "permission": "inventory:*:read"
+              },
+              {
                 "permission": "policies:*:*"
+              }
+            ]
+          },
+          {
+            "name": "Policies viewer",
+            "description": "Perform read only operation against any Policies resource.",
+            "system": true,
+            "platform_default": true,
+            "version": 1,
+            "access": [
+              {
+                "permission": "policies:policies:read"
               },
               {
                 "permission": "inventory:*:read"
@@ -1356,10 +1377,10 @@ objects:
                   "permission": "provisioning:reservation.gcp:read"
               }]
           }, {
-              "name": "Launch on AWS",
+              "name": "Launch on AWS User",
               "description": "An AWS launch role that grants write permissions on launch reservation and related resources.",
               "system": true,
-              "version": 1,
+              "version": 2,
               "access": [{
                   "permission": "provisioning:source:*"
               }, {
@@ -1370,10 +1391,10 @@ objects:
                   "permission": "provisioning:reservation.aws:*"
               }]
           }, {
-              "name": "Launch on Azure",
+              "name": "Launch on Azure User",
               "description": "An Azure launch role that grants write permissions on launch reservation and related resources.",
               "system": true,
-              "version": 1,
+              "version": 2,
               "access": [{
                   "permission": "provisioning:source:*"
               }, {
@@ -1384,10 +1405,10 @@ objects:
                   "permission": "provisioning:reservation.azure:*"
               }]
           }, {
-              "name": "Launch on Google Cloud",
+              "name": "Launch on Google Cloud User",
               "description": "An Google Cloud launch role that grants write permissions on launch reservation and related resources.",
               "system": true,
-              "version": 1,
+              "version": 2,
               "access": [{
                   "permission": "provisioning:source:*"
               }, {
