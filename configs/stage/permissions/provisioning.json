@@ -59,7 +59,7 @@
         {
             "verb": "write",
             "requires": [
-				"read"
+                "read"
 			]
         }
     ],
