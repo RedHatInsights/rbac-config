@@ -565,85 +565,85 @@ objects:
       {
           "source": [
               {
-                "verb": "*"
+                  "verb": "*"
               },
               {
-                "verb": "read"
+                  "verb": "read"
               }
           ],
           "pubkey": [
               {
-                "verb": "*"
+                  "verb": "*"
               },
               {
-                "verb": "read"
+                  "verb": "read"
               },
               {
-                "verb": "write",
-                "requires": [
-                  "read"
-                ]
+                  "verb": "write",
+                  "requires": [
+                      "read"
+                  ]
               }
           ],
           "reservation": [
               {
-                "verb": "*"
+                  "verb": "*"
               },
               {
-                "verb": "read"
+                  "verb": "read"
               },
               {
-                "verb": "write",
-                "requires": [
-                  "read"
-                ]
+                  "verb": "write",
+                  "requires": [
+                      "read"
+                  ]
               }
           ],
           "reservation.aws": [
               {
-                "verb": "*"
+                  "verb": "*"
               },
               {
-                "verb": "read"
+                  "verb": "read"
               },
               {
-                "verb": "write",
-                "requires": [
-                  "read"
-                ]
+                  "verb": "write",
+                  "requires": [
+                      "read"
+                  ]
               }
           ],
           "reservation.azure": [
               {
-                "verb": "*"
+                  "verb": "*"
               },
               {
-                "verb": "read"
+                  "verb": "read"
               },
               {
-                "verb": "write",
-                "requires": [
-                  "read"
-                ]
+                  "verb": "write",
+                  "requires": [
+                      "read"
+                  ]
               }
           ],
           "reservation.gcp": [
               {
-                "verb": "*"
+                  "verb": "*"
               },
               {
-                "verb": "read"
+                  "verb": "read"
               },
               {
-                "verb": "write",
-                "requires": [
-                  "read"
-                ]
+                  "verb": "write",
+                  "requires": [
+                      "read"
+                  ]
               }
           ],
           "*": [
               {
-                "verb": "*"
+                  "verb": "*"
               }
           ]
       }
