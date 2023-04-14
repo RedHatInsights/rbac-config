@@ -60,7 +60,7 @@
             "verb": "write",
             "requires": [
                 "read"
-			]
+            ]
         }
     ],
     "reservation.gcp": [
