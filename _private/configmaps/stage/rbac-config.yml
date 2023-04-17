@@ -1314,7 +1314,7 @@ objects:
             "description": "Perform any available operation against any Policies resource.",
             "system": true,
             "admin_default": true,
-            "version": 6,
+            "version": 7,
             "access": [
               {
                 "permission": "policies:policies:read"
@@ -1324,9 +1324,6 @@ objects:
               },
               {
                 "permission": "inventory:*:read"
-              },
-              {
-                "permission": "policies:*:*"
               }
             ]
           },
