@@ -4,11 +4,29 @@
       "name": "Policies administrator",
       "description": "Perform any available operation against any Policies resource.",
       "system": true,
-      "platform_default": true,
-      "version": 5,
+      "admin_default": true,
+      "version": 6,
       "access": [
         {
-          "permission": "policies:*:*"
+          "permission": "policies:policies:read"
+        },
+        {
+          "permission": "policies:policies:write"
+        },
+        {
+          "permission": "inventory:*:read"
+        }
+      ]
+    },
+    {
+      "name": "Policies viewer",
+      "description": "Perform read only operation against any Policies resource.",
+      "system": true,
+      "platform_default": true,
+      "version": 1,
+      "access": [
+        {
+          "permission": "policies:policies:read"
         },
         {
           "permission": "inventory:*:read"
