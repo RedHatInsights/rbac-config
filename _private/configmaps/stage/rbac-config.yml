@@ -1208,6 +1208,30 @@ objects:
             }
           },
           {
+            "name": "OCM Idp Editor",
+            "display_name": "OCM Idp Editor",
+            "description": "Grants permission to edit idps",
+            "system": true,
+            "platform_default": false,
+            "version": 1,
+            "external": {
+              "id": "IdpEditor",
+              "tenant": "ocm"
+            }
+          },
+          {
+            "name": "OCM Machine Pool Editor",
+            "display_name": "OCM Machine Pool Editor",
+            "description": "Grants permission to edit machine pools",
+            "system": true,
+            "platform_default": false,
+            "version": 1,
+            "external": {
+              "id": "MachinePoolEditor",
+              "tenant": "ocm"
+            }
+          },
+          {
             "name": "OCM Cluster Provisioner",
             "display_name": "OCM Cluster Provisioner",
             "description": "Grants permission to provision clusters",
