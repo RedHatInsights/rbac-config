@@ -7,7 +7,7 @@
       "system": true,
       "admin_default": true,
       "platform_default": false,
-      "version": 7,
+      "version": 6,
       "access": [
         {
           "permission": "subscriptions:*:*"
