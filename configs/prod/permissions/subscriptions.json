@@ -28,14 +28,6 @@
             "verb": "write"
         }
     ],
-    "cloud_access": [
-        {
-            "verb": "read"
-        },
-        {
-            "verb": "write"
-        }
-    ],
     "*": [
         {
             "verb": "*"
