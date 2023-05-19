@@ -22,7 +22,7 @@
       "description": "View any Subscriptions resource.",
       "system": true,
       "platform_default": true,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "subscriptions:reports:read"
@@ -35,6 +35,9 @@
         },
         {
           "permission": "subscriptions:products:read"
+        },
+        {
+          "permission": "subscriptions:cloud_access:read"
         },
         {
           "permission": "inventory:*:read"
