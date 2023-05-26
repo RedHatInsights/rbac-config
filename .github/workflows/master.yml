@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.1.0
+      - name: Configure git to trust the workspace despite the different owner
+        run: git config --global --add safe.directory "/github/workspace"
       - name: Converting config to configmaps
         uses: RedHatInsights/rbac-config-actions/convert-config@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch_name: configmaps
-      - name: Configure git to trust the workspace despite the different owner
-        run: git config --global --add safe.directory "/github/workspace"
       - name: Create a PR with Config Changes
         run: hub pull-request --no-edit -b master -h configmaps -m "[GitHub] - Automated ConfigMap Generation" -f
         env:
