@@ -14,6 +14,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch_name: configmaps
+      - name: Configure git to trust the workspace despite the different owner
+        run: git config --global --add safe.directory /github/workspace
       - name: Create a PR with Config Changes
         run: hub pull-request --no-edit -b master -h configmaps -m "[GitHub] - Automated ConfigMap Generation" -f
         env:
