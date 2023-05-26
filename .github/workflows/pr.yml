@@ -8,7 +8,7 @@ jobs:
     name: Validate JSON Config
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3.1.0
       - name: Validate Permissions Against Schema
         uses: RedHatInsights/json-schema-validator@v1.0.0
         with:
