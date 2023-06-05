@@ -1,8 +1,7 @@
--n kind: Template
+kind: Template
 apiVersion: v1
 objects:
-- 
-apiVersion: v1
+- apiVersion: v1
   data:
     advisor.json: |
       {
