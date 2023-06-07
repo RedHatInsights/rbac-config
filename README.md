@@ -22,7 +22,7 @@ with the json files in the `configs` folders of `rbac-config`.
 
 Contributing
 =============
-The RBAC config for permissions and roles are namespaced per environment in `/configs/(ci|qa|stage|prod)/`.
+The RBAC config for permissions and roles are namespaced per environment in `/configs/(stage|prod)/`.
 Make the appropriate changes you need, per environement, based on when you need them to be promoted.
 
 Canned roles
@@ -154,7 +154,7 @@ After the role is seeded into system, the role can be assigned to users through 
 Deployment
 ==========
 Once your PR is merged, an automated PR will be created with your changes applied as
-a ConfigMap in the templates within `/_private/configmaps/(ci|qa|stage|prod)/`
+a ConfigMap in the templates within `/_private/configmaps/(stage|prod)/`
 for roles and permissions.
 
 Once this PR is merged, an MR will need to be created againts the corresponding
