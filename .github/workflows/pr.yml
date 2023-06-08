@@ -12,3 +12,4 @@ jobs:
           REPORT_ONLY: true
           SHOW_ERRORS: true
         run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/json-lint/master/pipeline.sh)
+        working-directory: configs/.*/roles/
