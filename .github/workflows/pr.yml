@@ -4,12 +4,12 @@ on:
       - master
 name: PR Workflow
 jobs:
-  build:
+  verify-json-validation:
     runs-on: ubuntu-latest
     steps:
-      - name: Validate JSON files
+      - uses: actions/checkout@v3.1.0
+      - name: Validate Permissions Against schema
+        uses: docker://orrosenblatt/validate-json-action:latest
         env:
-          REPORT_ONLY: true
-          SHOW_ERRORS: true
-        run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/json-lint/master/pipeline.sh)
-        working-directory: /home/runner/work/rbac-config/
+          INPUT_SCHEMA: ./schemas/permissions.schema
+          INPUT_JSONS: configs/.*/permissions/.*json$
