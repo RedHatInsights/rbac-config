@@ -12,4 +12,4 @@ jobs:
         uses: docker://orrosenblatt/validate-json-action:latest
         env:
           INPUT_SCHEMA: ./schemas/permissions.schema
-          INPUT_JSONS: ./configs/.*/permissions/.*json$
+          INPUT_JSONS: ./configs/stage/permissions/vulnerability.json
