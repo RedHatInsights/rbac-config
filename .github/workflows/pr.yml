@@ -18,3 +18,7 @@ jobs:
         with:
           files: ./configs/.*/roles/.*json
           schema: ./schemas/roles.schema
+      - name: Validate Permissions' Dependencies
+        uses: RedHatInsights/rbac-config-actions/validate-permission-dependencies@main
+        with:
+          permissions_path_pattern: 'configs/**/*/permissions/*.json'
