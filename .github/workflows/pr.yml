@@ -11,16 +11,10 @@ jobs:
       - name: Validate Permissions Against Schema
         uses: walbo/validate-json@v1.1.0
         with:
-          files: ./configs/.*/permissions/.*json$
-
-          # optional, defaults to `$schema` in your JSON file
+          files: ./configs/.*/permissions/.*json
           schema: ./schemas/permissions.schema
-  # verify-json-validation:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3.1.0
-  #     - name: Validate Permissions Against schema
-  #       uses: docker://orrosenblatt/validate-json-action:latest
-  #       env:
-  #         INPUT_SCHEMA: ./schemas/permissions.schema
-  #         INPUT_JSONS: ./configs/stage/permissions/*.json
+      - name: Validate Roles Against Schema
+        uses: walbo/validate-json@v1.1.0
+        with:
+          files: ./configs/.*/roles/.*json
+          schema: ./schemas/roles.schema
