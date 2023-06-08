@@ -4,24 +4,10 @@ on:
       - master
 name: PR Workflow
 jobs:
-  validate_configurations:
-    name: Validate JSON Config
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3.1.0
-      - name: Validate Permissions Against Schema
-        uses: RedHatInsights/json-schema-validator@v1.0.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          json_schema: ./schemas/permissions.schema
-          json_path_pattern: configs/.*/permissions/.*json$
-      - name: Validate Roles Against Schema
-        uses: RedHatInsights/json-schema-validator@v1.0.0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          json_schema: ./schemas/roles.schema
-          json_path_pattern: configs/.*/roles/.*json$
-      - name: Validate Permissions' Dependencies
-        uses: RedHatInsights/rbac-config-actions/validate-permission-dependencies@main
-        with:
-          permissions_path_pattern: 'configs/**/*/permissions/*.json'
+    - name: Validate JSON files
+      env:
+        REPORT_ONLY: true
+        SHOW_ERRORS: true
+      run: bash <(curl -s https://raw.githubusercontent.com/CICDToolbox/json-lint/master/pipeline.sh)
