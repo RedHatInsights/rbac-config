@@ -4,7 +4,6 @@ on:
       - master
 name: PR Workflow
 jobs:
-jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
