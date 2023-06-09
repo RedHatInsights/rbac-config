@@ -1197,23 +1197,6 @@ objects:
           }
         ]
       }
-    migration_analytics.json: |
-      {
-        "roles": [
-          {
-            "name": "Migration Analytics administrator",
-            "description": "Perform any available operation against any Migration Analytics resource.",
-            "system": true,
-            "platform_default": true,
-            "version": 2,
-            "access": [
-              {
-                "permission": "migration-analytics:*:*"
-              }
-            ]
-          }
-        ]
-      }
     notifications.json: |
       {
         "roles": [
