@@ -4,23 +4,20 @@ on:
       - master
 name: PR Workflow
 jobs:
-  validate_configurations:
-    name: Validate JSON Config
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v3
       - name: Validate Permissions Against Schema
-        uses: RedHatInsights/json-schema-validator@v1.0.0
+        uses: walbo/validate-json@v1.1.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          json_schema: ./schemas/permissions.schema
-          json_path_pattern: configs/.*/permissions/.*json$
+          files: ./configs/.*/permissions/.*json
+          schema: ./schemas/permissions.schema
       - name: Validate Roles Against Schema
-        uses: RedHatInsights/json-schema-validator@v1.0.0
+        uses: walbo/validate-json@v1.1.0
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          json_schema: ./schemas/roles.schema
-          json_path_pattern: configs/.*/roles/.*json$
+          files: ./configs/.*/roles/.*json
+          schema: ./schemas/roles.schema
       - name: Validate Permissions' Dependencies
         uses: RedHatInsights/rbac-config-actions/validate-permission-dependencies@main
         with:
