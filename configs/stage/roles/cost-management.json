@@ -12,9 +12,11 @@
         "name": "Cost Price List Administrator",
         "description": "A cost management role that grants read and write permissions on cost models.",
         "system": true,
-        "version": 3,
+        "version": 4,
         "access": [{
             "permission": "cost-management:cost_model:*"
+        }, {
+            "permission": "cost-management:setting:*"
         }]
     }, {
         "name": "Cost Price List Viewer",
