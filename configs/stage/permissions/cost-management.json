@@ -82,6 +82,17 @@
             "verb": "write"
         }
     ],
+    "settings": [
+        {
+            "verb": "*"
+        },
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
     "*": [
         {
             "verb": "*"
