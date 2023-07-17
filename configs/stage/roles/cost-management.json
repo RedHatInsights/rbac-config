@@ -22,9 +22,11 @@
         "name": "Cost Price List Viewer",
         "description": "A cost management role that grants read permissions on cost models.",
         "system": true,
-        "version": 3,
+        "version": 4,
         "access": [{
             "permission": "cost-management:cost_model:read"
+        }, {
+            "permission": "cost-management:settings:read"
         }]
     }, {
         "name": "Cost Cloud Viewer",
