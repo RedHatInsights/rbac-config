@@ -794,6 +794,11 @@ objects:
               {
                   "verb": "read"
               }
+          ],
+          "toggle_cves_without_errata": [
+              {
+                  "verb": "write"
+              }
           ]
       }
   kind: ConfigMap
