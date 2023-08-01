@@ -7,7 +7,7 @@
       "system": true,
       "admin_default": true,
       "platform_default": false,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "subscriptions:*:*"
@@ -19,7 +19,7 @@
       "description": "View any Subscriptions resource.",
       "system": true,
       "platform_default": true,
-      "version": 4,
+      "version": 5,
       "access": [
         {
           "permission": "subscriptions:reports:read"

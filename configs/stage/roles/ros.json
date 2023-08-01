@@ -6,7 +6,7 @@
         "system": true,
         "platform_default": false,
         "admin_default": true,
-        "version": 2,
+        "version": 3,
         "access": [
           {
             "permission": "ros:*:*"
@@ -18,7 +18,7 @@
         "description": "A Resource Optimization user role that grants read only permission.",
         "system": true,
         "platform_default": true,
-        "version": 1,
+        "version": 2,
         "access": [
           {
             "permission": "ros:*:read"

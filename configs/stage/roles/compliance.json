@@ -5,7 +5,7 @@
       "description": "A Compliance role that grants full access to any Compliance resource.",
       "system": true,
       "admin_default": true,
-      "version": 11,
+      "version": 12,
       "access": [
         {
           "permission": "compliance:*:*"
@@ -23,7 +23,7 @@
       "description": "A Compliance role that grants read access to any Compliance resource.",
       "system": true,
       "platform_default": true,
-      "version": 4,
+      "version": 5,
       "access": [
         {
           "permission": "compliance:policy:read"
