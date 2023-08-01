@@ -5,16 +5,13 @@
       "description": "Perform any available operation against any Policies resource.",
       "system": true,
       "admin_default": true,
-      "version": 7,
+      "version": 8,
       "access": [
         {
           "permission": "policies:policies:read"
         },
         {
           "permission": "policies:policies:write"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     },
@@ -23,13 +20,10 @@
       "description": "Perform read only operation against any Policies resource.",
       "system": true,
       "platform_default": true,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "policies:policies:read"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     }

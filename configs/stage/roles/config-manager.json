@@ -7,7 +7,7 @@
       "system": true,
       "admin_default": true,
       "platform_default": false,
-      "version": 5,
+      "version": 6,
       "access": [
         {
           "permission": "config-manager:activation_keys:*"
@@ -20,9 +20,6 @@
         },
         {
           "permission": "config-manager:state-changes:read"
-        },
-        {
-          "permission": "inventory:*:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
@@ -47,7 +44,7 @@
       "description": "Can view the current configurations on RHC manager",
       "system": true,
       "platform_default": true,
-      "version": 5,
+      "version": 6,
       "access": [
         {
           "permission": "config-manager:activation_keys:read"
@@ -57,9 +54,6 @@
         },
         {
           "permission": "config-manager:state-changes:read"
-        },
-        {
-          "permission": "inventory:*:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
