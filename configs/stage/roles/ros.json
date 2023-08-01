@@ -10,9 +10,6 @@
         "access": [
           {
             "permission": "ros:*:*"
-          },
-          {
-            "permission": "inventory:*:read"
           }
         ]
       },
@@ -25,9 +22,6 @@
         "access": [
           {
             "permission": "ros:*:read"
-          },
-          {
-            "permission": "inventory:*:read"
           }
         ]
       }

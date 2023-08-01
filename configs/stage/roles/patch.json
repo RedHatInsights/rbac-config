@@ -12,9 +12,6 @@
           "permission": "patch:*:*"
         },
         {
-          "permission": "inventory:*:read"
-        },
-        {
           "permission": "remediations:*:read"
         },
         {
@@ -32,9 +29,6 @@
       "access": [
         {
           "permission": "patch:*:read"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     }

@@ -12,9 +12,6 @@
           "permission": "tasks:*:*"
         },
         {
-          "permission": "inventory:*:read"
-        },
-        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {

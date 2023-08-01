@@ -10,9 +10,6 @@
       "access": [
         {
           "permission": "advisor:*:*"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     }

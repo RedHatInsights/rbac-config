@@ -11,9 +11,6 @@
           "permission": "remediations:*:*"
         },
         {
-          "permission": "inventory:*:read"
-        },
-        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {

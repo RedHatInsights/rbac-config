@@ -22,9 +22,6 @@
           "permission": "config-manager:state-changes:read"
         },
         {
-          "permission": "inventory:*:read"
-        },
-        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {
@@ -57,9 +54,6 @@
         },
         {
           "permission": "config-manager:state-changes:read"
-        },
-        {
-          "permission": "inventory:*:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",

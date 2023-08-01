@@ -11,9 +11,6 @@
       "access": [
         {
           "permission": "subscriptions:*:*"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     },
@@ -38,9 +35,6 @@
         },
         {
           "permission": "subscriptions:cloud_access:read"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     }

@@ -11,9 +11,6 @@
           "permission": "compliance:*:*"
         },
         {
-          "permission": "inventory:*:read"
-        },
-        {
           "permission": "remediations:remediation:read"
         },
         {
@@ -36,9 +33,6 @@
         },
         {
           "permission": "compliance:system:read"
-        },
-        {
-          "permission": "inventory:*:read"
         },
         {
           "permission": "remediations:remediation:read"
