@@ -795,13 +795,10 @@ objects:
             "description": "A Compliance role that grants full access to any Compliance resource.",
             "system": true,
             "admin_default": true,
-            "version": 11,
+            "version": 12,
             "access": [
               {
                 "permission": "compliance:*:*"
-              },
-              {
-                "permission": "inventory:*:read"
               },
               {
                 "permission": "remediations:remediation:read"
@@ -816,7 +813,7 @@ objects:
             "description": "A Compliance role that grants read access to any Compliance resource.",
             "system": true,
             "platform_default": true,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "compliance:policy:read"
@@ -826,9 +823,6 @@ objects:
               },
               {
                 "permission": "compliance:system:read"
-              },
-              {
-                "permission": "inventory:*:read"
               },
               {
                 "permission": "remediations:remediation:read"
@@ -847,7 +841,7 @@ objects:
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "config-manager:activation_keys:*"
@@ -860,9 +854,6 @@ objects:
               },
               {
                 "permission": "config-manager:state-changes:read"
-              },
-              {
-                "permission": "inventory:*:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
@@ -887,7 +878,7 @@ objects:
             "description": "Can view the current configurations on RHC manager",
             "system": true,
             "platform_default": true,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "config-manager:activation_keys:read"
@@ -897,9 +888,6 @@ objects:
               },
               {
                 "permission": "config-manager:state-changes:read"
-              },
-              {
-                "permission": "inventory:*:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
@@ -1017,7 +1005,7 @@ objects:
             "description": "Perform any available operation against any Drift Analysis resource.",
             "system": true,
             "admin_default": true,
-            "version": 12,
+            "version": 13,
             "access": [
               {
                 "permission": "drift:comparisons:read"
@@ -1038,9 +1026,6 @@ objects:
                 "permission": "drift:notifications:write"
               },
               {
-                "permission": "inventory:*:read"
-              },
-              {
                 "permission": "drift:*:*"
               }
             ]
@@ -1050,7 +1035,7 @@ objects:
             "description": "Perform read only operation against Drift Analysis resources.",
             "system": true,
             "platform_default": true,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "drift:comparisons:read"
@@ -1063,9 +1048,6 @@ objects:
               },
               {
                 "permission": "drift:notifications:read"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           }
@@ -1080,13 +1062,10 @@ objects:
             "description": "Perform any available operation against any RHEL Advisor resource.",
             "system": true,
             "platform_default": true,
-            "version": 10,
+            "version": 11,
             "access": [
               {
                 "permission": "advisor:*:*"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           }
@@ -1177,13 +1156,10 @@ objects:
             "description": "Perform any available operation against any malware-detection resource.",
             "system": true,
             "admin_default": true,
-            "version": 2,
+            "version": 3,
             "access": [
               {
                 "permission": "malware-detection:*:*"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           },
@@ -1192,13 +1168,10 @@ objects:
             "display_name": "Malware detection viewer",
             "description": "Read any malware-detection resource.",
             "system": true,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "malware-detection:*:read"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           }
@@ -1345,13 +1318,10 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 8,
+            "version": 9,
             "access": [
               {
                 "permission": "patch:*:*"
-              },
-              {
-                "permission": "inventory:*:read"
               },
               {
                 "permission": "remediations:*:read"
@@ -1367,13 +1337,10 @@ objects:
             "system": true,
             "platform_default": true,
             "admin_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "patch:*:read"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           }
@@ -1387,16 +1354,13 @@ objects:
             "description": "Perform any available operation against any Policies resource.",
             "system": true,
             "admin_default": true,
-            "version": 7,
+            "version": 8,
             "access": [
               {
                 "permission": "policies:policies:read"
               },
               {
                 "permission": "policies:policies:write"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           },
@@ -1405,13 +1369,10 @@ objects:
             "description": "Perform read only operation against any Policies resource.",
             "system": true,
             "platform_default": true,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "policies:policies:read"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           }
@@ -1529,13 +1490,10 @@ objects:
             "description": "Perform any available operation against any Remediations resource",
             "system": true,
             "platform_default": false,
-            "version": 7,
+            "version": 8,
             "access": [
               {
                 "permission": "remediations:*:*"
-              },
-              {
-                "permission": "inventory:*:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
@@ -1589,13 +1547,10 @@ objects:
               "system": true,
               "platform_default": false,
               "admin_default": true,
-              "version": 2,
+              "version": 3,
               "access": [
                 {
                   "permission": "ros:*:*"
-                },
-                {
-                  "permission": "inventory:*:read"
                 }
               ]
             },
@@ -1604,13 +1559,10 @@ objects:
               "description": "A Resource Optimization user role that grants read only permission.",
               "system": true,
               "platform_default": true,
-              "version": 1,
+              "version": 2,
               "access": [
                 {
                   "permission": "ros:*:read"
-                },
-                {
-                  "permission": "inventory:*:read"
                 }
               ]
             }
@@ -1644,13 +1596,10 @@ objects:
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 6,
+            "version": 7,
             "access": [
               {
                 "permission": "subscriptions:*:*"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           },
@@ -1659,7 +1608,7 @@ objects:
             "description": "View any Subscriptions resource.",
             "system": true,
             "platform_default": true,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "subscriptions:reports:read"
@@ -1675,9 +1624,6 @@ objects:
               },
               {
                 "permission": "subscriptions:cloud_access:read"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           }
@@ -1692,13 +1638,10 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 2,
+            "version": 3,
             "access": [
               {
                 "permission": "tasks:*:*"
-              },
-              {
-                "permission": "inventory:*:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
@@ -1725,13 +1668,10 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 10,
+            "version": 11,
             "access": [
               {
                 "permission": "vulnerability:*:*"
-              },
-              {
-                "permission": "inventory:*:read"
               },
               {
                 "permission": "remediations:*:read"
@@ -1747,7 +1687,7 @@ objects:
             "system": true,
             "platform_default": true,
             "admin_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "vulnerability:vulnerability_results:read"
@@ -1757,9 +1697,6 @@ objects:
               },
               {
                 "permission": "vulnerability:report_and_export:read"
-              },
-              {
-                "permission": "inventory:*:read"
               },
               {
                 "permission": "vulnerability:advanced_report:read"
