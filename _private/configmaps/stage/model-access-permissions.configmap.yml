@@ -409,6 +409,14 @@ objects:
           }
         ]
       }
+    hybrid-committed-spend.json: |
+      {
+          "reports": [
+              {
+                  "verb": "read"
+              }
+          ]
+      }
     integrations.json: |
       {
           "endpoints": [
