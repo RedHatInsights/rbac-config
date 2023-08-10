@@ -1429,6 +1429,38 @@ objects:
           }
         ]
       }
+    provisioning.json: "{\n    \"roles\": [{\n        \"name\": \"Launch Administrator\",\n
+      \       \"description\": \"An launch administrator role that grants read and write
+      permissions.\",\n        \"system\": true,\n        \"admin_default\": true,\n
+      \       \"version\": 1,\n        \"access\": [{\n            \"permission\": \"provisioning:*:*\"\n
+      \       }]\n    }, {\n        \"name\": \"Launch Viewer\",\n        \"description\":
+      \"An launch role that grants read permissions on launch reservation and related
+      resources.\",\n        \"system\": true,\n\t\"platform_default\": true,\n        \"version\":
+      1,\n        \"access\": [{\n            \"permission\": \"provisioning:source:read\"\n
+      \       }, {\n            \"permission\": \"provisioning:pubkey:read\"\n        },
+      {\n            \"permission\": \"provisioning:reservation:read\"\n        }, {\n
+      \           \"permission\": \"provisioning:reservation.aws:read\"\n        },
+      {\n            \"permission\": \"provisioning:reservation.azure:read\"\n        },
+      {\n            \"permission\": \"provisioning:reservation.gcp:read\"\n        }]\n
+      \   }, {\n        \"name\": \"Launch on AWS User\",\n        \"description\":
+      \"An AWS launch role that grants write permissions on launch reservation and related
+      resources.\",\n        \"system\": true,\n        \"version\": 2,\n        \"access\":
+      [{\n            \"permission\": \"provisioning:source:*\"\n        }, {\n            \"permission\":
+      \"provisioning:pubkey:*\"\n        }, {\n            \"permission\": \"provisioning:reservation:*\"\n
+      \       }, {\n            \"permission\": \"provisioning:reservation.aws:*\"\n
+      \       }]\n    }, {\n        \"name\": \"Launch on Azure User\",\n        \"description\":
+      \"An Azure launch role that grants write permissions on launch reservation and
+      related resources.\",\n        \"system\": true,\n        \"version\": 2,\n        \"access\":
+      [{\n            \"permission\": \"provisioning:source:*\"\n        }, {\n            \"permission\":
+      \"provisioning:pubkey:*\"\n        }, {\n            \"permission\": \"provisioning:reservation:*\"\n
+      \       }, {\n            \"permission\": \"provisioning:reservation.azure:*\"\n
+      \       }]\n    }, {\n        \"name\": \"Launch on Google Cloud User\",\n        \"description\":
+      \"An Google Cloud launch role that grants write permissions on launch reservation
+      and related resources.\",\n        \"system\": true,\n        \"version\": 2,\n
+      \       \"access\": [{\n            \"permission\": \"provisioning:source:*\"\n
+      \       }, {\n            \"permission\": \"provisioning:pubkey:*\"\n        },
+      {\n            \"permission\": \"provisioning:reservation:*\"\n        }, {\n
+      \           \"permission\": \"provisioning:reservation.gcp:*\"\n        }]\n    }]\n}\n"
     rbac.json: |
       {
         "roles": [
