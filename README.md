@@ -1,3 +1,10 @@
+# When you can expect that your change will appear in stage and production
+
+Stage: Every Tuesday
+Prod: Every Thursday
+
+Note: Reviews will be done same days but for all config PRs.
+
 # Predefined roles and access for Insights Role Based Access Control README
 
 About
