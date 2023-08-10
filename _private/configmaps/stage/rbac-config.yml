@@ -1424,7 +1424,7 @@ objects:
               "description": "An launch role that grants read permissions on launch reservation and related resources.",
               "system": true,
               "platform_default": true,
-              "version": 1,
+              "version": 2,
               "access": [{
                   "permission": "provisioning:source:read"
               }, {
