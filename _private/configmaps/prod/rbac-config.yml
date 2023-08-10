@@ -1315,6 +1315,18 @@ objects:
               "id": "OrganizationAdmin",
               "tenant": "ocm"
             }
+          },
+          {
+            "name": "OCM Cluster Autoscaler Editor",
+            "display_name": "OCM Cluster Autoscaler Editor",
+            "description": "Grants permission to edit cluster autoscaler",
+            "system": true,
+            "platform_default": false,
+            "version": 1,
+            "external": {
+              "id": "ClusterAutoscalerEditor",
+              "tenant": "ocm"
+            }
           }
         ]
       }
