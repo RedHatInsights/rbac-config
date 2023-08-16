@@ -91,7 +91,7 @@
       "name": "Account Staleness and Culling Viewer",
       "description": "Be able to read Account Staleness and Culling data.",
       "system": true,
-      "platform_default": false,
+      "platform_default": true,
       "admin_default": false,
       "version": 3,
       "access": [
