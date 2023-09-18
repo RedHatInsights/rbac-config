@@ -1071,6 +1071,24 @@ objects:
           }
         ]
       }
+    hybrid-committed-spend.json: |
+      {
+        "roles": [
+          {
+            "name": "Hybrid Committed Spend viewer",
+            "description": "View any Hybrid Committed Spend report.",
+            "system": true,
+            "admin_default": false,
+            "platform_default": false,
+            "version": 1,
+            "access": [
+              {
+                "permission": "hybrid-committed-spend:reports:read"
+              }
+            ]
+          }
+        ]
+      }
     insights.json: |
       {
         "roles": [
