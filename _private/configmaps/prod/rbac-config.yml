@@ -1185,8 +1185,8 @@ objects:
             ]
           },
           {
-            "name": "Account Staleness and Deletion Administrator",
-            "description": "Be able to read and edit Account Staleness and Deletion data.",
+            "name": "Account Staleness and Culling Administrator",
+            "description": "Be able to read and edit Account Staleness and Culling data.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
@@ -1201,8 +1201,8 @@ objects:
             ]
           },
           {
-            "name": "Account Staleness and Deletion Viewer",
-            "description": "Be able to read Account Staleness and Deletion data.",
+            "name": "Account Staleness and Culling Viewer",
+            "description": "Be able to read Account Staleness and Culling data.",
             "system": true,
             "platform_default": false,
             "admin_default": false,
