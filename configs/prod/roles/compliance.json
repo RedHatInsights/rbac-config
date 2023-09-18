@@ -5,13 +5,10 @@
       "description": "A Compliance role that grants full access to any Compliance resource.",
       "system": true,
       "admin_default": true,
-      "version": 9,
+      "version": 10,
       "access": [
         {
           "permission": "compliance:*:*"
-        },
-        {
-          "permission": "inventory:*:read"
         },
         {
           "permission": "remediations:remediation:read"
@@ -26,7 +23,7 @@
       "description": "A Compliance role that grants read access to any Compliance resource.",
       "system": true,
       "platform_default": true,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "compliance:policy:read"
@@ -36,9 +33,6 @@
         },
         {
           "permission": "compliance:system:read"
-        },
-        {
-          "permission": "inventory:*:read"
         },
         {
           "permission": "remediations:remediation:read"

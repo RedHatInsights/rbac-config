@@ -7,13 +7,10 @@
       "system": true,
       "admin_default": true,
       "platform_default": false,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "subscriptions:*:*"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     },
@@ -22,7 +19,7 @@
       "description": "View any Subscriptions resource.",
       "system": true,
       "platform_default": true,
-      "version": 3,
+      "version": 4,
       "access": [
         {
           "permission": "subscriptions:reports:read"
@@ -38,9 +35,6 @@
         },
         {
           "permission": "subscriptions:cloud_access:read"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     }
