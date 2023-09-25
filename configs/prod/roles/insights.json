@@ -6,13 +6,10 @@
       "description": "Perform any available operation against any RHEL Advisor resource.",
       "system": true,
       "platform_default": true,
-      "version": 10,
+      "version": 11,
       "access": [
         {
           "permission": "advisor:*:*"
-        },
-        {
-          "permission": "inventory:*:read"
         }
       ]
     }
