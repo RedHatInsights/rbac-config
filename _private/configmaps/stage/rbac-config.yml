@@ -1165,11 +1165,12 @@ objects:
           },
           {
             "name": "Account Staleness and Culling Administrator",
-            "description": "Be able to read and edit Account Staleness and Culling data.",
+            "description": "Be able to read and edit Account Staleness and Deletion data.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 3,
+            "display_name": "Account Staleness and Deletion Administrator",
+            "version": 4,
             "access": [
               {
                 "permission": "inventory:staleness:write"
@@ -1181,11 +1182,12 @@ objects:
           },
           {
             "name": "Account Staleness and Culling Viewer",
-            "description": "Be able to read Account Staleness and Culling data.",
+            "description": "Be able to read Account Staleness and Deletion data.",
             "system": true,
             "platform_default": true,
             "admin_default": false,
-            "version": 3,
+            "display_name": "Account Staleness and Deletion Viewer",
+            "version": 4,
             "access": [
               {
                 "permission": "inventory:staleness:read"
