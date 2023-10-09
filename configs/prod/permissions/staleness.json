@@ -1,0 +1,13 @@
+{
+    "staleness": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        },
+        {
+            "verb": "*"
+        }
+    ]
+}
