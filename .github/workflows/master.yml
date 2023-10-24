@@ -17,6 +17,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch_name: configmaps
       - name: Create a PR with Config Changes
-        run: git pull-request --no-edit -b master -h configmaps -m "[GitHub] - Automated ConfigMap Generation" -f
+        run: gh pull-request --no-edit -b master -h configmaps -m "[GitHub] - Automated ConfigMap Generation" -f
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
