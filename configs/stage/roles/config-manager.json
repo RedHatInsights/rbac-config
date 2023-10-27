@@ -39,15 +39,15 @@
       ]
     },
     {
-      "name": "RHC Viewer",
-      "display_name": "RHC viewer",
-      "description": "Can view the current configurations on RHC manager",
+      "name": "RHC User",
+      "display_name": "RHC user",
+      "description": "Can view the current configurations on RHC manager and write to activation keys",
       "system": true,
       "platform_default": true,
       "version": 6,
       "access": [
         {
-          "permission": "config-manager:activation_keys:read"
+          "permission": "config-manager:activation_keys:write"
         },
         {
           "permission": "config-manager:state:read"
