@@ -47,6 +47,9 @@
       "version": 6,
       "access": [
         {
+          "permission": "config-manager:activation_keys:read"
+        },
+        {
           "permission": "config-manager:activation_keys:write"
         },
         {
