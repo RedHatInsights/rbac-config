@@ -39,7 +39,7 @@
       ]
     },
     {
-      "name": "RHC User",
+      "name": "RHC Viewer",
       "display_name": "RHC user",
       "description": "Can view the current configurations on RHC manager and write to activation keys",
       "system": true,
