@@ -1184,6 +1184,20 @@ objects:
           }
         ]
       }
+    staleness.json: "{\n    \"roles\": [\n      {\n        \"name\": \"Organization
+      Staleness and Deletion Administrator\",\n        \"description\": \"Be able to
+      read and edit Organization Staleness and Deletion data.\",\n        \"system\":
+      true,\n        \"platform_default\": false,\n        \"admin_default\": true,\n
+      \       \"display_name\": \"Organization Staleness and Deletion Administrator\",\n
+      \       \"version\": 1,\n        \"access\": [\n          {\n            \"permission\":
+      \"staleness:staleness:write\"\n          },\n          {\n            \"permission\":
+      \"staleness:staleness:read\"\n          }\n        ]\n      },\n      {\n        \"name\":
+      \"Organization Staleness and Deletion Viewer\",\n        \"description\": \"Be
+      able to read Organization Staleness and Deletion data.\",\n        \"system\":
+      true,\n        \"platform_default\": true,\n        \"admin_default\": false,\n
+      \       \"display_name\": \"Organization Staleness and Deletion Viewer\",\n        \"version\":
+      1,\n        \"access\": [\n          {\n            \"permission\": \"staleness:staleness:read\"\n
+      \         }\n        ]\n      }\n    ]\n  }\n  "
     subscriptions.json: |
       {
         "roles": [
