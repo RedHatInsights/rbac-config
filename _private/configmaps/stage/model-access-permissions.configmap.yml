@@ -361,6 +361,17 @@ objects:
               {
                   "verb": "*"
               }
+          ],
+          "staleness": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              },
+              {
+                  "verb": "*"
+              }
           ]
       }
     malware-detection.json: |
