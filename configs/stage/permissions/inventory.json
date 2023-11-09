@@ -28,16 +28,5 @@
         {
             "verb": "*"
         }
-    ],
-    "staleness": [
-        {
-            "verb": "read"
-        },
-        {
-            "verb": "write"
-        },
-        {
-            "verb": "*"
-        }
     ]
 }
