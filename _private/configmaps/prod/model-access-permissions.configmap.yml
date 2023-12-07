@@ -612,6 +612,20 @@ objects:
               }
           ]
       }
+    staleness.json: |
+      {
+          "staleness": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              },
+              {
+                  "verb": "*"
+              }
+          ]
+      }
     subscriptions.json: |
       {
           "reports": [
