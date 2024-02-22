@@ -9,7 +9,13 @@
       "version": 1,
       "access": [
         {
-          "permission": "ansible-wisdom-admin-dashboard:*:*"
+          "permission": "ansible-wisdom-admin-dashboard:chart-recommendations:read"
+        },
+        {
+          "permission": "ansible-wisdom-admin-dashboard:chart-user-sentiment:read"
+        },
+        {
+          "permission": "ansible-wisdom-admin-dashboard:chart-module-usage:read"
         }
       ]
     }
