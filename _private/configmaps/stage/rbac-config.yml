@@ -12,7 +12,7 @@ objects:
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 2,
+            "version": 3,
             "access": [
               {
                 "permission": "ansible-wisdom-admin-dashboard:chart-recommendations:read"
@@ -22,6 +22,9 @@ objects:
               },
               {
                 "permission": "ansible-wisdom-admin-dashboard:chart-module-usage:read"
+              },
+              {
+                "permission": "ansible-wisdom-admin-dashboard:chart-active-users:read"
               }
             ]
           }
