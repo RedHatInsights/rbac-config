@@ -50,6 +50,12 @@ objects:
                   "verb": "read",
                   "description": "View the Module Usage Chart."
               }
+          ],
+          "chart-active-users": [
+              {
+                  "verb": "read",
+                  "description": "View the Active Users Chart."
+              }
           ]
       }
     approval.json: |
