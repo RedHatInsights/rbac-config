@@ -1,7 +1,8 @@
 {
   "roles": [
     {
-      "name": "Cloud Administrator",
+      "name": "Sources administrator",
+      "display_name": "Cloud Administrator",
       "description": "Perform any available operation against any Source.",
       "system": true,
       "platform_default": false,
