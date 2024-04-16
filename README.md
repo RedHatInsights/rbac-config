@@ -37,9 +37,9 @@ Canned roles
 
 Add new roles
 
-Follow existing examples to add roles including name, description, system flag, access with permissions.
+Follow existing examples to add roles including name, description, `system` flag, access with permissions.
 If you want the new role to be associated with platform default group (which defines the default permissions
-for principals in a tenant), you have to add the platform_default flag and set it as true.
+for principals in a tenant), you have to add the `platform_default` flag and set it as true.
 Set the version to 2 for the new role in order to trigger the seeding in the rbac service.
 
 Format of permissions
@@ -115,7 +115,7 @@ Please check existing files for more samples.
 
 Admin Default Role
 ------------------
-We added support for the new role flag "admin_default", similar to “platform_default”, to allow for admin roles to automatically be assigned to org admins (not admins via the RBAC admin role). By default we will have the "admin_default" flag set to false. An example of what an admin role only assigned to admins by default may look like:
+We added support for the new role flag `admin_default`, similar to `platform_default`, to allow for admin roles to automatically be assigned to org admins (not admins via the RBAC admin role). By default we will have the `admin_default` flag set to false. An example of what an admin role only assigned to admins by default may look like:
 
 ```json
 {
