@@ -1,0 +1,18 @@
+{
+    "workspace": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
+    "*": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "*"
+        }
+    ]
+}

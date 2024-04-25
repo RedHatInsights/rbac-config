@@ -1,0 +1,34 @@
+{
+    "roles": [
+      {
+        "name": "Workspace Administrator",
+        "description": "Be able to read and edit Workspace data.",
+        "system": true,
+        "platform_default": false,
+        "admin_default": true,
+        "version": 1,
+        "access": [
+          {
+            "permission": "workspace:workspace:write"
+          },
+          {
+            "permission": "workspace:workspace:read"
+          }
+        ]
+      },
+      {
+        "name": "Workspace Viewer",
+        "description": "Be able to read Workspace data.",
+        "system": true,
+        "platform_default": false,
+        "admin_default": false,
+        "version": 1,
+        "access": [
+          {
+            "permission": "workspace:workspace:read"
+          }
+        ]
+      }
+    ]
+  }
+  
