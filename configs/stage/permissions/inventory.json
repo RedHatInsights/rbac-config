@@ -28,5 +28,13 @@
         {
             "verb": "*"
         }
+    ],
+    "workspace": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
     ]
 }

@@ -58,10 +58,10 @@
           "permission": "inventory:groups:read"
         },
         {
-          "permission": "workspace:workspace:read"
+          "permission": "inventory:workspace:read"
         },
         {
-          "permission": "workspace:workspace:write"
+          "permission": "inventory:workspace:write"
         }
       ]
     },
@@ -78,7 +78,7 @@
           "permission": "inventory:groups:read"
         },
         {
-          "permission": "workspace:workspace:read"
+          "permission": "inventory:workspace:read"
         }
       ]
     }
