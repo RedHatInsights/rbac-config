@@ -56,12 +56,6 @@
         },
         {
           "permission": "inventory:groups:read"
-        },
-        {
-          "permission": "inventory:workspace:read"
-        },
-        {
-          "permission": "inventory:workspace:write"
         }
       ]
     },
@@ -76,9 +70,6 @@
       "access": [
         {
           "permission": "inventory:groups:read"
-        },
-        {
-          "permission": "inventory:workspace:read"
         }
       ]
     }
