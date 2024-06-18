@@ -16,10 +16,11 @@
     },
     {
       "name": "Subscriptions viewer",
+      "display_name": "Subscription viewer",
       "description": "View any Subscriptions resource.",
       "system": true,
       "platform_default": true,
-      "version": 5,
+      "version": 6,
       "access": [
         {
           "permission": "subscriptions:reports:read"
