@@ -1318,10 +1318,11 @@ objects:
           },
           {
             "name": "Subscriptions user",
+            "display_name": "Subscriptions viewer",
             "description": "View any Subscriptions resource.",
             "system": true,
             "platform_default": true,
-            "version": 5,
+            "version": 7,
             "access": [
               {
                 "permission": "subscriptions:reports:read"
