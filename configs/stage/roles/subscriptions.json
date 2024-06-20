@@ -20,7 +20,7 @@
       "description": "View any Subscriptions resource.",
       "system": true,
       "platform_default": true,
-      "version": 7,
+      "version": 6,
       "access": [
         {
           "permission": "subscriptions:reports:read"
