@@ -15,7 +15,7 @@
       ]
     },
     {
-      "name": "Subscriptions user",
+      "name": "Subscription user",
       "display_name": "Subscription viewer",
       "description": "View any Subscriptions resource.",
       "system": true,
