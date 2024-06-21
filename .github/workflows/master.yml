@@ -8,7 +8,7 @@ jobs:
     name: Convert Config
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.1.0
+      - uses: actions/checkout@v4.1.7
       - name: Configure git to trust the workspace despite the different owner
         run: git config --global --add safe.directory "/github/workspace"
       - name: Converting config to configmaps
