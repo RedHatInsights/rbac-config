@@ -17,6 +17,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch_name: configmaps
       - name: Create a PR with Config Changes
-        run: gh pr create --fill-first -B master -H configmaps -t "[GitHub] - Automated ConfigMap Generation"
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            gh pr create --fill-first -B master -H configmaps -t "[GitHub] - Automated ConfigMap Generation";
+          else
+            echo "No new commits found between origin/master and configmaps";
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
