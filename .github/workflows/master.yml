@@ -18,7 +18,7 @@ jobs:
           branch_name: configmaps
       - name: Create a PR with Config Changes
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
+          if [ -n "$(git log --oneline origin/master..HEAD)" ]; then
             gh pr create --fill-first -B master -H configmaps -t "[GitHub] - Automated ConfigMap Generation";
           else
             echo "No new commits found between origin/master and configmaps";
