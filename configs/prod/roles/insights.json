@@ -15,6 +15,20 @@
           "permission": "inventory:*:read"
         }
       ]
+    },
+    {
+          "name": "Advisor Viewer",
+          "display_name": "RHEL Advisor viewer",
+          "description": "Be able to read Advisor data.",
+          "system": true,
+          "platform_default": false,
+          "admin_default": false,
+          "version": 1,
+          "access": [
+            {
+              "permission": "advisor:*:read"
+            }
+          ]
     }
   ]
 }
