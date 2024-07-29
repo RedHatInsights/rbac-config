@@ -631,6 +631,19 @@ objects:
               }
           ]
       }
+    rbac.json: |
+      {
+          "principal": [
+              {
+                  "verb": "read"
+              }
+          ],
+          "*": [
+              {
+                  "verb": "*"
+              }
+          ]
+      }
     remediations.json: |
       {
           "remediation": [
