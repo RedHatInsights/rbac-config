@@ -442,14 +442,6 @@ objects:
               }
           ]
       }
-    migration-analytics.json: |
-      {
-          "*": [
-              {
-                  "verb": "*"
-              }
-          ]
-      }
     notifications.json: |
       {
           "notifications": [
