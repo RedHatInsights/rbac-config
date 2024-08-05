@@ -483,6 +483,9 @@ objects:
                 },
                 {
                   "permission": "content-sources:repositories:write"
+                },
+                {
+                  "permission": "content-sources:repositories:upload"
                 }
               ]
             },
@@ -495,6 +498,18 @@ objects:
               "access": [
                 {
                   "permission": "content-sources:repositories:read"
+                }
+              ]
+            },
+            {
+              "name": "Repositories uploader",
+              "description": "Upload content to repositories.",
+              "system": true,
+              "platform_default": false,
+              "version": 1,
+              "access": [
+                {
+                  "permission": "content-sources:repositories:upload"
                 }
               ]
             },
