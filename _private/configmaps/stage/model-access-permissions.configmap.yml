@@ -192,6 +192,9 @@ objects:
               },
               {
                   "verb": "write"
+              },
+              {
+                  "verb": "upload"
               }
           ],
           "templates": [
