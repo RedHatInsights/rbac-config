@@ -614,6 +614,12 @@ objects:
           "*": [
               {
                   "verb": "*"
+              },
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
               }
           ]
       }
