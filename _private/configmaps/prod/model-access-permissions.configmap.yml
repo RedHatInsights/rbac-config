@@ -61,50 +61,6 @@ objects:
               }
           ]
       }
-    approval.json: |
-      {
-          "actions": [
-              {
-                  "verb": "create"
-              },
-              {
-                  "verb": "read"
-              }
-          ],
-          "requests": [
-              {
-                  "verb": "create"
-              },
-              {
-                  "verb": "read"
-              }
-          ],
-          "templates": [
-              {
-                  "verb": "read"
-              }
-          ],
-          "workflows": [
-              {
-                  "verb": "create"
-              },
-              {
-                  "verb": "read"
-              },
-              {
-                  "verb": "update"
-              },
-              {
-                  "verb": "delete"
-              },
-              {
-                  "verb": "link"
-              },
-              {
-                  "verb": "unlink"
-              }
-          ]
-      }
     automation-analytics.json: |
       {
           "*": [
