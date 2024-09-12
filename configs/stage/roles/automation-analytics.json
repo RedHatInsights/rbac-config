@@ -1,7 +1,8 @@
 {
   "roles": [
     {
-      "name": "Automation Analytics administrator",
+      "name": "Automation Analytics Administrator",
+      "display_name": "Automation Analytics administrator",
       "description": "Perform any available operation on Automation Analytics resources.",
       "system": true,
       "platform_default": false,
@@ -13,7 +14,8 @@
       ]
     },
     {
-      "name": "Automation Analytics editor",
+      "name": "Automation Analytics Editor",
+      "display_name": "Automation Analytics editor",
       "description": "Perform read and update operations on Automation Analytics resources.",
       "system": true,
       "platform_default": true,
@@ -28,7 +30,8 @@
       ]
     },
     {
-      "name": "Automation Analytics viewer",
+      "name": "Automation Analytics Viewer",
+      "display_name": "Automation Analytics viewer",
       "description": "Perform read operations on Automation Analytics resources.",
       "system": true,
       "platform_default": false,
