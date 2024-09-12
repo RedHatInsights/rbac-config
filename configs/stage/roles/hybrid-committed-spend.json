@@ -2,11 +2,11 @@
   "roles": [
     {
       "name": "Hybrid Committed Spend viewer",
-      "description": "View any Hybrid Committed Spend report.",
+      "description": "Perform read operations on any Hybrid Committed Spend report.",
       "system": true,
       "admin_default": false,
       "platform_default": false,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "hybrid-committed-spend:reports:read"

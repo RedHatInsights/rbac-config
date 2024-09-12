@@ -2,11 +2,11 @@
   "roles": [
     {
       "name": "Insights administrator",
-      "display_name": "RHEL Advisor administrator",
-      "description": "Perform any available operation against any RHEL Advisor resource.",
+      "display_name": "RHEL advisor administrator",
+      "description": "Perform any available operation against any RHEL advisor resource.",
       "system": true,
       "platform_default": true,
-      "version": 11,
+      "version": 12,
       "access": [
         {
           "permission": "advisor:*:*"
@@ -15,12 +15,12 @@
     },
     {
       "name": "Advisor Viewer",
-      "display_name": "RHEL Advisor viewer",
-      "description": "Be able to read Advisor data.",
+      "display_name": "RHEL advisor viewer",
+      "description": "Perform read operations on RHEL dvisor data.",
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "advisor:*:read"

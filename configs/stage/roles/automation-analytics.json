@@ -1,11 +1,11 @@
 {
   "roles": [
     {
-      "name": "Automation Analytics Administrator",
-      "description": "An Automation Analytics Administrator role that grants ALL permissions.",
+      "name": "Automation Analytics administrator",
+      "description": "Perform any available operation on Automation Analytics resources.",
       "system": true,
       "platform_default": false,
-      "version": 3,
+      "version": 4,
       "access": [
         {
           "permission": "automation-analytics:*:*"
@@ -13,11 +13,11 @@
       ]
     },
     {
-      "name": "Automation Analytics Editor",
-      "description": "An Automation Analytics Editor role that grants read-write permissions.",
+      "name": "Automation Analytics editor",
+      "description": "Perform read and update operations on Automation Analytics resources.",
       "system": true,
       "platform_default": true,
-      "version": 4,
+      "version": 5,
       "access": [
         {
           "permission": "automation-analytics:*:read"
@@ -28,11 +28,11 @@
       ]
     },
     {
-      "name": "Automation Analytics Viewer",
-      "description": "An Automation Analytics Viewer role that grants read permissions.",
+      "name": "Automation Analytics viewer",
+      "description": "Perform read operations on Automation Analytics resources.",
       "system": true,
       "platform_default": false,
-      "version": 3,
+      "version": 4,
       "access": [
         {
           "permission": "automation-analytics:*:read"

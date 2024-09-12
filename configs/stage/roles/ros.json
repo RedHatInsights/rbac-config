@@ -2,11 +2,11 @@
     "roles": [
       {
         "name": "Resource Optimization administrator",
-        "description": "Perform any available operation against any Resource Optimization resource.",
+        "description": "Perform any available operation on any Resource Optimization resource.",
         "system": true,
         "platform_default": false,
         "admin_default": true,
-        "version": 3,
+        "version": 4,
         "access": [
           {
             "permission": "ros:*:*"
@@ -15,10 +15,10 @@
       },
       {
         "name": "Resource Optimization user",
-        "description": "A Resource Optimization user role that grants read only permission.",
+        "description": "Perform read operations on any Resource Optimization resource.",
         "system": true,
         "platform_default": true,
-        "version": 2,
+        "version": 3,
         "access": [
           {
             "permission": "ros:*:read"
