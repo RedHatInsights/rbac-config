@@ -1,6 +1,7 @@
 {
     "roles": [{
-        "name": "Cost administrator",
+        "name": "Cost Administrator",
+        "display_name": "Cost administrator",
         "description": "Perform any available operation on cost management resources.",
         "system": true,
         "admin_default": true,
@@ -9,7 +10,8 @@
             "permission": "cost-management:*:*"
         }]
     }, {
-        "name": "Cost price list administrator",
+        "name": "Cost Price List Administrator",
+        "display_name": "Cost Price List administrator",
         "description": "Perform read and write operations on cost models.",
         "system": true,
         "version": 6,
@@ -19,7 +21,8 @@
             "permission": "cost-management:settings:*"
         }]
     }, {
-        "name": "Cost price list viewer",
+        "name": "Cost Price List Viewer",
+        "display_name": "Cost Price List viewer",
         "description": "Perform read operations on cost models.",
         "system": true,
         "version": 5,
@@ -29,7 +32,8 @@
             "permission": "cost-management:settings:read"
         }]
     }, {
-        "name": "Cost cloud viewer",
+        "name": "Cost Cloud Viewer",
+        "display_name": "Cost cloud viewer",
         "description": "Perform read operations on cost reports related to cloud sources.",
         "system": true,
         "version": 7,
