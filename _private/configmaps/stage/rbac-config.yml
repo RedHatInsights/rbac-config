@@ -3,42 +3,26 @@ apiVersion: v1
 objects:
 - apiVersion: v1
   data:
-    ansible-wisdom-admin-dashboard.json: |
-      {
-        "roles": [
-          {
-            "name": "Ansible Wisdom Admin Dashboard user",
-            "description": "An Ansible Wisdom Admin Dashboard user role that grants read permissions to Org Admins for all charts.",
-            "system": true,
-            "admin_default": true,
-            "platform_default": false,
-            "version": 3,
-            "access": [
-              {
-                "permission": "ansible-wisdom-admin-dashboard:chart-recommendations:read"
-              },
-              {
-                "permission": "ansible-wisdom-admin-dashboard:chart-user-sentiment:read"
-              },
-              {
-                "permission": "ansible-wisdom-admin-dashboard:chart-module-usage:read"
-              },
-              {
-                "permission": "ansible-wisdom-admin-dashboard:chart-active-users:read"
-              }
-            ]
-          }
-        ]
-      }
+    ansible-wisdom-admin-dashboard.json: "{\n  \"roles\": [\n    {\n      \"name\":
+      \"Ansible Wisdom Admin Dashboard user\",\n      \"display_name\": \"Ansible Lightspeed
+      administrator\",\n      \"description\": \"Perform read operations for Organization
+      Administrators on all Lightspeed charts.\",      \n      \"system\": true,\n      \"platform_default\":
+      false,\n      \"admin_default\": true,\n      \"version\": 4,\n      \"access\":
+      [\n        {\n          \"permission\": \"ansible-wisdom-admin-dashboard:chart-recommendations:read\"\n
+      \       },\n        {\n          \"permission\": \"ansible-wisdom-admin-dashboard:chart-user-sentiment:read\"\n
+      \       },\n        {\n          \"permission\": \"ansible-wisdom-admin-dashboard:chart-module-usage:read\"\n
+      \       },\n        {\n          \"permission\": \"ansible-wisdom-admin-dashboard:chart-active-users:read\"\n
+      \       }\n      ]\n    }\n  ]\n}\n"
     automation-analytics.json: |
       {
         "roles": [
           {
             "name": "Automation Analytics Administrator",
-            "description": "An Automation Analytics Administrator role that grants ALL permissions.",
+            "display_name": "Automation Analytics administrator",
+            "description": "Perform any available operation on Automation Analytics resources.",
             "system": true,
             "platform_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "automation-analytics:*:*"
@@ -47,10 +31,11 @@ objects:
           },
           {
             "name": "Automation Analytics Editor",
-            "description": "An Automation Analytics Editor role that grants read-write permissions.",
+            "display_name": "Automation Analytics editor",
+            "description": "Perform read and update operations on Automation Analytics resources.",
             "system": true,
             "platform_default": true,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "automation-analytics:*:read"
@@ -62,10 +47,11 @@ objects:
           },
           {
             "name": "Automation Analytics Viewer",
-            "description": "An Automation Analytics Viewer role that grants read permissions.",
+            "display_name": "Automation Analytics viewer",
+            "description": "Perform read operations on Automation Analytics resources.",
             "system": true,
             "platform_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "automation-analytics:*:read"
@@ -79,10 +65,11 @@ objects:
         "roles": [
           {
             "name": "Compliance administrator",
-            "description": "A Compliance role that grants full access to any Compliance resource.",
+            "description": "Perform any available operation on Compliance resources.",
             "system": true,
+            "platform_default": false,
             "admin_default": true,
-            "version": 12,
+            "version": 13,
             "access": [
               {
                 "permission": "compliance:*:*"
@@ -97,10 +84,10 @@ objects:
           },
           {
             "name": "Compliance viewer",
-            "description": "A Compliance role that grants read access to any Compliance resource.",
+            "description": "Perform read operations on Compliance resources.",
             "system": true,
             "platform_default": true,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "compliance:policy:read"
@@ -124,11 +111,11 @@ objects:
           {
             "name": "RHC Administrator",
             "display_name": "RHC administrator",
-            "description": "Perform any operations on RHC manager",
+            "description": "Perform any available operation on RHC manager resources.",
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 6,
+            "version": 7,
             "access": [
               {
                 "permission": "config-manager:activation_keys:*"
@@ -162,10 +149,10 @@ objects:
           {
             "name": "RHC Viewer",
             "display_name": "RHC user",
-            "description": "Can view the current configurations on RHC manager and write to activation keys",
+            "description": "Perform read operations on the current configurations on RHC manager and update actions to the activation keys.",
             "system": true,
             "platform_default": true,
-            "version": 7,
+            "version": 8,
             "access": [
               {
                 "permission": "config-manager:activation_keys:read"
@@ -200,11 +187,11 @@ objects:
           "roles": [
             {
               "name": "Repositories administrator",
-              "description": "Perform any available operation against any repositories resource.",
+              "description": "Perform any available operation on any repositories resource.",
               "system": true,
               "platform_default": false,
               "admin_default": true,
-              "version": 2,
+              "version": 3,
               "access": [
                 {
                   "permission": "content-sources:repositories:read"
@@ -219,10 +206,10 @@ objects:
             },
             {
               "name": "Repositories viewer",
-              "description": "Perform read only operations against repositories resources.",
+              "description": "Perform read-only operations on repositories resources.",
               "system": true,
               "platform_default": true,
-              "version": 2,
+              "version": 3,
               "access": [
                 {
                   "permission": "content-sources:repositories:read"
@@ -231,10 +218,10 @@ objects:
             },
             {
               "name": "Repositories uploader",
-              "description": "Upload content to repositories.",
+              "description": "Perform content upload to repositories.",
               "system": true,
               "platform_default": false,
-              "version": 1,
+              "version": 2,
               "access": [
                 {
                   "permission": "content-sources:repositories:upload"
@@ -243,11 +230,11 @@ objects:
             },
             {
               "name": "Content Template administrator",
-              "description": "Perform any available operation against any Content Template resource.",
+              "description": "Perform any available operation on any Content Template resource.",
               "system": true,
               "platform_default": false,
               "admin_default": true,
-              "version": 2,
+              "version": 3,
               "access": [
                 {
                   "permission": "content-sources:repositories:read"
@@ -262,10 +249,10 @@ objects:
             },
             {
               "name": "Content Template viewer",
-              "description": "Perform read only operations against Content Template resources.",
+              "description": "Perform read-only operations on Content Template resources.",
               "system": true,
               "platform_default": true,
-              "version": 2,
+              "version": 3,
               "access": [
                 {
                   "permission": "content-sources:repositories:read"
@@ -281,18 +268,20 @@ objects:
       {
           "roles": [{
               "name": "Cost Administrator",
-              "description": "A cost management administrator role that grants read and write permissions.",
+              "display_name": "Cost administrator",
+              "description": "Perform any available operation on cost management resources.",
               "system": true,
               "admin_default": true,
-              "version": 3,
+              "version": 4,
               "access": [{
                   "permission": "cost-management:*:*"
               }]
           }, {
               "name": "Cost Price List Administrator",
-              "description": "A cost management role that grants read and write permissions on cost models.",
+              "display_name": "Cost Price List administrator",
+              "description": "Perform read and write operations on cost models.",
               "system": true,
-              "version": 5,
+              "version": 6,
               "access": [{
                   "permission": "cost-management:cost_model:*"
               }, {
@@ -300,9 +289,10 @@ objects:
               }]
           }, {
               "name": "Cost Price List Viewer",
-              "description": "A cost management role that grants read permissions on cost models.",
+              "display_name": "Cost Price List viewer",
+              "description": "Perform read operations on cost models.",
               "system": true,
-              "version": 4,
+              "version": 5,
               "access": [{
                   "permission": "cost-management:cost_model:read"
               }, {
@@ -310,9 +300,10 @@ objects:
               }]
           }, {
               "name": "Cost Cloud Viewer",
-              "description": "A cost management role that grants read permissions on cost reports related to cloud sources.",
+              "display_name": "Cost cloud viewer",
+              "description": "Perform read operations on cost reports related to cloud sources.",
               "system": true,
-              "version": 6,
+              "version": 7,
               "access": [{
                   "permission": "cost-management:aws.account:*"
               }, {
@@ -328,9 +319,10 @@ objects:
               }]
           }, {
               "name": "Cost OpenShift Viewer",
-              "description": "A cost management role that grants read permissions on cost reports related to OpenShift sources.",
+              "display_name": "Cost OpenShift viewer",
+              "description": "Perform read operations on cost reports related to OpenShift sources.",
               "system": true,
-              "version": 2,
+              "version": 3,
               "access": [{
                   "permission": "cost-management:openshift.cluster:*"
               }]
@@ -341,10 +333,10 @@ objects:
         "roles": [
           {
             "name": "Drift analysis administrator",
-            "description": "Perform any available operation against any Drift Analysis resource.",
+            "description": "Perform any available operation on any Drift analysis resource.",
             "system": true,
             "admin_default": true,
-            "version": 13,
+            "version": 14,
             "access": [
               {
                 "permission": "drift:comparisons:read"
@@ -371,10 +363,10 @@ objects:
           },
           {
             "name": "Drift viewer",
-            "description": "Perform read only operation against Drift Analysis resources.",
+            "description": "Perform read-only operation on Drift analysis resources.",
             "system": true,
             "platform_default": true,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "drift:comparisons:read"
@@ -397,11 +389,11 @@ objects:
         "roles": [
           {
             "name": "Hybrid Committed Spend viewer",
-            "description": "View any Hybrid Committed Spend report.",
+            "description": "Perform read operations on any Hybrid Committed Spend report.",
             "system": true,
             "admin_default": false,
             "platform_default": false,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "hybrid-committed-spend:reports:read"
@@ -415,11 +407,11 @@ objects:
         "roles": [
           {
             "name": "Domains administrator",
-            "description": "Perform any available operation against any domain resource.",
+            "description": "Perform any available operation on any domain resource.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "idmsvc:token:create"
@@ -443,10 +435,10 @@ objects:
           },
           {
             "name": "Domains viewer",
-            "description": "Perform read only operations against domain resources.",
+            "description": "Perform read-only operations on domain resources.",
             "system": true,
             "platform_default": true,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "idmsvc:domains:list"
@@ -464,10 +456,10 @@ objects:
           {
             "name": "Insights administrator",
             "display_name": "RHEL Advisor administrator",
-            "description": "Perform any available operation against any RHEL Advisor resource.",
+            "description": "Perform any available operation against any RHEL advisor resource.",
             "system": true,
             "platform_default": true,
-            "version": 11,
+            "version": 12,
             "access": [
               {
                 "permission": "advisor:*:*"
@@ -477,11 +469,11 @@ objects:
           {
             "name": "Advisor Viewer",
             "display_name": "RHEL Advisor viewer",
-            "description": "Be able to read Advisor data.",
+            "description": "Perform read operations on RHEL advisor data.",
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "advisor:*:read"
@@ -495,11 +487,11 @@ objects:
         "roles": [
           {
             "name": "Inventory administrator",
-            "description": "Perform any available operation against any Inventory resource.",
+            "description": "Perform any available operation on any Inventory resource.",
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "inventory:*:*"
@@ -508,11 +500,12 @@ objects:
           },
           {
             "name": "Inventory Hosts Administrator",
-            "description": "Be able to read and edit Inventory Hosts data.",
+            "display_name": "Inventory Hosts administrator",
+            "description": "Perform read and update operations on Inventory Hosts data.",
             "system": true,
             "platform_default": true,
             "admin_default": true,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "inventory:hosts:write"
@@ -524,11 +517,12 @@ objects:
           },
           {
             "name": "Inventory Hosts Viewer",
-            "description": "Be able to read Inventory Hosts data.",
+            "display_name": "Inventory Hosts viewer",
+            "description": "Perform read operations on Inventory Hosts data.",
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "inventory:hosts:read"
@@ -537,12 +531,12 @@ objects:
           },
           {
             "name": "Inventory Groups Administrator",
-            "display_name": "Workspace Administrator",
-            "description": "Be able to read and edit Workspace data.",
+            "display_name": "Workspace administrator",
+            "description": "Perform read and update operations on Workspace data.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "inventory:groups:write"
@@ -554,12 +548,12 @@ objects:
           },
           {
             "name": "Inventory Groups Viewer",
-            "display_name": "Workspace Viewer",
-            "description": "Be able to read Workspace data.",
+            "display_name": "Workspace viewer",
+            "description": "Perform read operations on Workspace data.",
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "inventory:groups:read"
@@ -574,10 +568,10 @@ objects:
           {
             "name": "Malware detection administrator",
             "display_name": "Malware detection administrator",
-            "description": "Perform any available operation against any malware-detection resource.",
+            "description": "Perform any available operation on any malware-detection resource.",
             "system": true,
             "admin_default": true,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "malware-detection:*:*"
@@ -587,9 +581,9 @@ objects:
           {
             "name": "Malware detection viewer",
             "display_name": "Malware detection viewer",
-            "description": "Read any malware-detection resource.",
+            "description": "Perform read operations on any malware-detection resource.",
             "system": true,
-            "version": 2,
+            "version": 3,
             "access": [
               {
                 "permission": "malware-detection:*:read"
@@ -603,11 +597,11 @@ objects:
         "roles": [
           {
             "name": "Notifications administrator",
-            "description": "Perform any available operation against Notifications and Integrations applications.",
+            "description": "Perform any available operation against notifications and integrations resources.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "notifications:*:*"
@@ -619,10 +613,10 @@ objects:
           },
           {
             "name": "Notifications viewer",
-            "description": "Read only access to notifications and integrations applications.",
+            "description": "Perform read operations on notifications and integrations resources.",
             "system": true,
             "platform_default": true,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "notifications:notifications:read"
@@ -640,11 +634,11 @@ objects:
         "roles": [
           {
             "name": "OCM Cluster Editor",
-            "display_name": "OCM Cluster Editor",
-            "description": "Grants permission to edit clusters",
+            "display_name": "OCM cluster editor",
+            "description": "Perform update operations on clusters.",
             "system": true,
             "platform_default": false,
-            "version": 2,
+            "version": 3,
             "external": {
               "id": "ClusterEditor",
               "tenant": "ocm"
@@ -652,11 +646,11 @@ objects:
           },
           {
             "name": "OCM Idp Editor",
-            "display_name": "OCM Idp Editor",
-            "description": "Grants permission to edit idps",
+            "display_name": "OCM IdP editor",
+            "description": "Perform update operations on IdPs.",
             "system": true,
             "platform_default": false,
-            "version": 1,
+            "version": 2,
             "external": {
               "id": "IdpEditor",
               "tenant": "ocm"
@@ -664,11 +658,11 @@ objects:
           },
           {
             "name": "OCM Machine Pool Editor",
-            "display_name": "OCM Machine Pool Editor",
-            "description": "Grants permission to edit machine pools",
+            "display_name": "OCM machine pool editor",
+            "description": "Perform update operations on machine pools.",
             "system": true,
             "platform_default": false,
-            "version": 1,
+            "version": 2,
             "external": {
               "id": "MachinePoolEditor",
               "tenant": "ocm"
@@ -676,11 +670,11 @@ objects:
           },
           {
             "name": "OCM Cluster Provisioner",
-            "display_name": "OCM Cluster Provisioner",
-            "description": "Grants permission to provision clusters",
+            "display_name": "OCM cluster provisioner",
+            "description": "Perform provision operations on clusters.",
             "system": true,
             "platform_default": true,
-            "version": 3,
+            "version": 4,
             "external": {
               "id": "ClusterProvisioner",
               "tenant": "ocm"
@@ -688,11 +682,11 @@ objects:
           },
           {
             "name": "OCM Cluster Viewer",
-            "display_name": "OCM Cluster Viewer",
-            "description": "Grants permission to view clusters",
+            "display_name": "OCM cluster viewer",
+            "description": "Perform read operations on clusters.",
             "system": true,
             "platform_default": true,
-            "version": 3,
+            "version": 4,
             "external": {
               "id": "ClusterViewer",
               "tenant": "ocm"
@@ -700,11 +694,11 @@ objects:
           },
           {
             "name": "OCM Organization Admin",
-            "display_name": "OCM Organization Admin",
-            "description": "Grants administrative permissions associated organization's clusters",
+            "display_name": "OCM Organization Administrator",
+            "description": "Perform all available operations on the associated organization's clusters.",
             "system": true,
             "platform_default": false,
-            "version": 2,
+            "version": 3,
             "external": {
               "id": "OrganizationAdmin",
               "tenant": "ocm"
@@ -712,11 +706,11 @@ objects:
           },
           {
             "name": "OCM Cluster Autoscaler Editor",
-            "display_name": "OCM Cluster Autoscaler Editor",
-            "description": "Grants permission to edit cluster autoscaler",
+            "display_name": "OCM cluster autoscaler editor",
+            "description": "Perform update operations on the cluster autoscaler.",
             "system": true,
             "platform_default": false,
-            "version": 1,
+            "version": 2,
             "external": {
               "id": "ClusterAutoscalerEditor",
               "tenant": "ocm"
@@ -730,10 +724,10 @@ objects:
           {
             "name": "OCP Advisor administrator",
             "display_name": "OCP Advisor administrator",
-            "description": "Perform any available operation against any OCP Advisor resource.",
+            "description": "Perform any available operation on any OCP Advisor resource.",
             "system": true,
             "platform_default": true,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "ocp-advisor:*:*"
@@ -747,11 +741,11 @@ objects:
         "roles": [
           {
             "name": "Patch administrator",
-            "description": "Perform any available operation against any Patch resource.",
+            "description": "Perform any available operation on any Patch resource.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 9,
+            "version": 10,
             "access": [
               {
                 "permission": "patch:*:*"
@@ -766,11 +760,11 @@ objects:
           },
           {
             "name": "Patch viewer",
-            "description": "Read any Patch resource.",
+            "description": "Perform read operations on any Patch resource.",
             "system": true,
             "platform_default": true,
             "admin_default": false,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "patch:*:read"
@@ -784,10 +778,10 @@ objects:
         "roles": [
           {
             "name": "Policies administrator",
-            "description": "Perform any available operation against any Policies resource.",
+            "description": "Perform any available operation on any Policies resource.",
             "system": true,
             "admin_default": true,
-            "version": 8,
+            "version": 9,
             "access": [
               {
                 "permission": "policies:policies:read"
@@ -799,10 +793,10 @@ objects:
           },
           {
             "name": "Policies viewer",
-            "description": "Perform read only operation against any Policies resource.",
+            "description": "Perform read-only operation on any Policies resource.",
             "system": true,
             "platform_default": true,
-            "version": 2,
+            "version": 3,
             "access": [
               {
                 "permission": "policies:policies:read"
@@ -815,19 +809,21 @@ objects:
       {
           "roles": [{
               "name": "Launch Administrator",
-              "description": "A launch administrator role that grants read and write permissions.",
+              "display_name": "Launch administrator",
+              "description": "Perform read and update operations on launch reservation and related resources.",
               "system": true,
               "admin_default": true,
-              "version": 2,
+              "version": 3,
               "access": [{
                   "permission": "provisioning:*:*"
               }]
           }, {
               "name": "Launch Viewer",
-              "description": "An launch role that grants read permissions on launch reservation and related resources.",
+              "display_name": "Launch viewer",
+              "description": "Perform read operations on launch reservation and related resources.",
               "system": true,
               "platform_default": true,
-              "version": 2,
+              "version": 3,
               "access": [{
                   "permission": "provisioning:source:read"
               }, {
@@ -843,9 +839,10 @@ objects:
               }]
           }, {
               "name": "Launch on AWS User",
-              "description": "An AWS launch role that grants write permissions on launch reservation and related resources.",
+              "display_name": "Launch on AWS user",
+              "description": "Perform update operations on AWS launch reservation and related resources.",
               "system": true,
-              "version": 2,
+              "version": 3,
               "access": [{
                   "permission": "provisioning:source:*"
               }, {
@@ -857,9 +854,10 @@ objects:
               }]
           }, {
               "name": "Launch on Azure User",
-              "description": "An Azure launch role that grants write permissions on launch reservation and related resources.",
+              "display_name": "Launch on Azure user",
+              "description": "Perform update operations on Azure launch reservation and related resources.",
               "system": true,
-              "version": 2,
+              "version": 3,
               "access": [{
                   "permission": "provisioning:source:*"
               }, {
@@ -871,9 +869,10 @@ objects:
               }]
           }, {
               "name": "Launch on Google Cloud User",
-              "description": "An Google Cloud launch role that grants write permissions on launch reservation and related resources.",
+              "display_name": "Launch on Google Cloud user",
+              "description": "Perform update operations on Google Cloud launch reservation and related resources.",
               "system": true,
-              "version": 2,
+              "version": 3,
               "access": [{
                   "permission": "provisioning:source:*"
               }, {
@@ -891,11 +890,11 @@ objects:
           {
             "name": "User Access administrator",
             "display_name": "User Access administrator",
-            "description": "Grants a non-org admin full access to configure and manage user access to services hosted on console.redhat.com. This role can only be viewed and assigned by Organization Administrators.",
+            "description": "Perform any available operation for a non-Organization Administrator to configure and manage user access to services hosted on console.redhat.com. This role can only be viewed and assigned by Organization Administrators.",
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "rbac:*:*"
@@ -905,10 +904,10 @@ objects:
           {
             "name": "User Access principal viewer",
             "display_name": "User Access principal viewer",
-            "description": "Grants a non-org admin read access to principals within user access.",
+            "description": "Perform read operations as a non-Organization Administrator on principals within user access.",
             "system": true,
             "platform_default": false,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "rbac:principal:read"
@@ -922,10 +921,10 @@ objects:
         "roles": [
           {
             "name": "Remediations administrator",
-            "description": "Perform any available operation against any Remediations resource",
+            "description": "Perform any available operation on any Remediations resource.",
             "system": true,
             "platform_default": false,
-            "version": 8,
+            "version": 9,
             "access": [
               {
                 "permission": "remediations:*:*"
@@ -946,10 +945,10 @@ objects:
           },
           {
             "name": "Remediations user",
-            "description": "Perform create, view, update, delete operations against any Remediations resource.",
+            "description": "Perform create, read, update, delete operations on any Remediations resource.",
             "system": true,
             "platform_default": true,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "remediations:remediation:read"
@@ -978,11 +977,11 @@ objects:
           "roles": [
             {
               "name": "Resource Optimization administrator",
-              "description": "Perform any available operation against any Resource Optimization resource.",
+              "description": "Perform any available operation on any Resource Optimization resource.",
               "system": true,
               "platform_default": false,
               "admin_default": true,
-              "version": 3,
+              "version": 4,
               "access": [
                 {
                   "permission": "ros:*:*"
@@ -991,10 +990,10 @@ objects:
             },
             {
               "name": "Resource Optimization user",
-              "description": "A Resource Optimization user role that grants read only permission.",
+              "description": "Perform read operations on any Resource Optimization resource.",
               "system": true,
               "platform_default": true,
-              "version": 2,
+              "version": 3,
               "access": [
                 {
                   "permission": "ros:*:read"
@@ -1008,12 +1007,12 @@ objects:
         "roles": [
           {
             "name": "Sources administrator",
-            "display_name": "Cloud Administrator",
-            "description": "Perform any available operation against any Source.",
+            "display_name": "Cloud administrator",
+            "description": "Perform any available operation on any source.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "sources:*:*"
@@ -1027,12 +1026,12 @@ objects:
         "roles": [
           {
             "name": "Organization Staleness and Deletion Administrator",
-            "description": "Be able to read and edit Organization Staleness and Deletion data.",
+            "display_name": "Organization staleness and deletion administrator",
+            "description": "Perform read and update operations on organization staleness and deletion data.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "display_name": "Organization Staleness and Deletion Administrator",
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "staleness:staleness:write"
@@ -1044,12 +1043,12 @@ objects:
           },
           {
             "name": "Organization Staleness and Deletion Viewer",
-            "description": "Be able to read Organization Staleness and Deletion data.",
+            "display_name": "Organization staleness and deletion viewer",
+            "description": "Perform read operations on organization staleness and deletion data.",
             "system": true,
             "platform_default": true,
             "admin_default": false,
-            "display_name": "Organization Staleness and Deletion Viewer",
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "staleness:staleness:read"
@@ -1064,11 +1063,11 @@ objects:
           {
             "name": "Subscription Watch administrator",
             "display_name": "Subscriptions administrator",
-            "description": "Perform any available operation against any Subscriptions resource.",
+            "description": "Perform any available operation on any Subscriptions resource.",
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 7,
+            "version": 8,
             "access": [
               {
                 "permission": "subscriptions:*:*"
@@ -1078,10 +1077,10 @@ objects:
           {
             "name": "Subscriptions user",
             "display_name": "Subscriptions viewer",
-            "description": "View any Subscriptions resource.",
+            "description": "Perform read operations on any Subscriptions resource.",
             "system": true,
             "platform_default": true,
-            "version": 7,
+            "version": 8,
             "access": [
               {
                 "permission": "subscriptions:reports:read"
@@ -1107,11 +1106,11 @@ objects:
         "roles": [
           {
             "name": "Tasks administrator",
-            "description": "Perform any available operation against any Tasks resource.",
+            "description": "Perform any available operation on any Tasks resource.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "tasks:*:*"
@@ -1137,11 +1136,11 @@ objects:
         "roles": [
           {
             "name": "Vulnerability administrator",
-            "description": "Perform any available operation against any Vulnerability resource.",
+            "description": "Perform any available operation on any Vulnerability resource.",
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 11,
+            "version": 12,
             "access": [
               {
                 "permission": "vulnerability:*:*"
@@ -1156,11 +1155,11 @@ objects:
           },
           {
             "name": "Vulnerability viewer",
-            "description": "Read any Vulnerability resource.",
+            "description": "Perform read operations on any Vulnerability resource.",
             "system": true,
             "platform_default": true,
             "admin_default": false,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "vulnerability:vulnerability_results:read"
