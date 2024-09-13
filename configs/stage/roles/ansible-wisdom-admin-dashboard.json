@@ -3,7 +3,7 @@
     {
       "name": "Ansible Wisdom Admin Dashboard user",
       "display_name": "Ansible Lightspeed administrator",
-      "description": "Perform read operations for Organization Administrators on all Lightspeed charts.",      
+      "description": "Perform read operations for Organization Administrators on all Lightspeed charts.",
       "system": true,
       "platform_default": false,
       "admin_default": true,
