@@ -16,7 +16,7 @@
     {
       "name": "Advisor Viewer",
       "display_name": "RHEL advisor viewer",
-      "description": "Perform read operations on RHEL dvisor data.",
+      "description": "Perform read operations on RHEL advisor data.",
       "system": true,
       "platform_default": false,
       "admin_default": false,
