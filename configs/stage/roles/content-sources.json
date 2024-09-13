@@ -2,11 +2,11 @@
     "roles": [
       {
         "name": "Repositories administrator",
-        "description": "Perform any available operation against any repositories resource.",
+        "description": "Perform any available operation on any repositories resource.",
         "system": true,
         "platform_default": false,
         "admin_default": true,
-        "version": 2,
+        "version": 3,
         "access": [
           {
             "permission": "content-sources:repositories:read"
@@ -21,10 +21,10 @@
       },
       {
         "name": "Repositories viewer",
-        "description": "Perform read only operations against repositories resources.",
+        "description": "Perform read-only operations on repositories resources.",
         "system": true,
         "platform_default": true,
-        "version": 2,
+        "version": 3,
         "access": [
           {
             "permission": "content-sources:repositories:read"
@@ -33,10 +33,10 @@
       },
       {
         "name": "Repositories uploader",
-        "description": "Upload content to repositories.",
+        "description": "Perform content upload to repositories.",
         "system": true,
         "platform_default": false,
-        "version": 1,
+        "version": 2,
         "access": [
           {
             "permission": "content-sources:repositories:upload"
@@ -45,11 +45,11 @@
       },
       {
         "name": "Content Template administrator",
-        "description": "Perform any available operation against any Content Template resource.",
+        "description": "Perform any available operation on any Content Template resource.",
         "system": true,
         "platform_default": false,
         "admin_default": true,
-        "version": 2,
+        "version": 3,
         "access": [
           {
             "permission": "content-sources:repositories:read"
@@ -64,10 +64,10 @@
       },
       {
         "name": "Content Template viewer",
-        "description": "Perform read only operations against Content Template resources.",
+        "description": "Perform read-only operations on Content Template resources.",
         "system": true,
         "platform_default": true,
-        "version": 2,
+        "version": 3,
         "access": [
           {
             "permission": "content-sources:repositories:read"

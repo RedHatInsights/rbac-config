@@ -2,10 +2,10 @@
   "roles": [
     {
       "name": "Policies administrator",
-      "description": "Perform any available operation against any Policies resource.",
+      "description": "Perform any available operation on any Policies resource.",
       "system": true,
       "admin_default": true,
-      "version": 8,
+      "version": 9,
       "access": [
         {
           "permission": "policies:policies:read"
@@ -17,10 +17,10 @@
     },
     {
       "name": "Policies viewer",
-      "description": "Perform read only operation against any Policies resource.",
+      "description": "Perform read-only operation on any Policies resource.",
       "system": true,
       "platform_default": true,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "policies:policies:read"

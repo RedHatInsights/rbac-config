@@ -2,11 +2,11 @@
   "roles": [
     {
       "name": "Patch administrator",
-      "description": "Perform any available operation against any Patch resource.",
+      "description": "Perform any available operation on any Patch resource.",
       "system": true,
       "platform_default": false,
       "admin_default": true,
-      "version": 9,
+      "version": 10,
       "access": [
         {
           "permission": "patch:*:*"
@@ -21,11 +21,11 @@
     },
     {
       "name": "Patch viewer",
-      "description": "Read any Patch resource.",
+      "description": "Perform read operations on any Patch resource.",
       "system": true,
       "platform_default": true,
       "admin_default": false,
-      "version": 4,
+      "version": 5,
       "access": [
         {
           "permission": "patch:*:read"

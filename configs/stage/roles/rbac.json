@@ -3,11 +3,11 @@
     {
       "name": "User Access administrator",
       "display_name": "User Access administrator",
-      "description": "Grants a non-org admin full access to configure and manage user access to services hosted on console.redhat.com. This role can only be viewed and assigned by Organization Administrators.",
+      "description": "Perform any available operation for a non-Organization Administrator to configure and manage user access to services hosted on console.redhat.com. This role can only be viewed and assigned by Organization Administrators.",
       "system": true,
       "admin_default": true,
       "platform_default": false,
-      "version": 3,
+      "version": 4,
       "access": [
         {
           "permission": "rbac:*:*"
@@ -17,10 +17,10 @@
     {
       "name": "User Access principal viewer",
       "display_name": "User Access principal viewer",
-      "description": "Grants a non-org admin read access to principals within user access.",
+      "description": "Perform read operations as a non-Organization Administrator on principals within user access.",
       "system": true,
       "platform_default": false,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "rbac:principal:read"
