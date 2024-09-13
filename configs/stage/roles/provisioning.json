@@ -32,7 +32,7 @@
     }, {
         "name": "Launch on AWS User",
         "display_name": "Launch on AWS user",
-        "description": "Perform upate operations on AWS launch reservation and related resources.",
+        "description": "Perform update operations on AWS launch reservation and related resources.",
         "system": true,
         "version": 3,
         "access": [{
