@@ -14,7 +14,8 @@
       ]
     },
     {
-      "name": "Inventory Hosts administrator",
+      "name": "Inventory Hosts Administrator",
+      "display_name": "Inventory Hosts administrator",
       "description": "Perform read and update operations on Inventory Hosts data.",
       "system": true,
       "platform_default": true,
@@ -30,7 +31,8 @@
       ]
     },
     {
-      "name": "Inventory Hosts viewer",
+      "name": "Inventory Hosts Viewer",
+      "display_name": "Inventory Hosts viewer",
       "description": "Perform read operations on Inventory Hosts data.",
       "system": true,
       "platform_default": false,
@@ -43,7 +45,7 @@
       ]
     },
     {
-      "name": "Inventory Groups administrator",
+      "name": "Inventory Groups Administrator",
       "display_name": "Workspace administrator",
       "description": "Perform read and update operations on Workspace data.",
       "system": true,
