@@ -47,7 +47,7 @@
     }, {
         "name": "Launch on Azure User",
         "display_name": "Launch on Azure user",
-        "description": "Perform upate operations on Azure launch reservation and related resources.",
+        "description": "Perform update operations on Azure launch reservation and related resources.",
         "system": true,
         "version": 3,
         "access": [{
