@@ -52,6 +52,7 @@
         }]
     }, {
         "name": "Cost OpenShift Viewer",
+        "display_name": "Cost OpenShift viewer",
         "description": "Perform read operations on cost reports related to OpenShift sources.",
         "system": true,
         "version": 3,
