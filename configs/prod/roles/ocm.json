@@ -2,11 +2,11 @@
   "roles": [
     {
       "name": "OCM Cluster Editor",
-      "display_name": "OCM Cluster Editor",
-      "description": "Grants permission to edit clusters",
+      "display_name": "OCM cluster editor",
+      "description": "Perform update operations on clusters.",
       "system": true,
       "platform_default": false,
-      "version": 2,
+      "version": 3,
       "external": {
         "id": "ClusterEditor",
         "tenant": "ocm"
@@ -14,11 +14,11 @@
     },
     {
       "name": "OCM Idp Editor",
-      "display_name": "OCM Idp Editor",
-      "description": "Grants permission to edit idps",
+      "display_name": "OCM IdP editor",
+      "description": "Perform update operations on IdPs.",
       "system": true,
       "platform_default": false,
-      "version": 1,
+      "version": 2,
       "external": {
         "id": "IdpEditor",
         "tenant": "ocm"
@@ -26,11 +26,11 @@
     },
     {
       "name": "OCM Machine Pool Editor",
-      "display_name": "OCM Machine Pool Editor",
-      "description": "Grants permission to edit machine pools",
+      "display_name": "OCM machine pool editor",
+      "description": "Perform update operations on machine pools.",
       "system": true,
       "platform_default": false,
-      "version": 1,
+      "version": 2,
       "external": {
         "id": "MachinePoolEditor",
         "tenant": "ocm"
@@ -38,11 +38,11 @@
     },
     {
       "name": "OCM Cluster Provisioner",
-      "display_name": "OCM Cluster Provisioner",
-      "description": "Grants permission to provision clusters",
+      "display_name": "OCM cluster provisioner",
+      "description": "Perform provision operations on clusters.",
       "system": true,
       "platform_default": true,
-      "version": 3,
+      "version": 4,
       "external": {
         "id": "ClusterProvisioner",
         "tenant": "ocm"
@@ -50,11 +50,11 @@
     },
     {
       "name": "OCM Cluster Viewer",
-      "display_name": "OCM Cluster Viewer",
-      "description": "Grants permission to view clusters",
+      "display_name": "OCM cluster viewer",
+      "description": "Perform read operations on clusters.",
       "system": true,
       "platform_default": true,
-      "version": 3,
+      "version": 4,
       "external": {
         "id": "ClusterViewer",
         "tenant": "ocm"
@@ -62,11 +62,11 @@
     },
     {
       "name": "OCM Organization Admin",
-      "display_name": "OCM Organization Admin",
-      "description": "Grants administrative permissions associated organization's clusters",
+      "display_name": "OCM Organization Administrator",
+      "description": "Perform all available operations on the associated organization's clusters.",
       "system": true,
       "platform_default": false,
-      "version": 2,
+      "version": 3,
       "external": {
         "id": "OrganizationAdmin",
         "tenant": "ocm"
@@ -74,11 +74,11 @@
     },
     {
       "name": "OCM Cluster Autoscaler Editor",
-      "display_name": "OCM Cluster Autoscaler Editor",
-      "description": "Grants permission to edit cluster autoscaler",
+      "display_name": "OCM cluster autoscaler editor",
+      "description": "Perform update operations on the cluster autoscaler.",
       "system": true,
       "platform_default": false,
-      "version": 1,
+      "version": 2,
       "external": {
         "id": "ClusterAutoscalerEditor",
         "tenant": "ocm"

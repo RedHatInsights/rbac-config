@@ -2,10 +2,11 @@
   "roles": [
     {
       "name": "Compliance administrator",
-      "description": "A Compliance role that grants full access to any Compliance resource.",
+      "description": "Perform any available operation on Compliance resources.",
       "system": true,
+      "platform_default": false,
       "admin_default": true,
-      "version": 10,
+      "version": 11,
       "access": [
         {
           "permission": "compliance:*:*"
@@ -20,10 +21,10 @@
     },
     {
       "name": "Compliance viewer",
-      "description": "A Compliance role that grants read access to any Compliance resource.",
+      "description": "Perform read operations on Compliance resources.",
       "system": true,
       "platform_default": true,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "compliance:policy:read"

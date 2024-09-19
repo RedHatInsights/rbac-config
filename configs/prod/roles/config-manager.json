@@ -3,11 +3,11 @@
     {
       "name": "RHC Administrator",
       "display_name": "RHC administrator",
-      "description": "Perform any operations on RHC manager",
+      "description": "Perform any available operation on RHC manager resources.",
       "system": true,
       "admin_default": true,
       "platform_default": false,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "config-manager:activation_keys:*"
@@ -41,10 +41,10 @@
     {
       "name": "RHC Viewer",
       "display_name": "RHC user",
-      "description": "Can view the current configurations on RHC manager and write to activation keys",
+      "description": "Perform read operations on the current configurations on RHC manager and update actions to the activation keys.",
       "system": true,
       "platform_default": true,
-      "version": 7,
+      "version": 8,
       "access": [
         {
           "permission": "config-manager:activation_keys:read"

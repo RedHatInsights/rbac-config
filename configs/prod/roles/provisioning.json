@@ -1,19 +1,21 @@
 {
     "roles": [{
         "name": "Launch Administrator",
-        "description": "A launch administrator role that grants read and write permissions.",
+        "display_name": "Launch administrator",
+        "description": "Perform read and update operations on launch reservation and related resources.",
         "system": true,
         "admin_default": true,
-        "version": 2,
+        "version": 3,
         "access": [{
             "permission": "provisioning:*:*"
         }]
     }, {
         "name": "Launch Viewer",
-        "description": "An launch role that grants read permissions on launch reservation and related resources.",
+        "display_name": "Launch viewer",
+        "description": "Perform read operations on launch reservation and related resources.",
         "system": true,
         "platform_default": true,
-        "version": 1,
+        "version": 2,
         "access": [{
             "permission": "provisioning:source:read"
         }, {
@@ -29,9 +31,10 @@
         }]
     }, {
         "name": "Launch on AWS User",
-        "description": "An AWS launch role that grants write permissions on launch reservation and related resources.",
+        "display_name": "Launch on AWS user",
+        "description": "Perform update operations on AWS launch reservation and related resources.",
         "system": true,
-        "version": 2,
+        "version": 3,
         "access": [{
             "permission": "provisioning:source:*"
         }, {
@@ -43,9 +46,10 @@
         }]
     }, {
         "name": "Launch on Azure User",
-        "description": "An Azure launch role that grants write permissions on launch reservation and related resources.",
+        "display_name": "Launch on Azure user",
+        "description": "Perform update operations on Azure launch reservation and related resources.",
         "system": true,
-        "version": 2,
+        "version": 3,
         "access": [{
             "permission": "provisioning:source:*"
         }, {
@@ -57,9 +61,10 @@
         }]
     }, {
         "name": "Launch on Google Cloud User",
-        "description": "An Google Cloud launch role that grants write permissions on launch reservation and related resources.",
+        "display_name": "Launch on Google Cloud user",
+        "description": "Perform update operations on Google Cloud launch reservation and related resources.",
         "system": true,
-        "version": 2,
+        "version": 3,
         "access": [{
             "permission": "provisioning:source:*"
         }, {
