@@ -2,10 +2,10 @@
   "roles": [
     {
       "name": "Drift analysis administrator",
-      "description": "Perform any available operation against any Drift Analysis resource.",
+      "description": "Perform any available operation on any Drift analysis resource.",
       "system": true,
       "admin_default": true,
-      "version": 11,
+      "version": 12,
       "access": [
         {
           "permission": "drift:comparisons:read"
@@ -32,10 +32,10 @@
     },
     {
       "name": "Drift viewer",
-      "description": "Perform read only operation against Drift Analysis resources.",
+      "description": "Perform read-only operation on Drift analysis resources.",
       "system": true,
       "platform_default": true,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "drift:comparisons:read"

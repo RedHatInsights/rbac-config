@@ -3,10 +3,10 @@
     {
       "name": "OCP Advisor administrator",
       "display_name": "OCP Advisor administrator",
-      "description": "Perform any available operation against any OCP Advisor resource.",
+      "description": "Perform any available operation on any OCP Advisor resource.",
       "system": true,
       "platform_default": true,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "ocp-advisor:*:*"

@@ -1,18 +1,20 @@
 {
     "roles": [{
         "name": "Cost Administrator",
-        "description": "A cost management administrator role that grants read and write permissions.",
+        "display_name": "Cost administrator",
+        "description": "Perform any available operation on cost management resources.",
         "system": true,
         "admin_default": true,
-        "version": 3,
+        "version": 4,
         "access": [{
             "permission": "cost-management:*:*"
         }]
     }, {
         "name": "Cost Price List Administrator",
-        "description": "A cost management role that grants read and write permissions on cost models.",
+        "display_name": "Cost Price List administrator",
+        "description": "Perform read and write operations on cost models.",
         "system": true,
-        "version": 4,
+        "version": 5,
         "access": [{
             "permission": "cost-management:cost_model:*"
         }, {
@@ -20,9 +22,10 @@
         }]
     }, {
         "name": "Cost Price List Viewer",
-        "description": "A cost management role that grants read permissions on cost models.",
+        "display_name": "Cost Price List viewer",
+        "description": "Perform read operations on cost models.",
         "system": true,
-        "version": 4,
+        "version": 5,
         "access": [{
             "permission": "cost-management:cost_model:read"
         }, {
@@ -30,9 +33,10 @@
         }]
     }, {
         "name": "Cost Cloud Viewer",
-        "description": "A cost management role that grants read permissions on cost reports related to cloud sources.",
+        "display_name": "Cost cloud viewer",
+        "description": "Perform read operations on cost reports related to cloud sources.",
         "system": true,
-        "version": 6,
+        "version": 7,
         "access": [{
             "permission": "cost-management:aws.account:*"
         }, {
@@ -48,9 +52,10 @@
         }]
     }, {
         "name": "Cost OpenShift Viewer",
-        "description": "A cost management role that grants read permissions on cost reports related to OpenShift sources.",
+        "display_name": "Cost OpenShift viewer",
+        "description": "Perform read operations on cost reports related to OpenShift sources.",
         "system": true,
-        "version": 2,
+        "version": 3,
         "access": [{
             "permission": "cost-management:openshift.cluster:*"
         }]
