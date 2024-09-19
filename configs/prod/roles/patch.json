@@ -25,7 +25,7 @@
       "system": true,
       "platform_default": true,
       "admin_default": false,
-      "version": 6,
+      "version": 5,
       "access": [
         {
           "permission": "patch:*:read"
