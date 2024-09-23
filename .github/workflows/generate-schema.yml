@@ -10,35 +10,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.7
 
-      # START: COPY 
-      - name: Clone ksl-schema-language repo
-        run: git clone --depth=1 https://github.com/project-kessel/ksl-schema-language.git
+      # - name: Clone ksl-schema-language repo
+      #   run: git clone --depth=1 https://github.com/project-kessel/ksl-schema-language.git
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.22.x'
-          cache: true
+      # - name: Setup Go
+      #   uses: actions/setup-go@v5
+      #   with:
+      #     go-version: '1.22.x'
+      #     cache: true
       
-      - name: Build KSL compiler binary
-        run: |
-          cd ksl-schema-language
-          mkdir -p bin/
-          go build -gcflags "all=-N -l" -o ./bin/ ./...
-          cd ..
-      
-      - name: Run KSL compiler
-        run: |
-          ./ksl-schema-language/bin/ksl -o configs/stage/schemas/schema.zed configs/stage/schemas/src/*.ksl
-          ./ksl-schema-language/bin/ksl -o configs/prod/schemas/schema.zed configs/prod/schemas/src/*.ksl
-      # END: TO RBAC-CONFIG-ACTIONS
-
-      # - name: Commit changes
+      # - name: Build KSL compiler binary
       #   run: |
-      #     git add configs/
-      #     timestamp=$(date -u)
-      #     git commit -m "[GitHub] - Automated Schema Generation: ${timestamp} - ${GITHUB_SHA}" || exit 0
-
+      #     cd ksl-schema-language
+      #     mkdir -p bin/
+      #     go build -gcflags "all=-N -l" -o ./bin/ ./...
+      #     cd ..
+      #     
+      
+      # - name: Run KSL compiler
+      #   run: |
+      #     ./ksl-schema-language/bin/ksl -o configs/stage/schemas/schema.zed configs/stage/schemas/src/*.ksl
+      #     ./ksl-schema-language/bin/ksl -o configs/prod/schemas/schema.zed configs/prod/schemas/src/*.ksl
+      # - name: Remove KSL repo
+      #   run: rm -rf ksl-schema-language/
 
       # STAGE GENERATION     
       - name: Generating Schema from ksl files for stage
