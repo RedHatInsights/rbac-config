@@ -1,0 +1,36 @@
+version 0.1
+namespace notifications
+
+import rbac
+
+type integration {
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_read', v2_perm:'notifications_integration_create')
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_write', v2_perm:'notifications_daily_digest_preference_edit')
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_read', v2_perm:'notifications_daily_digest_preference_view')
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_write', v2_perm:'notifications_integration_subscribe_drawer')
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_write', v2_perm:'notifications_integration_subscribe_email')
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_read', v2_perm:'notifications_event_log_view')
+    relation workspace: [ExactlyOne rbac.workspace]
+
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_read', v2_perm:'notifications_integration_view')
+    relation view: workspace.notifications_integration_view
+
+    // Edit display name, connectivity settings, and event type mappings
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_write', v2_perm:'notifications_integration_edit')
+    relation edit: workspace.notifications_integration_edit
+
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_write', v2_perm:'notifications_integration_test')
+    relation test: workspace.notifications_integration_test
+
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_read', v2_perm:'notifications_integration_view_history')
+    relation view_history: workspace.notifications_integration_view_history
+
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_write', v2_perm:'notifications_integration_delete')
+    relation delete: workspace.notifications_integration_delete
+
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_write', v2_perm:'notifications_integration_disable')
+    relation disable: workspace.notifications_integration_disable
+
+    @rbac.add_v1_based_permission(v1_perm:'notifications_integration_write', v2_perm:'notifications_integration_enable')
+    relation enable: workspace.notifications_integration_enable
+}

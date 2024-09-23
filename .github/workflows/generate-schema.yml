@@ -1,0 +1,80 @@
+on:
+  push:
+    branches:
+      - master
+name: Schema generation
+jobs:
+  generate_schema:
+    name: Generate Schema
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+
+      # START: COPY 
+      - name: Clone ksl-schema-language repo
+        run: git clone --depth=1 https://github.com/project-kessel/ksl-schema-language.git
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.x'
+          cache: true
+      
+      - name: Build KSL compiler binary
+        run: |
+          cd ksl-schema-language
+          mkdir -p bin/
+          go build -gcflags "all=-N -l" -o ./bin/ ./...
+          cd ..
+      
+      - name: Run KSL compiler
+        run: |
+          ./ksl-schema-language/bin/ksl -o configs/stage/schemas/schema.zed configs/stage/schemas/src/*.ksl
+          ./ksl-schema-language/bin/ksl -o configs/prod/schemas/schema.zed configs/prod/schemas/src/*.ksl
+      # END: TO RBAC-CONFIG-ACTIONS
+
+      # - name: Commit changes
+      #   run: |
+      #     git add configs/
+      #     timestamp=$(date -u)
+      #     git commit -m "[GitHub] - Automated Schema Generation: ${timestamp} - ${GITHUB_SHA}" || exit 0
+
+
+      # STAGE GENERATION     
+      - name: Generating Schema from ksl files for stage
+        uses: RedHatInsights/rbac-config-actions/generate-schema@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch_name: generate-schema-stage
+          input_files: configs/stage/schemas/src/*.ksl
+          output_file_path: configs/stage/schemas/schema.zed
+      
+      - name: Create a PR with updated schemas for stage
+        run: |
+          if [ -n "$(git log --oneline origin/master..HEAD)" ]; then
+            gh pr create --fill-first -B master -H generate-schema-stage -t "[GitHub] - Automated Schema Generation";
+          else
+            echo "No new commits found between origin/master and generate-schema-stage";
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # PROD GENERATION
+      
+      - name: Generating Schema from ksl files for prod
+        uses: RedHatInsights/rbac-config-actions/generate-schema@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch_name: generate-schema-prod
+          input_files: configs/prod/schemas/src/*.ksl
+          output_file_path: configs/prod/schemas/schema.zed
+
+      - name: Create a PR with updated schemas for prod
+        run: |
+          if [ -n "$(git log --oneline origin/master..HEAD)" ]; then
+            gh pr create --fill-first -B master -H generate-schema-prod -t "[GitHub] - Automated Schema Generation";
+          else
+            echo "No new commits found between origin/master and generate-schema-prod";
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
