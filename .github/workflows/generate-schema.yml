@@ -27,8 +27,8 @@ jobs:
             
       - name: Run KSL compiler
         run: |
-          ./ksl-schema-language/bin/ksl -o configs/stage/schemas/schema.zed configs/stage/schemas/src/*.ksl
-          ./ksl-schema-language/bin/ksl -o configs/prod/schemas/schema.zed configs/prod/schemas/src/*.ksl
+          ./ksl-schema-language/bin/ksl -o configs/stage/schemas/schema.zed configs/stage/schemas/src/*.ksl configs/stage/schemas/src/*.json
+          ./ksl-schema-language/bin/ksl -o configs/prod/schemas/schema.zed configs/prod/schemas/src/*.ksl configs/prod/schemas/src/*.json
       
       - name: Remove KSL repo
         run: rm -rf ksl-schema-language/
