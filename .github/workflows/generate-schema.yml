@@ -38,4 +38,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'Automated schema generation'
-          title: Update [GitHub] - Automated Schema Generation
+          title: [GitHub] - Automated Schema Generation
