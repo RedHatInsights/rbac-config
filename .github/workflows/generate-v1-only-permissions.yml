@@ -1,0 +1,32 @@
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - configs/stage/schemas/src/**
+      - configs/stage/permissions/**
+      - configs/prod/schemas/src/**
+      - configs/prod/permissions/**
+permissions:
+  contents: write
+name: Generate V1-Only Permissions Data
+jobs:
+  generate_v1_permissions:
+    name: Generate V1-Only Permissions Data
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.7
+      - name: Run Generate V1-Only Permissions Data for stage
+        uses: RedHatInsights/rbac-config-actions/generate-v1-only-permissions@main
+        with:
+          ksl_src: configs/stage/schemas/src
+          rbac_permissions: configs/stage/permissions
+
+      - name: Run Generate V1-Only Permissions Data for prod
+        uses: RedHatInsights/rbac-config-actions/generate-v1-only-permissions@main
+        with:
+          ksl_src: configs/prod/schemas/src
+          rbac_permissions: configs/prod/permissions
+
+      # commit updated v1 permissions.
+      - uses: stefanzweifel/git-auto-commit-action@v5
