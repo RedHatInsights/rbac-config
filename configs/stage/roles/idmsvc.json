@@ -2,11 +2,12 @@
   "roles": [
     {
       "name": "Domains administrator",
-      "description": "Perform any available operation on any domain resource.",
+      "display_name": "Directory and Domain Services administrator",
+      "description": "Create, read, update and delete Directory and Domains Services registrations.",
       "system": true,
       "platform_default": false,
       "admin_default": true,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "idmsvc:token:create"
@@ -30,10 +31,11 @@
     },
     {
       "name": "Domains viewer",
-      "description": "Perform read-only operations on domain resources.",
+      "display_name": "Directory and Domain Services viewer",
+      "description": "Read Directory and Domains Services registrations.",
       "system": true,
       "platform_default": true,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "idmsvc:domains:list"
