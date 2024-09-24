@@ -1,14 +1,20 @@
 on:
-  push:
+  pull_request:
     branches:
       - master
-name: Schema generation
+permissions:
+  contents: write
+name: Schema generation & validation
 jobs:
   generate_schema:
-    name: Generate Schema
+    name: Generate & Validate Schema
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.7
+        with:
+          ref: ${{ github.head_ref }}
+
+      # generate schemas
       - name: Clone ksl-schema-language repo
         run: git clone --depth=1 https://github.com/project-kessel/ksl-schema-language.git
 
@@ -33,9 +39,16 @@ jobs:
       - name: Remove KSL repo
         run: rm -rf ksl-schema-language/
 
-      - name: Create a PR with Schema changes
-        uses: peter-evans/create-pull-request@v7
+      # commit changed schema back to PR.
+      - uses: stefanzweifel/git-auto-commit-action@v5
+
+      # validate generated schemas
+      - name: Validate Stage Schema
+        uses: "authzed/action-spicedb-validate@v1"
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'Automated schema generation'
-          title: [GitHub] - Automated Schema Generation
+          validationfile: "configs/stage/schemas/schema.zed"
+      - name: Validate Prod Schema
+        uses: "authzed/action-spicedb-validate@v1"
+        with:
+          validationfile: "configs/prod/schemas/schema.zed"
+
