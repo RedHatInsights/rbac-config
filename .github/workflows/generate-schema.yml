@@ -2,6 +2,9 @@ on:
   pull_request:
     branches:
       - master
+    paths:
+      - configs/stage/schemas/src/**
+      - configs/prod/schemas/src/**
 permissions:
   contents: write
 name: Schema generation & validation
