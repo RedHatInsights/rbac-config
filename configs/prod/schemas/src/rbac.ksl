@@ -78,3 +78,10 @@ public extension add_permission(workspace_perm) {
         relation `${workspace_perm}`: user_grant.`${workspace_perm}` or parent.`${workspace_perm}`
     }
 }
+
+// Adds a permission that's only assignable to the role, for migration purposes
+public extension add_v1only_permission(perm) {
+    type role {
+        private relation `${perm}`: [bool]
+    }
+}
