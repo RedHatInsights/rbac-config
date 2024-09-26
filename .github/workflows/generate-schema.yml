@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.7
         with:
-          ref: ${{ github.head_ref }}
+          fetch-depth: 0
 
       # generate ksil json file
       - name: Run Generate V1-Only Permissions Data for stage
