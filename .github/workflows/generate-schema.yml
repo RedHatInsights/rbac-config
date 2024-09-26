@@ -7,6 +7,8 @@ on:
       - configs/stage/permissions/**
       - configs/prod/schemas/src/**
       - configs/prod/permissions/**
+      - configs/stage/schemas/schema.zed
+      - configs/prod/schemas/schema.zed
 permissions:
   contents: write
 name: Schema generation & validation
@@ -17,17 +19,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.7
 
-      # generate ksil json files
+      # generate ksil json file
       - name: Run Generate V1-Only Permissions Data for stage
-        uses: RedHatInsights/rbac-config-actions/generate-v1-only-permissions@main
+        uses: wscalf/rbac-config-actions/generate-v1-only-permissions@add-generate-v1-only-permissions-action
         with:
-          ksl_src: configs/stage/schemas/src
+          ksl: configs/stage/schemas
           rbac_permissions: configs/stage/permissions
 
       - name: Run Generate V1-Only Permissions Data for prod
-        uses: RedHatInsights/rbac-config-actions/generate-v1-only-permissions@main
+        uses: wscalf/rbac-config-actions/generate-v1-only-permissions@add-generate-v1-only-permissions-action
         with:
-          ksl_src: configs/prod/schemas/src
+          ksl: configs/prod/schemas
           rbac_permissions: configs/prod/permissions
 
       # generate schemas
@@ -58,9 +60,6 @@ jobs:
           rm configs/stage/schemas/src/rbac_v1_permissions.json
           rm configs/prod/schemas/src/rbac_v1_permissions.json
 
-      # commit changed schema back to PR.
-      - uses: stefanzweifel/git-auto-commit-action@v5
-
       # validate generated schemas
       - name: Validate Stage Schema
         uses: "authzed/action-spicedb-validate@v1"
@@ -70,3 +69,6 @@ jobs:
         uses: "authzed/action-spicedb-validate@v1"
         with:
           validationfile: "configs/prod/schemas/schema.zed"
+
+      # commit changed schema back to PR.
+      - uses: stefanzweifel/git-auto-commit-action@v5
