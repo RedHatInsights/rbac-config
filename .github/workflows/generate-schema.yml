@@ -17,14 +17,7 @@ jobs:
     name: Generate & Validate Schema
     runs-on: ubuntu-latest
     steps:
-        
-      permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
-      contents: write
-
       - uses: actions/checkout@v4.1.7
-        with:
-          fetch-depth: 0
 
       # generate ksil json file
       - name: Run Generate V1-Only Permissions Data for stage
@@ -77,5 +70,10 @@ jobs:
         with:
           validationfile: "configs/prod/schemas/schema.zed"
 
-      # commit changed schema back to PR.
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      # open a PR with required schema changes.
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'Updated Schema files for stage & prod'
+          title: [GitHub] - Automated Schema Generation
