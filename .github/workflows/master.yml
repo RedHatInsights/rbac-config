@@ -2,24 +2,45 @@ on:
   push:
     branches:
       - master
-name: Config Conversion
+name: Config Conversion & Schema generation
 jobs:
-  convert_config:
-    name: Convert Config
+  convert_config_generate_schema:
+    name: Convert Config & Generate Schema
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.7
       - name: Configure git to trust the workspace despite the different owner
         run: git config --global --add safe.directory "/github/workspace"
-      - name: Converting config to configmaps
-        uses: RedHatInsights/rbac-config-actions/convert-config@main
+      # generate ksil json file
+      - name: Run Generate V1-Only Permissions Data for stage
+        uses: wscalf/rbac-config-actions/generate-v1-only-permissions@add-generate-v1-only-permissions-action
+        with:
+          ksl: configs/stage/schemas
+          rbac_permissions: configs/stage/permissions
+      - name: Run Generate V1-Only Permissions Data for prod
+        uses: wscalf/rbac-config-actions/generate-v1-only-permissions@add-generate-v1-only-permissions-action
+        with:
+          ksl: configs/prod/schemas
+          rbac_permissions: configs/prod/permissions
+      - name: Converting config to configmaps & generating schema
+        uses: lennysgarage/rbac-config-actions/convert-config@add-ksl-schema-generation
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch_name: configmaps
+          branch_name: configmaps-schema
+      # validate generated schemas
+      - name: Validate Stage Schema
+        uses: "authzed/action-spicedb-validate@v1"
+        with:
+          validationfile: "configs/stage/schemas/schema.zed"
+      - name: Validate Prod Schema
+        uses: "authzed/action-spicedb-validate@v1"
+        with:
+          validationfile: "configs/prod/schemas/schema.zed"
+
       - name: Create a PR with Config Changes
         run: |
           if [ -n "$(git log --oneline origin/master..HEAD)" ]; then
-            gh pr create --fill-first -B master -H configmaps -t "[GitHub] - Automated ConfigMap Generation";
+            gh pr create --fill-first -B master -H configmaps-schema -t "[GitHub] - Automated ConfigMap & Schema Generation";
           else
             echo "No new commits found between origin/master and configmaps";
           fi
