@@ -17,6 +17,11 @@ jobs:
     name: Generate & Validate Schema
     runs-on: ubuntu-latest
     steps:
+        
+      permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+
       - uses: actions/checkout@v4.1.7
         with:
           fetch-depth: 0
