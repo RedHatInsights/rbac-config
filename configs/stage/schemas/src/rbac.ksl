@@ -1,0 +1,87 @@
+version 0.1
+namespace rbac
+
+// TODO: do we need to distinguish between service account and user principles as separate types?
+public type user {} //public for now since the [bool] type requires rbac/user to be accessible
+
+// Other types for structuring access are marked internal but can be made public if services are intended to relate to them
+internal type realm {
+    relation user_grant: [Any role_binding]
+}
+
+internal type tenant {
+    relation realm: [ExactlyOne realm]
+    relation user_grant: [Any role_binding]
+    relation member: [Any user]
+}
+
+internal type group {
+    relation owner: [ExactlyOne tenant]
+    relation member: [Any user or group.member]
+}
+
+internal type role {}
+
+internal type role_binding { // TODO: revisit cardinality based on clamping decisions
+    relation subject: [Any user or group.member]
+    relation granted: [Any role]
+}
+
+public type workspace { //Workspace is public so services can place resources into workspaces
+    relation parent: [ExactlyOne workspace or tenant]
+    relation user_grant: [Any role_binding]
+}
+
+// Adds a permission that's checkable at the workspace but granted by assigning a different, V1 permission to the role
+public extension add_v1_based_permission(v1_perm, v2_perm) {
+    type role {
+        allow_duplicates private relation `${v1_perm}`: [bool] //v1 relations are private so they can only be used within the role type (for the corresponding v2 permissions)
+        relation `${v2_perm}`: `${v1_perm}`
+    }
+
+    type role_binding {
+        relation `${v2_perm}`: subject and granted.`${v2_perm}`
+    }
+
+    type realm {
+        relation `${v2_perm}`: user_grant.`${v2_perm}`
+    }
+
+    type tenant {
+        relation `${v2_perm}`: user_grant.`${v2_perm}` or realm.`${v2_perm}`
+    }
+
+    type workspace {
+        relation `${v2_perm}`: user_grant.`${v2_perm}` or parent.`${v2_perm}`
+    }
+}
+
+// Adds a permission that's both assignable to a role and checkable at a workspace
+public extension add_permission(workspace_perm) {
+    type role {
+        relation `${workspace_perm}`: [bool]
+    }
+
+    type role_binding {
+        relation `${workspace_perm}`: subject and granted.`${workspace_perm}`
+    }
+
+    type realm {
+        relation `${workspace_perm}`: user_grant.`${workspace_perm}`
+    }
+
+    type tenant {
+        relation `${workspace_perm}`: user_grant.`${workspace_perm}` or realm.`${workspace_perm}`
+    }
+
+    type workspace {
+        relation `${workspace_perm}`: user_grant.`${workspace_perm}` or parent.`${workspace_perm}`
+    }
+}
+
+// Adds a permission that's only assignable to the role, for migration purposes
+public extension add_v1only_permission(perm) {
+    type role {
+        private relation `${perm}`: [bool]
+    }
+}
