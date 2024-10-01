@@ -148,6 +148,17 @@ objects:
               },
               {
                   "verb": "write"
+              },
+              {
+                  "verb": "upload"
+              }
+          ],
+          "templates": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
               }
           ],
           "*": [
