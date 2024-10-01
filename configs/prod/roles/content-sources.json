@@ -1,32 +1,81 @@
 {
-    "roles": [
-      {
-        "name": "Repositories administrator",
-        "description": "Perform any available operation on any repositories resource.",
-        "system": true,
-        "platform_default": false,
-        "admin_default": true,
-        "version": 3,
-        "access": [
-          {
-            "permission": "content-sources:repositories:read"
-          },
-          {
-            "permission": "content-sources:repositories:write"
-          }
-        ]
-      },
-      {
-        "name": "Repositories viewer",
-        "description": "Perform read operations on repositories resources.",
-        "system": true,
-        "platform_default": true,
-        "version": 3,
-        "access": [
-          {
-            "permission": "content-sources:repositories:read"
-          }
-        ]
-      }
-    ]
-  }
+  "roles": [
+    {
+      "name": "Repositories administrator",
+      "description": "Perform any available operation on any repositories resource.",
+      "system": true,
+      "platform_default": false,
+      "admin_default": true,
+      "version": 4,
+      "access": [
+        {
+          "permission": "content-sources:repositories:read"
+        },
+        {
+          "permission": "content-sources:repositories:write"
+        },
+        {
+          "permission": "content-sources:repositories:upload"
+        }
+      ]
+    },
+    {
+      "name": "Repositories viewer",
+      "description": "Perform read operations on repositories resources.",
+      "system": true,
+      "platform_default": true,
+      "version": 3,
+      "access": [
+        {
+          "permission": "content-sources:repositories:read"
+        }
+      ]
+    },
+    {
+      "name": "Repositories uploader",
+      "description": "Perform content upload to repositories.",
+      "system": true,
+      "platform_default": false,
+      "version": 1,
+      "access": [
+        {
+          "permission": "content-sources:repositories:upload"
+        }
+      ]
+    },
+    {
+      "name": "Content Template administrator",
+      "description": "Perform any available operation on any Content Template resource.",
+      "system": true,
+      "platform_default": false,
+      "admin_default": true,
+      "version": 1,
+      "access": [
+        {
+          "permission": "content-sources:repositories:read"
+        },
+        {
+          "permission": "content-sources:templates:read"
+        },
+        {
+          "permission": "content-sources:templates:write"
+        }
+      ]
+    },
+    {
+      "name": "Content Template viewer",
+      "description": "Perform read-only operations on Content Template resources.",
+      "system": true,
+      "platform_default": true,
+      "version": 1,
+      "access": [
+        {
+          "permission": "content-sources:repositories:read"
+        },
+        {
+          "permission": "content-sources:templates:read"
+        }
+      ]
+    }
+  ]
+}
