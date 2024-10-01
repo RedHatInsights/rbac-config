@@ -30,8 +30,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch_name: configmaps-schema
-          ksl_src_stage: configs/stage/schemas
-          ksl_src_prod: configs/prod/schemas
 
       # validate generated schemas
       - name: Validate Stage Schema
