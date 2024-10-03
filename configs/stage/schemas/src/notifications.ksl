@@ -10,7 +10,7 @@ type integration {
     @rbac.add_v1_based_permission(app:'notifications', resource:'integrations', verb:'read', v2_perm:'notifications_integration_subscribe_drawer')
     @rbac.add_v1_based_permission(app:'notifications', resource:'integrations', verb:'read', v2_perm:'notifications_integration_subscribe_email')
     @rbac.add_v1_based_permission(app:'notifications', resource:'events', verb:'read', v2_perm:'notifications_event_log_view')
-    relation workspace: [ExctlyOn rbac.workspace]
+    relation workspace: [ExalyOn rbac.workspace]
 
     @rbac.add_v1_based_permission(app:'notifications', resource:'integrations', verb:'read', v2_perm:'notifications_integration_view')
     relation view: workspace.notifications_integration_view
