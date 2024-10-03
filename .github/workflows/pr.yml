@@ -37,21 +37,6 @@ jobs:
           ksl: configs/prod/schemas
           rbac_permissions: configs/prod/permissions
 
-      # convert configmaps & generate schemas
-      # same action as for generating, but we will not open a PR.
-      # this may be dangerous because if an existing branch is open with changes
-      # and someone else opens a PR that would nuke the branch/PR during just the run of this...
-      # without any changes being made.
-
-      # going to need to work around this...
-      # either need a action or copy the same commands.
-
-      # - name: Converting config to configmaps & generating schema
-      #   uses: RedHatInsights/rbac-config-actions/convert-config@main
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     branch_name: configmaps-schema
-
       - name: Generate & validate schema
         uses: lennysgarage/rbac-config-actions/validate-schema@validate-schema
         with:
