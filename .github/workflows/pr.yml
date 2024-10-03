@@ -38,7 +38,7 @@ jobs:
           rbac_permissions: configs/prod/permissions
 
       - name: Generate & validate schema
-        uses: lennysgarage/rbac-config-actions/validate-schema@validate-schema
+        uses: RedHatInsights/rbac-config-actions/validate-schema@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
