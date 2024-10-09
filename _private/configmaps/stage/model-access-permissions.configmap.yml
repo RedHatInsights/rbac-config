@@ -399,6 +399,11 @@ objects:
               {
                   "verb": "read"
               }
+          ],
+          "acknowledgements": [
+              {
+                  "verb": "write"
+              }
           ]
       }
     notifications.json: |
