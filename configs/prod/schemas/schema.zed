@@ -97,26 +97,26 @@ definition rbac/role {
 	permission notifications_integration_delete = notifications_integrations_write + notifications_integrations_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_integration_delete
 	permission notifications_integration_disable = notifications_integrations_write + notifications_integrations_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_integration_disable
 	permission notifications_integration_enable = notifications_integrations_write + notifications_integrations_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_integration_enable
-	permission advisor_all_read = t_advisor_all_read
-	relation t_advisor_all_read: rbac/principal:*
-	permission advisor_all_all = t_advisor_all_all
-	relation t_advisor_all_all: rbac/principal:*
-	permission advisor_disable_recommendations_write = t_advisor_disable_recommendations_write
-	relation t_advisor_disable_recommendations_write: rbac/principal:*
 	permission advisor_weekly_email_read = t_advisor_weekly_email_read
 	relation t_advisor_weekly_email_read: rbac/principal:*
 	permission advisor_recommendation_results_read = t_advisor_recommendation_results_read
 	relation t_advisor_recommendation_results_read: rbac/principal:*
 	permission advisor_exports_read = t_advisor_exports_read
 	relation t_advisor_exports_read: rbac/principal:*
-	permission ansible_wisdom_admin_dashboard_chart_recommendations_read = t_ansible_wisdom_admin_dashboard_chart_recommendations_read
-	relation t_ansible_wisdom_admin_dashboard_chart_recommendations_read: rbac/principal:*
-	permission ansible_wisdom_admin_dashboard_chart_user_sentiment_read = t_ansible_wisdom_admin_dashboard_chart_user_sentiment_read
-	relation t_ansible_wisdom_admin_dashboard_chart_user_sentiment_read: rbac/principal:*
+	permission advisor_all_read = t_advisor_all_read
+	relation t_advisor_all_read: rbac/principal:*
+	permission advisor_all_all = t_advisor_all_all
+	relation t_advisor_all_all: rbac/principal:*
+	permission advisor_disable_recommendations_write = t_advisor_disable_recommendations_write
+	relation t_advisor_disable_recommendations_write: rbac/principal:*
 	permission ansible_wisdom_admin_dashboard_chart_module_usage_read = t_ansible_wisdom_admin_dashboard_chart_module_usage_read
 	relation t_ansible_wisdom_admin_dashboard_chart_module_usage_read: rbac/principal:*
 	permission ansible_wisdom_admin_dashboard_chart_active_users_read = t_ansible_wisdom_admin_dashboard_chart_active_users_read
 	relation t_ansible_wisdom_admin_dashboard_chart_active_users_read: rbac/principal:*
+	permission ansible_wisdom_admin_dashboard_chart_recommendations_read = t_ansible_wisdom_admin_dashboard_chart_recommendations_read
+	relation t_ansible_wisdom_admin_dashboard_chart_recommendations_read: rbac/principal:*
+	permission ansible_wisdom_admin_dashboard_chart_user_sentiment_read = t_ansible_wisdom_admin_dashboard_chart_user_sentiment_read
+	relation t_ansible_wisdom_admin_dashboard_chart_user_sentiment_read: rbac/principal:*
 	permission automation_analytics_all_read = t_automation_analytics_all_read
 	relation t_automation_analytics_all_read: rbac/principal:*
 	permission automation_analytics_all_write = t_automation_analytics_all_write
@@ -141,8 +141,6 @@ definition rbac/role {
 	relation t_compliance_policy_delete: rbac/principal:*
 	permission compliance_policy_write = t_compliance_policy_write
 	relation t_compliance_policy_write: rbac/principal:*
-	permission config_manager_state_changes_read = t_config_manager_state_changes_read
-	relation t_config_manager_state_changes_read: rbac/principal:*
 	permission config_manager_activation_keys_read = t_config_manager_activation_keys_read
 	relation t_config_manager_activation_keys_read: rbac/principal:*
 	permission config_manager_activation_keys_write = t_config_manager_activation_keys_write
@@ -153,6 +151,8 @@ definition rbac/role {
 	relation t_config_manager_state_read: rbac/principal:*
 	permission config_manager_state_write = t_config_manager_state_write
 	relation t_config_manager_state_write: rbac/principal:*
+	permission config_manager_state_changes_read = t_config_manager_state_changes_read
+	relation t_config_manager_state_changes_read: rbac/principal:*
 	permission content_sources_repositories_read = t_content_sources_repositories_read
 	relation t_content_sources_repositories_read: rbac/principal:*
 	permission content_sources_repositories_write = t_content_sources_repositories_write
@@ -165,6 +165,40 @@ definition rbac/role {
 	relation t_content_sources_templates_write: rbac/principal:*
 	permission content_sources_all_all = t_content_sources_all_all
 	relation t_content_sources_all_all: rbac/principal:*
+	permission cost_management_azure_subscription_guid_all = t_cost_management_azure_subscription_guid_all
+	relation t_cost_management_azure_subscription_guid_all: rbac/principal:*
+	permission cost_management_azure_subscription_guid_read = t_cost_management_azure_subscription_guid_read
+	relation t_cost_management_azure_subscription_guid_read: rbac/principal:*
+	permission cost_management_gcp_account_all = t_cost_management_gcp_account_all
+	relation t_cost_management_gcp_account_all: rbac/principal:*
+	permission cost_management_gcp_account_read = t_cost_management_gcp_account_read
+	relation t_cost_management_gcp_account_read: rbac/principal:*
+	permission cost_management_oci_payer_tenant_id_all = t_cost_management_oci_payer_tenant_id_all
+	relation t_cost_management_oci_payer_tenant_id_all: rbac/principal:*
+	permission cost_management_oci_payer_tenant_id_read = t_cost_management_oci_payer_tenant_id_read
+	relation t_cost_management_oci_payer_tenant_id_read: rbac/principal:*
+	permission cost_management_cost_model_all = t_cost_management_cost_model_all
+	relation t_cost_management_cost_model_all: rbac/principal:*
+	permission cost_management_cost_model_read = t_cost_management_cost_model_read
+	relation t_cost_management_cost_model_read: rbac/principal:*
+	permission cost_management_cost_model_write = t_cost_management_cost_model_write
+	relation t_cost_management_cost_model_write: rbac/principal:*
+	permission cost_management_settings_all = t_cost_management_settings_all
+	relation t_cost_management_settings_all: rbac/principal:*
+	permission cost_management_settings_read = t_cost_management_settings_read
+	relation t_cost_management_settings_read: rbac/principal:*
+	permission cost_management_settings_write = t_cost_management_settings_write
+	relation t_cost_management_settings_write: rbac/principal:*
+	permission cost_management_all_all = t_cost_management_all_all
+	relation t_cost_management_all_all: rbac/principal:*
+	permission cost_management_aws_account_all = t_cost_management_aws_account_all
+	relation t_cost_management_aws_account_all: rbac/principal:*
+	permission cost_management_aws_account_read = t_cost_management_aws_account_read
+	relation t_cost_management_aws_account_read: rbac/principal:*
+	permission cost_management_aws_organizational_unit_all = t_cost_management_aws_organizational_unit_all
+	relation t_cost_management_aws_organizational_unit_all: rbac/principal:*
+	permission cost_management_aws_organizational_unit_read = t_cost_management_aws_organizational_unit_read
+	relation t_cost_management_aws_organizational_unit_read: rbac/principal:*
 	permission cost_management_gcp_project_all = t_cost_management_gcp_project_all
 	relation t_cost_management_gcp_project_all: rbac/principal:*
 	permission cost_management_gcp_project_read = t_cost_management_gcp_project_read
@@ -181,40 +215,6 @@ definition rbac/role {
 	relation t_cost_management_openshift_project_all: rbac/principal:*
 	permission cost_management_openshift_project_read = t_cost_management_openshift_project_read
 	relation t_cost_management_openshift_project_read: rbac/principal:*
-	permission cost_management_settings_all = t_cost_management_settings_all
-	relation t_cost_management_settings_all: rbac/principal:*
-	permission cost_management_settings_read = t_cost_management_settings_read
-	relation t_cost_management_settings_read: rbac/principal:*
-	permission cost_management_settings_write = t_cost_management_settings_write
-	relation t_cost_management_settings_write: rbac/principal:*
-	permission cost_management_all_all = t_cost_management_all_all
-	relation t_cost_management_all_all: rbac/principal:*
-	permission cost_management_aws_account_all = t_cost_management_aws_account_all
-	relation t_cost_management_aws_account_all: rbac/principal:*
-	permission cost_management_aws_account_read = t_cost_management_aws_account_read
-	relation t_cost_management_aws_account_read: rbac/principal:*
-	permission cost_management_azure_subscription_guid_all = t_cost_management_azure_subscription_guid_all
-	relation t_cost_management_azure_subscription_guid_all: rbac/principal:*
-	permission cost_management_azure_subscription_guid_read = t_cost_management_azure_subscription_guid_read
-	relation t_cost_management_azure_subscription_guid_read: rbac/principal:*
-	permission cost_management_oci_payer_tenant_id_all = t_cost_management_oci_payer_tenant_id_all
-	relation t_cost_management_oci_payer_tenant_id_all: rbac/principal:*
-	permission cost_management_oci_payer_tenant_id_read = t_cost_management_oci_payer_tenant_id_read
-	relation t_cost_management_oci_payer_tenant_id_read: rbac/principal:*
-	permission cost_management_cost_model_all = t_cost_management_cost_model_all
-	relation t_cost_management_cost_model_all: rbac/principal:*
-	permission cost_management_cost_model_read = t_cost_management_cost_model_read
-	relation t_cost_management_cost_model_read: rbac/principal:*
-	permission cost_management_cost_model_write = t_cost_management_cost_model_write
-	relation t_cost_management_cost_model_write: rbac/principal:*
-	permission cost_management_aws_organizational_unit_all = t_cost_management_aws_organizational_unit_all
-	relation t_cost_management_aws_organizational_unit_all: rbac/principal:*
-	permission cost_management_aws_organizational_unit_read = t_cost_management_aws_organizational_unit_read
-	relation t_cost_management_aws_organizational_unit_read: rbac/principal:*
-	permission cost_management_gcp_account_all = t_cost_management_gcp_account_all
-	relation t_cost_management_gcp_account_all: rbac/principal:*
-	permission cost_management_gcp_account_read = t_cost_management_gcp_account_read
-	relation t_cost_management_gcp_account_read: rbac/principal:*
 	permission drift_all_all = t_drift_all_all
 	relation t_drift_all_all: rbac/principal:*
 	permission drift_comparisons_read = t_drift_comparisons_read
@@ -271,6 +271,8 @@ definition rbac/role {
 	relation t_malware_detection_all_all: rbac/principal:*
 	permission malware_detection_all_read = t_malware_detection_all_read
 	relation t_malware_detection_all_read: rbac/principal:*
+	permission malware_detection_acknowledgements_write = t_malware_detection_acknowledgements_write
+	relation t_malware_detection_acknowledgements_write: rbac/principal:*
 	permission ocp_advisor_all_all = t_ocp_advisor_all_all
 	relation t_ocp_advisor_all_all: rbac/principal:*
 	permission ocp_advisor_toggle_recommendations_write = t_ocp_advisor_toggle_recommendations_write
@@ -299,12 +301,6 @@ definition rbac/role {
 	relation t_policies_policies_write: rbac/principal:*
 	permission policies_all_all = t_policies_all_all
 	relation t_policies_all_all: rbac/principal:*
-	permission provisioning_pubkey_all = t_provisioning_pubkey_all
-	relation t_provisioning_pubkey_all: rbac/principal:*
-	permission provisioning_pubkey_read = t_provisioning_pubkey_read
-	relation t_provisioning_pubkey_read: rbac/principal:*
-	permission provisioning_pubkey_write = t_provisioning_pubkey_write
-	relation t_provisioning_pubkey_write: rbac/principal:*
 	permission provisioning_reservation_all = t_provisioning_reservation_all
 	relation t_provisioning_reservation_all: rbac/principal:*
 	permission provisioning_reservation_read = t_provisioning_reservation_read
@@ -335,22 +331,28 @@ definition rbac/role {
 	relation t_provisioning_source_all: rbac/principal:*
 	permission provisioning_source_read = t_provisioning_source_read
 	relation t_provisioning_source_read: rbac/principal:*
-	permission rbac_all_all = t_rbac_all_all
-	relation t_rbac_all_all: rbac/principal:*
+	permission provisioning_pubkey_all = t_provisioning_pubkey_all
+	relation t_provisioning_pubkey_all: rbac/principal:*
+	permission provisioning_pubkey_read = t_provisioning_pubkey_read
+	relation t_provisioning_pubkey_read: rbac/principal:*
+	permission provisioning_pubkey_write = t_provisioning_pubkey_write
+	relation t_provisioning_pubkey_write: rbac/principal:*
 	permission rbac_principal_read = t_rbac_principal_read
 	relation t_rbac_principal_read: rbac/principal:*
-	permission remediations_remediation_read = t_remediations_remediation_read
-	relation t_remediations_remediation_read: rbac/principal:*
-	permission remediations_remediation_write = t_remediations_remediation_write
-	relation t_remediations_remediation_write: rbac/principal:*
-	permission remediations_remediation_execute = t_remediations_remediation_execute
-	relation t_remediations_remediation_execute: rbac/principal:*
+	permission rbac_all_all = t_rbac_all_all
+	relation t_rbac_all_all: rbac/principal:*
 	permission remediations_all_all = t_remediations_all_all
 	relation t_remediations_all_all: rbac/principal:*
 	permission remediations_all_read = t_remediations_all_read
 	relation t_remediations_all_read: rbac/principal:*
 	permission remediations_all_write = t_remediations_all_write
 	relation t_remediations_all_write: rbac/principal:*
+	permission remediations_remediation_read = t_remediations_remediation_read
+	relation t_remediations_remediation_read: rbac/principal:*
+	permission remediations_remediation_write = t_remediations_remediation_write
+	relation t_remediations_remediation_write: rbac/principal:*
+	permission remediations_remediation_execute = t_remediations_remediation_execute
+	relation t_remediations_remediation_execute: rbac/principal:*
 	permission ros_all_all = t_ros_all_all
 	relation t_ros_all_all: rbac/principal:*
 	permission ros_all_read = t_ros_all_read
@@ -363,6 +365,12 @@ definition rbac/role {
 	relation t_staleness_staleness_write: rbac/principal:*
 	permission staleness_staleness_all = t_staleness_staleness_all
 	relation t_staleness_staleness_all: rbac/principal:*
+	permission subscriptions_cloud_access_read = t_subscriptions_cloud_access_read
+	relation t_subscriptions_cloud_access_read: rbac/principal:*
+	permission subscriptions_cloud_access_write = t_subscriptions_cloud_access_write
+	relation t_subscriptions_cloud_access_write: rbac/principal:*
+	permission subscriptions_all_all = t_subscriptions_all_all
+	relation t_subscriptions_all_all: rbac/principal:*
 	permission subscriptions_reports_read = t_subscriptions_reports_read
 	relation t_subscriptions_reports_read: rbac/principal:*
 	permission subscriptions_manifests_read = t_subscriptions_manifests_read
@@ -377,14 +385,16 @@ definition rbac/role {
 	relation t_subscriptions_products_read: rbac/principal:*
 	permission subscriptions_products_write = t_subscriptions_products_write
 	relation t_subscriptions_products_write: rbac/principal:*
-	permission subscriptions_cloud_access_read = t_subscriptions_cloud_access_read
-	relation t_subscriptions_cloud_access_read: rbac/principal:*
-	permission subscriptions_cloud_access_write = t_subscriptions_cloud_access_write
-	relation t_subscriptions_cloud_access_write: rbac/principal:*
-	permission subscriptions_all_all = t_subscriptions_all_all
-	relation t_subscriptions_all_all: rbac/principal:*
 	permission tasks_all_all = t_tasks_all_all
 	relation t_tasks_all_all: rbac/principal:*
+	permission vulnerability_cve_business_risk_and_status_write = t_vulnerability_cve_business_risk_and_status_write
+	relation t_vulnerability_cve_business_risk_and_status_write: rbac/principal:*
+	permission vulnerability_system_cve_status_write = t_vulnerability_system_cve_status_write
+	relation t_vulnerability_system_cve_status_write: rbac/principal:*
+	permission vulnerability_advanced_report_read = t_vulnerability_advanced_report_read
+	relation t_vulnerability_advanced_report_read: rbac/principal:*
+	permission vulnerability_report_and_export_read = t_vulnerability_report_and_export_read
+	relation t_vulnerability_report_and_export_read: rbac/principal:*
 	permission vulnerability_system_opt_out_write = t_vulnerability_system_opt_out_write
 	relation t_vulnerability_system_opt_out_write: rbac/principal:*
 	permission vulnerability_system_opt_out_read = t_vulnerability_system_opt_out_read
@@ -399,14 +409,6 @@ definition rbac/role {
 	relation t_vulnerability_all_all: rbac/principal:*
 	permission vulnerability_vulnerability_results_read = t_vulnerability_vulnerability_results_read
 	relation t_vulnerability_vulnerability_results_read: rbac/principal:*
-	permission vulnerability_cve_business_risk_and_status_write = t_vulnerability_cve_business_risk_and_status_write
-	relation t_vulnerability_cve_business_risk_and_status_write: rbac/principal:*
-	permission vulnerability_system_cve_status_write = t_vulnerability_system_cve_status_write
-	relation t_vulnerability_system_cve_status_write: rbac/principal:*
-	permission vulnerability_advanced_report_read = t_vulnerability_advanced_report_read
-	relation t_vulnerability_advanced_report_read: rbac/principal:*
-	permission vulnerability_report_and_export_read = t_vulnerability_report_and_export_read
-	relation t_vulnerability_report_and_export_read: rbac/principal:*
 }
 
 definition rbac/role_binding {
