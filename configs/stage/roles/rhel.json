@@ -69,6 +69,7 @@
                 "operation": "equal",
                 "value": "remediations"
         },
+        ]
         {
           "permission": "policies:policies:read"
         },
