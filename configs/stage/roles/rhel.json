@@ -438,5 +438,8 @@
           "permission": "vulnerability:toggle_cves_without_errata:write"
         }
       ]
-}
-            
+    }
+  ]
+    }
+  ]
+}         
