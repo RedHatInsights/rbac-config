@@ -5,7 +5,7 @@
       "display_name": "RHEL viewer",
       "description": "Grants read-only access to RHEL Insights. Users can view system configs, compliance reports, inventory data, patch info, vulnerabilities and more to observe the state of resources/activities, but can’t perform actions other than generating activation keys.",
       "system": true,
-      "platform_default": false, 
+      "platform_default": false,
       "admin_default": false,
       "version": 1,
       "access": [
@@ -68,8 +68,10 @@
                 "key": "service",
                 "operation": "equal",
                 "value": "remediations"
-        }}
-        ]},
+              }
+            }
+          ]
+        },
         {
           "permission": "policies:policies:read"
         },
@@ -98,18 +100,18 @@
           "permission": "vulnerability:*:read"
         }
       ]
-    }
+    },
     {
       "name": "RHEL operator",
       "display_name": "RHEL operator",
       "description": "Grants edit access to system configs, inventory, policies, and notifications/integrations. View compliance reports, patch info, malware detections, and recommendations. Initiate remediations, manage staleness data and modify vulnerability settings.",
       "system": true,
-      "platform_default": false, 
+      "platform_default": false,
       "admin_default": false,
       "version": 1,
       "access": [
         {
-         "permission": "advisor:*:*"
+          "permission": "advisor:*:*"
         },
         {
           "permission": "compliance:policy:read"
@@ -179,7 +181,7 @@
         },
         {
           "permission": "patch:system:write"
-        },        
+        },
         {
           "permission": "patch:template:write"
         },
@@ -191,8 +193,10 @@
                 "key": "service",
                 "operation": "equal",
                 "value": "remediations"
-        }}
-        ]},
+              }
+            }
+          ]
+        },
         {
           "permission": "policies:policies:read"
         },
@@ -216,7 +220,7 @@
         },
         {
           "sources": "sources:*:*"
-        }
+        },
         {
           "permission": "staleness:staleness:read"
         },
@@ -237,24 +241,26 @@
         },
         {
           "permission": "vulnerability:*:read"
-        }
+        },
         {
           "permission": "vulnerability:cve.business_risk_and_status:write"
         },
         {
           "permission": "vulnerability:system.opt_out:write"
         }
+      ]
+    },
     {
       "name": "RHEL admin",
       "display_name": "RHEL admin",
       "description": "Grants full access to RHEL system configs, inventory, compliance, notifications, patch management, remediations, malware detection, and advisor. View/modify vulnerability settings.",
       "system": true,
-      "platform_default": false, 
+      "platform_default": false,
       "admin_default": false,
       "version": 1,
       "access": [
         {
-         "permission": "advisor:*:*"
+          "permission": "advisor:*:*"
         },
         {
           "permission": "compliance:policy:read"
@@ -351,7 +357,7 @@
         },
         {
           "permission": "patch:system:write"
-        },        
+        },
         {
           "permission": "patch:template:write"
         },
@@ -363,8 +369,10 @@
                 "key": "service",
                 "operation": "equal",
                 "value": "remediations"
-        }}
-        ]},
+              }
+            }
+          ]
+        },
         {
           "permission": "policies:policies:read"
         },
@@ -397,7 +405,7 @@
         },
         {
           "sources": "sources:*:*"
-        }
+        },
         {
           "permission": "staleness:staleness:read"
         },
@@ -421,25 +429,23 @@
         },
         {
           "permission": "vulnerability:*:read"
-        }
+        },
         {
           "permission": "vulnerability:cve.business_risk_and_status:write"
         },
         {
           "permission": "vulnerability:system.opt_out:write"
-        }
+        },
         {
           "permission": "vulnerability:*:*"
-        }
+        },
         {
           "permission": "vulnerability:system.cve.status:write"
-        }
+        },
         {
           "permission": "vulnerability:toggle_cves_without_errata:write"
         }
       ]
     }
   ]
-    }
-  ]
-}         
+}
