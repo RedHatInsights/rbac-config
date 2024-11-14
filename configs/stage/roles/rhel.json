@@ -10,7 +10,7 @@
       "version": 1,
       "access": [
         {
-          "permission": "advisor:*read"
+          "permission": "advisor:*:read"
         },
         {
           "permission": "compliance:policy:read"
@@ -34,10 +34,10 @@
           "permission": "config-manager:state-changes:read"
         },
         {
-            "permission": "content-sources:repositories:read"
+          "permission": "content-sources:repositories:read"
         },
         {
-            "permission": "content-sources:templates:read"
+          "permission": "content-sources:templates:read"
         },
         {
           "permission": "integrations:endpoints:read"
@@ -77,7 +77,7 @@
           "permission": "remediations:remediation:read"
         },
         {
-            "permission": "ros:*:read"
+          "permission": "ros:*:read"
         },
         {
           "permission": "staleness:staleness:read"
@@ -99,6 +99,344 @@
         }
       ]
     }
-  ]
+    {
+      "name": "RHEL operator",
+      "display_name": "RHEL operator",
+      "description": "Grants edit access to system configs, inventory, policies, and notifications/integrations. View compliance reports, patch info, malware detections, and recommendations. Initiate remediations, manage staleness data and modify vulnerability settings.",
+      "system": true,
+      "platform_default": false, 
+      "admin_default": false,
+      "version": 1,
+      "access": [
+        {
+         "permission": "advisor:*:*"
+        },
+        {
+          "permission": "compliance:policy:read"
+        },
+        {
+          "permission": "compliance:policy:update"
+        },
+        {
+          "permission": "compliance:policy:write"
+        },
+        {
+          "permission": "compliance:report:read"
+        },
+        {
+          "permission": "compliance:system:read"
+        },
+        {
+          "permission": "config-manager:activation_keys:read"
+        },
+        {
+          "permission": "config-manager:activation_keys:write"
+        },
+        {
+          "permission": "config-manager:state:read"
+        },
+        {
+          "permission": "config-manager:state-changes:read"
+        },
+        {
+          "permission": "content-sources:repositories:read"
+        },
+        {
+          "permission": "content-sources:templates:read"
+        },
+        {
+          "permission": "integrations:*:*"
+        },
+        {
+          "permission": "inventory:hosts:read"
+        },
+        {
+          "permission": "inventory:groups:read"
+        },
+        {
+          "permission": "inventory:hosts:write"
+        },
+        {
+          "permission": "inventory:groups:write"
+        },
+        {
+          "permission": "malware-detection:*:read"
+        },
+        {
+          "permission": "malware-detection:user_acknowledgement:write"
+        },
+        {
+          "permission": "notifications:notifications:read"
+        },
+        {
+          "permission": "notifications:events:read"
+        },
+        {
+          "permission": "notifications:notifications:write"
+        },
+        {
+          "permission": "patch:*:*"
+        },
+        {
+          "permission": "patch:system:write"
+        },        
+        {
+          "permission": "patch:template:write"
+        },
+        {
+          "permission": "playbook-dispatcher:run:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "service",
+                "operation": "equal",
+                "value": "remediations"
+        }}
+        ]},
+        {
+          "permission": "policies:policies:read"
+        },
+        {
+          "permission": "policies:policies:write"
+        },
+        {
+          "permission": "remediations:remediation:read"
+        },
+        {
+          "permission": "remediations:remediation:write"
+        },
+        {
+          "permission": "remediations:*:read"
+        },
+        {
+          "permission": "remediations:*:write"
+        },
+        {
+          "permission": "ros:*:read"
+        },
+        {
+          "sources": "sources:*:*"
+        }
+        {
+          "permission": "staleness:staleness:read"
+        },
+        {
+          "permission": "staleness:staleness:write"
+        },
+        {
+          "permission": "vulnerability:vulnerability_results:read"
+        },
+        {
+          "permission": "vulnerability:system.opt_out:read"
+        },
+        {
+          "permission": "vulnerability:report_and_export:read"
+        },
+        {
+          "permission": "vulnerability:advanced_report:read"
+        },
+        {
+          "permission": "vulnerability:*:read"
+        }
+        {
+          "permission": "vulnerability:cve.business_risk_and_status:write"
+        },
+        {
+          "permission": "vulnerability:system.opt_out:write"
+        }
+    {
+      "name": "RHEL admin",
+      "display_name": "RHEL admin",
+      "description": "Grants full access to RHEL system configs, inventory, compliance, notifications, patch management, remediations, malware detection, and advisor. View/modify vulnerability settings.",
+      "system": true,
+      "platform_default": false, 
+      "admin_default": false,
+      "version": 1,
+      "access": [
+        {
+         "permission": "advisor:*:*"
+        },
+        {
+          "permission": "compliance:policy:read"
+        },
+        {
+          "permission": "compliance:policy:update"
+        },
+        {
+          "permission": "compliance:policy:write"
+        },
+        {
+          "permission": "compliance:policy:create"
+        },
+        {
+          "permission": "compliance:policy:delete"
+        },
+        {
+          "permission": "compliance:report:read"
+        },
+        {
+          "permission": "compliance:system:read"
+        },
+        {
+          "permission": "compliance:*:*"
+        },
+        {
+          "permission": "config-manager:activation_keys:read"
+        },
+        {
+          "permission": "config-manager:activation_keys:write"
+        },
+        {
+          "permission": "config-manager:state:read"
+        },
+        {
+          "permission": "config-manager:state:write"
+        },
+        {
+          "permission": "config-manager:state-changes:read"
+        },
+        {
+          "permission": "content-sources:repositories:read"
+        },
+        {
+          "permission": "content-sources:templates:read"
+        },
+        {
+          "permission": "content-sources:repositories:write"
+        },
+        {
+          "permission": "content-sources:templates:write"
+        },
+        {
+          "permission": "content-sources:repositories:upload"
+        },
+        {
+          "permission": "integrations:*:*"
+        },
+        {
+          "permission": "inventory:hosts:read"
+        },
+        {
+          "permission": "inventory:groups:read"
+        },
+        {
+          "permission": "inventory:hosts:write"
+        },
+        {
+          "permission": "inventory:groups:write"
+        },
+        {
+          "permission": "inventory:*:*"
+        },
+        {
+          "permission": "malware-detection:*:read"
+        },
+        {
+          "permission": "malware-detection:*:*"
+        },
+        {
+          "permission": "malware-detection:user_acknowledgement:write"
+        },
+        {
+          "permission": "notifications:notifications:read"
+        },
+        {
+          "permission": "notifications:events:read"
+        },
+        {
+          "permission": "notifications:notifications:write"
+        },
+        {
+          "permission": "patch:*:*"
+        },
+        {
+          "permission": "patch:system:write"
+        },        
+        {
+          "permission": "patch:template:write"
+        },
+        {
+          "permission": "playbook-dispatcher:run:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "service",
+                "operation": "equal",
+                "value": "remediations"
+        }}
+        ]},
+        {
+          "permission": "policies:policies:read"
+        },
+        {
+          "permission": "policies:policies:write"
+        },
+        {
+          "permission": "remediations:remediation:read"
+        },
+        {
+          "permission": "remediations:remediation:write"
+        },
+        {
+          "permission": "remediations:remediation:execute"
+        },
+        {
+          "permission": "remediations:*:read"
+        },
+        {
+          "permission": "remediations:*:write"
+        },
+        {
+          "permission": "remediations:*:*"
+        },
+        {
+          "permission": "ros:*:read"
+        },
+        {
+          "permission": "ros:*:*"
+        },
+        {
+          "sources": "sources:*:*"
+        }
+        {
+          "permission": "staleness:staleness:read"
+        },
+        {
+          "permission": "staleness:staleness:write"
+        },
+        {
+          "permission": "tasks:*:*"
+        },
+        {
+          "permission": "vulnerability:vulnerability_results:read"
+        },
+        {
+          "permission": "vulnerability:system.opt_out:read"
+        },
+        {
+          "permission": "vulnerability:report_and_export:read"
+        },
+        {
+          "permission": "vulnerability:advanced_report:read"
+        },
+        {
+          "permission": "vulnerability:*:read"
+        }
+        {
+          "permission": "vulnerability:cve.business_risk_and_status:write"
+        },
+        {
+          "permission": "vulnerability:system.opt_out:write"
+        }
+        {
+          "permission": "vulnerability:*:*"
+        }
+        {
+          "permission": "vulnerability:system.cve.status:write"
+        }
+        {
+          "permission": "vulnerability:toggle_cves_without_errata:write"
+        }
+      ]
 }
             
