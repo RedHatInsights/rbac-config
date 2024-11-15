@@ -1065,7 +1065,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "advisor:*:*"
@@ -1176,7 +1176,7 @@ objects:
                 "permission": "ros:*:read"
               },
               {
-                "sources": "sources:*:*"
+                "permission": "sources:*:*"
               },
               {
                 "permission": "staleness:staleness:read"
@@ -1214,7 +1214,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "advisor:*:*"
@@ -1361,7 +1361,7 @@ objects:
                 "permission": "ros:*:*"
               },
               {
-                "sources": "sources:*:*"
+                "permission": "sources:*:*"
               },
               {
                 "permission": "staleness:staleness:read"
