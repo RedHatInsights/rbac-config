@@ -72,17 +72,21 @@ definition rbac/role {
 	relation t_all_all_all: rbac/principal:*
 	permission child = t_child
 	relation t_child: rbac/role
+	permission integrations_all_all = t_integrations_all_all
+	relation t_integrations_all_all: rbac/principal:*
+	permission integrations_endpoints_all = t_integrations_endpoints_all
+	relation t_integrations_endpoints_all: rbac/principal:*
+	permission integrations_all_write = t_integrations_all_write
+	relation t_integrations_all_write: rbac/principal:*
+	permission integrations_endpoints_write = t_integrations_endpoints_write
+	relation t_integrations_endpoints_write: rbac/principal:*
+	permission notifications_integration_create = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_create
 	permission notifications_all_all = t_notifications_all_all
 	relation t_notifications_all_all: rbac/principal:*
-	permission notifications_integrations_all = t_notifications_integrations_all
-	relation t_notifications_integrations_all: rbac/principal:*
-	permission notifications_all_write = t_notifications_all_write
-	relation t_notifications_all_write: rbac/principal:*
-	permission notifications_integrations_write = t_notifications_integrations_write
-	relation t_notifications_integrations_write: rbac/principal:*
-	permission notifications_integration_create = notifications_integrations_write + notifications_integrations_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_integration_create
 	permission notifications_notifications_all = t_notifications_notifications_all
 	relation t_notifications_notifications_all: rbac/principal:*
+	permission notifications_all_write = t_notifications_all_write
+	relation t_notifications_all_write: rbac/principal:*
 	permission notifications_notifications_write = t_notifications_notifications_write
 	relation t_notifications_notifications_write: rbac/principal:*
 	permission notifications_daily_digest_preference_edit = notifications_notifications_write + notifications_notifications_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_daily_digest_preference_edit
@@ -91,10 +95,12 @@ definition rbac/role {
 	permission notifications_notifications_read = t_notifications_notifications_read
 	relation t_notifications_notifications_read: rbac/principal:*
 	permission notifications_daily_digest_preference_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_daily_digest_preference_view
-	permission notifications_integrations_read = t_notifications_integrations_read
-	relation t_notifications_integrations_read: rbac/principal:*
-	permission notifications_integration_subscribe_drawer = notifications_integrations_read + notifications_integrations_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_integration_subscribe_drawer
-	permission notifications_integration_subscribe_email = notifications_integrations_read + notifications_integrations_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_integration_subscribe_email
+	permission integrations_all_read = t_integrations_all_read
+	relation t_integrations_all_read: rbac/principal:*
+	permission integrations_endpoints_read = t_integrations_endpoints_read
+	relation t_integrations_endpoints_read: rbac/principal:*
+	permission notifications_integration_subscribe_drawer = integrations_endpoints_read + integrations_endpoints_all + integrations_all_read + integrations_all_all + all_all_all + t_child->notifications_integration_subscribe_drawer
+	permission notifications_integration_subscribe_email = integrations_endpoints_read + integrations_endpoints_all + integrations_all_read + integrations_all_all + all_all_all + t_child->notifications_integration_subscribe_email
 	permission notifications_events_all = t_notifications_events_all
 	relation t_notifications_events_all: rbac/principal:*
 	permission notifications_events_read = t_notifications_events_read
@@ -105,13 +111,13 @@ definition rbac/role {
 	permission notifications_bundles_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_bundles_view
 	permission notifications_applications_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_applications_view
 	permission notifications_event_types_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_event_types_view
-	permission notifications_integration_view = notifications_integrations_read + notifications_integrations_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_integration_view
-	permission notifications_integration_edit = notifications_integrations_write + notifications_integrations_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_integration_edit
-	permission notifications_integration_test = notifications_integrations_write + notifications_integrations_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_integration_test
-	permission notifications_integration_view_history = notifications_integrations_read + notifications_integrations_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_integration_view_history
-	permission notifications_integration_delete = notifications_integrations_write + notifications_integrations_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_integration_delete
-	permission notifications_integration_disable = notifications_integrations_write + notifications_integrations_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_integration_disable
-	permission notifications_integration_enable = notifications_integrations_write + notifications_integrations_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_integration_enable
+	permission notifications_integration_view = integrations_endpoints_read + integrations_endpoints_all + integrations_all_read + integrations_all_all + all_all_all + t_child->notifications_integration_view
+	permission notifications_integration_edit = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_edit
+	permission notifications_integration_test = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_test
+	permission notifications_integration_view_history = integrations_endpoints_read + integrations_endpoints_all + integrations_all_read + integrations_all_all + all_all_all + t_child->notifications_integration_view_history
+	permission notifications_integration_delete = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_delete
+	permission notifications_integration_disable = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_disable
+	permission notifications_integration_enable = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_enable
 	permission advisor_all_read = t_advisor_all_read
 	relation t_advisor_all_read: rbac/principal:*
 	permission advisor_all_all = t_advisor_all_all
@@ -246,12 +252,6 @@ definition rbac/role {
 	relation t_idmsvc_domains_delete: rbac/principal:*
 	permission idmsvc_token_create = t_idmsvc_token_create
 	relation t_idmsvc_token_create: rbac/principal:*
-	permission integrations_all_all = t_integrations_all_all
-	relation t_integrations_all_all: rbac/principal:*
-	permission integrations_endpoints_read = t_integrations_endpoints_read
-	relation t_integrations_endpoints_read: rbac/principal:*
-	permission integrations_endpoints_write = t_integrations_endpoints_write
-	relation t_integrations_endpoints_write: rbac/principal:*
 	permission inventory_all_read = t_inventory_all_read
 	relation t_inventory_all_read: rbac/principal:*
 	permission inventory_all_all = t_inventory_all_all
