@@ -219,7 +219,7 @@
           "permission": "ros:*:read"
         },
         {
-          "sources": "sources:*:*"
+          "permission": "sources:*:*"
         },
         {
           "permission": "staleness:staleness:read"
@@ -404,7 +404,7 @@
           "permission": "ros:*:*"
         },
         {
-          "sources": "sources:*:*"
+          "permission": "sources:*:*"
         },
         {
           "permission": "staleness:staleness:read"
