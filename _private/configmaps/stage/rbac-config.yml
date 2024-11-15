@@ -1176,7 +1176,7 @@ objects:
                 "permission": "ros:*:read"
               },
               {
-                "sources": "sources:*:*"
+                "permission": "sources:*:*"
               },
               {
                 "permission": "staleness:staleness:read"
@@ -1361,7 +1361,7 @@ objects:
                 "permission": "ros:*:*"
               },
               {
-                "sources": "sources:*:*"
+                "permission": "sources:*:*"
               },
               {
                 "permission": "staleness:staleness:read"
