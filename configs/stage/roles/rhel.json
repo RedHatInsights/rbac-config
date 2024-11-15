@@ -108,7 +108,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "advisor:*:*"
@@ -165,7 +165,7 @@
           "permission": "malware-detection:*:read"
         },
         {
-          "permission": "malware-detection:user_acknowledgement:write"
+          "permission": "malware-detection:acknowledgements:write"
         },
         {
           "permission": "notifications:notifications:read"
@@ -257,7 +257,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "advisor:*:*"
@@ -341,7 +341,7 @@
           "permission": "malware-detection:*:*"
         },
         {
-          "permission": "malware-detection:user_acknowledgement:write"
+          "permission": "malware-detection:acknowledgements:write"
         },
         {
           "permission": "notifications:notifications:read"
