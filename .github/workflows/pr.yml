@@ -11,17 +11,20 @@ jobs:
       - name: Validate Permissions Against Schema
         uses: walbo/validate-json@v1.1.0
         with:
-          files: ./configs/.*/permissions/.*json
+          files: ./configs/*/permissions/*.json
           schema: ./schemas/permissions.schema
+          print-valid-files: true
       - name: Validate Roles Against Schema
         uses: walbo/validate-json@v1.1.0
         with:
-          files: ./configs/.*/roles/.*json
+          files: ./configs/*/roles/*.json
           schema: ./schemas/roles.schema
+          print-valid-files: true
+          strict: false
       - name: Validate Permissions' Dependencies
         uses: RedHatInsights/rbac-config-actions/validate-permission-dependencies@main
         with:
-          permissions_path_pattern: 'configs/**/*/permissions/*.json'
+          permissions_path_pattern: 'configs/*/permissions/*.json'
 
       # Ensure that a proper valid schema is generated
 

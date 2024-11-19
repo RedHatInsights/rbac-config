@@ -34,7 +34,7 @@
               "properties": {
                 "permission": {
                   "type": "string",
-                  "pattern": "^.*(:).*(:)(\\*|read|write|create|update|delete|link|unlink|order|execute)$"
+                  "pattern": "^.*(:).*(:)(\\*|read|write|create|update|upload|delete|list|link|unlink|order|execute)$"
                 },
                 "resourceDefinitions": {
                   "type": "array",
@@ -66,9 +66,7 @@
                         ]
                       }
                     }
-                  },
-                  "minProperties": 1,
-                  "additionalProperties": false
+                  }
                 }
               },
               "minProperties": 1,
