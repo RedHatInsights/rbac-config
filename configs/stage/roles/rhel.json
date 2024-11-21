@@ -180,12 +180,6 @@
           "permission": "patch:*:*"
         },
         {
-          "permission": "patch:system:write"
-        },
-        {
-          "permission": "patch:template:write"
-        },
-        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {
@@ -263,27 +257,6 @@
           "permission": "advisor:*:*"
         },
         {
-          "permission": "compliance:policy:read"
-        },
-        {
-          "permission": "compliance:policy:update"
-        },
-        {
-          "permission": "compliance:policy:write"
-        },
-        {
-          "permission": "compliance:policy:create"
-        },
-        {
-          "permission": "compliance:policy:delete"
-        },
-        {
-          "permission": "compliance:report:read"
-        },
-        {
-          "permission": "compliance:system:read"
-        },
-        {
           "permission": "compliance:*:*"
         },
         {
@@ -320,18 +293,6 @@
           "permission": "integrations:*:*"
         },
         {
-          "permission": "inventory:hosts:read"
-        },
-        {
-          "permission": "inventory:groups:read"
-        },
-        {
-          "permission": "inventory:hosts:write"
-        },
-        {
-          "permission": "inventory:groups:write"
-        },
-        {
           "permission": "inventory:*:*"
         },
         {
@@ -356,12 +317,6 @@
           "permission": "patch:*:*"
         },
         {
-          "permission": "patch:system:write"
-        },
-        {
-          "permission": "patch:template:write"
-        },
-        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {
@@ -380,25 +335,7 @@
           "permission": "policies:policies:write"
         },
         {
-          "permission": "remediations:remediation:read"
-        },
-        {
-          "permission": "remediations:remediation:write"
-        },
-        {
-          "permission": "remediations:remediation:execute"
-        },
-        {
-          "permission": "remediations:*:read"
-        },
-        {
-          "permission": "remediations:*:write"
-        },
-        {
           "permission": "remediations:*:*"
-        },
-        {
-          "permission": "ros:*:read"
         },
         {
           "permission": "ros:*:*"
@@ -416,35 +353,8 @@
           "permission": "tasks:*:*"
         },
         {
-          "permission": "vulnerability:vulnerability_results:read"
-        },
-        {
-          "permission": "vulnerability:system.opt_out:read"
-        },
-        {
-          "permission": "vulnerability:report_and_export:read"
-        },
-        {
-          "permission": "vulnerability:advanced_report:read"
-        },
-        {
-          "permission": "vulnerability:*:read"
-        },
-        {
-          "permission": "vulnerability:cve.business_risk_and_status:write"
-        },
-        {
-          "permission": "vulnerability:system.opt_out:write"
-        },
-        {
           "permission": "vulnerability:*:*"
         },
-        {
-          "permission": "vulnerability:system.cve.status:write"
-        },
-        {
-          "permission": "vulnerability:toggle_cves_without_errata:write"
-        }
       ]
     }
   ]
