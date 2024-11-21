@@ -85,18 +85,6 @@
           "permission": "staleness:staleness:read"
         },
         {
-          "permission": "vulnerability:vulnerability_results:read"
-        },
-        {
-          "permission": "vulnerability:system.opt_out:read"
-        },
-        {
-          "permission": "vulnerability:report_and_export:read"
-        },
-        {
-          "permission": "vulnerability:advanced_report:read"
-        },
-        {
           "permission": "vulnerability:*:read"
         }
       ]
@@ -198,12 +186,6 @@
           "permission": "policies:policies:write"
         },
         {
-          "permission": "remediations:remediation:read"
-        },
-        {
-          "permission": "remediations:remediation:write"
-        },
-        {
           "permission": "remediations:*:read"
         },
         {
@@ -296,13 +278,7 @@
           "permission": "inventory:*:*"
         },
         {
-          "permission": "malware-detection:*:read"
-        },
-        {
           "permission": "malware-detection:*:*"
-        },
-        {
-          "permission": "malware-detection:acknowledgements:write"
         },
         {
           "permission": "notifications:notifications:read"
