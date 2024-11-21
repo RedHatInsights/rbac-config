@@ -354,7 +354,7 @@
         },
         {
           "permission": "vulnerability:*:*"
-        },
+        }
       ]
     }
   ]
