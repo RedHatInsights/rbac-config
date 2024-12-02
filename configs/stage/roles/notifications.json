@@ -33,7 +33,7 @@
     },
     {
       "name": "Notifications tester",
-      "description": "Test read operations on notifications and integrations resources.",
+      "description": "Temporary role to test read operations on notifications.",
       "system": true,
       "platform_default": true,
       "version": 4,
