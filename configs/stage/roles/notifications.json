@@ -30,7 +30,18 @@
           "permission": "integrations:endpoints:read"
         }
       ]
+    },
+    {
+      "name": "Notifications tester",
+      "description": "Test read operations on notifications and integrations resources.",
+      "system": true,
+      "platform_default": true,
+      "version": 4,
+      "access": [
+        {
+          "permission": "notifications:notifications:read"
+        }
+      ]
     }
-
   ]
 }
