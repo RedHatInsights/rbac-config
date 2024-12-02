@@ -21,7 +21,7 @@
       "description": "Perform read operations on notifications and integrations resources.",
       "system": true,
       "platform_default": true,
-      "version": 4,
+      "version": 5,
       "access": [
         {
           "permission": "notifications:notifications:read"
@@ -30,18 +30,7 @@
           "permission": "integrations:endpoints:read"
         }
       ]
-    },
-    {
-      "name": "Notifications tester",
-      "description": "Temporary role to test read operations on notifications.",
-      "system": true,
-      "platform_default": true,
-      "version": 4,
-      "access": [
-        {
-          "permission": "notifications:notifications:read"
-        }
-      ]
     }
+
   ]
 }
