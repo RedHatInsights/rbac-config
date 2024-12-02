@@ -598,7 +598,7 @@ objects:
             "description": "Perform read operations on notifications and integrations resources.",
             "system": true,
             "platform_default": true,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "notifications:notifications:read"
