@@ -1,0 +1,21 @@
+version 0.1
+namespace hbi
+
+import rbac
+
+public type host {
+    private relation workspace: [ExactlyOne rbac.workspace]
+    
+    @rbac.add_v1_based_permission(app:'inventory', resource:'hosts', verb:'read', v2_perm:'inventory_host_view')
+    relation view: workspace.inventory_host_view
+    @rbac.add_v1_based_permission(app:'inventory', resource:'hosts', verb:'write', v2_perm:'inventory_host_update')
+    relation update: workspace.inventory_host_update
+    @rbac.add_v1_based_permission(app:'inventory', resource:'hosts', verb:'write', v2_perm:'inventory_host_delete')
+    relation delete: workspace.inventory_host_delete
+}
+
+public extension expose_host_permission(v2_perm) {
+    type host {
+        relation `${v2_perm}`: view and workspace.`${v2_perm}`
+    }
+}

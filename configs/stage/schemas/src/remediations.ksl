@@ -1,0 +1,14 @@
+version 0.1
+namespace remediations
+
+import rbac
+import hbi
+
+@rbac.add_v1_based_permission(app:'remdiations', resource:'remediation', verb:'read', v2_perm:'remediations_remediation_read');
+@hbi.expose_host_permission(v2_perm:'remediations_remediation_read');
+
+@rbac.add_v1_based_permission(app:'remdiations', resource:'remediation', verb:'write', v2_perm:'remediations_remediation_write');
+@hbi.expose_host_permission(v2_perm:'remediations_remediation_write');
+
+@rbac.add_v1_based_permission(app:'remdiations', resource:'remediation', verb:'execute', v2_perm:'remediations_remediation_execute');
+@hbi.expose_host_permission(v2_perm:'remediations_remediation_execute');
