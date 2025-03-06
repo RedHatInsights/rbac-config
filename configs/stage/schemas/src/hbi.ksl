@@ -16,6 +16,6 @@ public type host {
 
 public extension expose_host_permission(v2_perm) {
     type host {
-        relation `${v2_perm}`: view and workspace.`${v2_perm}`
+        public relation `${v2_perm}`: view and workspace.`${v2_perm}`
     }
 }
