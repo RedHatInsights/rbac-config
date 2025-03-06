@@ -28,8 +28,8 @@ internal type role_binding { // TODO: revisit cardinality based on clamping deci
     relation role: [Any role]
 }
 
-@add_v1_based_permission(app:'inventory', resource:'groups', verb:'read', v2_perm:'workspace_view')
-@add_v1_based_permission(app:'inventory', resource:'groups', verb:'write', v2_perm:'workspace_update')
+@add_v1only_permission(perm:'inventory_groups_read')
+@add_v1only_permission(perm:'inventory_groups_write')
 public type workspace { //Workspace is public so services can place resources into workspaces
     relation parent: [ExactlyOne workspace or tenant]
     relation binding: [Any role_binding]
