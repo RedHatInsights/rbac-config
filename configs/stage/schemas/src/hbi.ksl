@@ -12,8 +12,8 @@ public type host {
     relation update: workspace.inventory_host_update
 }
 
-public extension expose_host_permission(v2_perm) {
+public extension expose_host_permission(v2_perm, host_perm) {
     type host {
-        public relation `${v2_perm}`: view and workspace.`${v2_perm}`
+        public relation `${host_perm}`: view and workspace.`${v2_perm}`
     }
 }

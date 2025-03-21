@@ -71,3 +71,17 @@ public extension add_v1only_permission(perm) {
         private relation `${perm}`: [bool]
     }
 }
+
+public extension add_contingent_permission(first, second, contingent) {
+    type platform {
+        relation `${contingent}`: `${first}` and `${second}`
+    }
+
+    type tenant {
+        relation `${contingent}`: `${first}` and `${second}`
+    }
+
+    type workspace {
+        relation `${contingent}`: `${first}` and `${second}`
+    }
+}
