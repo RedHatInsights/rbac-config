@@ -1,3 +1,10 @@
+definition hbi/host {
+	permission update = t_workspace->inventory_host_update
+	permission view = t_workspace->inventory_host_view
+	permission workspace = t_workspace
+	relation t_workspace: rbac/workspace
+}
+
 definition notifications/integration {
 	permission delete = t_workspace->notifications_integration_delete
 	permission disable = t_workspace->notifications_integration_disable
@@ -20,6 +27,8 @@ definition rbac/group {
 definition rbac/platform {
 	permission binding = t_binding
 	relation t_binding: rbac/role_binding
+	permission inventory_host_update = t_binding->inventory_host_update
+	permission inventory_host_view = t_binding->inventory_host_view
 	permission notifications_applications_view = t_binding->notifications_applications_view
 	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit
 	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view
@@ -197,12 +206,16 @@ definition rbac/role {
 	relation t_inventory_all_all: rbac/principal:*
 	permission inventory_all_read = t_inventory_all_read
 	relation t_inventory_all_read: rbac/principal:*
+	permission inventory_all_write = t_inventory_all_write
+	relation t_inventory_all_write: rbac/principal:*
 	permission inventory_groups_all = t_inventory_groups_all
 	relation t_inventory_groups_all: rbac/principal:*
 	permission inventory_groups_read = t_inventory_groups_read
 	relation t_inventory_groups_read: rbac/principal:*
 	permission inventory_groups_write = t_inventory_groups_write
 	relation t_inventory_groups_write: rbac/principal:*
+	permission inventory_host_update = inventory_hosts_write + inventory_hosts_all + inventory_all_write + inventory_all_all + all_all_all + t_child->inventory_host_update
+	permission inventory_host_view = inventory_hosts_read + inventory_hosts_all + inventory_all_read + inventory_all_all + all_all_all + t_child->inventory_host_view
 	permission inventory_hosts_all = t_inventory_hosts_all
 	relation t_inventory_hosts_all: rbac/principal:*
 	permission inventory_hosts_read = t_inventory_hosts_read
@@ -388,6 +401,8 @@ definition rbac/role {
 }
 
 definition rbac/role_binding {
+	permission inventory_host_update = (subject & t_role->inventory_host_update)
+	permission inventory_host_view = (subject & t_role->inventory_host_view)
 	permission notifications_applications_view = (subject & t_role->notifications_applications_view)
 	permission notifications_behavior_groups_edit = (subject & t_role->notifications_behavior_groups_edit)
 	permission notifications_behavior_groups_view = (subject & t_role->notifications_behavior_groups_view)
@@ -415,6 +430,8 @@ definition rbac/role_binding {
 definition rbac/tenant {
 	permission binding = t_binding
 	relation t_binding: rbac/role_binding
+	permission inventory_host_update = t_binding->inventory_host_update + t_platform->inventory_host_update
+	permission inventory_host_view = t_binding->inventory_host_view + t_platform->inventory_host_view
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_platform->notifications_applications_view
 	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit + t_platform->notifications_behavior_groups_edit
 	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view + t_platform->notifications_behavior_groups_view
@@ -440,6 +457,8 @@ definition rbac/tenant {
 definition rbac/workspace {
 	permission binding = t_binding
 	relation t_binding: rbac/role_binding
+	permission inventory_host_update = t_binding->inventory_host_update + t_parent->inventory_host_update
+	permission inventory_host_view = t_binding->inventory_host_view + t_parent->inventory_host_view
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_parent->notifications_applications_view
 	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit + t_parent->notifications_behavior_groups_edit
 	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view + t_parent->notifications_behavior_groups_view
