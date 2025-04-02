@@ -106,12 +106,6 @@ definition rbac/role {
 	relation t_config_manager_activation_keys_read: rbac/principal:*
 	permission config_manager_activation_keys_write = t_config_manager_activation_keys_write
 	relation t_config_manager_activation_keys_write: rbac/principal:*
-	permission config_manager_state_changes_read = t_config_manager_state_changes_read
-	relation t_config_manager_state_changes_read: rbac/principal:*
-	permission config_manager_state_read = t_config_manager_state_read
-	relation t_config_manager_state_read: rbac/principal:*
-	permission config_manager_state_write = t_config_manager_state_write
-	relation t_config_manager_state_write: rbac/principal:*
 	permission content_sources_all_all = t_content_sources_all_all
 	relation t_content_sources_all_all: rbac/principal:*
 	permission content_sources_repositories_read = t_content_sources_repositories_read

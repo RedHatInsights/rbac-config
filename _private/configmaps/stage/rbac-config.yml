@@ -139,15 +139,6 @@ objects:
                 "permission": "config-manager:activation_keys:*"
               },
               {
-                "permission": "config-manager:state:read"
-              },
-              {
-                "permission": "config-manager:state:write"
-              },
-              {
-                "permission": "config-manager:state-changes:read"
-              },
-              {
                 "permission": "playbook-dispatcher:run:read",
                 "resourceDefinitions": [
                   {
@@ -177,12 +168,6 @@ objects:
               },
               {
                 "permission": "config-manager:activation_keys:write"
-              },
-              {
-                "permission": "config-manager:state:read"
-              },
-              {
-                "permission": "config-manager:state-changes:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
@@ -985,12 +970,6 @@ objects:
                 "permission": "config-manager:activation_keys:write"
               },
               {
-                "permission": "config-manager:state:read"
-              },
-              {
-                "permission": "config-manager:state-changes:read"
-              },
-              {
                 "permission": "content-sources:repositories:read"
               },
               {
@@ -1078,12 +1057,6 @@ objects:
               },
               {
                 "permission": "config-manager:activation_keys:write"
-              },
-              {
-                "permission": "config-manager:state:read"
-              },
-              {
-                "permission": "config-manager:state-changes:read"
               },
               {
                 "permission": "content-sources:repositories:read"
@@ -1203,15 +1176,6 @@ objects:
               },
               {
                 "permission": "config-manager:activation_keys:write"
-              },
-              {
-                "permission": "config-manager:state:read"
-              },
-              {
-                "permission": "config-manager:state:write"
-              },
-              {
-                "permission": "config-manager:state-changes:read"
               },
               {
                 "permission": "content-sources:repositories:read"
