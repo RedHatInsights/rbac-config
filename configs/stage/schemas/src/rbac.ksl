@@ -1,6 +1,11 @@
 version 0.1
 namespace rbac
 
+// Placeholder permissions that are being deprecated
+@add_v1only_permission(perm:'config_manager_state_changes_read');
+@add_v1only_permission(perm:'config_manager_state_read');
+@add_v1only_permission(perm:'config_manager_state_write');
+
 public type principal {} //public for now since the [bool] type requires rbac/principal to be accessible
 
 // Other types for structuring access are marked internal but can be made public if services are intended to relate to them
