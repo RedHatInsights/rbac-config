@@ -133,7 +133,7 @@ objects:
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 7,
+            "version": 8,
             "access": [
               {
                 "permission": "config-manager:activation_keys:*"
@@ -161,7 +161,7 @@ objects:
             "description": "Perform read operations on the current configurations on RHC manager and update actions to the activation keys.",
             "system": true,
             "platform_default": true,
-            "version": 8,
+            "version": 9,
             "access": [
               {
                 "permission": "config-manager:activation_keys:read"
@@ -949,7 +949,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 2,
+            "version": 3,
             "access": [
               {
                 "permission": "advisor:*:read"
@@ -1032,7 +1032,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "advisor:*:*"
@@ -1163,7 +1163,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "advisor:*:*"
