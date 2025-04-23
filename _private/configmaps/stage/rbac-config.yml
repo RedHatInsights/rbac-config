@@ -1032,7 +1032,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "advisor:*:*"
@@ -1042,9 +1042,6 @@ objects:
               },
               {
                 "permission": "compliance:policy:update"
-              },
-              {
-                "permission": "compliance:policy:write"
               },
               {
                 "permission": "compliance:report:read"
