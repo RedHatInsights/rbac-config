@@ -102,9 +102,6 @@
           "permission": "compliance:policy:update"
         },
         {
-          "permission": "compliance:policy:write"
-        },
-        {
           "permission": "compliance:report:read"
         },
         {
