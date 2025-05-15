@@ -7,10 +7,13 @@
       "system": true,
       "admin_default": true,
       "platform_default": false,
-      "version": 8,
+      "version": 9,
       "access": [
         {
           "permission": "config-manager:activation_keys:*"
+        },
+        {
+          "permission": "config-manager:profile:*"
         },
         {
           "permission": "playbook-dispatcher:run:read",
@@ -35,13 +38,16 @@
       "description": "Perform read operations on the current configurations on RHC manager and update actions to the activation keys.",
       "system": true,
       "platform_default": true,
-      "version": 9,
+      "version": 10,
       "access": [
         {
           "permission": "config-manager:activation_keys:read"
         },
         {
           "permission": "config-manager:activation_keys:write"
+        },
+        {
+          "permission": "config-manager:profile:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
