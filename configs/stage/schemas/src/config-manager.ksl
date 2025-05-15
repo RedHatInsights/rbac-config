@@ -1,0 +1,7 @@
+version 0.1
+namespace config_manager
+
+import rbac
+
+@rbac.add_v1_based_permission(app:'config_manager', resource:'profile', verb:'read', v2_perm:'config_manager_profile_view');
+@rbac.add_v1_based_permission(app:'config_manager', resource:'profile', verb:'write', v2_perm:'config_manager_profile_edit');
