@@ -3,6 +3,9 @@ namespace hbi
 
 import rbac
 
+@rbac.add_v1_based_permission(app:'staleness', resource:'staleness', verb:'read', v2_perm:'staleness_staleness_view');
+@rbac.add_v1_based_permission(app:'staleness', resource:'staleness', verb:'write', v2_perm:'staleness_staleness_update');
+
 public type host {
     private relation workspace: [ExactlyOne rbac.workspace]
     
