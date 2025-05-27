@@ -1,0 +1,13 @@
+version 0.1
+namespace patch
+
+import rbac
+import hbi
+
+@rbac.add_v1_based_permission(app:'patch', resource:'system', verb:'read', v2_perm:'patch_system_view_assigned');
+@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'patch_system_view_assigned', contingent: 'patch_system_view');
+@hbi.expose_host_permission(v2_perm: 'patch_system_view', host_perm: 'patch_system_view');
+
+@rbac.add_v1_based_permission(app:'patch', resource:'system', verb:'write', v2_perm:'patch_system_edit_assigned');
+@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'patch_system_edit_assigned', contingent: 'patch_system_edit');
+@hbi.expose_host_permission(v2_perm: 'patch_system_edit', host_perm: 'patch_system_edit');
