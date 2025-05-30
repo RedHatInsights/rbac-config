@@ -113,6 +113,38 @@ exist for the current app/resource type.
 
 Please check existing files for more samples.
 
+Building the Kessel schema
+--------------------------
+
+Prerequisites
+
+1. Get the `ksl` transpiler tool
+
+    ~~~sh
+    git clone https://github.com/project-kessel/ksl-schema-language
+    cd ksl-schema-language
+    make build
+    export PATH="$PATH:$(pwd)/bin"
+    ~~~
+
+1. Get the `generate-v1-only-permissions` tool
+
+    ~~~sh
+    git clone https://github.com/RedHatInsights/rbac-config-actions
+    cd rbac-config-actions/generate-v1-only-permissions/
+    go build
+    export PATH="$PATH:$(pwd)"
+    ~~~
+
+Use the following commands to build the zed schema from Kessel schema files (`.ksl`)
+
+  ~~~sh
+  # pick an environment - stage or prod
+  export ENV="stage"
+  generatepermissions -ksl configs/$ENV/schemas -rbac-permissions-json configs/$ENV/permissions
+  ksl -o configs/$ENV/schemas/schema.zed configs/$ENV/schemas/src/*.ksl configs/$ENV/schemas/src/*.json
+  ~~~
+
 Admin Default Role
 ------------------
 We added support for the new role flag `admin_default`, similar to `platform_default`, to allow for admin roles to automatically be assigned to org admins (not admins via the RBAC admin role). By default we will have the `admin_default` flag set to false. An example of what an admin role only assigned to admins by default may look like:
