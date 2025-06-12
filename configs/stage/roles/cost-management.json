@@ -47,8 +47,6 @@
             "permission": "cost-management:gcp.account:*"
         }, {
             "permission": "cost-management:gcp.project:*"
-        }, {
-            "permission": "cost-management:oci.payer_tenant_id:*"
         }]
     }, {
         "name": "Cost OpenShift Viewer",
