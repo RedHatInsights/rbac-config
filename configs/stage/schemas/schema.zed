@@ -1,4 +1,6 @@
 definition hbi/host {
+	permission patch_system_edit = (view & t_workspace->patch_system_edit)
+	permission patch_system_view = (view & t_workspace->patch_system_view)
 	permission update = t_workspace->inventory_host_update
 	permission view = t_workspace->inventory_host_view
 	permission workspace = t_workspace
@@ -47,6 +49,10 @@ definition rbac/platform {
 	permission notifications_integration_test = t_binding->notifications_integration_test
 	permission notifications_integration_view = t_binding->notifications_integration_view
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history
+	permission patch_system_edit = (inventory_host_view & patch_system_edit_assigned)
+	permission patch_system_edit_assigned = t_binding->patch_system_edit_assigned
+	permission patch_system_view = (inventory_host_view & patch_system_view_assigned)
+	permission patch_system_view_assigned = t_binding->patch_system_view_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view
 }
@@ -278,10 +284,14 @@ definition rbac/role {
 	relation t_patch_all_read: rbac/principal:*
 	permission patch_all_write = t_patch_all_write
 	relation t_patch_all_write: rbac/principal:*
+	permission patch_system_all = t_patch_system_all
+	relation t_patch_system_all: rbac/principal:*
+	permission patch_system_edit_assigned = patch_system_write + patch_system_all + patch_all_write + patch_all_all + all_all_all + t_child->patch_system_edit_assigned
+	permission patch_system_read = t_patch_system_read
+	relation t_patch_system_read: rbac/principal:*
+	permission patch_system_view_assigned = patch_system_read + patch_system_all + patch_all_read + patch_all_all + all_all_all + t_child->patch_system_view_assigned
 	permission patch_system_write = t_patch_system_write
 	relation t_patch_system_write: rbac/principal:*
-	permission patch_template_write = t_patch_template_write
-	relation t_patch_template_write: rbac/principal:*
 	permission playbook_dispatcher_run_read = t_playbook_dispatcher_run_read
 	relation t_playbook_dispatcher_run_read: rbac/principal:*
 	permission playbook_dispatcher_run_write = t_playbook_dispatcher_run_write
@@ -431,6 +441,8 @@ definition rbac/role_binding {
 	permission notifications_integration_test = (subject & t_role->notifications_integration_test)
 	permission notifications_integration_view = (subject & t_role->notifications_integration_view)
 	permission notifications_integration_view_history = (subject & t_role->notifications_integration_view_history)
+	permission patch_system_edit_assigned = (subject & t_role->patch_system_edit_assigned)
+	permission patch_system_view_assigned = (subject & t_role->patch_system_view_assigned)
 	permission role = t_role
 	relation t_role: rbac/role
 	permission staleness_staleness_update = (subject & t_role->staleness_staleness_update)
@@ -462,6 +474,10 @@ definition rbac/tenant {
 	permission notifications_integration_test = t_binding->notifications_integration_test + t_platform->notifications_integration_test
 	permission notifications_integration_view = t_binding->notifications_integration_view + t_platform->notifications_integration_view
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_platform->notifications_integration_view_history
+	permission patch_system_edit = (inventory_host_view & patch_system_edit_assigned)
+	permission patch_system_edit_assigned = t_binding->patch_system_edit_assigned + t_platform->patch_system_edit_assigned
+	permission patch_system_view = (inventory_host_view & patch_system_view_assigned)
+	permission patch_system_view_assigned = t_binding->patch_system_view_assigned + t_platform->patch_system_view_assigned
 	permission platform = t_platform
 	relation t_platform: rbac/platform
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_platform->staleness_staleness_update
@@ -493,6 +509,10 @@ definition rbac/workspace {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_parent->notifications_integration_view_history
 	permission parent = t_parent
 	relation t_parent: rbac/workspace | rbac/tenant
+	permission patch_system_edit = (inventory_host_view & patch_system_edit_assigned)
+	permission patch_system_edit_assigned = t_binding->patch_system_edit_assigned + t_parent->patch_system_edit_assigned
+	permission patch_system_view = (inventory_host_view & patch_system_view_assigned)
+	permission patch_system_view_assigned = t_binding->patch_system_view_assigned + t_parent->patch_system_view_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_parent->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_parent->staleness_staleness_view
 }
