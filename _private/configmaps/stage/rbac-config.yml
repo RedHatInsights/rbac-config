@@ -532,16 +532,13 @@ objects:
             "display_name": "Malware detection editor",
             "description": "Read any malware-detection resource as well as set malware acknowledgements.",
             "system": true,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "malware-detection:*:read"
               },
               {
                 "permission": "malware-detection:acknowledgements:write"
-              },
-              {
-                "permission": "inventory:*:read"
               }
             ]
           },
