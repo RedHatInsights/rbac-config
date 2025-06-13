@@ -36,7 +36,7 @@
         "display_name": "Cost cloud viewer",
         "description": "Perform read operations on cost reports related to cloud sources.",
         "system": true,
-        "version": 7,
+        "version": 8,
         "access": [{
             "permission": "cost-management:aws.account:*"
         }, {
