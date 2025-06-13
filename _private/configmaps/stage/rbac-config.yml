@@ -306,7 +306,7 @@ objects:
               "display_name": "Cost cloud viewer",
               "description": "Perform read operations on cost reports related to cloud sources.",
               "system": true,
-              "version": 7,
+              "version": 8,
               "access": [{
                   "permission": "cost-management:aws.account:*"
               }, {
@@ -317,8 +317,6 @@ objects:
                   "permission": "cost-management:gcp.account:*"
               }, {
                   "permission": "cost-management:gcp.project:*"
-              }, {
-                  "permission": "cost-management:oci.payer_tenant_id:*"
               }]
           }, {
               "name": "Cost OpenShift Viewer",
