@@ -9,18 +9,5 @@
         {
             "verb": "*"
         }
-    ],
-    "state": [
-        {
-            "verb": "read"
-        },
-        {
-            "verb": "write"
-        }
-    ],
-    "state-changes": [
-        {
-            "verb": "read"
-        }
     ]
 }
