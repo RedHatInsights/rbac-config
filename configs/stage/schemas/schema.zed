@@ -154,10 +154,6 @@ definition rbac/role {
 	relation t_cost_management_gcp_project_all: rbac/principal:*
 	permission cost_management_gcp_project_read = t_cost_management_gcp_project_read
 	relation t_cost_management_gcp_project_read: rbac/principal:*
-	permission cost_management_oci_payer_tenant_id_all = t_cost_management_oci_payer_tenant_id_all
-	relation t_cost_management_oci_payer_tenant_id_all: rbac/principal:*
-	permission cost_management_oci_payer_tenant_id_read = t_cost_management_oci_payer_tenant_id_read
-	relation t_cost_management_oci_payer_tenant_id_read: rbac/principal:*
 	permission cost_management_openshift_cluster_all = t_cost_management_openshift_cluster_all
 	relation t_cost_management_openshift_cluster_all: rbac/principal:*
 	permission cost_management_openshift_cluster_read = t_cost_management_openshift_cluster_read
