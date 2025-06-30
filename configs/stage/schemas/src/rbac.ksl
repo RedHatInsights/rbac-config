@@ -33,6 +33,12 @@ internal type role_binding { // TODO: revisit cardinality based on clamping deci
     relation role: [Any role]
 }
 
+public type lock {
+    relation version: [ExactlyOne lockversion]
+}
+
+public type lockversion {}
+
 //Placeholders for v1 inventory group permissions, will need to be mapped to v2 permissions as part of meta-authz for workspaces
 @add_v1only_permission(perm:'inventory_groups_read')
 @add_v1only_permission(perm:'inventory_groups_write')
