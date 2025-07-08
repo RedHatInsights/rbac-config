@@ -5,6 +5,13 @@ definition hbi/host {
 	relation t_workspace: rbac/workspace
 }
 
+definition kessel/lock {
+	permission version = t_version
+	relation t_version: kessel/lockversion
+}
+
+definition kessel/lockversion {}
+
 definition notifications/integration {
 	permission delete = t_workspace->notifications_integration_delete
 	permission disable = t_workspace->notifications_integration_disable
