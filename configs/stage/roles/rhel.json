@@ -96,7 +96,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "advisor:*:*"
@@ -127,6 +127,12 @@
         },
         {
           "permission": "integrations:*:*"
+        },
+        {
+          "permission": "idmsvc:domains:list"
+        },
+        {
+          "permission": "idmsvc:domains:read"
         },
         {
           "permission": "inventory:hosts:read"
