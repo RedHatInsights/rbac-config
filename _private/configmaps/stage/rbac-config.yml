@@ -950,7 +950,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 3,
+            "version": 4,
             "access": [
               {
                 "permission": "advisor:*:read"
@@ -975,6 +975,12 @@ objects:
               },
               {
                 "permission": "content-sources:templates:read"
+              },
+              {
+                "permission": "idmsvc:domains:list"
+              },
+              {
+                "permission": "idmsvc:domains:read"
               },
               {
                 "permission": "integrations:endpoints:read"
@@ -1161,7 +1167,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "advisor:*:*"
@@ -1189,6 +1195,24 @@ objects:
               },
               {
                 "permission": "content-sources:repositories:upload"
+              },
+              {
+                "permission": "idmsvc:token:create"
+              },
+              {
+                "permission": "idmsvc:domains:list"
+              },
+              {
+                "permission": "idmsvc:domains:read"
+              },
+              {
+                "permission": "idmsvc:domains:create"
+              },
+              {
+                "permission": "idmsvc:domains:update"
+              },
+              {
+                "permission": "idmsvc:domains:delete"
               },
               {
                 "permission": "integrations:*:*"
