@@ -7,7 +7,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 4,
+      "version": 5,
       "access": [
         {
           "permission": "advisor:*:read"
@@ -26,6 +26,9 @@
         },
         {
           "permission": "config-manager:activation_keys:write"
+        },
+        {
+          "permission": "config-manager:profile:read"
         },
         {
           "permission": "content-sources:repositories:read"
@@ -96,7 +99,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 7,
+      "version": 8,
       "access": [
         {
           "permission": "advisor:*:*"
@@ -118,6 +121,9 @@
         },
         {
           "permission": "config-manager:activation_keys:write"
+        },
+        {
+          "permission": "config-manager:profile:read"
         },
         {
           "permission": "content-sources:repositories:read"
@@ -243,6 +249,12 @@
         },
         {
           "permission": "config-manager:activation_keys:write"
+        },
+        {
+          "permission": "config-manager:profile:read"
+        },
+        {
+          "permission": "config-manager:profile:write"
         },
         {
           "permission": "content-sources:repositories:read"
