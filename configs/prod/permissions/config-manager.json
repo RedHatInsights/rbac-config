@@ -9,5 +9,16 @@
         {
             "verb": "*"
         }
+    ],
+    "profile": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        },
+        {
+            "verb": "*"
+        }
     ]
 }
