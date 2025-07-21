@@ -231,12 +231,12 @@
     },
     {
       "name": "RHEL admin",
-      "display_name": "RHEL admin",
+      "display_name": "RHEL administrator",
       "description": "Grants full access to RHEL system configs, inventory, compliance, notifications, patch management, remediations, malware detection, and advisor. View/modify vulnerability settings.",
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "advisor:*:*"
