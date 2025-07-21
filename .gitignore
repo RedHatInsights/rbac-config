@@ -1,0 +1,5 @@
+# Schema build artifacts
+**/rbac_v1_permissions.json
+
+# Local test outputs
+_private/test-schema/
