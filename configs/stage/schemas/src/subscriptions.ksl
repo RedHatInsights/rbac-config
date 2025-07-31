@@ -1,0 +1,16 @@
+version 0.1
+namespace subscriptions
+
+import rbac
+
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'report', verb:'read', v2_perm:'subscriptions_report_view');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'subscription', verb:'read', v2_perm:'subscriptions_subscription_view');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'subscription', verb:'write', v2_perm:'subscriptions_subscription_edit');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'manifest', verb:'read', v2_perm:'subscriptions_manifest_view');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'manifest', verb:'write', v2_perm:'subscriptions_manifest_edit');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'organization', verb:'read', v2_perm:'subscriptions_organization_view');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'organization', verb:'write', v2_perm:'subscriptions_organization_edit');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'product', verb:'read', v2_perm:'subscriptions_product_view');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'product', verb:'write', v2_perm:'subscriptions_product_edit');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'cloud_access', verb:'read', v2_perm:'subscriptions_cloud_access_view');
+@rbac.add_v1_based_permission(app:'subscriptions', resource:'cloud_access', verb:'write', v2_perm:'subscriptions_cloud_access_edit');
