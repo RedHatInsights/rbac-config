@@ -4,11 +4,6 @@ namespace compliance
 import rbac
 import hbi
 
-@rbac.add_v1_based_permission(app:'compliance', resource:'all', verb:'all', v2_perm:'compliance_all_all_assigned');
-@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_all_all_assigned', contingent: 'compliance_all_all');
-@rbac.add_v1_based_permission(app:'compliance', resource:'all', verb:'read', v2_perm:'compliance_all_view_assigned');
-@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_all_view_assigned', contingent: 'compliance_all_view');
-
 @rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'create', v2_perm:'compliance_policy_create_assigned');
 @rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_policy_create_assigned', contingent: 'compliance_policy_create');
 @rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'read', v2_perm:'compliance_policy_view_assigned');
@@ -22,7 +17,7 @@ import hbi
 
 @rbac.add_v1_based_permission(app:'compliance', resource:'report', verb:'delete', v2_perm:'compliance_report_delete_assigned');
 @rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_report_delete_assigned', contingent: 'compliance_report_delete');
-@rbac.add_v1_based_permission(app:'compliance', resource:'report', verb:'read', v2_perm:'compliance_report_view');
+@rbac.add_v1_based_permission(app:'compliance', resource:'report', verb:'read', v2_perm:'compliance_report_view_assigned');
 @rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_report_view_assigned', contingent: 'compliance_report_view');
 
 @rbac.add_v1_based_permission(app:'compliance', resource:'system', verb:'read', v2_perm:'compliance_system_view_assigned');
