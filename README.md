@@ -118,13 +118,15 @@ Building the Kessel schema
 
 Prerequisites
 
-1. Install required libraries by running
+1. A recent go version (1.22+)
+
+2. Install the toolchain by running:
 
     ~~~sh
     make init
     ~~~
 
-2. If not already, add [$GOBIN](https://pkg.go.dev/cmd/go#hdr-Compile_and_install_packages_and_dependencies) env value to your path to access the binaries.
+3. If not already, add [$GOBIN](https://pkg.go.dev/cmd/go#hdr-Compile_and_install_packages_and_dependencies) env value to your path to access the binaries.
    If GO envs are not set, this defaults to `~/go/bin`.
 
 Use the following commands to build the zed schema from Kessel schema files (`.ksl`)
