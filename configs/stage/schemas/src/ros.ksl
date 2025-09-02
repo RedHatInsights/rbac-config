@@ -1,0 +1,12 @@
+version 0.1
+namespace ros
+
+import rbac
+import hbi
+
+// Lights up ros_read_analysis_assigned on workspaces where ros:analysis:read or wildcards are assigned and their descendants
+@rbac.add_v1_based_permission(app:'ros', resource:'analysis', verb:'read', v2_perm:'ros_read_analysis_assigned');
+// Lights up the actual ros_read_analysis permission on workspaces whose ancestry include both inventory_hosts_read and ros_read_analysis_assigned
+@rbac.add_contingent_permission(first:'inventory_host_view', second:'ros_read_analysis_assigned', contingent:'ros_read_analysis');
+// Passes through the ros_read_analysis permission from a host's workspace to the host itself
+@hbi.expose_host_permission(v2_perm: 'ros_read_analysis', host_perm: 'ros_read_analysis');
