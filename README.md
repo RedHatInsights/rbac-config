@@ -118,32 +118,24 @@ Building the Kessel schema
 
 Prerequisites
 
-1. Get the `ksl` transpiler tool
+1. A recent go version (1.22+)
+
+2. Install the toolchain by running:
 
     ~~~sh
-    git clone https://github.com/project-kessel/ksl-schema-language
-    cd ksl-schema-language
-    make build
-    export PATH="$PATH:$(pwd)/bin"
+    make init
     ~~~
 
-1. Get the `generate-v1-only-permissions` tool
-
-    ~~~sh
-    git clone https://github.com/RedHatInsights/rbac-config-actions
-    cd rbac-config-actions/generate-v1-only-permissions/
-    go build
-    export PATH="$PATH:$(pwd)"
-    ~~~
+3. If not already, add [$GOBIN](https://pkg.go.dev/cmd/go#hdr-Compile_and_install_packages_and_dependencies) env value to your path to access the binaries.
+   If GO envs are not set, this defaults to `~/go/bin`.
 
 Use the following commands to build the zed schema from Kessel schema files (`.ksl`)
 
   ~~~sh
-  # pick an environment - stage or prod
-  export ENV="stage"
-  generatepermissions -ksl configs/$ENV/schemas -rbac-permissions-json configs/$ENV/permissions
-  ksl -o configs/$ENV/schemas/schema.zed configs/$ENV/schemas/src/*.ksl configs/$ENV/schemas/src/*.json
+  make ksl-test-schema-stage # or make ksl-test-schema-prod for prod
   ~~~
+
+The resulting schema is written to _private/test-schema/stage-schema.zed and _private/test-schema/prod-schema.zed
 
 Admin Default Role
 ------------------
