@@ -721,7 +721,6 @@ objects:
       }
   kind: ConfigMap
   metadata:
-    creationTimestamp: null
     name: model-access-permissions
     annotations:
       qontract.recycle: "true"
