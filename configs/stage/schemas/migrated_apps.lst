@@ -3,4 +3,6 @@ integrations
 inventory
 staleness
 config-manager
+content-sources
+vulnerability
 compliance

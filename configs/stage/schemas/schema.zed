@@ -38,6 +38,11 @@ definition rbac/platform {
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view
 	permission config_manager_profile_edit = t_binding->config_manager_profile_edit
 	permission config_manager_profile_view = t_binding->config_manager_profile_view
+	permission content_sources_repository_edit = t_binding->content_sources_repository_edit
+	permission content_sources_repository_upload = t_binding->content_sources_repository_upload
+	permission content_sources_repository_view = t_binding->content_sources_repository_view
+	permission content_sources_template_edit = t_binding->content_sources_template_edit
+	permission content_sources_template_view = t_binding->content_sources_template_view
 	permission inventory_host_update = t_binding->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view
 	permission notifications_applications_view = t_binding->notifications_applications_view
@@ -60,6 +65,20 @@ definition rbac/platform {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history
 	permission staleness_staleness_update = t_binding->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view
+	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
+	permission vulnerability_advanced_report_view_assigned = t_binding->vulnerability_advanced_report_view_assigned
+	permission vulnerability_cve_business_risk_and_status_edit = t_binding->vulnerability_cve_business_risk_and_status_edit
+	permission vulnerability_report_and_export_view = (inventory_host_view & vulnerability_report_and_export_view_assigned)
+	permission vulnerability_report_and_export_view_assigned = t_binding->vulnerability_report_and_export_view_assigned
+	permission vulnerability_system_cve_status_edit = (inventory_host_view & vulnerability_system_cve_status_edit_assigned)
+	permission vulnerability_system_cve_status_edit_assigned = t_binding->vulnerability_system_cve_status_edit_assigned
+	permission vulnerability_system_opt_out_edit = (inventory_host_view & vulnerability_system_opt_out_edit_assigned)
+	permission vulnerability_system_opt_out_edit_assigned = t_binding->vulnerability_system_opt_out_edit_assigned
+	permission vulnerability_system_opt_out_view = (inventory_host_view & vulnerability_system_opt_out_view_assigned)
+	permission vulnerability_system_opt_out_view_assigned = t_binding->vulnerability_system_opt_out_view_assigned
+	permission vulnerability_toggle_cves_without_errata_edit = t_binding->vulnerability_toggle_cves_without_errata_edit
+	permission vulnerability_vulnerability_results_view = (inventory_host_view & vulnerability_vulnerability_results_view_assigned)
+	permission vulnerability_vulnerability_results_view_assigned = t_binding->vulnerability_vulnerability_results_view_assigned
 }
 
 definition rbac/principal {}
@@ -143,12 +162,27 @@ definition rbac/role {
 	relation t_config_manager_state_write: rbac/principal:*
 	permission content_sources_all_all = t_content_sources_all_all
 	relation t_content_sources_all_all: rbac/principal:*
+	permission content_sources_all_read = t_content_sources_all_read
+	relation t_content_sources_all_read: rbac/principal:*
+	permission content_sources_all_upload = t_content_sources_all_upload
+	relation t_content_sources_all_upload: rbac/principal:*
+	permission content_sources_all_write = t_content_sources_all_write
+	relation t_content_sources_all_write: rbac/principal:*
+	permission content_sources_repositories_all = t_content_sources_repositories_all
+	relation t_content_sources_repositories_all: rbac/principal:*
 	permission content_sources_repositories_read = t_content_sources_repositories_read
 	relation t_content_sources_repositories_read: rbac/principal:*
 	permission content_sources_repositories_upload = t_content_sources_repositories_upload
 	relation t_content_sources_repositories_upload: rbac/principal:*
 	permission content_sources_repositories_write = t_content_sources_repositories_write
 	relation t_content_sources_repositories_write: rbac/principal:*
+	permission content_sources_repository_edit = content_sources_repositories_write + content_sources_repositories_all + content_sources_all_write + content_sources_all_all + all_all_all + t_child->content_sources_repository_edit
+	permission content_sources_repository_upload = content_sources_repositories_upload + content_sources_repositories_all + content_sources_all_upload + content_sources_all_all + all_all_all + t_child->content_sources_repository_upload
+	permission content_sources_repository_view = content_sources_repositories_read + content_sources_repositories_all + content_sources_all_read + content_sources_all_all + all_all_all + t_child->content_sources_repository_view
+	permission content_sources_template_edit = content_sources_templates_write + content_sources_templates_all + content_sources_all_write + content_sources_all_all + all_all_all + t_child->content_sources_template_edit
+	permission content_sources_template_view = content_sources_templates_read + content_sources_templates_all + content_sources_all_read + content_sources_all_all + all_all_all + t_child->content_sources_template_view
+	permission content_sources_templates_all = t_content_sources_templates_all
+	relation t_content_sources_templates_all: rbac/principal:*
 	permission content_sources_templates_read = t_content_sources_templates_read
 	relation t_content_sources_templates_read: rbac/principal:*
 	permission content_sources_templates_write = t_content_sources_templates_write
@@ -409,28 +443,50 @@ definition rbac/role {
 	relation t_subscriptions_reports_read: rbac/principal:*
 	permission tasks_all_all = t_tasks_all_all
 	relation t_tasks_all_all: rbac/principal:*
+	permission vulnerability_advanced_report_all = t_vulnerability_advanced_report_all
+	relation t_vulnerability_advanced_report_all: rbac/principal:*
 	permission vulnerability_advanced_report_read = t_vulnerability_advanced_report_read
 	relation t_vulnerability_advanced_report_read: rbac/principal:*
+	permission vulnerability_advanced_report_view_assigned = vulnerability_advanced_report_read + vulnerability_advanced_report_all + vulnerability_all_read + vulnerability_all_all + all_all_all + t_child->vulnerability_advanced_report_view_assigned
 	permission vulnerability_all_all = t_vulnerability_all_all
 	relation t_vulnerability_all_all: rbac/principal:*
 	permission vulnerability_all_read = t_vulnerability_all_read
 	relation t_vulnerability_all_read: rbac/principal:*
 	permission vulnerability_all_write = t_vulnerability_all_write
 	relation t_vulnerability_all_write: rbac/principal:*
+	permission vulnerability_cve_business_risk_and_status_all = t_vulnerability_cve_business_risk_and_status_all
+	relation t_vulnerability_cve_business_risk_and_status_all: rbac/principal:*
+	permission vulnerability_cve_business_risk_and_status_edit = vulnerability_cve_business_risk_and_status_write + vulnerability_cve_business_risk_and_status_all + vulnerability_all_write + vulnerability_all_all + all_all_all + t_child->vulnerability_cve_business_risk_and_status_edit
 	permission vulnerability_cve_business_risk_and_status_write = t_vulnerability_cve_business_risk_and_status_write
 	relation t_vulnerability_cve_business_risk_and_status_write: rbac/principal:*
+	permission vulnerability_report_and_export_all = t_vulnerability_report_and_export_all
+	relation t_vulnerability_report_and_export_all: rbac/principal:*
 	permission vulnerability_report_and_export_read = t_vulnerability_report_and_export_read
 	relation t_vulnerability_report_and_export_read: rbac/principal:*
+	permission vulnerability_report_and_export_view_assigned = vulnerability_report_and_export_read + vulnerability_report_and_export_all + vulnerability_all_read + vulnerability_all_all + all_all_all + t_child->vulnerability_report_and_export_view_assigned
+	permission vulnerability_system_cve_status_all = t_vulnerability_system_cve_status_all
+	relation t_vulnerability_system_cve_status_all: rbac/principal:*
+	permission vulnerability_system_cve_status_edit_assigned = vulnerability_system_cve_status_write + vulnerability_system_cve_status_all + vulnerability_all_write + vulnerability_all_all + all_all_all + t_child->vulnerability_system_cve_status_edit_assigned
 	permission vulnerability_system_cve_status_write = t_vulnerability_system_cve_status_write
 	relation t_vulnerability_system_cve_status_write: rbac/principal:*
+	permission vulnerability_system_opt_out_all = t_vulnerability_system_opt_out_all
+	relation t_vulnerability_system_opt_out_all: rbac/principal:*
+	permission vulnerability_system_opt_out_edit_assigned = vulnerability_system_opt_out_write + vulnerability_system_opt_out_all + vulnerability_all_write + vulnerability_all_all + all_all_all + t_child->vulnerability_system_opt_out_edit_assigned
 	permission vulnerability_system_opt_out_read = t_vulnerability_system_opt_out_read
 	relation t_vulnerability_system_opt_out_read: rbac/principal:*
+	permission vulnerability_system_opt_out_view_assigned = vulnerability_system_opt_out_read + vulnerability_system_opt_out_all + vulnerability_all_read + vulnerability_all_all + all_all_all + t_child->vulnerability_system_opt_out_view_assigned
 	permission vulnerability_system_opt_out_write = t_vulnerability_system_opt_out_write
 	relation t_vulnerability_system_opt_out_write: rbac/principal:*
+	permission vulnerability_toggle_cves_without_errata_all = t_vulnerability_toggle_cves_without_errata_all
+	relation t_vulnerability_toggle_cves_without_errata_all: rbac/principal:*
+	permission vulnerability_toggle_cves_without_errata_edit = vulnerability_toggle_cves_without_errata_write + vulnerability_toggle_cves_without_errata_all + vulnerability_all_write + vulnerability_all_all + all_all_all + t_child->vulnerability_toggle_cves_without_errata_edit
 	permission vulnerability_toggle_cves_without_errata_write = t_vulnerability_toggle_cves_without_errata_write
 	relation t_vulnerability_toggle_cves_without_errata_write: rbac/principal:*
+	permission vulnerability_vulnerability_results_all = t_vulnerability_vulnerability_results_all
+	relation t_vulnerability_vulnerability_results_all: rbac/principal:*
 	permission vulnerability_vulnerability_results_read = t_vulnerability_vulnerability_results_read
 	relation t_vulnerability_vulnerability_results_read: rbac/principal:*
+	permission vulnerability_vulnerability_results_view_assigned = vulnerability_vulnerability_results_read + vulnerability_vulnerability_results_all + vulnerability_all_read + vulnerability_all_all + all_all_all + t_child->vulnerability_vulnerability_results_view_assigned
 }
 
 definition rbac/role_binding {
@@ -438,6 +494,11 @@ definition rbac/role_binding {
 	permission config_manager_activation_keys_view = (subject & t_role->config_manager_activation_keys_view)
 	permission config_manager_profile_edit = (subject & t_role->config_manager_profile_edit)
 	permission config_manager_profile_view = (subject & t_role->config_manager_profile_view)
+	permission content_sources_repository_edit = (subject & t_role->content_sources_repository_edit)
+	permission content_sources_repository_upload = (subject & t_role->content_sources_repository_upload)
+	permission content_sources_repository_view = (subject & t_role->content_sources_repository_view)
+	permission content_sources_template_edit = (subject & t_role->content_sources_template_edit)
+	permission content_sources_template_view = (subject & t_role->content_sources_template_view)
 	permission inventory_host_update = (subject & t_role->inventory_host_update)
 	permission inventory_host_view = (subject & t_role->inventory_host_view)
 	permission notifications_applications_view = (subject & t_role->notifications_applications_view)
@@ -464,6 +525,14 @@ definition rbac/role_binding {
 	permission staleness_staleness_view = (subject & t_role->staleness_staleness_view)
 	permission subject = t_subject
 	relation t_subject: rbac/principal | rbac/group#member
+	permission vulnerability_advanced_report_view_assigned = (subject & t_role->vulnerability_advanced_report_view_assigned)
+	permission vulnerability_cve_business_risk_and_status_edit = (subject & t_role->vulnerability_cve_business_risk_and_status_edit)
+	permission vulnerability_report_and_export_view_assigned = (subject & t_role->vulnerability_report_and_export_view_assigned)
+	permission vulnerability_system_cve_status_edit_assigned = (subject & t_role->vulnerability_system_cve_status_edit_assigned)
+	permission vulnerability_system_opt_out_edit_assigned = (subject & t_role->vulnerability_system_opt_out_edit_assigned)
+	permission vulnerability_system_opt_out_view_assigned = (subject & t_role->vulnerability_system_opt_out_view_assigned)
+	permission vulnerability_toggle_cves_without_errata_edit = (subject & t_role->vulnerability_toggle_cves_without_errata_edit)
+	permission vulnerability_vulnerability_results_view_assigned = (subject & t_role->vulnerability_vulnerability_results_view_assigned)
 }
 
 definition rbac/tenant {
@@ -473,6 +542,11 @@ definition rbac/tenant {
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view + t_platform->config_manager_activation_keys_view
 	permission config_manager_profile_edit = t_binding->config_manager_profile_edit + t_platform->config_manager_profile_edit
 	permission config_manager_profile_view = t_binding->config_manager_profile_view + t_platform->config_manager_profile_view
+	permission content_sources_repository_edit = t_binding->content_sources_repository_edit + t_platform->content_sources_repository_edit
+	permission content_sources_repository_upload = t_binding->content_sources_repository_upload + t_platform->content_sources_repository_upload
+	permission content_sources_repository_view = t_binding->content_sources_repository_view + t_platform->content_sources_repository_view
+	permission content_sources_template_edit = t_binding->content_sources_template_edit + t_platform->content_sources_template_edit
+	permission content_sources_template_view = t_binding->content_sources_template_view + t_platform->content_sources_template_view
 	permission inventory_host_update = t_binding->inventory_host_update + t_platform->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view + t_platform->inventory_host_view
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_platform->notifications_applications_view
@@ -497,6 +571,20 @@ definition rbac/tenant {
 	relation t_platform: rbac/platform
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_platform->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_platform->staleness_staleness_view
+	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
+	permission vulnerability_advanced_report_view_assigned = t_binding->vulnerability_advanced_report_view_assigned + t_platform->vulnerability_advanced_report_view_assigned
+	permission vulnerability_cve_business_risk_and_status_edit = t_binding->vulnerability_cve_business_risk_and_status_edit + t_platform->vulnerability_cve_business_risk_and_status_edit
+	permission vulnerability_report_and_export_view = (inventory_host_view & vulnerability_report_and_export_view_assigned)
+	permission vulnerability_report_and_export_view_assigned = t_binding->vulnerability_report_and_export_view_assigned + t_platform->vulnerability_report_and_export_view_assigned
+	permission vulnerability_system_cve_status_edit = (inventory_host_view & vulnerability_system_cve_status_edit_assigned)
+	permission vulnerability_system_cve_status_edit_assigned = t_binding->vulnerability_system_cve_status_edit_assigned + t_platform->vulnerability_system_cve_status_edit_assigned
+	permission vulnerability_system_opt_out_edit = (inventory_host_view & vulnerability_system_opt_out_edit_assigned)
+	permission vulnerability_system_opt_out_edit_assigned = t_binding->vulnerability_system_opt_out_edit_assigned + t_platform->vulnerability_system_opt_out_edit_assigned
+	permission vulnerability_system_opt_out_view = (inventory_host_view & vulnerability_system_opt_out_view_assigned)
+	permission vulnerability_system_opt_out_view_assigned = t_binding->vulnerability_system_opt_out_view_assigned + t_platform->vulnerability_system_opt_out_view_assigned
+	permission vulnerability_toggle_cves_without_errata_edit = t_binding->vulnerability_toggle_cves_without_errata_edit + t_platform->vulnerability_toggle_cves_without_errata_edit
+	permission vulnerability_vulnerability_results_view = (inventory_host_view & vulnerability_vulnerability_results_view_assigned)
+	permission vulnerability_vulnerability_results_view_assigned = t_binding->vulnerability_vulnerability_results_view_assigned + t_platform->vulnerability_vulnerability_results_view_assigned
 }
 
 definition rbac/workspace {
@@ -506,6 +594,11 @@ definition rbac/workspace {
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view + t_parent->config_manager_activation_keys_view
 	permission config_manager_profile_edit = t_binding->config_manager_profile_edit + t_parent->config_manager_profile_edit
 	permission config_manager_profile_view = t_binding->config_manager_profile_view + t_parent->config_manager_profile_view
+	permission content_sources_repository_edit = t_binding->content_sources_repository_edit + t_parent->content_sources_repository_edit
+	permission content_sources_repository_upload = t_binding->content_sources_repository_upload + t_parent->content_sources_repository_upload
+	permission content_sources_repository_view = t_binding->content_sources_repository_view + t_parent->content_sources_repository_view
+	permission content_sources_template_edit = t_binding->content_sources_template_edit + t_parent->content_sources_template_edit
+	permission content_sources_template_view = t_binding->content_sources_template_view + t_parent->content_sources_template_view
 	permission inventory_host_update = t_binding->inventory_host_update + t_parent->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view + t_parent->inventory_host_view
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_parent->notifications_applications_view
@@ -530,4 +623,18 @@ definition rbac/workspace {
 	relation t_parent: rbac/workspace | rbac/tenant
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_parent->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_parent->staleness_staleness_view
+	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
+	permission vulnerability_advanced_report_view_assigned = t_binding->vulnerability_advanced_report_view_assigned + t_parent->vulnerability_advanced_report_view_assigned
+	permission vulnerability_cve_business_risk_and_status_edit = t_binding->vulnerability_cve_business_risk_and_status_edit + t_parent->vulnerability_cve_business_risk_and_status_edit
+	permission vulnerability_report_and_export_view = (inventory_host_view & vulnerability_report_and_export_view_assigned)
+	permission vulnerability_report_and_export_view_assigned = t_binding->vulnerability_report_and_export_view_assigned + t_parent->vulnerability_report_and_export_view_assigned
+	permission vulnerability_system_cve_status_edit = (inventory_host_view & vulnerability_system_cve_status_edit_assigned)
+	permission vulnerability_system_cve_status_edit_assigned = t_binding->vulnerability_system_cve_status_edit_assigned + t_parent->vulnerability_system_cve_status_edit_assigned
+	permission vulnerability_system_opt_out_edit = (inventory_host_view & vulnerability_system_opt_out_edit_assigned)
+	permission vulnerability_system_opt_out_edit_assigned = t_binding->vulnerability_system_opt_out_edit_assigned + t_parent->vulnerability_system_opt_out_edit_assigned
+	permission vulnerability_system_opt_out_view = (inventory_host_view & vulnerability_system_opt_out_view_assigned)
+	permission vulnerability_system_opt_out_view_assigned = t_binding->vulnerability_system_opt_out_view_assigned + t_parent->vulnerability_system_opt_out_view_assigned
+	permission vulnerability_toggle_cves_without_errata_edit = t_binding->vulnerability_toggle_cves_without_errata_edit + t_parent->vulnerability_toggle_cves_without_errata_edit
+	permission vulnerability_vulnerability_results_view = (inventory_host_view & vulnerability_vulnerability_results_view_assigned)
+	permission vulnerability_vulnerability_results_view_assigned = t_binding->vulnerability_vulnerability_results_view_assigned + t_parent->vulnerability_vulnerability_results_view_assigned
 }
