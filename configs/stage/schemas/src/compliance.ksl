@@ -2,23 +2,27 @@ version 0.1
 namespace compliance
 
 import rbac
-import hbi
 
-@rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'create', v2_perm:'compliance_policy_create_assigned');
-@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_policy_create_assigned', contingent: 'compliance_policy_create');
+// Policy
 @rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'read', v2_perm:'compliance_policy_view_assigned');
 @rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_policy_view_assigned', contingent: 'compliance_policy_view');
+@rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'create', v2_perm:'compliance_policy_create_assigned');
+@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_policy_create_assigned', contingent: 'compliance_policy_create');
 @rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'write', v2_perm:'compliance_policy_edit_assigned');
 @rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_policy_edit_assigned', contingent: 'compliance_policy_edit');
-@rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'update', v2_perm:'compliance_policy_update_assigned');
-@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_policy_update_assigned', contingent: 'compliance_policy_update');
 @rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'delete', v2_perm:'compliance_policy_delete_assigned');
 @rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_policy_delete_assigned', contingent: 'compliance_policy_delete');
 
+// Report
 @rbac.add_v1_based_permission(app:'compliance', resource:'report', verb:'delete', v2_perm:'compliance_report_delete_assigned');
 @rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_report_delete_assigned', contingent: 'compliance_report_delete');
 @rbac.add_v1_based_permission(app:'compliance', resource:'report', verb:'read', v2_perm:'compliance_report_view_assigned');
 @rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_report_view_assigned', contingent: 'compliance_report_view');
 
+// System
 @rbac.add_v1_based_permission(app:'compliance', resource:'system', verb:'read', v2_perm:'compliance_system_view_assigned');
 @rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_system_view_assigned', contingent: 'compliance_system_view');
+
+// Security guides
+@rbac.add_v1_based_permission(app:'compliance', resource:'securityguide', verb:'read', v2_perm:'compliance_securityguide_view_assigned');
+@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_securityguide_view_assigned', contingent: 'compliance_securityguide_view');
