@@ -1,0 +1,24 @@
+{
+    "workspaces": [
+        {
+            "verb": "read",
+            "description": "View workspace"
+        },
+        {
+            "verb": "update",
+            "description": "Edit workspace (name or description)"
+        },
+        {
+            "verb": "create",
+            "description": "Create/add sub workspace (create new & move others under this workspace)"
+        },
+        {
+            "verb": "delete",
+            "description": "Delete sub workspace"
+        },
+        {
+            "verb": "link",
+            "description": "Move workspace (assign new parent)"
+        }
+    ]
+}
