@@ -73,7 +73,7 @@ public extension add_v1_based_permission(app, resource, verb, v2_perm) {
 // Adds a permission that's only assignable to the role, for migration purposes
 public extension add_v1only_permission(perm) {
     type role {
-        private relation `${perm}`: [bool]
+        allow_duplicates private relation `${perm}`: [bool]
     }
 }
 
