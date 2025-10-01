@@ -9,6 +9,9 @@ import rbac
 @rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'write', v2_perm:'compliance_policy_edit');
 @rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'delete', v2_perm:'compliance_policy_remove');
 
+// This permission is not used by compliance - or at least the latest version - but relations fails if is not here.
+@rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'update', v2_perm:'compliance_policy_notused');
+
 // Report
 @rbac.add_v1_based_permission(app:'compliance', resource:'report', verb:'read', v2_perm:'compliance_report_view');
 
