@@ -9,8 +9,14 @@ import rbac
 @rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'write', v2_perm:'compliance_policy_edit');
 @rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'delete', v2_perm:'compliance_policy_remove');
 
-// This permission is not used by compliance - or at least the latest version - but relations fails if is not here.
+// This permission is not used by compliance backend
+// But frontend uses it here: https://github.com/RedHatInsights/compliance-frontend/blob/cd020f48920f51f0422256e7d91beada13e5d5d4/src/Routes.js#L103
+// And it is part of the roles: https://github.com/search?q=org%3ARedHatInsights+compliance%3Apolicy%3Aupdate&type=code
 @rbac.add_v1only_permission(perm:'compliance_policy_update');
+
+// https://github.com/RedHatInsights/compliance-frontend/blob/cd020f48920f51f0422256e7d91beada13e5d5d4/src/Routes.js#L38
+// https://github.com/search?q=org%3ARedHatInsights%20compliance%3Areport%3Adelete&type=code
+@rbac.add_v1only_permission(perm:'compliance_report_delete');
 
 // Report
 @rbac.add_v1_based_permission(app:'compliance', resource:'report', verb:'read', v2_perm:'compliance_report_view');
