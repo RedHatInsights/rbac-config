@@ -6,3 +6,5 @@ config-manager
 content-sources
 vulnerability
 compliance
+malware-detection
+ros
