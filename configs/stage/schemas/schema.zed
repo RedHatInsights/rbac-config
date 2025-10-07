@@ -1,6 +1,7 @@
 definition hbi/host {
 	permission delete = t_workspace->inventory_host_delete
 	permission move = t_workspace->inventory_host_move
+	permission ros_read_analysis = (view & t_workspace->ros_read_analysis)
 	permission update = t_workspace->inventory_host_update
 	permission view = t_workspace->inventory_host_view
 	permission workspace = t_workspace
@@ -49,6 +50,12 @@ definition rbac/platform {
 	permission inventory_host_move = t_binding->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view
+	permission malware_malware_acknowledge = (inventory_host_view & malware_malware_acknowledge_assigned)
+	permission malware_malware_acknowledge_assigned = t_binding->malware_malware_acknowledge_assigned
+	permission malware_malware_edit = (inventory_host_view & malware_malware_edit_assigned)
+	permission malware_malware_edit_assigned = t_binding->malware_malware_edit_assigned
+	permission malware_malware_view = (inventory_host_view & malware_malware_view_assigned)
+	permission malware_malware_view_assigned = t_binding->malware_malware_view_assigned
 	permission notifications_applications_view = t_binding->notifications_applications_view
 	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit
 	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view
@@ -67,6 +74,8 @@ definition rbac/platform {
 	permission notifications_integration_test = t_binding->notifications_integration_test
 	permission notifications_integration_view = t_binding->notifications_integration_view
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view
 	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
@@ -287,12 +296,25 @@ definition rbac/role {
 	relation t_inventory_hosts_read: rbac/principal:*
 	permission inventory_hosts_write = t_inventory_hosts_write
 	relation t_inventory_hosts_write: rbac/principal:*
+	permission malware_detection_acknowledgements_all = t_malware_detection_acknowledgements_all
+	relation t_malware_detection_acknowledgements_all: rbac/principal:*
 	permission malware_detection_acknowledgements_write = t_malware_detection_acknowledgements_write
 	relation t_malware_detection_acknowledgements_write: rbac/principal:*
 	permission malware_detection_all_all = t_malware_detection_all_all
 	relation t_malware_detection_all_all: rbac/principal:*
 	permission malware_detection_all_read = t_malware_detection_all_read
 	relation t_malware_detection_all_read: rbac/principal:*
+	permission malware_detection_all_write = t_malware_detection_all_write
+	relation t_malware_detection_all_write: rbac/principal:*
+	permission malware_detection_malware_all = t_malware_detection_malware_all
+	relation t_malware_detection_malware_all: rbac/principal:*
+	permission malware_detection_malware_read = t_malware_detection_malware_read
+	relation t_malware_detection_malware_read: rbac/principal:*
+	permission malware_detection_malware_write = t_malware_detection_malware_write
+	relation t_malware_detection_malware_write: rbac/principal:*
+	permission malware_malware_acknowledge_assigned = malware_detection_acknowledgements_write + malware_detection_acknowledgements_all + malware_detection_all_write + malware_detection_all_all + all_all_all + t_child->malware_malware_acknowledge_assigned
+	permission malware_malware_edit_assigned = malware_detection_malware_write + malware_detection_malware_all + malware_detection_all_write + malware_detection_all_all + all_all_all + t_child->malware_malware_edit_assigned
+	permission malware_malware_view_assigned = malware_detection_malware_read + malware_detection_malware_all + malware_detection_all_read + malware_detection_all_all + all_all_all + t_child->malware_malware_view_assigned
 	permission notifications_all_all = t_notifications_all_all
 	relation t_notifications_all_all: rbac/principal:*
 	permission notifications_all_read = t_notifications_all_read
@@ -411,6 +433,11 @@ definition rbac/role {
 	relation t_ros_all_all: rbac/principal:*
 	permission ros_all_read = t_ros_all_read
 	relation t_ros_all_read: rbac/principal:*
+	permission ros_analysis_all = t_ros_analysis_all
+	relation t_ros_analysis_all: rbac/principal:*
+	permission ros_analysis_read = t_ros_analysis_read
+	relation t_ros_analysis_read: rbac/principal:*
+	permission ros_read_analysis_assigned = ros_analysis_read + ros_analysis_all + ros_all_read + ros_all_all + all_all_all + t_child->ros_read_analysis_assigned
 	permission sources_all_all = t_sources_all_all
 	relation t_sources_all_all: rbac/principal:*
 	permission staleness_all_all = t_staleness_all_all
@@ -509,6 +536,9 @@ definition rbac/role_binding {
 	permission inventory_host_move = (subject & t_role->inventory_host_move)
 	permission inventory_host_update = (subject & t_role->inventory_host_update)
 	permission inventory_host_view = (subject & t_role->inventory_host_view)
+	permission malware_malware_acknowledge_assigned = (subject & t_role->malware_malware_acknowledge_assigned)
+	permission malware_malware_edit_assigned = (subject & t_role->malware_malware_edit_assigned)
+	permission malware_malware_view_assigned = (subject & t_role->malware_malware_view_assigned)
 	permission notifications_applications_view = (subject & t_role->notifications_applications_view)
 	permission notifications_behavior_groups_edit = (subject & t_role->notifications_behavior_groups_edit)
 	permission notifications_behavior_groups_view = (subject & t_role->notifications_behavior_groups_view)
@@ -529,6 +559,7 @@ definition rbac/role_binding {
 	permission notifications_integration_view_history = (subject & t_role->notifications_integration_view_history)
 	permission role = t_role
 	relation t_role: rbac/role
+	permission ros_read_analysis_assigned = (subject & t_role->ros_read_analysis_assigned)
 	permission staleness_staleness_update = (subject & t_role->staleness_staleness_update)
 	permission staleness_staleness_view = (subject & t_role->staleness_staleness_view)
 	permission subject = t_subject
@@ -559,6 +590,12 @@ definition rbac/tenant {
 	permission inventory_host_move = t_binding->inventory_host_move + t_platform->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update + t_platform->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view + t_platform->inventory_host_view
+	permission malware_malware_acknowledge = (inventory_host_view & malware_malware_acknowledge_assigned)
+	permission malware_malware_acknowledge_assigned = t_binding->malware_malware_acknowledge_assigned + t_platform->malware_malware_acknowledge_assigned
+	permission malware_malware_edit = (inventory_host_view & malware_malware_edit_assigned)
+	permission malware_malware_edit_assigned = t_binding->malware_malware_edit_assigned + t_platform->malware_malware_edit_assigned
+	permission malware_malware_view = (inventory_host_view & malware_malware_view_assigned)
+	permission malware_malware_view_assigned = t_binding->malware_malware_view_assigned + t_platform->malware_malware_view_assigned
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_platform->notifications_applications_view
 	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit + t_platform->notifications_behavior_groups_edit
 	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view + t_platform->notifications_behavior_groups_view
@@ -579,6 +616,8 @@ definition rbac/tenant {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_platform->notifications_integration_view_history
 	permission platform = t_platform
 	relation t_platform: rbac/platform
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_platform->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_platform->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_platform->staleness_staleness_view
 	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
@@ -613,6 +652,12 @@ definition rbac/workspace {
 	permission inventory_host_move = t_binding->inventory_host_move + t_parent->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update + t_parent->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view + t_parent->inventory_host_view
+	permission malware_malware_acknowledge = (inventory_host_view & malware_malware_acknowledge_assigned)
+	permission malware_malware_acknowledge_assigned = t_binding->malware_malware_acknowledge_assigned + t_parent->malware_malware_acknowledge_assigned
+	permission malware_malware_edit = (inventory_host_view & malware_malware_edit_assigned)
+	permission malware_malware_edit_assigned = t_binding->malware_malware_edit_assigned + t_parent->malware_malware_edit_assigned
+	permission malware_malware_view = (inventory_host_view & malware_malware_view_assigned)
+	permission malware_malware_view_assigned = t_binding->malware_malware_view_assigned + t_parent->malware_malware_view_assigned
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_parent->notifications_applications_view
 	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit + t_parent->notifications_behavior_groups_edit
 	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view + t_parent->notifications_behavior_groups_view
@@ -633,6 +678,8 @@ definition rbac/workspace {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_parent->notifications_integration_view_history
 	permission parent = t_parent
 	relation t_parent: rbac/workspace | rbac/tenant
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_parent->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_parent->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_parent->staleness_staleness_view
 	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
