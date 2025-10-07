@@ -6,3 +6,4 @@ config-manager
 content-sources
 vulnerability
 malware-detection
+ros
