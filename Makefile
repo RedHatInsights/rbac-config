@@ -1,6 +1,9 @@
 init:
-	go install github.com/RedHatInsights/rbac-config-actions/generate-v1-only-permissions/cmd/generate-v1-only-permissions@latest
-	go install github.com/project-kessel/ksl-schema-language/cmd/ksl@latest
+	@HASH=$$(git ls-remote https://github.com/project-kessel/ksl-schema-language.git HEAD | cut -f1) && \
+	go install github.com/project-kessel/ksl-schema-language/cmd/ksl@$$HASH
+
+    @HASH=$$(git ls-remote https://github.com/RedHatInsights/rbac-config-actions.git HEAD | cut -f1) && \
+	go install github.com/RedHatInsights/rbac-config-actions/generate-v1-only-permissions/cmd/generate-v1-only-permissions@$$HASH
 
 # Stage environment targets
 configs/stage/schemas/src/rbac_v1_permissions.json: configs/stage/permissions/*.json configs/stage/schemas/*.lst
