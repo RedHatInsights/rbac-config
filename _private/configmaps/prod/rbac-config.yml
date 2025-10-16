@@ -858,11 +858,11 @@ objects:
           {
             "name": "User Access administrator",
             "display_name": "User Access administrator",
-            "description": "Perform any available operation for a non-Organization Administrator to configure and manage user access to services hosted on console.redhat.com. This role can only be viewed and assigned by Organization Administrators.",
+            "description": "Perform most delegated access operations for users and service accounts. This includes managing standard groups, assigning/revoking non-admin roles, and inviting users. Cannot assign the Org Admin role or manage any group that contains the User Access Administrator role (to prevent privilege escalation).",
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "rbac:*:*"
