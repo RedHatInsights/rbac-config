@@ -1,6 +1,7 @@
 definition hbi/host {
 	permission delete = t_workspace->inventory_host_delete
 	permission move = t_workspace->inventory_host_move
+	permission ros_read_analysis = (view & t_workspace->ros_read_analysis)
 	permission update = t_workspace->inventory_host_update
 	permission view = t_workspace->inventory_host_view
 	permission workspace = t_workspace
@@ -62,6 +63,8 @@ definition rbac/platform {
 	permission notifications_integration_test = t_binding->notifications_integration_test
 	permission notifications_integration_view = t_binding->notifications_integration_view
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view
 }
@@ -371,6 +374,11 @@ definition rbac/role {
 	relation t_ros_all_all: rbac/principal:*
 	permission ros_all_read = t_ros_all_read
 	relation t_ros_all_read: rbac/principal:*
+	permission ros_analysis_all = t_ros_analysis_all
+	relation t_ros_analysis_all: rbac/principal:*
+	permission ros_analysis_read = t_ros_analysis_read
+	relation t_ros_analysis_read: rbac/principal:*
+	permission ros_read_analysis_assigned = ros_analysis_read + ros_analysis_all + ros_all_read + ros_all_all + all_all_all + t_child->ros_read_analysis_assigned
 	permission sources_all_all = t_sources_all_all
 	relation t_sources_all_all: rbac/principal:*
 	permission staleness_all_all = t_staleness_all_all
@@ -462,6 +470,7 @@ definition rbac/role_binding {
 	permission notifications_integration_view_history = (subject & t_role->notifications_integration_view_history)
 	permission role = t_role
 	relation t_role: rbac/role
+	permission ros_read_analysis_assigned = (subject & t_role->ros_read_analysis_assigned)
 	permission staleness_staleness_update = (subject & t_role->staleness_staleness_update)
 	permission staleness_staleness_view = (subject & t_role->staleness_staleness_view)
 	permission subject = t_subject
@@ -499,6 +508,8 @@ definition rbac/tenant {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_platform->notifications_integration_view_history
 	permission platform = t_platform
 	relation t_platform: rbac/platform
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_platform->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_platform->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_platform->staleness_staleness_view
 }
@@ -534,6 +545,8 @@ definition rbac/workspace {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_parent->notifications_integration_view_history
 	permission parent = t_parent
 	relation t_parent: rbac/workspace | rbac/tenant
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_parent->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_parent->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_parent->staleness_staleness_view
 }
