@@ -1,0 +1,15 @@
+version 0.1
+namespace advisor
+
+import rbac
+import hbi
+
+@rbac.add_v1_based_permission(app:'advisor', resource:'disable_recommendations', verb:'write', v2_perm:'advisor_disable_recommendations_edit');
+
+@rbac.add_v1_based_permission(app:'advisor', resource:'weekly_email', verb:'read', v2_perm:'advisor_weekly_email_view');
+
+@rbac.add_v1_based_permission(app:'advisor', resource:'recommendation_results', verb:'read', v2_perm:'advisor_recommendation_results_view_assigned');
+@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'advisor_recommendation_results_view_assigned', contingent: 'advisor_recommendation_results_view');
+@hbi.expose_host_permission(v2_perm: 'advisor_recommendation_results_view', host_perm: 'advisor_recommendation_results_view');
+
+@rbac.add_v1_based_permission(app:'advisor', resource:'exports', verb:'read', v2_perm:'advisor_exports_view');
