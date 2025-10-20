@@ -118,24 +118,32 @@ Building the Kessel schema
 
 Prerequisites
 
-1. A recent go version (1.22+)
+1. A recent go version (1.22+) - The Makefile will automatically check if Go is installed
 
-2. Install the toolchain by running:
+2. Install the required Go tools by running:
 
     ~~~sh
     make init
     ~~~
 
-3. If not already, add [$GOBIN](https://pkg.go.dev/cmd/go#hdr-Compile_and_install_packages_and_dependencies) env value to your path to access the binaries.
-   If GO envs are not set, this defaults to `~/go/bin`.
+3. (Optional) Verify the tools are installed:
 
-Use the following commands to build the zed schema from Kessel schema files (`.ksl`)
+    ~~~sh
+    make check-go-tools
+    ~~~
+
+**Note**: You don't need to add `$GOBIN` to your PATH. The Makefile automatically uses the correct Go binary path from `go env GOPATH`.
+
+### Building test schemas
+
+To build test schemas:
 
   ~~~sh
-  make ksl-test-schema-stage # or make ksl-test-schema-prod for prod
+  make ksl-test-schema-stage  # for stage
+  make ksl-test-schema-prod   # for prod
   ~~~
 
-The resulting schema is written to _private/test-schema/stage-schema.zed and _private/test-schema/prod-schema.zed
+The test schemas are written to `_private/test-schema/stage-schema.zed` and `_private/test-schema/prod-schema.zed`
 
 Admin Default Role
 ------------------
