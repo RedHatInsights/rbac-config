@@ -1,0 +1,22 @@
+version 0.1
+namespace compliance
+
+import rbac
+
+// Policy
+@rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'read', v2_perm:'compliance_policy_view');
+@rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'create', v2_perm:'compliance_policy_new');
+@rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'write', v2_perm:'compliance_policy_edit');
+@rbac.add_v1_based_permission(app:'compliance', resource:'policy', verb:'delete', v2_perm:'compliance_policy_remove');
+
+// These 2 permissions are not used by compliance backend - they were used by the frontend but they updated to align with the backend
+// https://github.com/RedHatInsights/compliance-frontend/pull/2654/files
+@rbac.add_v1only_permission(perm:'compliance_policy_update');
+@rbac.add_v1only_permission(perm:'compliance_report_delete');
+
+// Report
+@rbac.add_v1_based_permission(app:'compliance', resource:'report', verb:'read', v2_perm:'compliance_report_view');
+
+// System
+@rbac.add_v1_based_permission(app:'compliance', resource:'system', verb:'read', v2_perm:'compliance_system_view_assigned');
+@rbac.add_contingent_permission(first: 'inventory_host_view', second: 'compliance_system_view_assigned', contingent: 'compliance_system_view');
