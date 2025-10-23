@@ -45,16 +45,14 @@ public type workspace { //Workspace is public so services can place resources in
 // Adds a permission that's checkable at the workspace but granted by assigning a different, V1 permission to the role
 public extension add_v1_based_permission(app, resource, verb, v2_perm) {
     type role {
-        allow_duplicates private relation `${app}_all_all`: [bool]
-        allow_duplicates private relation `${app}_${resource}_all`: [bool]
-        allow_duplicates private relation `${app}_all_${verb}`: [bool]
-        allow_duplicates private relation `${app}_${resource}_${verb}`: [bool]
-
-        relation `${v2_perm}`: `${app}_${resource}_${verb}` or `${app}_${resource}_all` or `${app}_all_${verb}` or `${app}_all_all` or all_all_all or child.`${v2_perm}`
+        allow_duplicates internal relation `${app}_all_all`: [bool] or child.`${app}_all_all`
+        allow_duplicates internal relation `${app}_${resource}_all`: [bool] or child.`${app}_${resource}_all`
+        allow_duplicates internal relation `${app}_all_${verb}`: [bool] or child.`${app}_all_${verb}`
+        allow_duplicates internal relation `${app}_${resource}_${verb}`: [bool] or child.`${app}_${resource}_${verb}`
     }
 
     type role_binding {
-        relation `${v2_perm}`: subject and role.`${v2_perm}`
+        relation `${v2_perm}`: subject and (role.`${app}_${resource}_${verb}` or role.`${app}_${resource}_all` or role.`${app}_all_${verb}` or role.`${app}_all_all` or role.all_all_all)
     }
 
     type platform {
