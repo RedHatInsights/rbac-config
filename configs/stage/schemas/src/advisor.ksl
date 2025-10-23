@@ -4,6 +4,7 @@ namespace advisor
 import rbac
 import hbi
 
+@rbac.add_v1_based_permission(app:'advisor', resource:'disable_recommendations', verb:'read', v2_perm:'advisor_disable_recommendations_view');
 @rbac.add_v1_based_permission(app:'advisor', resource:'disable_recommendations', verb:'write', v2_perm:'advisor_disable_recommendations_edit');
 
 @rbac.add_v1_based_permission(app:'advisor', resource:'weekly_email', verb:'read', v2_perm:'advisor_weekly_email_view');
