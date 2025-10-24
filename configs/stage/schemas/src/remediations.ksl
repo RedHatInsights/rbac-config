@@ -1,0 +1,8 @@
+version 0.1
+namespace remediations
+
+import rbac
+
+@rbac.add_v1_based_permission(app:'remediations', resource:'remediation', verb:'read', v2_perm:'remediations_view_remediation');
+@rbac.add_v1_based_permission(app:'remediations', resource:'remediation', verb:'write', v2_perm:'remediations_edit_remediation');
+@rbac.add_v1_based_permission(app:'remediations', resource:'remediation', verb:'write', v2_perm:'remediations_execute_remediation');
