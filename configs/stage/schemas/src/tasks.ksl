@@ -1,0 +1,8 @@
+version 0.1
+namespace tasks
+
+import rbac
+import hbi
+
+@rbac.add_v1_based_permission(app:'tasks', resource:'all', verb:'read', v2_perm:'tasks_all_view');
+@rbac.add_v1_based_permission(app:'tasks', resource:'all', verb:'write', v2_perm:'tasks_all_edit');
