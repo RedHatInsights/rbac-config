@@ -946,11 +946,11 @@ objects:
           {
             "name": "RHEL viewer",
             "display_name": "RHEL viewer",
-            "description": "Grants read-only access to RHEL Insights. Users can view system configs, compliance reports, inventory data, patch info, vulnerabilities and more to observe the state of resources/activities, but can’t perform actions other than generating activation keys.",
+            "description": "Grants read-only access to Red Hat Lightspeed for RHEL. Users can view system configs, compliance reports, inventory data, patch info, vulnerabilities and more to observe the state of resources/activities, but can’t perform actions other than generating activation keys.",
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "advisor:*:read"
