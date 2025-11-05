@@ -99,7 +99,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "advisor:*:*"
@@ -108,7 +108,7 @@
           "permission": "compliance:policy:read"
         },
         {
-          "permission": "compliance:policy:update"
+          "permission": "compliance:policy:write"
         },
         {
           "permission": "compliance:report:read"
