@@ -25,9 +25,6 @@
         "verb": "create"
       },
       {
-        "verb": "update"
-      },
-      {
         "verb": "delete"
       },
       {
