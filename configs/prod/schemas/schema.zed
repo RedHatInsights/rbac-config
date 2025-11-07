@@ -118,6 +118,8 @@ definition rbac/role {
 	relation t_compliance_policy_delete: rbac/principal:*
 	permission compliance_policy_read = t_compliance_policy_read
 	relation t_compliance_policy_read: rbac/principal:*
+	permission compliance_policy_update = t_compliance_policy_update
+	relation t_compliance_policy_update: rbac/principal:*
 	permission compliance_policy_write = t_compliance_policy_write
 	relation t_compliance_policy_write: rbac/principal:*
 	permission compliance_report_delete = t_compliance_report_delete
