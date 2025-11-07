@@ -68,6 +68,9 @@ definition rbac/platform {
 	permission notifications_integration_test = t_binding->notifications_integration_test
 	permission notifications_integration_view = t_binding->notifications_integration_view
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history
+	permission remediations_edit_remediation = t_binding->remediations_edit_remediation
+	permission remediations_execute_remediation = t_binding->remediations_execute_remediation
+	permission remediations_view_remediation = t_binding->remediations_view_remediation
 	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
 	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update
@@ -378,16 +381,23 @@ definition rbac/role {
 	relation t_rbac_principal_read: rbac/principal:*
 	permission remediations_all_all = t_remediations_all_all
 	relation t_remediations_all_all: rbac/principal:*
+	permission remediations_all_execute = t_remediations_all_execute
+	relation t_remediations_all_execute: rbac/principal:*
 	permission remediations_all_read = t_remediations_all_read
 	relation t_remediations_all_read: rbac/principal:*
 	permission remediations_all_write = t_remediations_all_write
 	relation t_remediations_all_write: rbac/principal:*
+	permission remediations_edit_remediation = remediations_remediation_write + remediations_remediation_all + remediations_all_write + remediations_all_all + all_all_all + t_child->remediations_edit_remediation
+	permission remediations_execute_remediation = remediations_remediation_execute + remediations_remediation_all + remediations_all_execute + remediations_all_all + all_all_all + t_child->remediations_execute_remediation
+	permission remediations_remediation_all = t_remediations_remediation_all
+	relation t_remediations_remediation_all: rbac/principal:*
 	permission remediations_remediation_execute = t_remediations_remediation_execute
 	relation t_remediations_remediation_execute: rbac/principal:*
 	permission remediations_remediation_read = t_remediations_remediation_read
 	relation t_remediations_remediation_read: rbac/principal:*
 	permission remediations_remediation_write = t_remediations_remediation_write
 	relation t_remediations_remediation_write: rbac/principal:*
+	permission remediations_view_remediation = remediations_remediation_read + remediations_remediation_all + remediations_all_read + remediations_all_all + all_all_all + t_child->remediations_view_remediation
 	permission ros_all_all = t_ros_all_all
 	relation t_ros_all_all: rbac/principal:*
 	permission ros_all_read = t_ros_all_read
@@ -491,6 +501,9 @@ definition rbac/role_binding {
 	permission notifications_integration_test = (subject & t_role->notifications_integration_test)
 	permission notifications_integration_view = (subject & t_role->notifications_integration_view)
 	permission notifications_integration_view_history = (subject & t_role->notifications_integration_view_history)
+	permission remediations_edit_remediation = (subject & t_role->remediations_edit_remediation)
+	permission remediations_execute_remediation = (subject & t_role->remediations_execute_remediation)
+	permission remediations_view_remediation = (subject & t_role->remediations_view_remediation)
 	permission role = t_role
 	relation t_role: rbac/role
 	permission ros_read_analysis_assigned = (subject & t_role->ros_read_analysis_assigned)
@@ -536,6 +549,9 @@ definition rbac/tenant {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_platform->notifications_integration_view_history
 	permission platform = t_platform
 	relation t_platform: rbac/platform
+	permission remediations_edit_remediation = t_binding->remediations_edit_remediation + t_platform->remediations_edit_remediation
+	permission remediations_execute_remediation = t_binding->remediations_execute_remediation + t_platform->remediations_execute_remediation
+	permission remediations_view_remediation = t_binding->remediations_view_remediation + t_platform->remediations_view_remediation
 	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
 	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_platform->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_platform->staleness_staleness_update
@@ -578,6 +594,9 @@ definition rbac/workspace {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_parent->notifications_integration_view_history
 	permission parent = t_parent
 	relation t_parent: rbac/workspace | rbac/tenant
+	permission remediations_edit_remediation = t_binding->remediations_edit_remediation + t_parent->remediations_edit_remediation
+	permission remediations_execute_remediation = t_binding->remediations_execute_remediation + t_parent->remediations_execute_remediation
+	permission remediations_view_remediation = t_binding->remediations_view_remediation + t_parent->remediations_view_remediation
 	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
 	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_parent->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_parent->staleness_staleness_update
