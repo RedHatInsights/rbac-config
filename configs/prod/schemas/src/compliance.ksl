@@ -1,0 +1,5 @@
+version 0.1
+namespace compliance
+
+// Temporary placeholders for deprecated permissions
+@add_v1only_permission(perm:'compliance_policy_update');
