@@ -1,0 +1,7 @@
+version 0.1
+namespace compliance
+
+import rbac
+
+// Temporary placeholders for deprecated permissions
+@rbac.add_v1only_permission(perm:'compliance_policy_update');
