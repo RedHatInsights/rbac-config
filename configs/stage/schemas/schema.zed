@@ -466,42 +466,6 @@ definition rbac/role {
 	relation t_policies_policies_read: rbac/principal:*
 	permission policies_policies_write = t_policies_policies_write
 	relation t_policies_policies_write: rbac/principal:*
-	permission provisioning_all_all = t_provisioning_all_all
-	relation t_provisioning_all_all: rbac/principal:*
-	permission provisioning_pubkey_all = t_provisioning_pubkey_all
-	relation t_provisioning_pubkey_all: rbac/principal:*
-	permission provisioning_pubkey_read = t_provisioning_pubkey_read
-	relation t_provisioning_pubkey_read: rbac/principal:*
-	permission provisioning_pubkey_write = t_provisioning_pubkey_write
-	relation t_provisioning_pubkey_write: rbac/principal:*
-	permission provisioning_reservation_all = t_provisioning_reservation_all
-	relation t_provisioning_reservation_all: rbac/principal:*
-	permission provisioning_reservation_aws_all = t_provisioning_reservation_aws_all
-	relation t_provisioning_reservation_aws_all: rbac/principal:*
-	permission provisioning_reservation_aws_read = t_provisioning_reservation_aws_read
-	relation t_provisioning_reservation_aws_read: rbac/principal:*
-	permission provisioning_reservation_aws_write = t_provisioning_reservation_aws_write
-	relation t_provisioning_reservation_aws_write: rbac/principal:*
-	permission provisioning_reservation_azure_all = t_provisioning_reservation_azure_all
-	relation t_provisioning_reservation_azure_all: rbac/principal:*
-	permission provisioning_reservation_azure_read = t_provisioning_reservation_azure_read
-	relation t_provisioning_reservation_azure_read: rbac/principal:*
-	permission provisioning_reservation_azure_write = t_provisioning_reservation_azure_write
-	relation t_provisioning_reservation_azure_write: rbac/principal:*
-	permission provisioning_reservation_gcp_all = t_provisioning_reservation_gcp_all
-	relation t_provisioning_reservation_gcp_all: rbac/principal:*
-	permission provisioning_reservation_gcp_read = t_provisioning_reservation_gcp_read
-	relation t_provisioning_reservation_gcp_read: rbac/principal:*
-	permission provisioning_reservation_gcp_write = t_provisioning_reservation_gcp_write
-	relation t_provisioning_reservation_gcp_write: rbac/principal:*
-	permission provisioning_reservation_read = t_provisioning_reservation_read
-	relation t_provisioning_reservation_read: rbac/principal:*
-	permission provisioning_reservation_write = t_provisioning_reservation_write
-	relation t_provisioning_reservation_write: rbac/principal:*
-	permission provisioning_source_all = t_provisioning_source_all
-	relation t_provisioning_source_all: rbac/principal:*
-	permission provisioning_source_read = t_provisioning_source_read
-	relation t_provisioning_source_read: rbac/principal:*
 	permission rbac_all_all = t_rbac_all_all
 	relation t_rbac_all_all: rbac/principal:*
 	permission rbac_principal_read = t_rbac_principal_read
