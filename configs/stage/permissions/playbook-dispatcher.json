@@ -30,5 +30,13 @@
         {
             "verb": "write"
         }
+    ],
+    "run": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
     ]
 }

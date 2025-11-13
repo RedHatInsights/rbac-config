@@ -19,6 +19,18 @@
           "permission": "playbook-dispatcher:config_manager_run:read"
         },
         {
+          "permission": "playbook-dispatcher:run:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "service",
+                "operation": "equal",
+                "value": "config_manager"
+              }
+            }
+          ]
+        },
+        {
           "permission": "subscriptions:organization:read"
         }
       ]
@@ -42,6 +54,18 @@
         },
         {
           "permission": "playbook-dispatcher:config_manager_run:read"
+        },
+        {
+          "permission": "playbook-dispatcher:run:read",
+          "resourceDefinitions": [
+            {
+              "attributeFilter": {
+                "key": "service",
+                "operation": "equal",
+                "value": "config_manager"
+              }
+            }
+          ]
         }
       ]
     }
