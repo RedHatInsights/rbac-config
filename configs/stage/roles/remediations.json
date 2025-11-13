@@ -11,6 +11,9 @@
           "permission": "remediations:*:*"
         },
         {
+          "permission": "playbook-dispatcher:remediations_run:read"
+        },
+        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {
@@ -36,6 +39,9 @@
         },
         {
           "permission": "remediations:remediation:write"
+        },
+        {
+          "permission": "playbook-dispatcher:remediations_run:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",

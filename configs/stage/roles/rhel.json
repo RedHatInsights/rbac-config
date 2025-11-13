@@ -171,6 +171,9 @@
           "permission": "patch:*:*"
         },
         {
+          "permission": "playbook-dispatcher:remediations_run:read"
+        },
+        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {
@@ -309,6 +312,9 @@
         },
         {
           "permission": "patch:*:*"
+        },
+        {
+          "permission": "playbook-dispatcher:remediations_run:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
