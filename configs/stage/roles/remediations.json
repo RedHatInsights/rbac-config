@@ -11,16 +11,7 @@
           "permission": "remediations:*:*"
         },
         {
-          "permission": "playbook-dispatcher:run:read",
-          "resourceDefinitions": [
-            {
-              "attributeFilter": {
-                "key": "service",
-                "operation": "equal",
-                "value": "remediations"
-              }
-            }
-          ]
+          "permission": "playbook-dispatcher:remediations_run:read"
         }
       ]
     },
@@ -38,16 +29,7 @@
           "permission": "remediations:remediation:write"
         },
         {
-          "permission": "playbook-dispatcher:run:read",
-          "resourceDefinitions": [
-            {
-              "attributeFilter": {
-                "key": "service",
-                "operation": "equal",
-                "value": "remediations"
-              }
-            }
-          ]
+          "permission": "playbook-dispatcher:remediations_run:read"
         }
       ]
     }

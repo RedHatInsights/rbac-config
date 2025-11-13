@@ -1,5 +1,29 @@
 {
-    "run": [
+    "*": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
+    "remediations_run": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
+    "tasks_run": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
+    "config_manager_run": [
         {
             "verb": "read"
         },

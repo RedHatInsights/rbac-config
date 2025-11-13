@@ -12,16 +12,7 @@
           "permission": "tasks:*:*"
         },
         {
-          "permission": "playbook-dispatcher:run:read",
-          "resourceDefinitions": [
-            {
-              "attributeFilter": {
-                "key": "service",
-                "operation": "equal",
-                "value": "tasks"
-              }
-            }
-          ]
+          "permission": "playbook-dispatcher:tasks_run:read"
         }
       ]
     }
