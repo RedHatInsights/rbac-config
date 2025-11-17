@@ -4,8 +4,6 @@ namespace subscriptions
 import rbac
 
 @rbac.add_v1_based_permission(app:'subscriptions', resource:'report', verb:'read', v2_perm:'subscriptions_report_view');
-@rbac.add_v1_based_permission(app:'subscriptions', resource:'subscription', verb:'read', v2_perm:'subscriptions_subscription_view');
-@rbac.add_v1_based_permission(app:'subscriptions', resource:'subscription', verb:'write', v2_perm:'subscriptions_subscription_edit');
 @rbac.add_v1_based_permission(app:'subscriptions', resource:'manifest', verb:'read', v2_perm:'subscriptions_manifest_view');
 @rbac.add_v1_based_permission(app:'subscriptions', resource:'manifest', verb:'write', v2_perm:'subscriptions_manifest_edit');
 @rbac.add_v1_based_permission(app:'subscriptions', resource:'organization', verb:'read', v2_perm:'subscriptions_organization_view');
