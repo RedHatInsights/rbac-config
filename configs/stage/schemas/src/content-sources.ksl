@@ -1,0 +1,11 @@
+version 0.1
+namespace content_sources
+
+import rbac
+
+@rbac.add_v1_based_permission(app:'content_sources', resource:'repositories', verb:'read', v2_perm:'content_sources_repository_view');
+@rbac.add_v1_based_permission(app:'content_sources', resource:'repositories', verb:'write', v2_perm:'content_sources_repository_edit');
+@rbac.add_v1_based_permission(app:'content_sources', resource:'repositories', verb:'upload', v2_perm:'content_sources_repository_upload');
+
+@rbac.add_v1_based_permission(app:'content_sources', resource:'templates', verb:'read', v2_perm:'content_sources_template_view');
+@rbac.add_v1_based_permission(app:'content_sources', resource:'templates', verb:'write', v2_perm:'content_sources_template_edit');

@@ -1,4 +1,13 @@
 definition hbi/host {
+	permission advisor_recommendation_results_edit = (view & t_workspace->advisor_recommendation_results_edit)
+	permission advisor_recommendation_results_view = (view & t_workspace->advisor_recommendation_results_view)
+	permission delete = t_workspace->inventory_host_delete
+	permission move = t_workspace->inventory_host_move
+	permission patch_system_edit = (view & t_workspace->patch_system_edit)
+	permission patch_system_view = (view & t_workspace->patch_system_view)
+	permission patch_template_edit = (view & t_workspace->patch_template_edit)
+	permission patch_template_view = (view & t_workspace->patch_template_view)
+	permission ros_read_analysis = (view & t_workspace->ros_read_analysis)
 	permission update = t_workspace->inventory_host_update
 	permission view = t_workspace->inventory_host_view
 	permission workspace = t_workspace
@@ -32,14 +41,45 @@ definition rbac/group {
 }
 
 definition rbac/platform {
+	permission advisor_disable_recommendations_edit = t_binding->advisor_disable_recommendations_edit
+	permission advisor_disable_recommendations_view = t_binding->advisor_disable_recommendations_view
+	permission advisor_exports_view = t_binding->advisor_exports_view
+	permission advisor_recommendation_results_edit = (inventory_host_view & advisor_recommendation_results_edit_assigned)
+	permission advisor_recommendation_results_edit_assigned = t_binding->advisor_recommendation_results_edit_assigned
+	permission advisor_recommendation_results_view = (inventory_host_view & advisor_recommendation_results_view_assigned)
+	permission advisor_recommendation_results_view_assigned = t_binding->advisor_recommendation_results_view_assigned
+	permission advisor_weekly_email_view = t_binding->advisor_weekly_email_view
+	permission advisor_weekly_report_auto_subscribe_edit = t_binding->advisor_weekly_report_auto_subscribe_edit
+	permission advisor_weekly_report_auto_subscribe_view = t_binding->advisor_weekly_report_auto_subscribe_view
+	permission advisor_weekly_report_view = t_binding->advisor_weekly_report_view
 	permission binding = t_binding
 	relation t_binding: rbac/role_binding
+	permission compliance_policy_edit = t_binding->compliance_policy_edit
+	permission compliance_policy_new = t_binding->compliance_policy_new
+	permission compliance_policy_remove = t_binding->compliance_policy_remove
+	permission compliance_policy_view = t_binding->compliance_policy_view
+	permission compliance_report_view = t_binding->compliance_report_view
+	permission compliance_system_view = (inventory_host_view & compliance_system_view_assigned)
+	permission compliance_system_view_assigned = t_binding->compliance_system_view_assigned
 	permission config_manager_activation_keys_edit = t_binding->config_manager_activation_keys_edit
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view
 	permission config_manager_profile_edit = t_binding->config_manager_profile_edit
 	permission config_manager_profile_view = t_binding->config_manager_profile_view
+	permission content_sources_repository_edit = t_binding->content_sources_repository_edit
+	permission content_sources_repository_upload = t_binding->content_sources_repository_upload
+	permission content_sources_repository_view = t_binding->content_sources_repository_view
+	permission content_sources_template_edit = t_binding->content_sources_template_edit
+	permission content_sources_template_view = t_binding->content_sources_template_view
+	permission inventory_host_delete = t_binding->inventory_host_delete
+	permission inventory_host_move = t_binding->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view
+	permission malware_malware_acknowledge = (inventory_host_view & malware_malware_acknowledge_assigned)
+	permission malware_malware_acknowledge_assigned = t_binding->malware_malware_acknowledge_assigned
+	permission malware_malware_edit = (inventory_host_view & malware_malware_edit_assigned)
+	permission malware_malware_edit_assigned = t_binding->malware_malware_edit_assigned
+	permission malware_malware_view = (inventory_host_view & malware_malware_view_assigned)
+	permission malware_malware_view_assigned = t_binding->malware_malware_view_assigned
 	permission notifications_applications_view = t_binding->notifications_applications_view
 	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit
 	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view
@@ -58,8 +98,40 @@ definition rbac/platform {
 	permission notifications_integration_test = t_binding->notifications_integration_test
 	permission notifications_integration_view = t_binding->notifications_integration_view
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history
+	permission patch_system_edit = (inventory_host_view & patch_system_edit_assigned)
+	permission patch_system_edit_assigned = t_binding->patch_system_edit_assigned
+	permission patch_system_view = (inventory_host_view & patch_system_view_assigned)
+	permission patch_system_view_assigned = t_binding->patch_system_view_assigned
+	permission patch_template_edit = (patch_system_edit & content_sources_template_edit)
+	permission patch_template_view = (patch_system_view & content_sources_template_view)
+	permission rbac_workspace_create = t_binding->rbac_workspace_create
+	permission rbac_workspace_delete = t_binding->rbac_workspace_delete
+	permission rbac_workspace_edit = t_binding->rbac_workspace_edit
+	permission rbac_workspace_move = t_binding->rbac_workspace_move
+	permission rbac_workspace_view = t_binding->rbac_workspace_view
+	permission remediations_edit_remediation = t_binding->remediations_edit_remediation
+	permission remediations_execute_remediation = t_binding->remediations_execute_remediation
+	permission remediations_view_remediation = t_binding->remediations_view_remediation
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view
+	permission tasks_task_edit = t_binding->tasks_task_edit
+	permission tasks_task_view = t_binding->tasks_task_view
+	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
+	permission vulnerability_advanced_report_view_assigned = t_binding->vulnerability_advanced_report_view_assigned
+	permission vulnerability_cve_business_risk_and_status_edit = t_binding->vulnerability_cve_business_risk_and_status_edit
+	permission vulnerability_report_and_export_view = (inventory_host_view & vulnerability_report_and_export_view_assigned)
+	permission vulnerability_report_and_export_view_assigned = t_binding->vulnerability_report_and_export_view_assigned
+	permission vulnerability_system_cve_status_edit = (inventory_host_view & vulnerability_system_cve_status_edit_assigned)
+	permission vulnerability_system_cve_status_edit_assigned = t_binding->vulnerability_system_cve_status_edit_assigned
+	permission vulnerability_system_opt_out_edit = (inventory_host_view & vulnerability_system_opt_out_edit_assigned)
+	permission vulnerability_system_opt_out_edit_assigned = t_binding->vulnerability_system_opt_out_edit_assigned
+	permission vulnerability_system_opt_out_view = (inventory_host_view & vulnerability_system_opt_out_view_assigned)
+	permission vulnerability_system_opt_out_view_assigned = t_binding->vulnerability_system_opt_out_view_assigned
+	permission vulnerability_toggle_cves_without_errata_edit = t_binding->vulnerability_toggle_cves_without_errata_edit
+	permission vulnerability_vulnerability_results_view = (inventory_host_view & vulnerability_vulnerability_results_view_assigned)
+	permission vulnerability_vulnerability_results_view_assigned = t_binding->vulnerability_vulnerability_results_view_assigned
 }
 
 definition rbac/principal {}
@@ -69,14 +141,47 @@ definition rbac/role {
 	relation t_advisor_all_all: rbac/principal:*
 	permission advisor_all_read = t_advisor_all_read
 	relation t_advisor_all_read: rbac/principal:*
+	permission advisor_all_write = t_advisor_all_write
+	relation t_advisor_all_write: rbac/principal:*
+	permission advisor_disable_recommendations_all = t_advisor_disable_recommendations_all
+	relation t_advisor_disable_recommendations_all: rbac/principal:*
+	permission advisor_disable_recommendations_edit = advisor_disable_recommendations_write + advisor_disable_recommendations_all + advisor_all_write + advisor_all_all + all_all_all + t_child->advisor_disable_recommendations_edit
+	permission advisor_disable_recommendations_read = t_advisor_disable_recommendations_read
+	relation t_advisor_disable_recommendations_read: rbac/principal:*
+	permission advisor_disable_recommendations_view = advisor_disable_recommendations_read + advisor_disable_recommendations_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_disable_recommendations_view
 	permission advisor_disable_recommendations_write = t_advisor_disable_recommendations_write
 	relation t_advisor_disable_recommendations_write: rbac/principal:*
+	permission advisor_exports_all = t_advisor_exports_all
+	relation t_advisor_exports_all: rbac/principal:*
 	permission advisor_exports_read = t_advisor_exports_read
 	relation t_advisor_exports_read: rbac/principal:*
+	permission advisor_exports_view = advisor_exports_read + advisor_exports_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_exports_view
+	permission advisor_recommendation_results_all = t_advisor_recommendation_results_all
+	relation t_advisor_recommendation_results_all: rbac/principal:*
+	permission advisor_recommendation_results_edit_assigned = advisor_recommendation_results_write + advisor_recommendation_results_all + advisor_all_write + advisor_all_all + all_all_all + t_child->advisor_recommendation_results_edit_assigned
 	permission advisor_recommendation_results_read = t_advisor_recommendation_results_read
 	relation t_advisor_recommendation_results_read: rbac/principal:*
+	permission advisor_recommendation_results_view_assigned = advisor_recommendation_results_read + advisor_recommendation_results_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_recommendation_results_view_assigned
+	permission advisor_recommendation_results_write = t_advisor_recommendation_results_write
+	relation t_advisor_recommendation_results_write: rbac/principal:*
+	permission advisor_weekly_email_all = t_advisor_weekly_email_all
+	relation t_advisor_weekly_email_all: rbac/principal:*
 	permission advisor_weekly_email_read = t_advisor_weekly_email_read
 	relation t_advisor_weekly_email_read: rbac/principal:*
+	permission advisor_weekly_email_view = advisor_weekly_email_read + advisor_weekly_email_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_weekly_email_view
+	permission advisor_weekly_report_all = t_advisor_weekly_report_all
+	relation t_advisor_weekly_report_all: rbac/principal:*
+	permission advisor_weekly_report_auto_subscribe_all = t_advisor_weekly_report_auto_subscribe_all
+	relation t_advisor_weekly_report_auto_subscribe_all: rbac/principal:*
+	permission advisor_weekly_report_auto_subscribe_edit = advisor_weekly_report_auto_subscribe_write + advisor_weekly_report_auto_subscribe_all + advisor_all_write + advisor_all_all + all_all_all + t_child->advisor_weekly_report_auto_subscribe_edit
+	permission advisor_weekly_report_auto_subscribe_read = t_advisor_weekly_report_auto_subscribe_read
+	relation t_advisor_weekly_report_auto_subscribe_read: rbac/principal:*
+	permission advisor_weekly_report_auto_subscribe_view = advisor_weekly_report_auto_subscribe_read + advisor_weekly_report_auto_subscribe_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_weekly_report_auto_subscribe_view
+	permission advisor_weekly_report_auto_subscribe_write = t_advisor_weekly_report_auto_subscribe_write
+	relation t_advisor_weekly_report_auto_subscribe_write: rbac/principal:*
+	permission advisor_weekly_report_read = t_advisor_weekly_report_read
+	relation t_advisor_weekly_report_read: rbac/principal:*
+	permission advisor_weekly_report_view = advisor_weekly_report_read + advisor_weekly_report_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_weekly_report_view
 	permission all_all_all = t_all_all_all
 	relation t_all_all_all: rbac/principal:*
 	permission ansible_wisdom_admin_dashboard_chart_active_users_read = t_ansible_wisdom_admin_dashboard_chart_active_users_read
@@ -97,22 +202,42 @@ definition rbac/role {
 	relation t_child: rbac/role
 	permission compliance_all_all = t_compliance_all_all
 	relation t_compliance_all_all: rbac/principal:*
+	permission compliance_all_create = t_compliance_all_create
+	relation t_compliance_all_create: rbac/principal:*
+	permission compliance_all_delete = t_compliance_all_delete
+	relation t_compliance_all_delete: rbac/principal:*
+	permission compliance_all_read = t_compliance_all_read
+	relation t_compliance_all_read: rbac/principal:*
+	permission compliance_all_write = t_compliance_all_write
+	relation t_compliance_all_write: rbac/principal:*
+	permission compliance_policy_all = t_compliance_policy_all
+	relation t_compliance_policy_all: rbac/principal:*
 	permission compliance_policy_create = t_compliance_policy_create
 	relation t_compliance_policy_create: rbac/principal:*
 	permission compliance_policy_delete = t_compliance_policy_delete
 	relation t_compliance_policy_delete: rbac/principal:*
+	permission compliance_policy_edit = compliance_policy_write + compliance_policy_all + compliance_all_write + compliance_all_all + all_all_all + t_child->compliance_policy_edit
+	permission compliance_policy_new = compliance_policy_create + compliance_policy_all + compliance_all_create + compliance_all_all + all_all_all + t_child->compliance_policy_new
 	permission compliance_policy_read = t_compliance_policy_read
 	relation t_compliance_policy_read: rbac/principal:*
+	permission compliance_policy_remove = compliance_policy_delete + compliance_policy_all + compliance_all_delete + compliance_all_all + all_all_all + t_child->compliance_policy_remove
 	permission compliance_policy_update = t_compliance_policy_update
 	relation t_compliance_policy_update: rbac/principal:*
+	permission compliance_policy_view = compliance_policy_read + compliance_policy_all + compliance_all_read + compliance_all_all + all_all_all + t_child->compliance_policy_view
 	permission compliance_policy_write = t_compliance_policy_write
 	relation t_compliance_policy_write: rbac/principal:*
+	permission compliance_report_all = t_compliance_report_all
+	relation t_compliance_report_all: rbac/principal:*
 	permission compliance_report_delete = t_compliance_report_delete
 	relation t_compliance_report_delete: rbac/principal:*
 	permission compliance_report_read = t_compliance_report_read
 	relation t_compliance_report_read: rbac/principal:*
+	permission compliance_report_view = compliance_report_read + compliance_report_all + compliance_all_read + compliance_all_all + all_all_all + t_child->compliance_report_view
+	permission compliance_system_all = t_compliance_system_all
+	relation t_compliance_system_all: rbac/principal:*
 	permission compliance_system_read = t_compliance_system_read
 	relation t_compliance_system_read: rbac/principal:*
+	permission compliance_system_view_assigned = compliance_system_read + compliance_system_all + compliance_all_read + compliance_all_all + all_all_all + t_child->compliance_system_view_assigned
 	permission config_manager_activation_keys_all = t_config_manager_activation_keys_all
 	relation t_config_manager_activation_keys_all: rbac/principal:*
 	permission config_manager_activation_keys_edit = config_manager_activation_keys_write + config_manager_activation_keys_all + config_manager_all_write + config_manager_all_all + all_all_all + t_child->config_manager_activation_keys_edit
@@ -143,12 +268,27 @@ definition rbac/role {
 	relation t_config_manager_state_write: rbac/principal:*
 	permission content_sources_all_all = t_content_sources_all_all
 	relation t_content_sources_all_all: rbac/principal:*
+	permission content_sources_all_read = t_content_sources_all_read
+	relation t_content_sources_all_read: rbac/principal:*
+	permission content_sources_all_upload = t_content_sources_all_upload
+	relation t_content_sources_all_upload: rbac/principal:*
+	permission content_sources_all_write = t_content_sources_all_write
+	relation t_content_sources_all_write: rbac/principal:*
+	permission content_sources_repositories_all = t_content_sources_repositories_all
+	relation t_content_sources_repositories_all: rbac/principal:*
 	permission content_sources_repositories_read = t_content_sources_repositories_read
 	relation t_content_sources_repositories_read: rbac/principal:*
 	permission content_sources_repositories_upload = t_content_sources_repositories_upload
 	relation t_content_sources_repositories_upload: rbac/principal:*
 	permission content_sources_repositories_write = t_content_sources_repositories_write
 	relation t_content_sources_repositories_write: rbac/principal:*
+	permission content_sources_repository_edit = content_sources_repositories_write + content_sources_repositories_all + content_sources_all_write + content_sources_all_all + all_all_all + t_child->content_sources_repository_edit
+	permission content_sources_repository_upload = content_sources_repositories_upload + content_sources_repositories_all + content_sources_all_upload + content_sources_all_all + all_all_all + t_child->content_sources_repository_upload
+	permission content_sources_repository_view = content_sources_repositories_read + content_sources_repositories_all + content_sources_all_read + content_sources_all_all + all_all_all + t_child->content_sources_repository_view
+	permission content_sources_template_edit = content_sources_templates_write + content_sources_templates_all + content_sources_all_write + content_sources_all_all + all_all_all + t_child->content_sources_template_edit
+	permission content_sources_template_view = content_sources_templates_read + content_sources_templates_all + content_sources_all_read + content_sources_all_all + all_all_all + t_child->content_sources_template_view
+	permission content_sources_templates_all = t_content_sources_templates_all
+	relation t_content_sources_templates_all: rbac/principal:*
 	permission content_sources_templates_read = t_content_sources_templates_read
 	relation t_content_sources_templates_read: rbac/principal:*
 	permission content_sources_templates_write = t_content_sources_templates_write
@@ -239,6 +379,8 @@ definition rbac/role {
 	relation t_inventory_groups_read: rbac/principal:*
 	permission inventory_groups_write = t_inventory_groups_write
 	relation t_inventory_groups_write: rbac/principal:*
+	permission inventory_host_delete = inventory_hosts_write + inventory_hosts_all + inventory_all_write + inventory_all_all + all_all_all + t_child->inventory_host_delete
+	permission inventory_host_move = inventory_groups_write + inventory_groups_all + inventory_all_write + inventory_all_all + all_all_all + t_child->inventory_host_move
 	permission inventory_host_update = inventory_hosts_write + inventory_hosts_all + inventory_all_write + inventory_all_all + all_all_all + t_child->inventory_host_update
 	permission inventory_host_view = inventory_hosts_read + inventory_hosts_all + inventory_all_read + inventory_all_all + all_all_all + t_child->inventory_host_view
 	permission inventory_hosts_all = t_inventory_hosts_all
@@ -247,12 +389,25 @@ definition rbac/role {
 	relation t_inventory_hosts_read: rbac/principal:*
 	permission inventory_hosts_write = t_inventory_hosts_write
 	relation t_inventory_hosts_write: rbac/principal:*
+	permission malware_detection_acknowledgements_all = t_malware_detection_acknowledgements_all
+	relation t_malware_detection_acknowledgements_all: rbac/principal:*
 	permission malware_detection_acknowledgements_write = t_malware_detection_acknowledgements_write
 	relation t_malware_detection_acknowledgements_write: rbac/principal:*
 	permission malware_detection_all_all = t_malware_detection_all_all
 	relation t_malware_detection_all_all: rbac/principal:*
 	permission malware_detection_all_read = t_malware_detection_all_read
 	relation t_malware_detection_all_read: rbac/principal:*
+	permission malware_detection_all_write = t_malware_detection_all_write
+	relation t_malware_detection_all_write: rbac/principal:*
+	permission malware_detection_malware_all = t_malware_detection_malware_all
+	relation t_malware_detection_malware_all: rbac/principal:*
+	permission malware_detection_malware_read = t_malware_detection_malware_read
+	relation t_malware_detection_malware_read: rbac/principal:*
+	permission malware_detection_malware_write = t_malware_detection_malware_write
+	relation t_malware_detection_malware_write: rbac/principal:*
+	permission malware_malware_acknowledge_assigned = malware_detection_acknowledgements_write + malware_detection_acknowledgements_all + malware_detection_all_write + malware_detection_all_all + all_all_all + t_child->malware_malware_acknowledge_assigned
+	permission malware_malware_edit_assigned = malware_detection_malware_write + malware_detection_malware_all + malware_detection_all_write + malware_detection_all_all + all_all_all + t_child->malware_malware_edit_assigned
+	permission malware_malware_view_assigned = malware_detection_malware_read + malware_detection_malware_all + malware_detection_all_read + malware_detection_all_all + all_all_all + t_child->malware_malware_view_assigned
 	permission notifications_all_all = t_notifications_all_all
 	relation t_notifications_all_all: rbac/principal:*
 	permission notifications_all_read = t_notifications_all_read
@@ -301,6 +456,12 @@ definition rbac/role {
 	relation t_patch_all_read: rbac/principal:*
 	permission patch_all_write = t_patch_all_write
 	relation t_patch_all_write: rbac/principal:*
+	permission patch_system_all = t_patch_system_all
+	relation t_patch_system_all: rbac/principal:*
+	permission patch_system_edit_assigned = patch_system_write + patch_system_all + patch_all_write + patch_all_all + all_all_all + t_child->patch_system_edit_assigned
+	permission patch_system_read = t_patch_system_read
+	relation t_patch_system_read: rbac/principal:*
+	permission patch_system_view_assigned = patch_system_read + patch_system_all + patch_all_read + patch_all_all + all_all_all + t_child->patch_system_view_assigned
 	permission patch_system_write = t_patch_system_write
 	relation t_patch_system_write: rbac/principal:*
 	permission patch_template_write = t_patch_template_write
@@ -315,62 +476,43 @@ definition rbac/role {
 	relation t_policies_policies_read: rbac/principal:*
 	permission policies_policies_write = t_policies_policies_write
 	relation t_policies_policies_write: rbac/principal:*
-	permission provisioning_all_all = t_provisioning_all_all
-	relation t_provisioning_all_all: rbac/principal:*
-	permission provisioning_pubkey_all = t_provisioning_pubkey_all
-	relation t_provisioning_pubkey_all: rbac/principal:*
-	permission provisioning_pubkey_read = t_provisioning_pubkey_read
-	relation t_provisioning_pubkey_read: rbac/principal:*
-	permission provisioning_pubkey_write = t_provisioning_pubkey_write
-	relation t_provisioning_pubkey_write: rbac/principal:*
-	permission provisioning_reservation_all = t_provisioning_reservation_all
-	relation t_provisioning_reservation_all: rbac/principal:*
-	permission provisioning_reservation_aws_all = t_provisioning_reservation_aws_all
-	relation t_provisioning_reservation_aws_all: rbac/principal:*
-	permission provisioning_reservation_aws_read = t_provisioning_reservation_aws_read
-	relation t_provisioning_reservation_aws_read: rbac/principal:*
-	permission provisioning_reservation_aws_write = t_provisioning_reservation_aws_write
-	relation t_provisioning_reservation_aws_write: rbac/principal:*
-	permission provisioning_reservation_azure_all = t_provisioning_reservation_azure_all
-	relation t_provisioning_reservation_azure_all: rbac/principal:*
-	permission provisioning_reservation_azure_read = t_provisioning_reservation_azure_read
-	relation t_provisioning_reservation_azure_read: rbac/principal:*
-	permission provisioning_reservation_azure_write = t_provisioning_reservation_azure_write
-	relation t_provisioning_reservation_azure_write: rbac/principal:*
-	permission provisioning_reservation_gcp_all = t_provisioning_reservation_gcp_all
-	relation t_provisioning_reservation_gcp_all: rbac/principal:*
-	permission provisioning_reservation_gcp_read = t_provisioning_reservation_gcp_read
-	relation t_provisioning_reservation_gcp_read: rbac/principal:*
-	permission provisioning_reservation_gcp_write = t_provisioning_reservation_gcp_write
-	relation t_provisioning_reservation_gcp_write: rbac/principal:*
-	permission provisioning_reservation_read = t_provisioning_reservation_read
-	relation t_provisioning_reservation_read: rbac/principal:*
-	permission provisioning_reservation_write = t_provisioning_reservation_write
-	relation t_provisioning_reservation_write: rbac/principal:*
-	permission provisioning_source_all = t_provisioning_source_all
-	relation t_provisioning_source_all: rbac/principal:*
-	permission provisioning_source_read = t_provisioning_source_read
-	relation t_provisioning_source_read: rbac/principal:*
 	permission rbac_all_all = t_rbac_all_all
 	relation t_rbac_all_all: rbac/principal:*
 	permission rbac_principal_read = t_rbac_principal_read
 	relation t_rbac_principal_read: rbac/principal:*
+	permission rbac_workspace_create = inventory_groups_write + inventory_groups_all + inventory_all_write + inventory_all_all + all_all_all + t_child->rbac_workspace_create
+	permission rbac_workspace_delete = inventory_groups_write + inventory_groups_all + inventory_all_write + inventory_all_all + all_all_all + t_child->rbac_workspace_delete
+	permission rbac_workspace_edit = inventory_groups_write + inventory_groups_all + inventory_all_write + inventory_all_all + all_all_all + t_child->rbac_workspace_edit
+	permission rbac_workspace_move = inventory_groups_write + inventory_groups_all + inventory_all_write + inventory_all_all + all_all_all + t_child->rbac_workspace_move
+	permission rbac_workspace_view = inventory_groups_read + inventory_groups_all + inventory_all_read + inventory_all_all + all_all_all + t_child->rbac_workspace_view
 	permission remediations_all_all = t_remediations_all_all
 	relation t_remediations_all_all: rbac/principal:*
+	permission remediations_all_execute = t_remediations_all_execute
+	relation t_remediations_all_execute: rbac/principal:*
 	permission remediations_all_read = t_remediations_all_read
 	relation t_remediations_all_read: rbac/principal:*
 	permission remediations_all_write = t_remediations_all_write
 	relation t_remediations_all_write: rbac/principal:*
+	permission remediations_edit_remediation = remediations_remediation_write + remediations_remediation_all + remediations_all_write + remediations_all_all + all_all_all + t_child->remediations_edit_remediation
+	permission remediations_execute_remediation = remediations_remediation_execute + remediations_remediation_all + remediations_all_execute + remediations_all_all + all_all_all + t_child->remediations_execute_remediation
+	permission remediations_remediation_all = t_remediations_remediation_all
+	relation t_remediations_remediation_all: rbac/principal:*
 	permission remediations_remediation_execute = t_remediations_remediation_execute
 	relation t_remediations_remediation_execute: rbac/principal:*
 	permission remediations_remediation_read = t_remediations_remediation_read
 	relation t_remediations_remediation_read: rbac/principal:*
 	permission remediations_remediation_write = t_remediations_remediation_write
 	relation t_remediations_remediation_write: rbac/principal:*
+	permission remediations_view_remediation = remediations_remediation_read + remediations_remediation_all + remediations_all_read + remediations_all_all + all_all_all + t_child->remediations_view_remediation
 	permission ros_all_all = t_ros_all_all
 	relation t_ros_all_all: rbac/principal:*
 	permission ros_all_read = t_ros_all_read
 	relation t_ros_all_read: rbac/principal:*
+	permission ros_analysis_all = t_ros_analysis_all
+	relation t_ros_analysis_all: rbac/principal:*
+	permission ros_analysis_read = t_ros_analysis_read
+	relation t_ros_analysis_read: rbac/principal:*
+	permission ros_read_analysis_assigned = ros_analysis_read + ros_analysis_all + ros_all_read + ros_all_all + all_all_all + t_child->ros_read_analysis_assigned
 	permission sources_all_all = t_sources_all_all
 	relation t_sources_all_all: rbac/principal:*
 	permission staleness_all_all = t_staleness_all_all
@@ -409,37 +551,96 @@ definition rbac/role {
 	relation t_subscriptions_reports_read: rbac/principal:*
 	permission tasks_all_all = t_tasks_all_all
 	relation t_tasks_all_all: rbac/principal:*
+	permission tasks_all_read = t_tasks_all_read
+	relation t_tasks_all_read: rbac/principal:*
+	permission tasks_all_write = t_tasks_all_write
+	relation t_tasks_all_write: rbac/principal:*
+	permission tasks_task_all = t_tasks_task_all
+	relation t_tasks_task_all: rbac/principal:*
+	permission tasks_task_edit = tasks_task_write + tasks_task_all + tasks_all_write + tasks_all_all + all_all_all + t_child->tasks_task_edit
+	permission tasks_task_read = t_tasks_task_read
+	relation t_tasks_task_read: rbac/principal:*
+	permission tasks_task_view = tasks_task_read + tasks_task_all + tasks_all_read + tasks_all_all + all_all_all + t_child->tasks_task_view
+	permission tasks_task_write = t_tasks_task_write
+	relation t_tasks_task_write: rbac/principal:*
+	permission vulnerability_advanced_report_all = t_vulnerability_advanced_report_all
+	relation t_vulnerability_advanced_report_all: rbac/principal:*
 	permission vulnerability_advanced_report_read = t_vulnerability_advanced_report_read
 	relation t_vulnerability_advanced_report_read: rbac/principal:*
+	permission vulnerability_advanced_report_view_assigned = vulnerability_advanced_report_read + vulnerability_advanced_report_all + vulnerability_all_read + vulnerability_all_all + all_all_all + t_child->vulnerability_advanced_report_view_assigned
 	permission vulnerability_all_all = t_vulnerability_all_all
 	relation t_vulnerability_all_all: rbac/principal:*
 	permission vulnerability_all_read = t_vulnerability_all_read
 	relation t_vulnerability_all_read: rbac/principal:*
 	permission vulnerability_all_write = t_vulnerability_all_write
 	relation t_vulnerability_all_write: rbac/principal:*
+	permission vulnerability_cve_business_risk_and_status_all = t_vulnerability_cve_business_risk_and_status_all
+	relation t_vulnerability_cve_business_risk_and_status_all: rbac/principal:*
+	permission vulnerability_cve_business_risk_and_status_edit = vulnerability_cve_business_risk_and_status_write + vulnerability_cve_business_risk_and_status_all + vulnerability_all_write + vulnerability_all_all + all_all_all + t_child->vulnerability_cve_business_risk_and_status_edit
 	permission vulnerability_cve_business_risk_and_status_write = t_vulnerability_cve_business_risk_and_status_write
 	relation t_vulnerability_cve_business_risk_and_status_write: rbac/principal:*
+	permission vulnerability_report_and_export_all = t_vulnerability_report_and_export_all
+	relation t_vulnerability_report_and_export_all: rbac/principal:*
 	permission vulnerability_report_and_export_read = t_vulnerability_report_and_export_read
 	relation t_vulnerability_report_and_export_read: rbac/principal:*
+	permission vulnerability_report_and_export_view_assigned = vulnerability_report_and_export_read + vulnerability_report_and_export_all + vulnerability_all_read + vulnerability_all_all + all_all_all + t_child->vulnerability_report_and_export_view_assigned
+	permission vulnerability_system_cve_status_all = t_vulnerability_system_cve_status_all
+	relation t_vulnerability_system_cve_status_all: rbac/principal:*
+	permission vulnerability_system_cve_status_edit_assigned = vulnerability_system_cve_status_write + vulnerability_system_cve_status_all + vulnerability_all_write + vulnerability_all_all + all_all_all + t_child->vulnerability_system_cve_status_edit_assigned
 	permission vulnerability_system_cve_status_write = t_vulnerability_system_cve_status_write
 	relation t_vulnerability_system_cve_status_write: rbac/principal:*
+	permission vulnerability_system_opt_out_all = t_vulnerability_system_opt_out_all
+	relation t_vulnerability_system_opt_out_all: rbac/principal:*
+	permission vulnerability_system_opt_out_edit_assigned = vulnerability_system_opt_out_write + vulnerability_system_opt_out_all + vulnerability_all_write + vulnerability_all_all + all_all_all + t_child->vulnerability_system_opt_out_edit_assigned
 	permission vulnerability_system_opt_out_read = t_vulnerability_system_opt_out_read
 	relation t_vulnerability_system_opt_out_read: rbac/principal:*
+	permission vulnerability_system_opt_out_view_assigned = vulnerability_system_opt_out_read + vulnerability_system_opt_out_all + vulnerability_all_read + vulnerability_all_all + all_all_all + t_child->vulnerability_system_opt_out_view_assigned
 	permission vulnerability_system_opt_out_write = t_vulnerability_system_opt_out_write
 	relation t_vulnerability_system_opt_out_write: rbac/principal:*
+	permission vulnerability_toggle_cves_without_errata_all = t_vulnerability_toggle_cves_without_errata_all
+	relation t_vulnerability_toggle_cves_without_errata_all: rbac/principal:*
+	permission vulnerability_toggle_cves_without_errata_edit = vulnerability_toggle_cves_without_errata_write + vulnerability_toggle_cves_without_errata_all + vulnerability_all_write + vulnerability_all_all + all_all_all + t_child->vulnerability_toggle_cves_without_errata_edit
 	permission vulnerability_toggle_cves_without_errata_write = t_vulnerability_toggle_cves_without_errata_write
 	relation t_vulnerability_toggle_cves_without_errata_write: rbac/principal:*
+	permission vulnerability_vulnerability_results_all = t_vulnerability_vulnerability_results_all
+	relation t_vulnerability_vulnerability_results_all: rbac/principal:*
 	permission vulnerability_vulnerability_results_read = t_vulnerability_vulnerability_results_read
 	relation t_vulnerability_vulnerability_results_read: rbac/principal:*
+	permission vulnerability_vulnerability_results_view_assigned = vulnerability_vulnerability_results_read + vulnerability_vulnerability_results_all + vulnerability_all_read + vulnerability_all_all + all_all_all + t_child->vulnerability_vulnerability_results_view_assigned
 }
 
 definition rbac/role_binding {
+	permission advisor_disable_recommendations_edit = (subject & t_role->advisor_disable_recommendations_edit)
+	permission advisor_disable_recommendations_view = (subject & t_role->advisor_disable_recommendations_view)
+	permission advisor_exports_view = (subject & t_role->advisor_exports_view)
+	permission advisor_recommendation_results_edit_assigned = (subject & t_role->advisor_recommendation_results_edit_assigned)
+	permission advisor_recommendation_results_view_assigned = (subject & t_role->advisor_recommendation_results_view_assigned)
+	permission advisor_weekly_email_view = (subject & t_role->advisor_weekly_email_view)
+	permission advisor_weekly_report_auto_subscribe_edit = (subject & t_role->advisor_weekly_report_auto_subscribe_edit)
+	permission advisor_weekly_report_auto_subscribe_view = (subject & t_role->advisor_weekly_report_auto_subscribe_view)
+	permission advisor_weekly_report_view = (subject & t_role->advisor_weekly_report_view)
+	permission compliance_policy_edit = (subject & t_role->compliance_policy_edit)
+	permission compliance_policy_new = (subject & t_role->compliance_policy_new)
+	permission compliance_policy_remove = (subject & t_role->compliance_policy_remove)
+	permission compliance_policy_view = (subject & t_role->compliance_policy_view)
+	permission compliance_report_view = (subject & t_role->compliance_report_view)
+	permission compliance_system_view_assigned = (subject & t_role->compliance_system_view_assigned)
 	permission config_manager_activation_keys_edit = (subject & t_role->config_manager_activation_keys_edit)
 	permission config_manager_activation_keys_view = (subject & t_role->config_manager_activation_keys_view)
 	permission config_manager_profile_edit = (subject & t_role->config_manager_profile_edit)
 	permission config_manager_profile_view = (subject & t_role->config_manager_profile_view)
+	permission content_sources_repository_edit = (subject & t_role->content_sources_repository_edit)
+	permission content_sources_repository_upload = (subject & t_role->content_sources_repository_upload)
+	permission content_sources_repository_view = (subject & t_role->content_sources_repository_view)
+	permission content_sources_template_edit = (subject & t_role->content_sources_template_edit)
+	permission content_sources_template_view = (subject & t_role->content_sources_template_view)
+	permission inventory_host_delete = (subject & t_role->inventory_host_delete)
+	permission inventory_host_move = (subject & t_role->inventory_host_move)
 	permission inventory_host_update = (subject & t_role->inventory_host_update)
 	permission inventory_host_view = (subject & t_role->inventory_host_view)
+	permission malware_malware_acknowledge_assigned = (subject & t_role->malware_malware_acknowledge_assigned)
+	permission malware_malware_edit_assigned = (subject & t_role->malware_malware_edit_assigned)
+	permission malware_malware_view_assigned = (subject & t_role->malware_malware_view_assigned)
 	permission notifications_applications_view = (subject & t_role->notifications_applications_view)
 	permission notifications_behavior_groups_edit = (subject & t_role->notifications_behavior_groups_edit)
 	permission notifications_behavior_groups_view = (subject & t_role->notifications_behavior_groups_view)
@@ -458,23 +659,75 @@ definition rbac/role_binding {
 	permission notifications_integration_test = (subject & t_role->notifications_integration_test)
 	permission notifications_integration_view = (subject & t_role->notifications_integration_view)
 	permission notifications_integration_view_history = (subject & t_role->notifications_integration_view_history)
+	permission patch_system_edit_assigned = (subject & t_role->patch_system_edit_assigned)
+	permission patch_system_view_assigned = (subject & t_role->patch_system_view_assigned)
+	permission rbac_workspace_create = (subject & t_role->rbac_workspace_create)
+	permission rbac_workspace_delete = (subject & t_role->rbac_workspace_delete)
+	permission rbac_workspace_edit = (subject & t_role->rbac_workspace_edit)
+	permission rbac_workspace_move = (subject & t_role->rbac_workspace_move)
+	permission rbac_workspace_view = (subject & t_role->rbac_workspace_view)
+	permission remediations_edit_remediation = (subject & t_role->remediations_edit_remediation)
+	permission remediations_execute_remediation = (subject & t_role->remediations_execute_remediation)
+	permission remediations_view_remediation = (subject & t_role->remediations_view_remediation)
 	permission role = t_role
 	relation t_role: rbac/role
+	permission ros_read_analysis_assigned = (subject & t_role->ros_read_analysis_assigned)
 	permission staleness_staleness_update = (subject & t_role->staleness_staleness_update)
 	permission staleness_staleness_view = (subject & t_role->staleness_staleness_view)
 	permission subject = t_subject
 	relation t_subject: rbac/principal | rbac/group#member
+	permission tasks_task_edit = (subject & t_role->tasks_task_edit)
+	permission tasks_task_view = (subject & t_role->tasks_task_view)
+	permission vulnerability_advanced_report_view_assigned = (subject & t_role->vulnerability_advanced_report_view_assigned)
+	permission vulnerability_cve_business_risk_and_status_edit = (subject & t_role->vulnerability_cve_business_risk_and_status_edit)
+	permission vulnerability_report_and_export_view_assigned = (subject & t_role->vulnerability_report_and_export_view_assigned)
+	permission vulnerability_system_cve_status_edit_assigned = (subject & t_role->vulnerability_system_cve_status_edit_assigned)
+	permission vulnerability_system_opt_out_edit_assigned = (subject & t_role->vulnerability_system_opt_out_edit_assigned)
+	permission vulnerability_system_opt_out_view_assigned = (subject & t_role->vulnerability_system_opt_out_view_assigned)
+	permission vulnerability_toggle_cves_without_errata_edit = (subject & t_role->vulnerability_toggle_cves_without_errata_edit)
+	permission vulnerability_vulnerability_results_view_assigned = (subject & t_role->vulnerability_vulnerability_results_view_assigned)
 }
 
 definition rbac/tenant {
+	permission advisor_disable_recommendations_edit = t_binding->advisor_disable_recommendations_edit + t_platform->advisor_disable_recommendations_edit
+	permission advisor_disable_recommendations_view = t_binding->advisor_disable_recommendations_view + t_platform->advisor_disable_recommendations_view
+	permission advisor_exports_view = t_binding->advisor_exports_view + t_platform->advisor_exports_view
+	permission advisor_recommendation_results_edit = (inventory_host_view & advisor_recommendation_results_edit_assigned)
+	permission advisor_recommendation_results_edit_assigned = t_binding->advisor_recommendation_results_edit_assigned + t_platform->advisor_recommendation_results_edit_assigned
+	permission advisor_recommendation_results_view = (inventory_host_view & advisor_recommendation_results_view_assigned)
+	permission advisor_recommendation_results_view_assigned = t_binding->advisor_recommendation_results_view_assigned + t_platform->advisor_recommendation_results_view_assigned
+	permission advisor_weekly_email_view = t_binding->advisor_weekly_email_view + t_platform->advisor_weekly_email_view
+	permission advisor_weekly_report_auto_subscribe_edit = t_binding->advisor_weekly_report_auto_subscribe_edit + t_platform->advisor_weekly_report_auto_subscribe_edit
+	permission advisor_weekly_report_auto_subscribe_view = t_binding->advisor_weekly_report_auto_subscribe_view + t_platform->advisor_weekly_report_auto_subscribe_view
+	permission advisor_weekly_report_view = t_binding->advisor_weekly_report_view + t_platform->advisor_weekly_report_view
 	permission binding = t_binding
 	relation t_binding: rbac/role_binding
+	permission compliance_policy_edit = t_binding->compliance_policy_edit + t_platform->compliance_policy_edit
+	permission compliance_policy_new = t_binding->compliance_policy_new + t_platform->compliance_policy_new
+	permission compliance_policy_remove = t_binding->compliance_policy_remove + t_platform->compliance_policy_remove
+	permission compliance_policy_view = t_binding->compliance_policy_view + t_platform->compliance_policy_view
+	permission compliance_report_view = t_binding->compliance_report_view + t_platform->compliance_report_view
+	permission compliance_system_view = (inventory_host_view & compliance_system_view_assigned)
+	permission compliance_system_view_assigned = t_binding->compliance_system_view_assigned + t_platform->compliance_system_view_assigned
 	permission config_manager_activation_keys_edit = t_binding->config_manager_activation_keys_edit + t_platform->config_manager_activation_keys_edit
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view + t_platform->config_manager_activation_keys_view
 	permission config_manager_profile_edit = t_binding->config_manager_profile_edit + t_platform->config_manager_profile_edit
 	permission config_manager_profile_view = t_binding->config_manager_profile_view + t_platform->config_manager_profile_view
+	permission content_sources_repository_edit = t_binding->content_sources_repository_edit + t_platform->content_sources_repository_edit
+	permission content_sources_repository_upload = t_binding->content_sources_repository_upload + t_platform->content_sources_repository_upload
+	permission content_sources_repository_view = t_binding->content_sources_repository_view + t_platform->content_sources_repository_view
+	permission content_sources_template_edit = t_binding->content_sources_template_edit + t_platform->content_sources_template_edit
+	permission content_sources_template_view = t_binding->content_sources_template_view + t_platform->content_sources_template_view
+	permission inventory_host_delete = t_binding->inventory_host_delete + t_platform->inventory_host_delete
+	permission inventory_host_move = t_binding->inventory_host_move + t_platform->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update + t_platform->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view + t_platform->inventory_host_view
+	permission malware_malware_acknowledge = (inventory_host_view & malware_malware_acknowledge_assigned)
+	permission malware_malware_acknowledge_assigned = t_binding->malware_malware_acknowledge_assigned + t_platform->malware_malware_acknowledge_assigned
+	permission malware_malware_edit = (inventory_host_view & malware_malware_edit_assigned)
+	permission malware_malware_edit_assigned = t_binding->malware_malware_edit_assigned + t_platform->malware_malware_edit_assigned
+	permission malware_malware_view = (inventory_host_view & malware_malware_view_assigned)
+	permission malware_malware_view_assigned = t_binding->malware_malware_view_assigned + t_platform->malware_malware_view_assigned
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_platform->notifications_applications_view
 	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit + t_platform->notifications_behavior_groups_edit
 	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view + t_platform->notifications_behavior_groups_view
@@ -493,21 +746,88 @@ definition rbac/tenant {
 	permission notifications_integration_test = t_binding->notifications_integration_test + t_platform->notifications_integration_test
 	permission notifications_integration_view = t_binding->notifications_integration_view + t_platform->notifications_integration_view
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_platform->notifications_integration_view_history
+	permission patch_system_edit = (inventory_host_view & patch_system_edit_assigned)
+	permission patch_system_edit_assigned = t_binding->patch_system_edit_assigned + t_platform->patch_system_edit_assigned
+	permission patch_system_view = (inventory_host_view & patch_system_view_assigned)
+	permission patch_system_view_assigned = t_binding->patch_system_view_assigned + t_platform->patch_system_view_assigned
+	permission patch_template_edit = (patch_system_edit & content_sources_template_edit)
+	permission patch_template_view = (patch_system_view & content_sources_template_view)
 	permission platform = t_platform
 	relation t_platform: rbac/platform
+	permission rbac_workspace_create = t_binding->rbac_workspace_create + t_platform->rbac_workspace_create
+	permission rbac_workspace_delete = t_binding->rbac_workspace_delete + t_platform->rbac_workspace_delete
+	permission rbac_workspace_edit = t_binding->rbac_workspace_edit + t_platform->rbac_workspace_edit
+	permission rbac_workspace_move = t_binding->rbac_workspace_move + t_platform->rbac_workspace_move
+	permission rbac_workspace_view = t_binding->rbac_workspace_view + t_platform->rbac_workspace_view
+	permission remediations_edit_remediation = t_binding->remediations_edit_remediation + t_platform->remediations_edit_remediation
+	permission remediations_execute_remediation = t_binding->remediations_execute_remediation + t_platform->remediations_execute_remediation
+	permission remediations_view_remediation = t_binding->remediations_view_remediation + t_platform->remediations_view_remediation
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_platform->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_platform->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_platform->staleness_staleness_view
+	permission tasks_task_edit = t_binding->tasks_task_edit + t_platform->tasks_task_edit
+	permission tasks_task_view = t_binding->tasks_task_view + t_platform->tasks_task_view
+	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
+	permission vulnerability_advanced_report_view_assigned = t_binding->vulnerability_advanced_report_view_assigned + t_platform->vulnerability_advanced_report_view_assigned
+	permission vulnerability_cve_business_risk_and_status_edit = t_binding->vulnerability_cve_business_risk_and_status_edit + t_platform->vulnerability_cve_business_risk_and_status_edit
+	permission vulnerability_report_and_export_view = (inventory_host_view & vulnerability_report_and_export_view_assigned)
+	permission vulnerability_report_and_export_view_assigned = t_binding->vulnerability_report_and_export_view_assigned + t_platform->vulnerability_report_and_export_view_assigned
+	permission vulnerability_system_cve_status_edit = (inventory_host_view & vulnerability_system_cve_status_edit_assigned)
+	permission vulnerability_system_cve_status_edit_assigned = t_binding->vulnerability_system_cve_status_edit_assigned + t_platform->vulnerability_system_cve_status_edit_assigned
+	permission vulnerability_system_opt_out_edit = (inventory_host_view & vulnerability_system_opt_out_edit_assigned)
+	permission vulnerability_system_opt_out_edit_assigned = t_binding->vulnerability_system_opt_out_edit_assigned + t_platform->vulnerability_system_opt_out_edit_assigned
+	permission vulnerability_system_opt_out_view = (inventory_host_view & vulnerability_system_opt_out_view_assigned)
+	permission vulnerability_system_opt_out_view_assigned = t_binding->vulnerability_system_opt_out_view_assigned + t_platform->vulnerability_system_opt_out_view_assigned
+	permission vulnerability_toggle_cves_without_errata_edit = t_binding->vulnerability_toggle_cves_without_errata_edit + t_platform->vulnerability_toggle_cves_without_errata_edit
+	permission vulnerability_vulnerability_results_view = (inventory_host_view & vulnerability_vulnerability_results_view_assigned)
+	permission vulnerability_vulnerability_results_view_assigned = t_binding->vulnerability_vulnerability_results_view_assigned + t_platform->vulnerability_vulnerability_results_view_assigned
 }
 
 definition rbac/workspace {
+	permission advisor_disable_recommendations_edit = t_binding->advisor_disable_recommendations_edit + t_parent->advisor_disable_recommendations_edit
+	permission advisor_disable_recommendations_view = t_binding->advisor_disable_recommendations_view + t_parent->advisor_disable_recommendations_view
+	permission advisor_exports_view = t_binding->advisor_exports_view + t_parent->advisor_exports_view
+	permission advisor_recommendation_results_edit = (inventory_host_view & advisor_recommendation_results_edit_assigned)
+	permission advisor_recommendation_results_edit_assigned = t_binding->advisor_recommendation_results_edit_assigned + t_parent->advisor_recommendation_results_edit_assigned
+	permission advisor_recommendation_results_view = (inventory_host_view & advisor_recommendation_results_view_assigned)
+	permission advisor_recommendation_results_view_assigned = t_binding->advisor_recommendation_results_view_assigned + t_parent->advisor_recommendation_results_view_assigned
+	permission advisor_weekly_email_view = t_binding->advisor_weekly_email_view + t_parent->advisor_weekly_email_view
+	permission advisor_weekly_report_auto_subscribe_edit = t_binding->advisor_weekly_report_auto_subscribe_edit + t_parent->advisor_weekly_report_auto_subscribe_edit
+	permission advisor_weekly_report_auto_subscribe_view = t_binding->advisor_weekly_report_auto_subscribe_view + t_parent->advisor_weekly_report_auto_subscribe_view
+	permission advisor_weekly_report_view = t_binding->advisor_weekly_report_view + t_parent->advisor_weekly_report_view
 	permission binding = t_binding
 	relation t_binding: rbac/role_binding
+	permission compliance_policy_edit = t_binding->compliance_policy_edit + t_parent->compliance_policy_edit
+	permission compliance_policy_new = t_binding->compliance_policy_new + t_parent->compliance_policy_new
+	permission compliance_policy_remove = t_binding->compliance_policy_remove + t_parent->compliance_policy_remove
+	permission compliance_policy_view = t_binding->compliance_policy_view + t_parent->compliance_policy_view
+	permission compliance_report_view = t_binding->compliance_report_view + t_parent->compliance_report_view
+	permission compliance_system_view = (inventory_host_view & compliance_system_view_assigned)
+	permission compliance_system_view_assigned = t_binding->compliance_system_view_assigned + t_parent->compliance_system_view_assigned
 	permission config_manager_activation_keys_edit = t_binding->config_manager_activation_keys_edit + t_parent->config_manager_activation_keys_edit
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view + t_parent->config_manager_activation_keys_view
 	permission config_manager_profile_edit = t_binding->config_manager_profile_edit + t_parent->config_manager_profile_edit
 	permission config_manager_profile_view = t_binding->config_manager_profile_view + t_parent->config_manager_profile_view
+	permission content_sources_repository_edit = t_binding->content_sources_repository_edit + t_parent->content_sources_repository_edit
+	permission content_sources_repository_upload = t_binding->content_sources_repository_upload + t_parent->content_sources_repository_upload
+	permission content_sources_repository_view = t_binding->content_sources_repository_view + t_parent->content_sources_repository_view
+	permission content_sources_template_edit = t_binding->content_sources_template_edit + t_parent->content_sources_template_edit
+	permission content_sources_template_view = t_binding->content_sources_template_view + t_parent->content_sources_template_view
+	permission create = rbac_workspace_create
+	permission delete = rbac_workspace_delete
+	permission edit = rbac_workspace_edit
+	permission inventory_host_delete = t_binding->inventory_host_delete + t_parent->inventory_host_delete
+	permission inventory_host_move = t_binding->inventory_host_move + t_parent->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update + t_parent->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view + t_parent->inventory_host_view
+	permission malware_malware_acknowledge = (inventory_host_view & malware_malware_acknowledge_assigned)
+	permission malware_malware_acknowledge_assigned = t_binding->malware_malware_acknowledge_assigned + t_parent->malware_malware_acknowledge_assigned
+	permission malware_malware_edit = (inventory_host_view & malware_malware_edit_assigned)
+	permission malware_malware_edit_assigned = t_binding->malware_malware_edit_assigned + t_parent->malware_malware_edit_assigned
+	permission malware_malware_view = (inventory_host_view & malware_malware_view_assigned)
+	permission malware_malware_view_assigned = t_binding->malware_malware_view_assigned + t_parent->malware_malware_view_assigned
+	permission move = rbac_workspace_move
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_parent->notifications_applications_view
 	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit + t_parent->notifications_behavior_groups_edit
 	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view + t_parent->notifications_behavior_groups_view
@@ -528,6 +848,39 @@ definition rbac/workspace {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_parent->notifications_integration_view_history
 	permission parent = t_parent
 	relation t_parent: rbac/workspace | rbac/tenant
+	permission patch_system_edit = (inventory_host_view & patch_system_edit_assigned)
+	permission patch_system_edit_assigned = t_binding->patch_system_edit_assigned + t_parent->patch_system_edit_assigned
+	permission patch_system_view = (inventory_host_view & patch_system_view_assigned)
+	permission patch_system_view_assigned = t_binding->patch_system_view_assigned + t_parent->patch_system_view_assigned
+	permission patch_template_edit = (patch_system_edit & content_sources_template_edit)
+	permission patch_template_view = (patch_system_view & content_sources_template_view)
+	permission rbac_workspace_create = t_binding->rbac_workspace_create + t_parent->rbac_workspace_create
+	permission rbac_workspace_delete = t_binding->rbac_workspace_delete + t_parent->rbac_workspace_delete
+	permission rbac_workspace_edit = t_binding->rbac_workspace_edit + t_parent->rbac_workspace_edit
+	permission rbac_workspace_move = t_binding->rbac_workspace_move + t_parent->rbac_workspace_move
+	permission rbac_workspace_view = t_binding->rbac_workspace_view + t_parent->rbac_workspace_view
+	permission remediations_edit_remediation = t_binding->remediations_edit_remediation + t_parent->remediations_edit_remediation
+	permission remediations_execute_remediation = t_binding->remediations_execute_remediation + t_parent->remediations_execute_remediation
+	permission remediations_view_remediation = t_binding->remediations_view_remediation + t_parent->remediations_view_remediation
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_parent->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_parent->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_parent->staleness_staleness_view
+	permission tasks_task_edit = t_binding->tasks_task_edit + t_parent->tasks_task_edit
+	permission tasks_task_view = t_binding->tasks_task_view + t_parent->tasks_task_view
+	permission view = rbac_workspace_view
+	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
+	permission vulnerability_advanced_report_view_assigned = t_binding->vulnerability_advanced_report_view_assigned + t_parent->vulnerability_advanced_report_view_assigned
+	permission vulnerability_cve_business_risk_and_status_edit = t_binding->vulnerability_cve_business_risk_and_status_edit + t_parent->vulnerability_cve_business_risk_and_status_edit
+	permission vulnerability_report_and_export_view = (inventory_host_view & vulnerability_report_and_export_view_assigned)
+	permission vulnerability_report_and_export_view_assigned = t_binding->vulnerability_report_and_export_view_assigned + t_parent->vulnerability_report_and_export_view_assigned
+	permission vulnerability_system_cve_status_edit = (inventory_host_view & vulnerability_system_cve_status_edit_assigned)
+	permission vulnerability_system_cve_status_edit_assigned = t_binding->vulnerability_system_cve_status_edit_assigned + t_parent->vulnerability_system_cve_status_edit_assigned
+	permission vulnerability_system_opt_out_edit = (inventory_host_view & vulnerability_system_opt_out_edit_assigned)
+	permission vulnerability_system_opt_out_edit_assigned = t_binding->vulnerability_system_opt_out_edit_assigned + t_parent->vulnerability_system_opt_out_edit_assigned
+	permission vulnerability_system_opt_out_view = (inventory_host_view & vulnerability_system_opt_out_view_assigned)
+	permission vulnerability_system_opt_out_view_assigned = t_binding->vulnerability_system_opt_out_view_assigned + t_parent->vulnerability_system_opt_out_view_assigned
+	permission vulnerability_toggle_cves_without_errata_edit = t_binding->vulnerability_toggle_cves_without_errata_edit + t_parent->vulnerability_toggle_cves_without_errata_edit
+	permission vulnerability_vulnerability_results_view = (inventory_host_view & vulnerability_vulnerability_results_view_assigned)
+	permission vulnerability_vulnerability_results_view_assigned = t_binding->vulnerability_vulnerability_results_view_assigned + t_parent->vulnerability_vulnerability_results_view_assigned
 }

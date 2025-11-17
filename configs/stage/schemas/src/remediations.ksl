@@ -1,0 +1,12 @@
+version 0.1
+namespace remediations
+
+import rbac
+
+
+// This is working around a conflict between V1 and V2 permission names.
+// As things are right now, we can't follow the naming convention exactly because there will be conflict
+// Therefore we are deviating from the ${service}_${resource}_${action} format
+@rbac.add_v1_based_permission(app:'remediations', resource:'remediation', verb:'read', v2_perm:'remediations_view_remediation');
+@rbac.add_v1_based_permission(app:'remediations', resource:'remediation', verb:'write', v2_perm:'remediations_edit_remediation');
+@rbac.add_v1_based_permission(app:'remediations', resource:'remediation', verb:'execute', v2_perm:'remediations_execute_remediation');

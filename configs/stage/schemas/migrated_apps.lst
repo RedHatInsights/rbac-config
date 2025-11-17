@@ -3,3 +3,12 @@ integrations
 inventory
 staleness
 config-manager
+content-sources
+vulnerability
+malware-detection
+ros
+patch
+compliance
+advisor
+tasks
+remediations

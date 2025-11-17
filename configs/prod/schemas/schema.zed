@@ -1,4 +1,7 @@
 definition hbi/host {
+	permission delete = t_workspace->inventory_host_delete
+	permission move = t_workspace->inventory_host_move
+	permission ros_read_analysis = (view & t_workspace->ros_read_analysis)
 	permission update = t_workspace->inventory_host_update
 	permission view = t_workspace->inventory_host_view
 	permission workspace = t_workspace
@@ -38,6 +41,13 @@ definition rbac/platform {
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view
 	permission config_manager_profile_edit = t_binding->config_manager_profile_edit
 	permission config_manager_profile_view = t_binding->config_manager_profile_view
+	permission content_sources_repository_edit = t_binding->content_sources_repository_edit
+	permission content_sources_repository_upload = t_binding->content_sources_repository_upload
+	permission content_sources_repository_view = t_binding->content_sources_repository_view
+	permission content_sources_template_edit = t_binding->content_sources_template_edit
+	permission content_sources_template_view = t_binding->content_sources_template_view
+	permission inventory_host_delete = t_binding->inventory_host_delete
+	permission inventory_host_move = t_binding->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view
 	permission notifications_applications_view = t_binding->notifications_applications_view
@@ -58,6 +68,11 @@ definition rbac/platform {
 	permission notifications_integration_test = t_binding->notifications_integration_test
 	permission notifications_integration_view = t_binding->notifications_integration_view
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history
+	permission remediations_edit_remediation = t_binding->remediations_edit_remediation
+	permission remediations_execute_remediation = t_binding->remediations_execute_remediation
+	permission remediations_view_remediation = t_binding->remediations_view_remediation
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view
 }
@@ -137,12 +152,27 @@ definition rbac/role {
 	relation t_config_manager_profile_write: rbac/principal:*
 	permission content_sources_all_all = t_content_sources_all_all
 	relation t_content_sources_all_all: rbac/principal:*
+	permission content_sources_all_read = t_content_sources_all_read
+	relation t_content_sources_all_read: rbac/principal:*
+	permission content_sources_all_upload = t_content_sources_all_upload
+	relation t_content_sources_all_upload: rbac/principal:*
+	permission content_sources_all_write = t_content_sources_all_write
+	relation t_content_sources_all_write: rbac/principal:*
+	permission content_sources_repositories_all = t_content_sources_repositories_all
+	relation t_content_sources_repositories_all: rbac/principal:*
 	permission content_sources_repositories_read = t_content_sources_repositories_read
 	relation t_content_sources_repositories_read: rbac/principal:*
 	permission content_sources_repositories_upload = t_content_sources_repositories_upload
 	relation t_content_sources_repositories_upload: rbac/principal:*
 	permission content_sources_repositories_write = t_content_sources_repositories_write
 	relation t_content_sources_repositories_write: rbac/principal:*
+	permission content_sources_repository_edit = content_sources_repositories_write + content_sources_repositories_all + content_sources_all_write + content_sources_all_all + all_all_all + t_child->content_sources_repository_edit
+	permission content_sources_repository_upload = content_sources_repositories_upload + content_sources_repositories_all + content_sources_all_upload + content_sources_all_all + all_all_all + t_child->content_sources_repository_upload
+	permission content_sources_repository_view = content_sources_repositories_read + content_sources_repositories_all + content_sources_all_read + content_sources_all_all + all_all_all + t_child->content_sources_repository_view
+	permission content_sources_template_edit = content_sources_templates_write + content_sources_templates_all + content_sources_all_write + content_sources_all_all + all_all_all + t_child->content_sources_template_edit
+	permission content_sources_template_view = content_sources_templates_read + content_sources_templates_all + content_sources_all_read + content_sources_all_all + all_all_all + t_child->content_sources_template_view
+	permission content_sources_templates_all = t_content_sources_templates_all
+	relation t_content_sources_templates_all: rbac/principal:*
 	permission content_sources_templates_read = t_content_sources_templates_read
 	relation t_content_sources_templates_read: rbac/principal:*
 	permission content_sources_templates_write = t_content_sources_templates_write
@@ -233,6 +263,8 @@ definition rbac/role {
 	relation t_inventory_groups_read: rbac/principal:*
 	permission inventory_groups_write = t_inventory_groups_write
 	relation t_inventory_groups_write: rbac/principal:*
+	permission inventory_host_delete = inventory_hosts_write + inventory_hosts_all + inventory_all_write + inventory_all_all + all_all_all + t_child->inventory_host_delete
+	permission inventory_host_move = inventory_groups_write + inventory_groups_all + inventory_all_write + inventory_all_all + all_all_all + t_child->inventory_host_move
 	permission inventory_host_update = inventory_hosts_write + inventory_hosts_all + inventory_all_write + inventory_all_all + all_all_all + t_child->inventory_host_update
 	permission inventory_host_view = inventory_hosts_read + inventory_hosts_all + inventory_all_read + inventory_all_all + all_all_all + t_child->inventory_host_view
 	permission inventory_hosts_all = t_inventory_hosts_all
@@ -309,62 +341,38 @@ definition rbac/role {
 	relation t_policies_policies_read: rbac/principal:*
 	permission policies_policies_write = t_policies_policies_write
 	relation t_policies_policies_write: rbac/principal:*
-	permission provisioning_all_all = t_provisioning_all_all
-	relation t_provisioning_all_all: rbac/principal:*
-	permission provisioning_pubkey_all = t_provisioning_pubkey_all
-	relation t_provisioning_pubkey_all: rbac/principal:*
-	permission provisioning_pubkey_read = t_provisioning_pubkey_read
-	relation t_provisioning_pubkey_read: rbac/principal:*
-	permission provisioning_pubkey_write = t_provisioning_pubkey_write
-	relation t_provisioning_pubkey_write: rbac/principal:*
-	permission provisioning_reservation_all = t_provisioning_reservation_all
-	relation t_provisioning_reservation_all: rbac/principal:*
-	permission provisioning_reservation_aws_all = t_provisioning_reservation_aws_all
-	relation t_provisioning_reservation_aws_all: rbac/principal:*
-	permission provisioning_reservation_aws_read = t_provisioning_reservation_aws_read
-	relation t_provisioning_reservation_aws_read: rbac/principal:*
-	permission provisioning_reservation_aws_write = t_provisioning_reservation_aws_write
-	relation t_provisioning_reservation_aws_write: rbac/principal:*
-	permission provisioning_reservation_azure_all = t_provisioning_reservation_azure_all
-	relation t_provisioning_reservation_azure_all: rbac/principal:*
-	permission provisioning_reservation_azure_read = t_provisioning_reservation_azure_read
-	relation t_provisioning_reservation_azure_read: rbac/principal:*
-	permission provisioning_reservation_azure_write = t_provisioning_reservation_azure_write
-	relation t_provisioning_reservation_azure_write: rbac/principal:*
-	permission provisioning_reservation_gcp_all = t_provisioning_reservation_gcp_all
-	relation t_provisioning_reservation_gcp_all: rbac/principal:*
-	permission provisioning_reservation_gcp_read = t_provisioning_reservation_gcp_read
-	relation t_provisioning_reservation_gcp_read: rbac/principal:*
-	permission provisioning_reservation_gcp_write = t_provisioning_reservation_gcp_write
-	relation t_provisioning_reservation_gcp_write: rbac/principal:*
-	permission provisioning_reservation_read = t_provisioning_reservation_read
-	relation t_provisioning_reservation_read: rbac/principal:*
-	permission provisioning_reservation_write = t_provisioning_reservation_write
-	relation t_provisioning_reservation_write: rbac/principal:*
-	permission provisioning_source_all = t_provisioning_source_all
-	relation t_provisioning_source_all: rbac/principal:*
-	permission provisioning_source_read = t_provisioning_source_read
-	relation t_provisioning_source_read: rbac/principal:*
 	permission rbac_all_all = t_rbac_all_all
 	relation t_rbac_all_all: rbac/principal:*
 	permission rbac_principal_read = t_rbac_principal_read
 	relation t_rbac_principal_read: rbac/principal:*
 	permission remediations_all_all = t_remediations_all_all
 	relation t_remediations_all_all: rbac/principal:*
+	permission remediations_all_execute = t_remediations_all_execute
+	relation t_remediations_all_execute: rbac/principal:*
 	permission remediations_all_read = t_remediations_all_read
 	relation t_remediations_all_read: rbac/principal:*
 	permission remediations_all_write = t_remediations_all_write
 	relation t_remediations_all_write: rbac/principal:*
+	permission remediations_edit_remediation = remediations_remediation_write + remediations_remediation_all + remediations_all_write + remediations_all_all + all_all_all + t_child->remediations_edit_remediation
+	permission remediations_execute_remediation = remediations_remediation_execute + remediations_remediation_all + remediations_all_execute + remediations_all_all + all_all_all + t_child->remediations_execute_remediation
+	permission remediations_remediation_all = t_remediations_remediation_all
+	relation t_remediations_remediation_all: rbac/principal:*
 	permission remediations_remediation_execute = t_remediations_remediation_execute
 	relation t_remediations_remediation_execute: rbac/principal:*
 	permission remediations_remediation_read = t_remediations_remediation_read
 	relation t_remediations_remediation_read: rbac/principal:*
 	permission remediations_remediation_write = t_remediations_remediation_write
 	relation t_remediations_remediation_write: rbac/principal:*
+	permission remediations_view_remediation = remediations_remediation_read + remediations_remediation_all + remediations_all_read + remediations_all_all + all_all_all + t_child->remediations_view_remediation
 	permission ros_all_all = t_ros_all_all
 	relation t_ros_all_all: rbac/principal:*
 	permission ros_all_read = t_ros_all_read
 	relation t_ros_all_read: rbac/principal:*
+	permission ros_analysis_all = t_ros_analysis_all
+	relation t_ros_analysis_all: rbac/principal:*
+	permission ros_analysis_read = t_ros_analysis_read
+	relation t_ros_analysis_read: rbac/principal:*
+	permission ros_read_analysis_assigned = ros_analysis_read + ros_analysis_all + ros_all_read + ros_all_all + all_all_all + t_child->ros_read_analysis_assigned
 	permission sources_all_all = t_sources_all_all
 	relation t_sources_all_all: rbac/principal:*
 	permission staleness_all_all = t_staleness_all_all
@@ -432,6 +440,13 @@ definition rbac/role_binding {
 	permission config_manager_activation_keys_view = (subject & t_role->config_manager_activation_keys_view)
 	permission config_manager_profile_edit = (subject & t_role->config_manager_profile_edit)
 	permission config_manager_profile_view = (subject & t_role->config_manager_profile_view)
+	permission content_sources_repository_edit = (subject & t_role->content_sources_repository_edit)
+	permission content_sources_repository_upload = (subject & t_role->content_sources_repository_upload)
+	permission content_sources_repository_view = (subject & t_role->content_sources_repository_view)
+	permission content_sources_template_edit = (subject & t_role->content_sources_template_edit)
+	permission content_sources_template_view = (subject & t_role->content_sources_template_view)
+	permission inventory_host_delete = (subject & t_role->inventory_host_delete)
+	permission inventory_host_move = (subject & t_role->inventory_host_move)
 	permission inventory_host_update = (subject & t_role->inventory_host_update)
 	permission inventory_host_view = (subject & t_role->inventory_host_view)
 	permission notifications_applications_view = (subject & t_role->notifications_applications_view)
@@ -452,8 +467,12 @@ definition rbac/role_binding {
 	permission notifications_integration_test = (subject & t_role->notifications_integration_test)
 	permission notifications_integration_view = (subject & t_role->notifications_integration_view)
 	permission notifications_integration_view_history = (subject & t_role->notifications_integration_view_history)
+	permission remediations_edit_remediation = (subject & t_role->remediations_edit_remediation)
+	permission remediations_execute_remediation = (subject & t_role->remediations_execute_remediation)
+	permission remediations_view_remediation = (subject & t_role->remediations_view_remediation)
 	permission role = t_role
 	relation t_role: rbac/role
+	permission ros_read_analysis_assigned = (subject & t_role->ros_read_analysis_assigned)
 	permission staleness_staleness_update = (subject & t_role->staleness_staleness_update)
 	permission staleness_staleness_view = (subject & t_role->staleness_staleness_view)
 	permission subject = t_subject
@@ -467,6 +486,13 @@ definition rbac/tenant {
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view + t_platform->config_manager_activation_keys_view
 	permission config_manager_profile_edit = t_binding->config_manager_profile_edit + t_platform->config_manager_profile_edit
 	permission config_manager_profile_view = t_binding->config_manager_profile_view + t_platform->config_manager_profile_view
+	permission content_sources_repository_edit = t_binding->content_sources_repository_edit + t_platform->content_sources_repository_edit
+	permission content_sources_repository_upload = t_binding->content_sources_repository_upload + t_platform->content_sources_repository_upload
+	permission content_sources_repository_view = t_binding->content_sources_repository_view + t_platform->content_sources_repository_view
+	permission content_sources_template_edit = t_binding->content_sources_template_edit + t_platform->content_sources_template_edit
+	permission content_sources_template_view = t_binding->content_sources_template_view + t_platform->content_sources_template_view
+	permission inventory_host_delete = t_binding->inventory_host_delete + t_platform->inventory_host_delete
+	permission inventory_host_move = t_binding->inventory_host_move + t_platform->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update + t_platform->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view + t_platform->inventory_host_view
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_platform->notifications_applications_view
@@ -489,6 +515,11 @@ definition rbac/tenant {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_platform->notifications_integration_view_history
 	permission platform = t_platform
 	relation t_platform: rbac/platform
+	permission remediations_edit_remediation = t_binding->remediations_edit_remediation + t_platform->remediations_edit_remediation
+	permission remediations_execute_remediation = t_binding->remediations_execute_remediation + t_platform->remediations_execute_remediation
+	permission remediations_view_remediation = t_binding->remediations_view_remediation + t_platform->remediations_view_remediation
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_platform->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_platform->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_platform->staleness_staleness_view
 }
@@ -500,6 +531,13 @@ definition rbac/workspace {
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view + t_parent->config_manager_activation_keys_view
 	permission config_manager_profile_edit = t_binding->config_manager_profile_edit + t_parent->config_manager_profile_edit
 	permission config_manager_profile_view = t_binding->config_manager_profile_view + t_parent->config_manager_profile_view
+	permission content_sources_repository_edit = t_binding->content_sources_repository_edit + t_parent->content_sources_repository_edit
+	permission content_sources_repository_upload = t_binding->content_sources_repository_upload + t_parent->content_sources_repository_upload
+	permission content_sources_repository_view = t_binding->content_sources_repository_view + t_parent->content_sources_repository_view
+	permission content_sources_template_edit = t_binding->content_sources_template_edit + t_parent->content_sources_template_edit
+	permission content_sources_template_view = t_binding->content_sources_template_view + t_parent->content_sources_template_view
+	permission inventory_host_delete = t_binding->inventory_host_delete + t_parent->inventory_host_delete
+	permission inventory_host_move = t_binding->inventory_host_move + t_parent->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update + t_parent->inventory_host_update
 	permission inventory_host_view = t_binding->inventory_host_view + t_parent->inventory_host_view
 	permission notifications_applications_view = t_binding->notifications_applications_view + t_parent->notifications_applications_view
@@ -522,6 +560,11 @@ definition rbac/workspace {
 	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_parent->notifications_integration_view_history
 	permission parent = t_parent
 	relation t_parent: rbac/workspace | rbac/tenant
+	permission remediations_edit_remediation = t_binding->remediations_edit_remediation + t_parent->remediations_edit_remediation
+	permission remediations_execute_remediation = t_binding->remediations_execute_remediation + t_parent->remediations_execute_remediation
+	permission remediations_view_remediation = t_binding->remediations_view_remediation + t_parent->remediations_view_remediation
+	permission ros_read_analysis = (inventory_host_view & ros_read_analysis_assigned)
+	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_parent->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_parent->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_parent->staleness_staleness_view
 }

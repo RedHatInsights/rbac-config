@@ -773,96 +773,17 @@ objects:
           }
         ]
       }
-    provisioning.json: |
-      {
-          "roles": [{
-              "name": "Launch Administrator",
-              "display_name": "Launch administrator",
-              "description": "Perform read and update operations on launch reservation and related resources.",
-              "system": true,
-              "admin_default": true,
-              "version": 3,
-              "access": [{
-                  "permission": "provisioning:*:*"
-              }]
-          }, {
-              "name": "Launch Viewer",
-              "display_name": "Launch viewer",
-              "description": "Perform read operations on launch reservation and related resources.",
-              "system": true,
-              "platform_default": true,
-              "version": 3,
-              "access": [{
-                  "permission": "provisioning:source:read"
-              }, {
-                  "permission": "provisioning:pubkey:read"
-              }, {
-                  "permission": "provisioning:reservation:read"
-              }, {
-                  "permission": "provisioning:reservation.aws:read"
-              }, {
-                  "permission": "provisioning:reservation.azure:read"
-              }, {
-                  "permission": "provisioning:reservation.gcp:read"
-              }]
-          }, {
-              "name": "Launch on AWS User",
-              "display_name": "Launch on AWS user",
-              "description": "Perform update operations on AWS launch reservation and related resources.",
-              "system": true,
-              "version": 3,
-              "access": [{
-                  "permission": "provisioning:source:*"
-              }, {
-                  "permission": "provisioning:pubkey:*"
-              }, {
-                  "permission": "provisioning:reservation:*"
-              }, {
-                  "permission": "provisioning:reservation.aws:*"
-              }]
-          }, {
-              "name": "Launch on Azure User",
-              "display_name": "Launch on Azure user",
-              "description": "Perform update operations on Azure launch reservation and related resources.",
-              "system": true,
-              "version": 3,
-              "access": [{
-                  "permission": "provisioning:source:*"
-              }, {
-                  "permission": "provisioning:pubkey:*"
-              }, {
-                  "permission": "provisioning:reservation:*"
-              }, {
-                  "permission": "provisioning:reservation.azure:*"
-              }]
-          }, {
-              "name": "Launch on Google Cloud User",
-              "display_name": "Launch on Google Cloud user",
-              "description": "Perform update operations on Google Cloud launch reservation and related resources.",
-              "system": true,
-              "version": 3,
-              "access": [{
-                  "permission": "provisioning:source:*"
-              }, {
-                  "permission": "provisioning:pubkey:*"
-              }, {
-                  "permission": "provisioning:reservation:*"
-              }, {
-                  "permission": "provisioning:reservation.gcp:*"
-              }]
-          }]
-      }
     rbac.json: |
       {
         "roles": [
           {
             "name": "User Access administrator",
             "display_name": "User Access administrator",
-            "description": "Perform any available operation for a non-Organization Administrator to configure and manage user access to services hosted on console.redhat.com. This role can only be viewed and assigned by Organization Administrators.",
+            "description": "Perform most delegated access operations for users and service accounts. This includes managing standard groups, assigning/revoking non-admin roles, and inviting users. Cannot assign the Org Admin role or manage any group that contains the User Access Administrator role (to prevent privilege escalation).",
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "rbac:*:*"
@@ -946,11 +867,11 @@ objects:
           {
             "name": "RHEL viewer",
             "display_name": "RHEL viewer",
-            "description": "Grants read-only access to RHEL Insights. Users can view system configs, compliance reports, inventory data, patch info, vulnerabilities and more to observe the state of resources/activities, but can’t perform actions other than generating activation keys.",
+            "description": "Grants read-only access to Red Hat Lightspeed for RHEL. Users can view system configs, compliance reports, inventory data, patch info, vulnerabilities and more to observe the state of resources/activities, but can’t perform actions other than generating activation keys.",
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "advisor:*:read"
@@ -1042,7 +963,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 8,
+            "version": 9,
             "access": [
               {
                 "permission": "advisor:*:*"
@@ -1051,7 +972,7 @@ objects:
                 "permission": "compliance:policy:read"
               },
               {
-                "permission": "compliance:policy:update"
+                "permission": "compliance:policy:write"
               },
               {
                 "permission": "compliance:report:read"
@@ -1503,7 +1424,6 @@ objects:
       }
   kind: ConfigMap
   metadata:
-    creationTimestamp: null
     name: rbac-config
     annotations:
       qontract.recycle: "true"

@@ -33,13 +33,25 @@ internal type role_binding { // TODO: revisit cardinality based on clamping deci
     relation role: [Any role]
 }
 
-//Placeholders for v1 inventory group permissions, will need to be mapped to v2 permissions as part of meta-authz for workspaces
-@add_v1only_permission(perm:'inventory_groups_read')
-@add_v1only_permission(perm:'inventory_groups_write')
-@add_v1only_permission(perm:'inventory_groups_all')
 public type workspace { //Workspace is public so services can place resources into workspaces
     relation parent: [ExactlyOne workspace or tenant]
     relation binding: [Any role_binding]
+
+
+    @add_v1_based_permission(app:'inventory', resource:'groups', verb:'read', v2_perm:'rbac_workspace_view')
+    relation view: rbac_workspace_view
+
+    @add_v1_based_permission(app:'inventory', resource:'groups', verb:'write', v2_perm:'rbac_workspace_create')
+    relation create: rbac_workspace_create
+
+    @add_v1_based_permission(app:'inventory', resource:'groups', verb:'write', v2_perm:'rbac_workspace_edit')
+    relation edit: rbac_workspace_edit
+
+    @add_v1_based_permission(app:'inventory', resource:'groups', verb:'write', v2_perm:'rbac_workspace_delete')
+    relation delete: rbac_workspace_delete
+
+    @add_v1_based_permission(app:'inventory', resource:'groups', verb:'write', v2_perm:'rbac_workspace_move')
+    relation move: rbac_workspace_move
 }
 
 // Adds a permission that's checkable at the workspace but granted by assigning a different, V1 permission to the role
@@ -73,7 +85,7 @@ public extension add_v1_based_permission(app, resource, verb, v2_perm) {
 // Adds a permission that's only assignable to the role, for migration purposes
 public extension add_v1only_permission(perm) {
     type role {
-        private relation `${perm}`: [bool]
+        allow_duplicates private relation `${perm}`: [bool]
     }
 }
 
