@@ -6,10 +6,13 @@
       "system": true,
       "platform_default": false,
       "admin_default": true,
-      "version": 4,
+      "version": 5,
       "access": [
         {
           "permission": "tasks:*:*"
+        },
+        {
+          "permission": "playbook-dispatcher:tasks_run:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
