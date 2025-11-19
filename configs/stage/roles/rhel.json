@@ -7,7 +7,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "advisor:*:read"
