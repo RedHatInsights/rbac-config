@@ -5,10 +5,13 @@
       "description": "Perform any available operation on any Remediations resource.",
       "system": true,
       "platform_default": false,
-      "version": 9,
+      "version": 10,
       "access": [
         {
           "permission": "remediations:*:*"
+        },
+        {
+          "permission": "playbook-dispatcher:remediations_run:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
@@ -36,6 +39,9 @@
         },
         {
           "permission": "remediations:remediation:write"
+        },
+        {
+          "permission": "playbook-dispatcher:remediations_run:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
