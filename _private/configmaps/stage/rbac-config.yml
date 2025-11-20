@@ -133,13 +133,16 @@ objects:
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 9,
+            "version": 10,
             "access": [
               {
                 "permission": "config-manager:activation_keys:*"
               },
               {
                 "permission": "config-manager:profile:*"
+              },
+              {
+                "permission": "playbook-dispatcher:config_manager_run:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
@@ -174,6 +177,9 @@ objects:
               },
               {
                 "permission": "config-manager:profile:read"
+              },
+              {
+                "permission": "playbook-dispatcher:config_manager_run:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
@@ -813,10 +819,13 @@ objects:
             "description": "Perform any available operation on any Remediations resource.",
             "system": true,
             "platform_default": false,
-            "version": 9,
+            "version": 10,
             "access": [
               {
                 "permission": "remediations:*:*"
+              },
+              {
+                "permission": "playbook-dispatcher:remediations_run:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
@@ -846,6 +855,9 @@ objects:
                 "permission": "remediations:remediation:write"
               },
               {
+                "permission": "playbook-dispatcher:remediations_run:read"
+              },
+              {
                 "permission": "playbook-dispatcher:run:read",
                 "resourceDefinitions": [
                   {
@@ -871,7 +883,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 6,
+            "version": 7,
             "access": [
               {
                 "permission": "advisor:*:read"
@@ -1035,6 +1047,9 @@ objects:
                 "permission": "patch:*:*"
               },
               {
+                "permission": "playbook-dispatcher:remediations_run:read"
+              },
+              {
                 "permission": "playbook-dispatcher:run:read",
                 "resourceDefinitions": [
                   {
@@ -1173,6 +1188,9 @@ objects:
               },
               {
                 "permission": "patch:*:*"
+              },
+              {
+                "permission": "playbook-dispatcher:remediations_run:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
@@ -1355,10 +1373,13 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 4,
+            "version": 5,
             "access": [
               {
                 "permission": "tasks:*:*"
+              },
+              {
+                "permission": "playbook-dispatcher:tasks_run:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",

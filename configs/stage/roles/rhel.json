@@ -7,7 +7,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "advisor:*:read"
@@ -171,6 +171,9 @@
           "permission": "patch:*:*"
         },
         {
+          "permission": "playbook-dispatcher:remediations_run:read"
+        },
+        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {
@@ -309,6 +312,9 @@
         },
         {
           "permission": "patch:*:*"
+        },
+        {
+          "permission": "playbook-dispatcher:remediations_run:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
