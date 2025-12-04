@@ -21,18 +21,6 @@ definition kessel/lock {
 
 definition kessel/lockversion {}
 
-definition notifications/integration {
-	permission delete = t_workspace->notifications_integration_delete
-	permission disable = t_workspace->notifications_integration_disable
-	permission edit = t_workspace->notifications_integration_edit
-	permission enable = t_workspace->notifications_integration_enable
-	permission test = t_workspace->notifications_integration_test
-	permission view = t_workspace->notifications_integration_view
-	permission view_history = t_workspace->notifications_integration_view_history
-	permission workspace = t_workspace
-	relation t_workspace: rbac/workspace
-}
-
 definition rbac/group {
 	permission member = t_member
 	relation t_member: rbac/principal | rbac/group#member
@@ -70,6 +58,8 @@ definition rbac/platform {
 	permission content_sources_repository_view = t_binding->content_sources_repository_view
 	permission content_sources_template_edit = t_binding->content_sources_template_edit
 	permission content_sources_template_view = t_binding->content_sources_template_view
+	permission integrations_endpoints_edit = t_binding->integrations_endpoints_edit
+	permission integrations_endpoints_view = t_binding->integrations_endpoints_view
 	permission inventory_host_delete = t_binding->inventory_host_delete
 	permission inventory_host_move = t_binding->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update
@@ -80,24 +70,9 @@ definition rbac/platform {
 	permission malware_malware_edit_assigned = t_binding->malware_malware_edit_assigned
 	permission malware_malware_view = (inventory_host_view & malware_malware_view_assigned)
 	permission malware_malware_view_assigned = t_binding->malware_malware_view_assigned
-	permission notifications_applications_view = t_binding->notifications_applications_view
-	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit
-	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view
-	permission notifications_bundles_view = t_binding->notifications_bundles_view
-	permission notifications_daily_digest_preference_edit = t_binding->notifications_daily_digest_preference_edit
-	permission notifications_daily_digest_preference_view = t_binding->notifications_daily_digest_preference_view
-	permission notifications_event_log_view = t_binding->notifications_event_log_view
-	permission notifications_event_types_view = t_binding->notifications_event_types_view
-	permission notifications_integration_create = t_binding->notifications_integration_create
-	permission notifications_integration_delete = t_binding->notifications_integration_delete
-	permission notifications_integration_disable = t_binding->notifications_integration_disable
-	permission notifications_integration_edit = t_binding->notifications_integration_edit
-	permission notifications_integration_enable = t_binding->notifications_integration_enable
-	permission notifications_integration_subscribe_drawer = t_binding->notifications_integration_subscribe_drawer
-	permission notifications_integration_subscribe_email = t_binding->notifications_integration_subscribe_email
-	permission notifications_integration_test = t_binding->notifications_integration_test
-	permission notifications_integration_view = t_binding->notifications_integration_view
-	permission notifications_integration_view_history = t_binding->notifications_integration_view_history
+	permission notifications_events_view = t_binding->notifications_events_view
+	permission notifications_notifications_edit = t_binding->notifications_notifications_edit
+	permission notifications_notifications_view = t_binding->notifications_notifications_view
 	permission patch_system_edit = (inventory_host_view & patch_system_edit_assigned)
 	permission patch_system_edit_assigned = t_binding->patch_system_edit_assigned
 	permission patch_system_view = (inventory_host_view & patch_system_view_assigned)
@@ -366,8 +341,10 @@ definition rbac/role {
 	relation t_integrations_all_write: rbac/principal:*
 	permission integrations_endpoints_all = t_integrations_endpoints_all
 	relation t_integrations_endpoints_all: rbac/principal:*
+	permission integrations_endpoints_edit = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->integrations_endpoints_edit
 	permission integrations_endpoints_read = t_integrations_endpoints_read
 	relation t_integrations_endpoints_read: rbac/principal:*
+	permission integrations_endpoints_view = integrations_endpoints_read + integrations_endpoints_all + integrations_all_read + integrations_all_all + all_all_all + t_child->integrations_endpoints_view
 	permission integrations_endpoints_write = t_integrations_endpoints_write
 	relation t_integrations_endpoints_write: rbac/principal:*
 	permission inventory_all_all = t_inventory_all_all
@@ -417,32 +394,17 @@ definition rbac/role {
 	relation t_notifications_all_read: rbac/principal:*
 	permission notifications_all_write = t_notifications_all_write
 	relation t_notifications_all_write: rbac/principal:*
-	permission notifications_applications_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_applications_view
-	permission notifications_behavior_groups_edit = notifications_notifications_write + notifications_notifications_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_behavior_groups_edit
-	permission notifications_behavior_groups_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_behavior_groups_view
-	permission notifications_bundles_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_bundles_view
-	permission notifications_daily_digest_preference_edit = notifications_notifications_write + notifications_notifications_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_daily_digest_preference_edit
-	permission notifications_daily_digest_preference_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_daily_digest_preference_view
-	permission notifications_event_log_view = notifications_events_read + notifications_events_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_event_log_view
-	permission notifications_event_types_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_event_types_view
 	permission notifications_events_all = t_notifications_events_all
 	relation t_notifications_events_all: rbac/principal:*
 	permission notifications_events_read = t_notifications_events_read
 	relation t_notifications_events_read: rbac/principal:*
-	permission notifications_integration_create = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_create
-	permission notifications_integration_delete = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_delete
-	permission notifications_integration_disable = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_disable
-	permission notifications_integration_edit = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_edit
-	permission notifications_integration_enable = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_enable
-	permission notifications_integration_subscribe_drawer = integrations_endpoints_read + integrations_endpoints_all + integrations_all_read + integrations_all_all + all_all_all + t_child->notifications_integration_subscribe_drawer
-	permission notifications_integration_subscribe_email = integrations_endpoints_read + integrations_endpoints_all + integrations_all_read + integrations_all_all + all_all_all + t_child->notifications_integration_subscribe_email
-	permission notifications_integration_test = integrations_endpoints_write + integrations_endpoints_all + integrations_all_write + integrations_all_all + all_all_all + t_child->notifications_integration_test
-	permission notifications_integration_view = integrations_endpoints_read + integrations_endpoints_all + integrations_all_read + integrations_all_all + all_all_all + t_child->notifications_integration_view
-	permission notifications_integration_view_history = integrations_endpoints_read + integrations_endpoints_all + integrations_all_read + integrations_all_all + all_all_all + t_child->notifications_integration_view_history
+	permission notifications_events_view = notifications_events_read + notifications_events_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_events_view
 	permission notifications_notifications_all = t_notifications_notifications_all
 	relation t_notifications_notifications_all: rbac/principal:*
+	permission notifications_notifications_edit = notifications_notifications_write + notifications_notifications_all + notifications_all_write + notifications_all_all + all_all_all + t_child->notifications_notifications_edit
 	permission notifications_notifications_read = t_notifications_notifications_read
 	relation t_notifications_notifications_read: rbac/principal:*
+	permission notifications_notifications_view = notifications_notifications_read + notifications_notifications_all + notifications_all_read + notifications_all_all + all_all_all + t_child->notifications_notifications_view
 	permission notifications_notifications_write = t_notifications_notifications_write
 	relation t_notifications_notifications_write: rbac/principal:*
 	permission ocp_advisor_all_all = t_ocp_advisor_all_all
@@ -656,6 +618,8 @@ definition rbac/role_binding {
 	permission content_sources_repository_view = (subject & t_role->content_sources_repository_view)
 	permission content_sources_template_edit = (subject & t_role->content_sources_template_edit)
 	permission content_sources_template_view = (subject & t_role->content_sources_template_view)
+	permission integrations_endpoints_edit = (subject & t_role->integrations_endpoints_edit)
+	permission integrations_endpoints_view = (subject & t_role->integrations_endpoints_view)
 	permission inventory_host_delete = (subject & t_role->inventory_host_delete)
 	permission inventory_host_move = (subject & t_role->inventory_host_move)
 	permission inventory_host_update = (subject & t_role->inventory_host_update)
@@ -663,24 +627,9 @@ definition rbac/role_binding {
 	permission malware_malware_acknowledge_assigned = (subject & t_role->malware_malware_acknowledge_assigned)
 	permission malware_malware_edit_assigned = (subject & t_role->malware_malware_edit_assigned)
 	permission malware_malware_view_assigned = (subject & t_role->malware_malware_view_assigned)
-	permission notifications_applications_view = (subject & t_role->notifications_applications_view)
-	permission notifications_behavior_groups_edit = (subject & t_role->notifications_behavior_groups_edit)
-	permission notifications_behavior_groups_view = (subject & t_role->notifications_behavior_groups_view)
-	permission notifications_bundles_view = (subject & t_role->notifications_bundles_view)
-	permission notifications_daily_digest_preference_edit = (subject & t_role->notifications_daily_digest_preference_edit)
-	permission notifications_daily_digest_preference_view = (subject & t_role->notifications_daily_digest_preference_view)
-	permission notifications_event_log_view = (subject & t_role->notifications_event_log_view)
-	permission notifications_event_types_view = (subject & t_role->notifications_event_types_view)
-	permission notifications_integration_create = (subject & t_role->notifications_integration_create)
-	permission notifications_integration_delete = (subject & t_role->notifications_integration_delete)
-	permission notifications_integration_disable = (subject & t_role->notifications_integration_disable)
-	permission notifications_integration_edit = (subject & t_role->notifications_integration_edit)
-	permission notifications_integration_enable = (subject & t_role->notifications_integration_enable)
-	permission notifications_integration_subscribe_drawer = (subject & t_role->notifications_integration_subscribe_drawer)
-	permission notifications_integration_subscribe_email = (subject & t_role->notifications_integration_subscribe_email)
-	permission notifications_integration_test = (subject & t_role->notifications_integration_test)
-	permission notifications_integration_view = (subject & t_role->notifications_integration_view)
-	permission notifications_integration_view_history = (subject & t_role->notifications_integration_view_history)
+	permission notifications_events_view = (subject & t_role->notifications_events_view)
+	permission notifications_notifications_edit = (subject & t_role->notifications_notifications_edit)
+	permission notifications_notifications_view = (subject & t_role->notifications_notifications_view)
 	permission patch_system_edit_assigned = (subject & t_role->patch_system_edit_assigned)
 	permission patch_system_view_assigned = (subject & t_role->patch_system_view_assigned)
 	permission playbook_dispatcher_config_manager_run_view = (subject & t_role->playbook_dispatcher_config_manager_run_view)
@@ -743,6 +692,8 @@ definition rbac/tenant {
 	permission content_sources_repository_view = t_binding->content_sources_repository_view + t_platform->content_sources_repository_view
 	permission content_sources_template_edit = t_binding->content_sources_template_edit + t_platform->content_sources_template_edit
 	permission content_sources_template_view = t_binding->content_sources_template_view + t_platform->content_sources_template_view
+	permission integrations_endpoints_edit = t_binding->integrations_endpoints_edit + t_platform->integrations_endpoints_edit
+	permission integrations_endpoints_view = t_binding->integrations_endpoints_view + t_platform->integrations_endpoints_view
 	permission inventory_host_delete = t_binding->inventory_host_delete + t_platform->inventory_host_delete
 	permission inventory_host_move = t_binding->inventory_host_move + t_platform->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update + t_platform->inventory_host_update
@@ -753,24 +704,9 @@ definition rbac/tenant {
 	permission malware_malware_edit_assigned = t_binding->malware_malware_edit_assigned + t_platform->malware_malware_edit_assigned
 	permission malware_malware_view = (inventory_host_view & malware_malware_view_assigned)
 	permission malware_malware_view_assigned = t_binding->malware_malware_view_assigned + t_platform->malware_malware_view_assigned
-	permission notifications_applications_view = t_binding->notifications_applications_view + t_platform->notifications_applications_view
-	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit + t_platform->notifications_behavior_groups_edit
-	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view + t_platform->notifications_behavior_groups_view
-	permission notifications_bundles_view = t_binding->notifications_bundles_view + t_platform->notifications_bundles_view
-	permission notifications_daily_digest_preference_edit = t_binding->notifications_daily_digest_preference_edit + t_platform->notifications_daily_digest_preference_edit
-	permission notifications_daily_digest_preference_view = t_binding->notifications_daily_digest_preference_view + t_platform->notifications_daily_digest_preference_view
-	permission notifications_event_log_view = t_binding->notifications_event_log_view + t_platform->notifications_event_log_view
-	permission notifications_event_types_view = t_binding->notifications_event_types_view + t_platform->notifications_event_types_view
-	permission notifications_integration_create = t_binding->notifications_integration_create + t_platform->notifications_integration_create
-	permission notifications_integration_delete = t_binding->notifications_integration_delete + t_platform->notifications_integration_delete
-	permission notifications_integration_disable = t_binding->notifications_integration_disable + t_platform->notifications_integration_disable
-	permission notifications_integration_edit = t_binding->notifications_integration_edit + t_platform->notifications_integration_edit
-	permission notifications_integration_enable = t_binding->notifications_integration_enable + t_platform->notifications_integration_enable
-	permission notifications_integration_subscribe_drawer = t_binding->notifications_integration_subscribe_drawer + t_platform->notifications_integration_subscribe_drawer
-	permission notifications_integration_subscribe_email = t_binding->notifications_integration_subscribe_email + t_platform->notifications_integration_subscribe_email
-	permission notifications_integration_test = t_binding->notifications_integration_test + t_platform->notifications_integration_test
-	permission notifications_integration_view = t_binding->notifications_integration_view + t_platform->notifications_integration_view
-	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_platform->notifications_integration_view_history
+	permission notifications_events_view = t_binding->notifications_events_view + t_platform->notifications_events_view
+	permission notifications_notifications_edit = t_binding->notifications_notifications_edit + t_platform->notifications_notifications_edit
+	permission notifications_notifications_view = t_binding->notifications_notifications_view + t_platform->notifications_notifications_view
 	permission patch_system_edit = (inventory_host_view & patch_system_edit_assigned)
 	permission patch_system_edit_assigned = t_binding->patch_system_edit_assigned + t_platform->patch_system_edit_assigned
 	permission patch_system_view = (inventory_host_view & patch_system_view_assigned)
@@ -845,6 +781,8 @@ definition rbac/workspace {
 	permission create = rbac_workspace_create
 	permission delete = rbac_workspace_delete
 	permission edit = rbac_workspace_edit
+	permission integrations_endpoints_edit = t_binding->integrations_endpoints_edit + t_parent->integrations_endpoints_edit
+	permission integrations_endpoints_view = t_binding->integrations_endpoints_view + t_parent->integrations_endpoints_view
 	permission inventory_host_delete = t_binding->inventory_host_delete + t_parent->inventory_host_delete
 	permission inventory_host_move = t_binding->inventory_host_move + t_parent->inventory_host_move
 	permission inventory_host_update = t_binding->inventory_host_update + t_parent->inventory_host_update
@@ -856,24 +794,9 @@ definition rbac/workspace {
 	permission malware_malware_view = (inventory_host_view & malware_malware_view_assigned)
 	permission malware_malware_view_assigned = t_binding->malware_malware_view_assigned + t_parent->malware_malware_view_assigned
 	permission move = rbac_workspace_move
-	permission notifications_applications_view = t_binding->notifications_applications_view + t_parent->notifications_applications_view
-	permission notifications_behavior_groups_edit = t_binding->notifications_behavior_groups_edit + t_parent->notifications_behavior_groups_edit
-	permission notifications_behavior_groups_view = t_binding->notifications_behavior_groups_view + t_parent->notifications_behavior_groups_view
-	permission notifications_bundles_view = t_binding->notifications_bundles_view + t_parent->notifications_bundles_view
-	permission notifications_daily_digest_preference_edit = t_binding->notifications_daily_digest_preference_edit + t_parent->notifications_daily_digest_preference_edit
-	permission notifications_daily_digest_preference_view = t_binding->notifications_daily_digest_preference_view + t_parent->notifications_daily_digest_preference_view
-	permission notifications_event_log_view = t_binding->notifications_event_log_view + t_parent->notifications_event_log_view
-	permission notifications_event_types_view = t_binding->notifications_event_types_view + t_parent->notifications_event_types_view
-	permission notifications_integration_create = t_binding->notifications_integration_create + t_parent->notifications_integration_create
-	permission notifications_integration_delete = t_binding->notifications_integration_delete + t_parent->notifications_integration_delete
-	permission notifications_integration_disable = t_binding->notifications_integration_disable + t_parent->notifications_integration_disable
-	permission notifications_integration_edit = t_binding->notifications_integration_edit + t_parent->notifications_integration_edit
-	permission notifications_integration_enable = t_binding->notifications_integration_enable + t_parent->notifications_integration_enable
-	permission notifications_integration_subscribe_drawer = t_binding->notifications_integration_subscribe_drawer + t_parent->notifications_integration_subscribe_drawer
-	permission notifications_integration_subscribe_email = t_binding->notifications_integration_subscribe_email + t_parent->notifications_integration_subscribe_email
-	permission notifications_integration_test = t_binding->notifications_integration_test + t_parent->notifications_integration_test
-	permission notifications_integration_view = t_binding->notifications_integration_view + t_parent->notifications_integration_view
-	permission notifications_integration_view_history = t_binding->notifications_integration_view_history + t_parent->notifications_integration_view_history
+	permission notifications_events_view = t_binding->notifications_events_view + t_parent->notifications_events_view
+	permission notifications_notifications_edit = t_binding->notifications_notifications_edit + t_parent->notifications_notifications_edit
+	permission notifications_notifications_view = t_binding->notifications_notifications_view + t_parent->notifications_notifications_view
 	permission parent = t_parent
 	relation t_parent: rbac/workspace | rbac/tenant
 	permission patch_system_edit = (inventory_host_view & patch_system_edit_assigned)
