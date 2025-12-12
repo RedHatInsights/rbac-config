@@ -4,6 +4,11 @@
             "verb": "read"
         }
     ],
+    "workspaces": [
+        {
+            "verb": "role_binding_view"
+        }
+    ],
     "*": [
         {
             "verb": "*"

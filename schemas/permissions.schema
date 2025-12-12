@@ -20,7 +20,8 @@
               "link",
               "unlink",
               "order",
-              "execute"
+              "execute",
+              "role_binding_view"
             ]
           },
           "description": {
