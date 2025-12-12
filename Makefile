@@ -5,7 +5,7 @@ endif
 
 GOBIN := $(shell go env GOPATH)/bin
 
-.PHONY: init check-go-tools ksl-test-schema-stage ksl-test-schema-prod
+.PHONY: init check-go-tools ksl-schema-stage ksl-test-schema-stage ksl-schema-prod ksl-test-schema-prod
 
 init:
 	@HASH=$$(git ls-remote https://github.com/project-kessel/ksl-schema-language.git HEAD | cut -f1) && \
@@ -31,6 +31,11 @@ check-go-tools:
 configs/stage/schemas/src/rbac_v1_permissions.json: configs/stage/permissions/*.json configs/stage/schemas/*.lst
 	$(GOBIN)/generate-v1-only-permissions -ksl configs/stage/schemas -rbac-permissions-json configs/stage/permissions
 
+configs/stage/schemas/schema.zed: configs/stage/schemas/src/*.ksl configs/stage/schemas/src/rbac_v1_permissions.json
+	$(GOBIN)/ksl -o configs/stage/schemas/schema.zed configs/stage/schemas/src/*.ksl configs/stage/schemas/src/*.json
+
+ksl-schema-stage: configs/stage/schemas/schema.zed
+
 ksl-test-schema-stage: configs/stage/schemas/src/*.ksl configs/stage/schemas/src/rbac_v1_permissions.json
 	@mkdir -p _private/test-schema
 	$(GOBIN)/ksl -o _private/test-schema/stage-schema.zed configs/stage/schemas/src/*.ksl configs/stage/schemas/src/*.json
@@ -38,6 +43,11 @@ ksl-test-schema-stage: configs/stage/schemas/src/*.ksl configs/stage/schemas/src
 # Prod environment targets
 configs/prod/schemas/src/rbac_v1_permissions.json: configs/prod/permissions/*.json configs/prod/schemas/*.lst
 	$(GOBIN)/generate-v1-only-permissions -ksl configs/prod/schemas -rbac-permissions-json configs/prod/permissions
+
+configs/prod/schemas/schema.zed: configs/prod/schemas/src/*.ksl configs/prod/schemas/src/rbac_v1_permissions.json
+	$(GOBIN)/ksl -o configs/prod/schemas/schema.zed configs/prod/schemas/src/*.ksl configs/prod/schemas/src/*.json
+
+ksl-schema-prod: configs/prod/schemas/schema.zed
 
 ksl-test-schema-prod: configs/prod/schemas/src/*.ksl configs/prod/schemas/src/rbac_v1_permissions.json
 	@mkdir -p _private/test-schema
