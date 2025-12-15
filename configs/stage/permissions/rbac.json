@@ -9,11 +9,6 @@
             "verb": "role_binding_view"
         }
     ],
-    "workspace": [
-        {
-            "verb": "role_binding_view"
-        }
-    ],
     "*": [
         {
             "verb": "*"
