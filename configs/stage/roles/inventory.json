@@ -71,13 +71,10 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "inventory:groups:read"
-        },
-        {
-          "permission": "rbac:workspace:role_binding_view"
         }
       ]
     }
