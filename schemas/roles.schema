@@ -34,7 +34,7 @@
               "properties": {
                 "permission": {
                   "type": "string",
-                  "pattern": "^.*(:).*(:)(\\*|read|write|create|update|upload|delete|list|link|unlink|order|execute|role_binding_view)$"
+                  "pattern": "^.*(:).*(:)(\\*|read|write|create|update|upload|delete|list|link|unlink|order|execute|role_binding_(view|grant|revoke))$"
                 },
                 "resourceDefinitions": {
                   "type": "array",

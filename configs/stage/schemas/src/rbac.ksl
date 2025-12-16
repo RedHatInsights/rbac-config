@@ -55,6 +55,12 @@ public type workspace { //Workspace is public so services can place resources in
 
     @add_unified_permission(app:'rbac', resource:'workspaces', verb:'role_binding_view')
     relation role_binding_view: rbac_workspaces_role_binding_view
+
+    @add_unified_permission(app:'rbac', resource:'workspaces', verb:'role_binding_grant')
+    relation role_binding_grant: rbac_workspaces_role_binding_grant
+
+    @add_unified_permission(app:'rbac', resource:'workspaces', verb:'role_binding_revoke')
+    relation role_binding_revoke: rbac_workspaces_role_binding_revoke
 }
 
 // Adds a permission that's checkable at the workspace but granted by assigning a different, V1 permission to the role
