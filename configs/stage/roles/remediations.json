@@ -32,7 +32,7 @@
       "description": "Perform create, read, update, delete operations on any Remediations resource.",
       "system": true,
       "platform_default": true,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "remediations:remediation:read"
