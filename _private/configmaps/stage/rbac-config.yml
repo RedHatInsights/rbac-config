@@ -167,7 +167,7 @@ objects:
             "description": "Perform read operations on the current configurations on RHC manager and update actions to the activation keys.",
             "system": true,
             "platform_default": true,
-            "version": 10,
+            "version": 11,
             "access": [
               {
                 "permission": "config-manager:activation_keys:read"
@@ -852,7 +852,7 @@ objects:
             "description": "Perform create, read, update, delete operations on any Remediations resource.",
             "system": true,
             "platform_default": true,
-            "version": 6,
+            "version": 7,
             "access": [
               {
                 "permission": "remediations:remediation:read"
@@ -981,7 +981,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 9,
+            "version": 10,
             "access": [
               {
                 "permission": "advisor:*:*"
@@ -1121,7 +1121,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 7,
+            "version": 8,
             "access": [
               {
                 "permission": "advisor:*:*"
