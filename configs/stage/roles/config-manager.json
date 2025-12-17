@@ -41,7 +41,7 @@
       "description": "Perform read operations on the current configurations on RHC manager and update actions to the activation keys.",
       "system": true,
       "platform_default": true,
-      "version": 10,
+      "version": 11,
       "access": [
         {
           "permission": "config-manager:activation_keys:read"
