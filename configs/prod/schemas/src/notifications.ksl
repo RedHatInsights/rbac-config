@@ -1,41 +1,15 @@
-version 0.1
+version 0.2
 namespace notifications
 
 import rbac
 
-type integration {
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'write', v2_perm:'notifications_integration_create')
-    @rbac.add_v1_based_permission(app:'notifications', resource:'notifications', verb:'write', v2_perm:'notifications_daily_digest_preference_edit')
-    @rbac.add_v1_based_permission(app:'notifications', resource:'notifications', verb:'read', v2_perm:'notifications_daily_digest_preference_view')
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'read', v2_perm:'notifications_integration_subscribe_drawer')
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'read', v2_perm:'notifications_integration_subscribe_email')
-    @rbac.add_v1_based_permission(app:'notifications', resource:'events', verb:'read', v2_perm:'notifications_event_log_view')
-    @rbac.add_v1_based_permission(app:'notifications', resource:'notifications', verb:'read', v2_perm:'notifications_behavior_groups_view')
-    @rbac.add_v1_based_permission(app:'notifications', resource:'notifications', verb:'write', v2_perm:'notifications_behavior_groups_edit')
-    @rbac.add_v1_based_permission(app:'notifications', resource:'notifications', verb:'read', v2_perm:'notifications_bundles_view')
-    @rbac.add_v1_based_permission(app:'notifications', resource:'notifications', verb:'read', v2_perm:'notifications_applications_view')
-    @rbac.add_v1_based_permission(app:'notifications', resource:'notifications', verb:'read', v2_perm:'notifications_event_types_view')
-    relation workspace: [ExactlyOne rbac.workspace]
+// App: Integrations - Resource: Endpoints
+@rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'write', v2_perm:'integrations_endpoints_edit');
+@rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'read', v2_perm:'integrations_endpoints_view');
 
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'read', v2_perm:'notifications_integration_view')
-    relation view: workspace.notifications_integration_view
+// App: Notifications - Resource: Events
+@rbac.add_v1_based_permission(app:'notifications', resource:'events', verb:'read', v2_perm:'notifications_events_view');
 
-    // Edit display name, connectivity settings, and event type mappings
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'write', v2_perm:'notifications_integration_edit')
-    relation edit: workspace.notifications_integration_edit
-
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'write', v2_perm:'notifications_integration_test')
-    relation test: workspace.notifications_integration_test
-
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'read', v2_perm:'notifications_integration_view_history')
-    relation view_history: workspace.notifications_integration_view_history
-
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'write', v2_perm:'notifications_integration_delete')
-    relation delete: workspace.notifications_integration_delete
-
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'write', v2_perm:'notifications_integration_disable')
-    relation disable: workspace.notifications_integration_disable
-
-    @rbac.add_v1_based_permission(app:'integrations', resource:'endpoints', verb:'write', v2_perm:'notifications_integration_enable')
-    relation enable: workspace.notifications_integration_enable
-}
+// App: Notifications - Resource: Notifications
+@rbac.add_v1_based_permission(app:'notifications', resource:'notifications', verb:'write', v2_perm:'notifications_notifications_edit');
+@rbac.add_v1_based_permission(app:'notifications', resource:'notifications', verb:'read', v2_perm:'notifications_notifications_view');
