@@ -7,6 +7,12 @@
     "workspaces": [
         {
             "verb": "role_binding_view"
+        },
+        {
+            "verb": "role_binding_grant"
+        },
+        {
+            "verb": "role_binding_revoke"
         }
     ],
     "*": [
