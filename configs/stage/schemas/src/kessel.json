@@ -1,0 +1,29 @@
+{
+    "name": "kessel",
+    "types": [
+        {
+            "name": "lock",
+            "visibility": "internal",
+            "relations": [
+                {
+                    "name": "version",
+                    "visibility": "public",
+                    "body": {
+                        "kind": "self",
+                        "types": [
+                            {
+                                "name": "lockversion"
+                            }
+                        ],
+                        "cardinality": "ExactlyOne"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "lockversion",
+            "visibility": "internal",
+            "relations": []
+        }
+    ]
+}

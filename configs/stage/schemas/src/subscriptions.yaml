@@ -1,0 +1,67 @@
+name: subscriptions
+imports:
+    - rbac
+extension_references:
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: subscriptions
+        resource: reports
+        v2_perm: subscriptions_report_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: subscriptions
+        resource: manifests
+        v2_perm: subscriptions_manifest_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: subscriptions
+        resource: manifests
+        v2_perm: subscriptions_manifest_edit
+        verb: write
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: subscriptions
+        resource: organization
+        v2_perm: subscriptions_organization_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: subscriptions
+        resource: organization
+        v2_perm: subscriptions_organization_edit
+        verb: write
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: subscriptions
+        resource: products
+        v2_perm: subscriptions_product_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: subscriptions
+        resource: products
+        v2_perm: subscriptions_product_edit
+        verb: write
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: subscriptions
+        resource: cloud_access
+        v2_perm: subscriptions_cloud_access_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: subscriptions
+        resource: cloud_access
+        v2_perm: subscriptions_cloud_access_edit
+        verb: write

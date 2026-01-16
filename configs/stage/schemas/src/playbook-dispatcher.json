@@ -1,0 +1,52 @@
+{
+    "name": "playbook_dispatcher",
+    "imports": [
+        "rbac"
+    ],
+    "extension_references": [
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "playbook_dispatcher",
+                "resource": "remediations_run",
+                "v2_perm": "playbook_dispatcher_remediations_run_view",
+                "verb": "read"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "playbook_dispatcher",
+                "resource": "tasks_run",
+                "v2_perm": "playbook_dispatcher_tasks_run_view",
+                "verb": "read"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "playbook_dispatcher",
+                "resource": "config_manager_run",
+                "v2_perm": "playbook_dispatcher_config_manager_run_view",
+                "verb": "read"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1only_permission",
+            "params": {
+                "perm": "playbook_dispatcher_run_read"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1only_permission",
+            "params": {
+                "perm": "playbook_dispatcher_run_write"
+            }
+        }
+    ]
+}

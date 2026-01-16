@@ -1,0 +1,39 @@
+name: content_sources
+imports:
+    - rbac
+extension_references:
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: content_sources
+        resource: repositories
+        v2_perm: content_sources_repository_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: content_sources
+        resource: repositories
+        v2_perm: content_sources_repository_edit
+        verb: write
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: content_sources
+        resource: repositories
+        v2_perm: content_sources_repository_upload
+        verb: upload
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: content_sources
+        resource: templates
+        v2_perm: content_sources_template_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: content_sources
+        resource: templates
+        v2_perm: content_sources_template_edit
+        verb: write

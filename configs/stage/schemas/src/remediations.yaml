@@ -1,0 +1,25 @@
+name: remediations
+imports:
+    - rbac
+extension_references:
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: remediations
+        resource: remediation
+        v2_perm: remediations_view_remediation
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: remediations
+        resource: remediation
+        v2_perm: remediations_edit_remediation
+        verb: write
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: remediations
+        resource: remediation
+        v2_perm: remediations_execute_remediation
+        verb: execute

@@ -1,0 +1,58 @@
+{
+    "name": "notifications",
+    "imports": [
+        "rbac"
+    ],
+    "extension_references": [
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "integrations",
+                "resource": "endpoints",
+                "v2_perm": "integrations_endpoints_edit",
+                "verb": "write"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "integrations",
+                "resource": "endpoints",
+                "v2_perm": "integrations_endpoints_view",
+                "verb": "read"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "notifications",
+                "resource": "events",
+                "v2_perm": "notifications_events_view",
+                "verb": "read"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "notifications",
+                "resource": "notifications",
+                "v2_perm": "notifications_notifications_edit",
+                "verb": "write"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "notifications",
+                "resource": "notifications",
+                "v2_perm": "notifications_notifications_view",
+                "verb": "read"
+            }
+        }
+    ]
+}

@@ -1,0 +1,90 @@
+name: advisor
+imports:
+    - rbac
+    - hbi
+extension_references:
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: advisor
+        resource: disable_recommendations
+        v2_perm: advisor_disable_recommendations_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: advisor
+        resource: disable_recommendations
+        v2_perm: advisor_disable_recommendations_edit
+        verb: write
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: advisor
+        resource: weekly_email
+        v2_perm: advisor_weekly_email_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: advisor
+        resource: weekly_report
+        v2_perm: advisor_weekly_report_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: advisor
+        resource: weekly_report_auto_subscribe
+        v2_perm: advisor_weekly_report_auto_subscribe_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: advisor
+        resource: weekly_report_auto_subscribe
+        v2_perm: advisor_weekly_report_auto_subscribe_edit
+        verb: write
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: advisor
+        resource: recommendation_results
+        v2_perm: advisor_recommendation_results_view_assigned
+        verb: read
+    - namespace: rbac
+      name: add_contingent_permission
+      params:
+        contingent: advisor_recommendation_results_view
+        first: inventory_host_view
+        second: advisor_recommendation_results_view_assigned
+    - namespace: hbi
+      name: expose_host_permission
+      params:
+        host_perm: advisor_recommendation_results_view
+        v2_perm: advisor_recommendation_results_view
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: advisor
+        resource: recommendation_results
+        v2_perm: advisor_recommendation_results_edit_assigned
+        verb: write
+    - namespace: rbac
+      name: add_contingent_permission
+      params:
+        contingent: advisor_recommendation_results_edit
+        first: inventory_host_view
+        second: advisor_recommendation_results_edit_assigned
+    - namespace: hbi
+      name: expose_host_permission
+      params:
+        host_perm: advisor_recommendation_results_edit
+        v2_perm: advisor_recommendation_results_edit
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: advisor
+        resource: exports
+        v2_perm: advisor_exports_view
+        verb: read

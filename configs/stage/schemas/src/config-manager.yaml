@@ -1,0 +1,32 @@
+name: config_manager
+imports:
+    - rbac
+extension_references:
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: config_manager
+        resource: profile
+        v2_perm: config_manager_profile_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: config_manager
+        resource: profile
+        v2_perm: config_manager_profile_edit
+        verb: write
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: config_manager
+        resource: activation_keys
+        v2_perm: config_manager_activation_keys_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: config_manager
+        resource: activation_keys
+        v2_perm: config_manager_activation_keys_edit
+        verb: write

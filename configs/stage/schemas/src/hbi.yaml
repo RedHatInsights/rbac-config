@@ -1,0 +1,128 @@
+name: hbi
+imports:
+    - rbac
+types:
+    - name: host
+      visibility: public
+      relations:
+        - name: workspace
+          visibility: private
+          body:
+            kind: self
+            types:
+                - namespace: rbac
+                  name: workspace
+            cardinality: ExactlyOne
+        - name: view
+          visibility: public
+          body:
+            kind: nested_reference
+            types: []
+            relation: workspace
+            sub_relation: inventory_host_view
+          extensions:
+            - namespace: rbac
+              name: add_v1_based_permission
+              params:
+                app: inventory
+                resource: hosts
+                v2_perm: inventory_host_view
+                verb: read
+        - name: update
+          visibility: public
+          body:
+            kind: nested_reference
+            types: []
+            relation: workspace
+            sub_relation: inventory_host_update
+          extensions:
+            - namespace: rbac
+              name: add_v1_based_permission
+              params:
+                app: inventory
+                resource: hosts
+                v2_perm: inventory_host_update
+                verb: write
+        - name: delete
+          visibility: public
+          body:
+            kind: nested_reference
+            types: []
+            relation: workspace
+            sub_relation: inventory_host_delete
+          extensions:
+            - namespace: rbac
+              name: add_v1_based_permission
+              params:
+                app: inventory
+                resource: hosts
+                v2_perm: inventory_host_delete
+                verb: write
+        - name: move
+          visibility: public
+          body:
+            kind: nested_reference
+            types: []
+            relation: workspace
+            sub_relation: inventory_host_move
+          extensions:
+            - namespace: rbac
+              name: add_v1_based_permission
+              params:
+                app: inventory
+                resource: groups
+                v2_perm: inventory_host_move
+                verb: write
+defined_extensions:
+    - name: expose_host_permission
+      visibility: public
+      params:
+        - v2_perm
+        - host_perm
+      types:
+        - name:
+            kind: literal
+            value: host
+          visibility: public
+          relations:
+            - name:
+                kind: template
+                segments:
+                    - kind: param
+                      param: host_perm
+              visibility: public
+              body:
+                kind: intersect
+                types: []
+                left:
+                    kind: reference
+                    types: []
+                    relation:
+                        kind: literal
+                        value: view
+                right:
+                    kind: nested_reference
+                    types: []
+                    relation:
+                        kind: literal
+                        value: workspace
+                    sub_relation:
+                        kind: template
+                        segments:
+                            - kind: param
+                              param: v2_perm
+extension_references:
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: staleness
+        resource: staleness
+        v2_perm: staleness_staleness_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: staleness
+        resource: staleness
+        v2_perm: staleness_staleness_update
+        verb: write

@@ -1,0 +1,36 @@
+{
+    "name": "ros",
+    "imports": [
+        "rbac",
+        "hbi"
+    ],
+    "extension_references": [
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "ros",
+                "resource": "analysis",
+                "v2_perm": "ros_read_analysis_assigned",
+                "verb": "read"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_contingent_permission",
+            "params": {
+                "contingent": "ros_read_analysis",
+                "first": "inventory_host_view",
+                "second": "ros_read_analysis_assigned"
+            }
+        },
+        {
+            "namespace": "hbi",
+            "name": "expose_host_permission",
+            "params": {
+                "host_perm": "ros_read_analysis",
+                "v2_perm": "ros_read_analysis"
+            }
+        }
+    ]
+}

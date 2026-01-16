@@ -1,0 +1,104 @@
+{
+    "name": "patch",
+    "imports": [
+        "rbac",
+        "hbi"
+    ],
+    "extension_references": [
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "patch",
+                "resource": "system",
+                "v2_perm": "patch_system_view_assigned",
+                "verb": "read"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_contingent_permission",
+            "params": {
+                "contingent": "patch_system_view",
+                "first": "inventory_host_view",
+                "second": "patch_system_view_assigned"
+            }
+        },
+        {
+            "namespace": "hbi",
+            "name": "expose_host_permission",
+            "params": {
+                "host_perm": "patch_system_view",
+                "v2_perm": "patch_system_view"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1_based_permission",
+            "params": {
+                "app": "patch",
+                "resource": "system",
+                "v2_perm": "patch_system_edit_assigned",
+                "verb": "write"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_contingent_permission",
+            "params": {
+                "contingent": "patch_system_edit",
+                "first": "inventory_host_view",
+                "second": "patch_system_edit_assigned"
+            }
+        },
+        {
+            "namespace": "hbi",
+            "name": "expose_host_permission",
+            "params": {
+                "host_perm": "patch_system_edit",
+                "v2_perm": "patch_system_edit"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_v1only_permission",
+            "params": {
+                "perm": "patch_template_write"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_contingent_permission",
+            "params": {
+                "contingent": "patch_template_view",
+                "first": "patch_system_view",
+                "second": "content_sources_template_view"
+            }
+        },
+        {
+            "namespace": "hbi",
+            "name": "expose_host_permission",
+            "params": {
+                "host_perm": "patch_template_view",
+                "v2_perm": "patch_template_view"
+            }
+        },
+        {
+            "namespace": "rbac",
+            "name": "add_contingent_permission",
+            "params": {
+                "contingent": "patch_template_edit",
+                "first": "patch_system_edit",
+                "second": "content_sources_template_edit"
+            }
+        },
+        {
+            "namespace": "hbi",
+            "name": "expose_host_permission",
+            "params": {
+                "host_perm": "patch_template_edit",
+                "v2_perm": "patch_template_edit"
+            }
+        }
+    ]
+}

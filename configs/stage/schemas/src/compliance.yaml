@@ -1,0 +1,60 @@
+name: compliance
+imports:
+    - rbac
+extension_references:
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: compliance
+        resource: policy
+        v2_perm: compliance_policy_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: compliance
+        resource: policy
+        v2_perm: compliance_policy_new
+        verb: create
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: compliance
+        resource: policy
+        v2_perm: compliance_policy_edit
+        verb: write
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: compliance
+        resource: policy
+        v2_perm: compliance_policy_remove
+        verb: delete
+    - namespace: rbac
+      name: add_v1only_permission
+      params:
+        perm: compliance_policy_update
+    - namespace: rbac
+      name: add_v1only_permission
+      params:
+        perm: compliance_report_delete
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: compliance
+        resource: report
+        v2_perm: compliance_report_view
+        verb: read
+    - namespace: rbac
+      name: add_v1_based_permission
+      params:
+        app: compliance
+        resource: system
+        v2_perm: compliance_system_view_assigned
+        verb: read
+    - namespace: rbac
+      name: add_contingent_permission
+      params:
+        contingent: compliance_system_view
+        first: inventory_host_view
+        second: compliance_system_view_assigned
