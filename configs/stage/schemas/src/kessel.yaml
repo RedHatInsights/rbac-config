@@ -1,15 +1,15 @@
 name: kessel
 types:
-    - name: lock
-      visibility: internal
-      relations:
-        - name: version
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: lockversion
-            cardinality: ExactlyOne
-    - name: lockversion
-      visibility: internal
-      relations: []
+    lock:
+        visibility: internal
+        relations:
+            version:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: lockversion
+                    cardinality: ExactlyOne
+    lockversion:
+        visibility: internal
+        relations: {}

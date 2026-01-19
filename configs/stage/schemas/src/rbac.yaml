@@ -1,981 +1,509 @@
 name: rbac
 types:
-    - name: principal
-      visibility: public
-      relations: []
-    - name: platform
-      visibility: internal
-      relations:
-        - name: binding
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: role_binding
-            cardinality: Any
-    - name: tenant
-      visibility: internal
-      relations:
-        - name: platform
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: platform
-            cardinality: ExactlyOne
-        - name: binding
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: role_binding
-            cardinality: Any
-    - name: group
-      visibility: internal
-      relations:
-        - name: owner
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: tenant
-            cardinality: ExactlyOne
-        - name: member
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: principal
-                - name: group
-                  sub_relation: member
-            cardinality: Any
-    - name: role
-      visibility: internal
-      relations:
-        - name: all_all_all
-          visibility: private
-          body:
-            kind: self
-            types:
-                - namespace: rbac
-                  name: principal
-                  all: true
-            cardinality: Any
-        - name: child
-          visibility: private
-          body:
-            kind: self
-            types:
-                - name: role
-            cardinality: Any
-    - name: role_binding
-      visibility: internal
-      relations:
-        - name: subject
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: principal
-                - name: group
-                  sub_relation: member
-            cardinality: Any
-        - name: role
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: role
-            cardinality: Any
-    - name: workspace
-      visibility: public
-      relations:
-        - name: parent
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: workspace
-                - name: tenant
-            cardinality: ExactlyOne
-        - name: binding
-          visibility: public
-          body:
-            kind: self
-            types:
-                - name: role_binding
-            cardinality: Any
-        - name: view
-          visibility: public
-          body:
-            kind: reference
-            types: []
-            relation: rbac_workspace_view
-          extensions:
-            - name: add_v1_based_permission
-              params:
-                app: inventory
-                resource: groups
-                v2_perm: rbac_workspace_view
-                verb: read
-        - name: create
-          visibility: public
-          body:
-            kind: reference
-            types: []
-            relation: rbac_workspace_create
-          extensions:
-            - name: add_v1_based_permission
-              params:
-                app: inventory
-                resource: groups
-                v2_perm: rbac_workspace_create
-                verb: write
-        - name: edit
-          visibility: public
-          body:
-            kind: reference
-            types: []
-            relation: rbac_workspace_edit
-          extensions:
-            - name: add_v1_based_permission
-              params:
-                app: inventory
-                resource: groups
-                v2_perm: rbac_workspace_edit
-                verb: write
-        - name: delete
-          visibility: public
-          body:
-            kind: reference
-            types: []
-            relation: rbac_workspace_delete
-          extensions:
-            - name: add_v1_based_permission
-              params:
-                app: inventory
-                resource: groups
-                v2_perm: rbac_workspace_delete
-                verb: write
-        - name: move
-          visibility: public
-          body:
-            kind: reference
-            types: []
-            relation: rbac_workspace_move
-          extensions:
-            - name: add_v1_based_permission
-              params:
-                app: inventory
-                resource: groups
-                v2_perm: rbac_workspace_move
-                verb: write
-        - name: role_binding_view
-          visibility: public
-          body:
-            kind: reference
-            types: []
-            relation: rbac_workspaces_role_binding_view
-          extensions:
-            - name: add_unified_permission
-              params:
-                app: rbac
-                resource: workspaces
-                verb: role_binding_view
+    group:
+        visibility: internal
+        relations:
+            member:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: principal
+                        - name: group
+                          sub_relation: member
+                    cardinality: Any
+            owner:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: tenant
+                    cardinality: ExactlyOne
+    platform:
+        visibility: internal
+        relations:
+            binding:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: role_binding
+                    cardinality: Any
+    principal:
+        visibility: public
+        relations: {}
+    role:
+        visibility: internal
+        relations:
+            all_all_all:
+                visibility: private
+                body:
+                    kind: assignable
+                    types:
+                        - namespace: rbac
+                          name: principal
+                          all: true
+                    cardinality: Any
+            child:
+                visibility: private
+                body:
+                    kind: assignable
+                    types:
+                        - name: role
+                    cardinality: Any
+    role_binding:
+        visibility: internal
+        relations:
+            role:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: role
+                    cardinality: Any
+            subject:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: principal
+                        - name: group
+                          sub_relation: member
+                    cardinality: Any
+    tenant:
+        visibility: internal
+        relations:
+            binding:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: role_binding
+                    cardinality: Any
+            platform:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: platform
+                    cardinality: ExactlyOne
+    workspace:
+        visibility: public
+        relations:
+            binding:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: role_binding
+                    cardinality: Any
+            create:
+                visibility: public
+                body:
+                    kind: relation
+                    relation: rbac_workspace_create
+                extensions:
+                    - name: add_v1_based_permission
+                      params:
+                        app: inventory
+                        resource: groups
+                        v2_perm: rbac_workspace_create
+                        verb: write
+            delete:
+                visibility: public
+                body:
+                    kind: relation
+                    relation: rbac_workspace_delete
+                extensions:
+                    - name: add_v1_based_permission
+                      params:
+                        app: inventory
+                        resource: groups
+                        v2_perm: rbac_workspace_delete
+                        verb: write
+            edit:
+                visibility: public
+                body:
+                    kind: relation
+                    relation: rbac_workspace_edit
+                extensions:
+                    - name: add_v1_based_permission
+                      params:
+                        app: inventory
+                        resource: groups
+                        v2_perm: rbac_workspace_edit
+                        verb: write
+            move:
+                visibility: public
+                body:
+                    kind: relation
+                    relation: rbac_workspace_move
+                extensions:
+                    - name: add_v1_based_permission
+                      params:
+                        app: inventory
+                        resource: groups
+                        v2_perm: rbac_workspace_move
+                        verb: write
+            parent:
+                visibility: public
+                body:
+                    kind: assignable
+                    types:
+                        - name: workspace
+                        - name: tenant
+                    cardinality: ExactlyOne
+            role_binding_view:
+                visibility: public
+                body:
+                    kind: relation
+                    relation: rbac_workspaces_role_binding_view
+                extensions:
+                    - name: add_unified_permission
+                      params:
+                        app: rbac
+                        resource: workspaces
+                        verb: role_binding_view
+            view:
+                visibility: public
+                body:
+                    kind: relation
+                    relation: rbac_workspace_view
+                extensions:
+                    - name: add_v1_based_permission
+                      params:
+                        app: inventory
+                        resource: groups
+                        v2_perm: rbac_workspace_view
+                        verb: read
 defined_extensions:
-    - name: add_v1_based_permission
-      visibility: public
-      params:
-        - app
-        - resource
-        - verb
-        - v2_perm
-      types:
-        - name:
-            kind: literal
-            value: role
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _all_all
-              visibility: private
-              ignoreduplicates: true
-              body:
-                kind: self
-                types:
-                    - namespace: rbac
-                      name: principal
-                      all: true
-                cardinality: Any
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: resource
-                    - kind: literal
-                      value: _all
-              visibility: private
-              ignoreduplicates: true
-              body:
-                kind: self
-                types:
-                    - namespace: rbac
-                      name: principal
-                      all: true
-                cardinality: Any
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _all_
-                    - kind: param
-                      param: verb
-              visibility: private
-              ignoreduplicates: true
-              body:
-                kind: self
-                types:
-                    - namespace: rbac
-                      name: principal
-                      all: true
-                cardinality: Any
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: resource
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: verb
-              visibility: private
-              ignoreduplicates: true
-              body:
-                kind: self
-                types:
-                    - namespace: rbac
-                      name: principal
-                      all: true
-                cardinality: Any
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: v2_perm
-              visibility: public
-              body:
-                kind: union
-                types: []
-                left:
-                    kind: union
-                    types: []
-                    left:
-                        kind: union
-                        types: []
-                        left:
+    add_contingent_permission:
+        visibility: public
+        params:
+            - first
+            - second
+            - contingent
+        types:
+            platform:
+                visibility: public
+                relations:
+                    ${contingent}:
+                        visibility: public
+                        body:
+                            kind: intersect
+                            left:
+                                kind: relation
+                                relation: ${first}
+                            right:
+                                kind: relation
+                                relation: ${second}
+            tenant:
+                visibility: public
+                relations:
+                    ${contingent}:
+                        visibility: public
+                        body:
+                            kind: intersect
+                            left:
+                                kind: relation
+                                relation: ${first}
+                            right:
+                                kind: relation
+                                relation: ${second}
+            workspace:
+                visibility: public
+                relations:
+                    ${contingent}:
+                        visibility: public
+                        body:
+                            kind: intersect
+                            left:
+                                kind: relation
+                                relation: ${first}
+                            right:
+                                kind: relation
+                                relation: ${second}
+    add_unified_permission:
+        visibility: public
+        params:
+            - app
+            - resource
+            - verb
+        types:
+            platform:
+                visibility: public
+                relations:
+                    ${app}_${resource}_${verb}:
+                        visibility: public
+                        body:
+                            kind: relation
+                            relation: binding
+                            sub_relation: ${app}_${resource}_${verb}
+            role:
+                visibility: public
+                relations:
+                    ${app}_${resource}_${verb}:
+                        visibility: public
+                        body:
                             kind: union
-                            types: []
                             left:
                                 kind: union
-                                types: []
                                 left:
-                                    kind: reference
-                                    types: []
-                                    relation:
-                                        kind: template
-                                        segments:
-                                            - kind: param
-                                              param: app
-                                            - kind: literal
-                                              value: _
-                                            - kind: param
-                                              param: resource
-                                            - kind: literal
-                                              value: _
-                                            - kind: param
-                                              param: verb
+                                    kind: union
+                                    left:
+                                        kind: union
+                                        left:
+                                            kind: union
+                                            left:
+                                                kind: assignable
+                                                types:
+                                                    - namespace: rbac
+                                                      name: principal
+                                                      all: true
+                                                cardinality: Any
+                                            right:
+                                                kind: relation
+                                                relation: ${app}_${resource}_all
+                                        right:
+                                            kind: relation
+                                            relation: ${app}_all_${verb}
+                                    right:
+                                        kind: relation
+                                        relation: ${app}_all_all
                                 right:
-                                    kind: reference
-                                    types: []
-                                    relation:
-                                        kind: template
-                                        segments:
-                                            - kind: param
-                                              param: app
-                                            - kind: literal
-                                              value: _
-                                            - kind: param
-                                              param: resource
-                                            - kind: literal
-                                              value: _all
+                                    kind: relation
+                                    relation: all_all_all
                             right:
-                                kind: reference
-                                types: []
-                                relation:
-                                    kind: template
-                                    segments:
-                                        - kind: param
-                                          param: app
-                                        - kind: literal
-                                          value: _all_
-                                        - kind: param
-                                          param: verb
-                        right:
-                            kind: reference
-                            types: []
-                            relation:
-                                kind: template
-                                segments:
-                                    - kind: param
-                                      param: app
-                                    - kind: literal
-                                      value: _all_all
-                    right:
-                        kind: reference
-                        types: []
-                        relation:
-                            kind: literal
-                            value: all_all_all
-                right:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: child
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: v2_perm
-        - name:
-            kind: literal
-            value: role_binding
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: v2_perm
-              visibility: public
-              body:
-                kind: intersect
-                types: []
-                left:
-                    kind: reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: subject
-                right:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: role
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: v2_perm
-        - name:
-            kind: literal
-            value: platform
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: v2_perm
-              visibility: public
-              body:
-                kind: nested_reference
-                types: []
-                relation:
-                    kind: literal
-                    value: binding
-                sub_relation:
-                    kind: template
-                    segments:
-                        - kind: param
-                          param: v2_perm
-        - name:
-            kind: literal
-            value: tenant
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: v2_perm
-              visibility: public
-              body:
-                kind: union
-                types: []
-                left:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: binding
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: v2_perm
-                right:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: platform
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: v2_perm
-        - name:
-            kind: literal
-            value: workspace
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: v2_perm
-              visibility: public
-              body:
-                kind: union
-                types: []
-                left:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: binding
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: v2_perm
-                right:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: parent
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: v2_perm
-    - name: add_v1only_permission
-      visibility: public
-      params:
-        - perm
-      types:
-        - name:
-            kind: literal
-            value: role
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: perm
-              visibility: private
-              ignoreduplicates: true
-              body:
-                kind: self
-                types:
-                    - namespace: rbac
-                      name: principal
-                      all: true
-                cardinality: Any
-    - name: add_contingent_permission
-      visibility: public
-      params:
-        - first
-        - second
-        - contingent
-      types:
-        - name:
-            kind: literal
-            value: platform
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: contingent
-              visibility: public
-              body:
-                kind: intersect
-                types: []
-                left:
-                    kind: reference
-                    types: []
-                    relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: first
-                right:
-                    kind: reference
-                    types: []
-                    relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: second
-        - name:
-            kind: literal
-            value: tenant
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: contingent
-              visibility: public
-              body:
-                kind: intersect
-                types: []
-                left:
-                    kind: reference
-                    types: []
-                    relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: first
-                right:
-                    kind: reference
-                    types: []
-                    relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: second
-        - name:
-            kind: literal
-            value: workspace
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: contingent
-              visibility: public
-              body:
-                kind: intersect
-                types: []
-                left:
-                    kind: reference
-                    types: []
-                    relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: first
-                right:
-                    kind: reference
-                    types: []
-                    relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: second
-    - name: add_unified_permission
-      visibility: public
-      params:
-        - app
-        - resource
-        - verb
-      types:
-        - name:
-            kind: literal
-            value: role
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _all_all
-              visibility: private
-              ignoreduplicates: true
-              body:
-                kind: self
-                types:
-                    - namespace: rbac
-                      name: principal
-                      all: true
-                cardinality: Any
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: resource
-                    - kind: literal
-                      value: _all
-              visibility: private
-              ignoreduplicates: true
-              body:
-                kind: self
-                types:
-                    - namespace: rbac
-                      name: principal
-                      all: true
-                cardinality: Any
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _all_
-                    - kind: param
-                      param: verb
-              visibility: private
-              ignoreduplicates: true
-              body:
-                kind: self
-                types:
-                    - namespace: rbac
-                      name: principal
-                      all: true
-                cardinality: Any
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: resource
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: verb
-              visibility: public
-              body:
-                kind: union
-                types: []
-                left:
-                    kind: union
-                    types: []
-                    left:
-                        kind: union
-                        types: []
-                        left:
+                                kind: relation
+                                relation: child
+                                sub_relation: ${app}_${resource}_${verb}
+                    ${app}_${resource}_all:
+                        visibility: private
+                        ignoreduplicates: true
+                        body:
+                            kind: assignable
+                            types:
+                                - namespace: rbac
+                                  name: principal
+                                  all: true
+                            cardinality: Any
+                    ${app}_all_${verb}:
+                        visibility: private
+                        ignoreduplicates: true
+                        body:
+                            kind: assignable
+                            types:
+                                - namespace: rbac
+                                  name: principal
+                                  all: true
+                            cardinality: Any
+                    ${app}_all_all:
+                        visibility: private
+                        ignoreduplicates: true
+                        body:
+                            kind: assignable
+                            types:
+                                - namespace: rbac
+                                  name: principal
+                                  all: true
+                            cardinality: Any
+            role_binding:
+                visibility: public
+                relations:
+                    ${app}_${resource}_${verb}:
+                        visibility: public
+                        body:
+                            kind: intersect
+                            left:
+                                kind: relation
+                                relation: subject
+                            right:
+                                kind: relation
+                                relation: role
+                                sub_relation: ${app}_${resource}_${verb}
+            tenant:
+                visibility: public
+                relations:
+                    ${app}_${resource}_${verb}:
+                        visibility: public
+                        body:
                             kind: union
-                            types: []
+                            left:
+                                kind: relation
+                                relation: binding
+                                sub_relation: ${app}_${resource}_${verb}
+                            right:
+                                kind: relation
+                                relation: platform
+                                sub_relation: ${app}_${resource}_${verb}
+            workspace:
+                visibility: public
+                relations:
+                    ${app}_${resource}_${verb}:
+                        visibility: public
+                        body:
+                            kind: union
+                            left:
+                                kind: relation
+                                relation: binding
+                                sub_relation: ${app}_${resource}_${verb}
+                            right:
+                                kind: relation
+                                relation: parent
+                                sub_relation: ${app}_${resource}_${verb}
+    add_v1only_permission:
+        visibility: public
+        params:
+            - perm
+        types:
+            role:
+                visibility: public
+                relations:
+                    ${perm}:
+                        visibility: private
+                        ignoreduplicates: true
+                        body:
+                            kind: assignable
+                            types:
+                                - namespace: rbac
+                                  name: principal
+                                  all: true
+                            cardinality: Any
+    add_v1_based_permission:
+        visibility: public
+        params:
+            - app
+            - resource
+            - verb
+            - v2_perm
+        types:
+            platform:
+                visibility: public
+                relations:
+                    ${v2_perm}:
+                        visibility: public
+                        body:
+                            kind: relation
+                            relation: binding
+                            sub_relation: ${v2_perm}
+            role:
+                visibility: public
+                relations:
+                    ${app}_${resource}_${verb}:
+                        visibility: private
+                        ignoreduplicates: true
+                        body:
+                            kind: assignable
+                            types:
+                                - namespace: rbac
+                                  name: principal
+                                  all: true
+                            cardinality: Any
+                    ${app}_${resource}_all:
+                        visibility: private
+                        ignoreduplicates: true
+                        body:
+                            kind: assignable
+                            types:
+                                - namespace: rbac
+                                  name: principal
+                                  all: true
+                            cardinality: Any
+                    ${app}_all_${verb}:
+                        visibility: private
+                        ignoreduplicates: true
+                        body:
+                            kind: assignable
+                            types:
+                                - namespace: rbac
+                                  name: principal
+                                  all: true
+                            cardinality: Any
+                    ${app}_all_all:
+                        visibility: private
+                        ignoreduplicates: true
+                        body:
+                            kind: assignable
+                            types:
+                                - namespace: rbac
+                                  name: principal
+                                  all: true
+                            cardinality: Any
+                    ${v2_perm}:
+                        visibility: public
+                        body:
+                            kind: union
                             left:
                                 kind: union
-                                types: []
                                 left:
-                                    kind: self
-                                    types:
-                                        - namespace: rbac
-                                          name: principal
-                                          all: true
-                                    cardinality: Any
+                                    kind: union
+                                    left:
+                                        kind: union
+                                        left:
+                                            kind: union
+                                            left:
+                                                kind: relation
+                                                relation: ${app}_${resource}_${verb}
+                                            right:
+                                                kind: relation
+                                                relation: ${app}_${resource}_all
+                                        right:
+                                            kind: relation
+                                            relation: ${app}_all_${verb}
+                                    right:
+                                        kind: relation
+                                        relation: ${app}_all_all
                                 right:
-                                    kind: reference
-                                    types: []
-                                    relation:
-                                        kind: template
-                                        segments:
-                                            - kind: param
-                                              param: app
-                                            - kind: literal
-                                              value: _
-                                            - kind: param
-                                              param: resource
-                                            - kind: literal
-                                              value: _all
+                                    kind: relation
+                                    relation: all_all_all
                             right:
-                                kind: reference
-                                types: []
-                                relation:
-                                    kind: template
-                                    segments:
-                                        - kind: param
-                                          param: app
-                                        - kind: literal
-                                          value: _all_
-                                        - kind: param
-                                          param: verb
-                        right:
-                            kind: reference
-                            types: []
-                            relation:
-                                kind: template
-                                segments:
-                                    - kind: param
-                                      param: app
-                                    - kind: literal
-                                      value: _all_all
-                    right:
-                        kind: reference
-                        types: []
-                        relation:
-                            kind: literal
-                            value: all_all_all
-                right:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: child
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: app
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: resource
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: verb
-        - name:
-            kind: literal
-            value: role_binding
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: resource
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: verb
-              visibility: public
-              body:
-                kind: intersect
-                types: []
-                left:
-                    kind: reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: subject
-                right:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: role
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: app
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: resource
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: verb
-        - name:
-            kind: literal
-            value: platform
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: resource
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: verb
-              visibility: public
-              body:
-                kind: nested_reference
-                types: []
-                relation:
-                    kind: literal
-                    value: binding
-                sub_relation:
-                    kind: template
-                    segments:
-                        - kind: param
-                          param: app
-                        - kind: literal
-                          value: _
-                        - kind: param
-                          param: resource
-                        - kind: literal
-                          value: _
-                        - kind: param
-                          param: verb
-        - name:
-            kind: literal
-            value: tenant
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: resource
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: verb
-              visibility: public
-              body:
-                kind: union
-                types: []
-                left:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: binding
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: app
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: resource
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: verb
-                right:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: platform
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: app
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: resource
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: verb
-        - name:
-            kind: literal
-            value: workspace
-          visibility: public
-          relations:
-            - name:
-                kind: template
-                segments:
-                    - kind: param
-                      param: app
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: resource
-                    - kind: literal
-                      value: _
-                    - kind: param
-                      param: verb
-              visibility: public
-              body:
-                kind: union
-                types: []
-                left:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: binding
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: app
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: resource
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: verb
-                right:
-                    kind: nested_reference
-                    types: []
-                    relation:
-                        kind: literal
-                        value: parent
-                    sub_relation:
-                        kind: template
-                        segments:
-                            - kind: param
-                              param: app
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: resource
-                            - kind: literal
-                              value: _
-                            - kind: param
-                              param: verb
+                                kind: relation
+                                relation: child
+                                sub_relation: ${v2_perm}
+            role_binding:
+                visibility: public
+                relations:
+                    ${v2_perm}:
+                        visibility: public
+                        body:
+                            kind: intersect
+                            left:
+                                kind: relation
+                                relation: subject
+                            right:
+                                kind: relation
+                                relation: role
+                                sub_relation: ${v2_perm}
+            tenant:
+                visibility: public
+                relations:
+                    ${v2_perm}:
+                        visibility: public
+                        body:
+                            kind: union
+                            left:
+                                kind: relation
+                                relation: binding
+                                sub_relation: ${v2_perm}
+                            right:
+                                kind: relation
+                                relation: platform
+                                sub_relation: ${v2_perm}
+            workspace:
+                visibility: public
+                relations:
+                    ${v2_perm}:
+                        visibility: public
+                        body:
+                            kind: union
+                            left:
+                                kind: relation
+                                relation: binding
+                                sub_relation: ${v2_perm}
+                            right:
+                                kind: relation
+                                relation: parent
+                                sub_relation: ${v2_perm}
 extension_references:
     - name: add_v1only_permission
       params:
