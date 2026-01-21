@@ -116,6 +116,19 @@ Please check existing files for more samples.
 Building the Kessel schema
 --------------------------
 
+Quickstart (recommended)
+
+Use the helper script to install tools and build the schema:
+
+ ```sh
+  # From repo root
+  scripts/build-schema.sh --install -e stage
+  # Or for prod
+  scripts/build-schema.sh -e prod
+  # Build test schema into _private/test-schema/
+  scripts/build-schema.sh -e stage --test
+  ```
+  
 Prerequisites
 
 1. A recent go version (1.22+) - The Makefile will automatically check if Go is installed
