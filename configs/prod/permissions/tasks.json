@@ -3,5 +3,13 @@
         {
             "verb": "*"
         }
+    ],
+    "task": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        },
     ]
 }
