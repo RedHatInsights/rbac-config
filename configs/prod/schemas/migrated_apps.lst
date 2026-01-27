@@ -6,3 +6,4 @@ config-manager
 ros
 content-sources
 remediations
+playbook-dispatcher

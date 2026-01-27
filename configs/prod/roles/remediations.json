@@ -2,13 +2,16 @@
   "roles": [
     {
       "name": "Remediations administrator",
-      "description": "Perform any available operation on any Remediations resource",
+      "description": "Perform any available operation on any Remediations resource.",
       "system": true,
       "platform_default": false,
-      "version": 7,
+      "version": 8,
       "access": [
         {
           "permission": "remediations:*:*"
+        },
+        {
+          "permission": "playbook-dispatcher:remediations_run:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
@@ -29,13 +32,16 @@
       "description": "Perform create, read, update, delete operations on any Remediations resource.",
       "system": true,
       "platform_default": true,
-      "version": 6,
+      "version": 7,
       "access": [
         {
           "permission": "remediations:remediation:read"
         },
         {
           "permission": "remediations:remediation:write"
+        },
+        {
+          "permission": "playbook-dispatcher:remediations_run:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",

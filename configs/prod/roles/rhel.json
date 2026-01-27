@@ -7,7 +7,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "advisor:*:read"
@@ -64,6 +64,9 @@
           "permission": "patch:*:read"
         },
         {
+          "permission": "playbook-dispatcher:remediations_run:read"
+        },
+        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {
@@ -99,7 +102,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 2,
+      "version": 3,
       "access": [
         {
           "permission": "advisor:*:*"
@@ -171,6 +174,9 @@
           "permission": "patch:*:*"
         },
         {
+          "permission": "playbook-dispatcher:remediations_run:read"
+        },
+        {
           "permission": "playbook-dispatcher:run:read",
           "resourceDefinitions": [
             {
@@ -236,7 +242,7 @@
       "system": true,
       "platform_default": false,
       "admin_default": false,
-      "version": 1,
+      "version": 2,
       "access": [
         {
           "permission": "advisor:*:*"
@@ -309,6 +315,9 @@
         },
         {
           "permission": "patch:*:*"
+        },
+        {
+          "permission": "playbook-dispatcher:remediations_run:read"
         },
         {
           "permission": "playbook-dispatcher:run:read",
