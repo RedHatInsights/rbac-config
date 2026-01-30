@@ -43,6 +43,9 @@ definition rbac/platform {
 	permission notifications_events_view = t_binding->notifications_events_view
 	permission notifications_notifications_edit = t_binding->notifications_notifications_edit
 	permission notifications_notifications_view = t_binding->notifications_notifications_view
+	permission playbook_dispatcher_config_manager_run_view = t_binding->playbook_dispatcher_config_manager_run_view
+	permission playbook_dispatcher_remediations_run_view = t_binding->playbook_dispatcher_remediations_run_view
+	permission playbook_dispatcher_tasks_run_view = t_binding->playbook_dispatcher_tasks_run_view
 	permission remediations_edit_remediation = t_binding->remediations_edit_remediation
 	permission remediations_execute_remediation = t_binding->remediations_execute_remediation
 	permission remediations_view_remediation = t_binding->remediations_view_remediation
@@ -293,10 +296,29 @@ definition rbac/role {
 	relation t_patch_system_write: rbac/principal:*
 	permission patch_template_write = t_patch_template_write
 	relation t_patch_template_write: rbac/principal:*
+	permission playbook_dispatcher_all_all = t_playbook_dispatcher_all_all
+	relation t_playbook_dispatcher_all_all: rbac/principal:*
+	permission playbook_dispatcher_all_read = t_playbook_dispatcher_all_read
+	relation t_playbook_dispatcher_all_read: rbac/principal:*
+	permission playbook_dispatcher_config_manager_run_all = t_playbook_dispatcher_config_manager_run_all
+	relation t_playbook_dispatcher_config_manager_run_all: rbac/principal:*
+	permission playbook_dispatcher_config_manager_run_read = t_playbook_dispatcher_config_manager_run_read
+	relation t_playbook_dispatcher_config_manager_run_read: rbac/principal:*
+	permission playbook_dispatcher_config_manager_run_view = playbook_dispatcher_config_manager_run_read + playbook_dispatcher_config_manager_run_all + playbook_dispatcher_all_read + playbook_dispatcher_all_all + all_all_all + t_child->playbook_dispatcher_config_manager_run_view
+	permission playbook_dispatcher_remediations_run_all = t_playbook_dispatcher_remediations_run_all
+	relation t_playbook_dispatcher_remediations_run_all: rbac/principal:*
+	permission playbook_dispatcher_remediations_run_read = t_playbook_dispatcher_remediations_run_read
+	relation t_playbook_dispatcher_remediations_run_read: rbac/principal:*
+	permission playbook_dispatcher_remediations_run_view = playbook_dispatcher_remediations_run_read + playbook_dispatcher_remediations_run_all + playbook_dispatcher_all_read + playbook_dispatcher_all_all + all_all_all + t_child->playbook_dispatcher_remediations_run_view
 	permission playbook_dispatcher_run_read = t_playbook_dispatcher_run_read
 	relation t_playbook_dispatcher_run_read: rbac/principal:*
 	permission playbook_dispatcher_run_write = t_playbook_dispatcher_run_write
 	relation t_playbook_dispatcher_run_write: rbac/principal:*
+	permission playbook_dispatcher_tasks_run_all = t_playbook_dispatcher_tasks_run_all
+	relation t_playbook_dispatcher_tasks_run_all: rbac/principal:*
+	permission playbook_dispatcher_tasks_run_read = t_playbook_dispatcher_tasks_run_read
+	relation t_playbook_dispatcher_tasks_run_read: rbac/principal:*
+	permission playbook_dispatcher_tasks_run_view = playbook_dispatcher_tasks_run_read + playbook_dispatcher_tasks_run_all + playbook_dispatcher_all_read + playbook_dispatcher_all_all + all_all_all + t_child->playbook_dispatcher_tasks_run_view
 	permission policies_all_all = t_policies_all_all
 	relation t_policies_all_all: rbac/principal:*
 	permission policies_policies_read = t_policies_policies_read
@@ -416,6 +438,9 @@ definition rbac/role_binding {
 	permission notifications_events_view = (subject & t_role->notifications_events_view)
 	permission notifications_notifications_edit = (subject & t_role->notifications_notifications_edit)
 	permission notifications_notifications_view = (subject & t_role->notifications_notifications_view)
+	permission playbook_dispatcher_config_manager_run_view = (subject & t_role->playbook_dispatcher_config_manager_run_view)
+	permission playbook_dispatcher_remediations_run_view = (subject & t_role->playbook_dispatcher_remediations_run_view)
+	permission playbook_dispatcher_tasks_run_view = (subject & t_role->playbook_dispatcher_tasks_run_view)
 	permission remediations_edit_remediation = (subject & t_role->remediations_edit_remediation)
 	permission remediations_execute_remediation = (subject & t_role->remediations_execute_remediation)
 	permission remediations_view_remediation = (subject & t_role->remediations_view_remediation)
@@ -451,6 +476,9 @@ definition rbac/tenant {
 	permission notifications_notifications_view = t_binding->notifications_notifications_view + t_platform->notifications_notifications_view
 	permission platform = t_platform
 	relation t_platform: rbac/platform
+	permission playbook_dispatcher_config_manager_run_view = t_binding->playbook_dispatcher_config_manager_run_view + t_platform->playbook_dispatcher_config_manager_run_view
+	permission playbook_dispatcher_remediations_run_view = t_binding->playbook_dispatcher_remediations_run_view + t_platform->playbook_dispatcher_remediations_run_view
+	permission playbook_dispatcher_tasks_run_view = t_binding->playbook_dispatcher_tasks_run_view + t_platform->playbook_dispatcher_tasks_run_view
 	permission remediations_edit_remediation = t_binding->remediations_edit_remediation + t_platform->remediations_edit_remediation
 	permission remediations_execute_remediation = t_binding->remediations_execute_remediation + t_platform->remediations_execute_remediation
 	permission remediations_view_remediation = t_binding->remediations_view_remediation + t_platform->remediations_view_remediation
@@ -483,6 +511,9 @@ definition rbac/workspace {
 	permission notifications_notifications_view = t_binding->notifications_notifications_view + t_parent->notifications_notifications_view
 	permission parent = t_parent
 	relation t_parent: rbac/workspace | rbac/tenant
+	permission playbook_dispatcher_config_manager_run_view = t_binding->playbook_dispatcher_config_manager_run_view + t_parent->playbook_dispatcher_config_manager_run_view
+	permission playbook_dispatcher_remediations_run_view = t_binding->playbook_dispatcher_remediations_run_view + t_parent->playbook_dispatcher_remediations_run_view
+	permission playbook_dispatcher_tasks_run_view = t_binding->playbook_dispatcher_tasks_run_view + t_parent->playbook_dispatcher_tasks_run_view
 	permission remediations_edit_remediation = t_binding->remediations_edit_remediation + t_parent->remediations_edit_remediation
 	permission remediations_execute_remediation = t_binding->remediations_execute_remediation + t_parent->remediations_execute_remediation
 	permission remediations_view_remediation = t_binding->remediations_view_remediation + t_parent->remediations_view_remediation

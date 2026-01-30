@@ -889,7 +889,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": false,
-            "version": 7,
+            "version": 8,
             "access": [
               {
                 "permission": "advisor:*:read"
@@ -944,6 +944,9 @@ objects:
               },
               {
                 "permission": "patch:*:read"
+              },
+              {
+                "permission": "playbook-dispatcher:remediations_run:read"
               },
               {
                 "permission": "playbook-dispatcher:run:read",
