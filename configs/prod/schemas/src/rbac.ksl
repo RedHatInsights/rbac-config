@@ -1,6 +1,10 @@
 version 0.1
 namespace rbac
 
+// RBAC service permissions
+@add_unified_permission(app:'rbac', resource:'principal', verb:'read')
+@add_unified_permission(app:'rbac', resource:'management', verb:'admin')
+
 public type principal {} //public for now since the [bool] type requires rbac/principal to be accessible
 
 // Other types for structuring access are marked internal but can be made public if services are intended to relate to them
@@ -94,5 +98,36 @@ public extension add_contingent_permission(first, second, contingent) {
 
     type workspace {
         relation `${contingent}`: `${first}` and `${second}`
+    }
+}
+
+// Adds a permission where V1 and V2 share the same name (app_resource_verb format)
+// Use this when the V1 permission name is identical to the desired V2 permission
+// This avoids conflicts that occur when templating identical permission names
+// The [bool] box expression makes the relation writable, allowing direct assignment
+// in addition to derivation from wildcards (app:resource:*, app:*:verb, app:*:*, *:*:*)
+public extension add_unified_permission(app, resource, verb) {
+    type role {
+        allow_duplicates private relation `${app}_all_all`: [bool]
+        allow_duplicates private relation `${app}_${resource}_all`: [bool]
+        allow_duplicates private relation `${app}_all_${verb}`: [bool]
+
+        relation `${app}_${resource}_${verb}`: [bool] or `${app}_${resource}_all` or `${app}_all_${verb}` or `${app}_all_all` or all_all_all or child.`${app}_${resource}_${verb}`
+    }
+
+    type role_binding {
+        relation `${app}_${resource}_${verb}`: subject and role.`${app}_${resource}_${verb}`
+    }
+
+    type platform {
+        relation `${app}_${resource}_${verb}`: binding.`${app}_${resource}_${verb}`
+    }
+
+    type tenant {
+        relation `${app}_${resource}_${verb}`: binding.`${app}_${resource}_${verb}` or platform.`${app}_${resource}_${verb}`
+    }
+
+    type workspace {
+        relation `${app}_${resource}_${verb}`: binding.`${app}_${resource}_${verb}` or parent.`${app}_${resource}_${verb}`
     }
 }
