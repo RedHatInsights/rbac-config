@@ -509,7 +509,7 @@ definition rbac/tenant {
 }
 
 definition rbac/workspace {
-	permission binding = t_binding
+	permission binding = t_binding + t_parent->binding
 	relation t_binding: rbac/role_binding
 	permission config_manager_activation_keys_edit = t_binding->config_manager_activation_keys_edit + t_parent->config_manager_activation_keys_edit
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view + t_parent->config_manager_activation_keys_view
