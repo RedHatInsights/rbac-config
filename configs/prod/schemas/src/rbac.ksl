@@ -30,7 +30,7 @@ internal type role_binding { // TODO: revisit cardinality based on clamping deci
 
 public type workspace { //Workspace is public so services can place resources into workspaces
     relation parent: [ExactlyOne workspace or tenant]
-    relation binding: [Any role_binding]
+    relation binding: [Any role_binding] or parent.binding
 
     @add_v1_based_permission(app:'inventory', resource:'groups', verb:'read', v2_perm:'rbac_workspace_view')
     relation view: rbac_workspace_view
