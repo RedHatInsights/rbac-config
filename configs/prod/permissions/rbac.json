@@ -4,11 +4,6 @@
             "verb": "read"
         }
     ],
-    "management": [
-        {
-            "verb": "admin"
-        }
-    ],
     "*": [
         {
             "verb": "*"
