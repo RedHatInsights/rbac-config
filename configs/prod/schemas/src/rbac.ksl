@@ -3,7 +3,12 @@ namespace rbac
 
 // RBAC service permissions
 @add_unified_permission(app:'rbac', resource:'principal', verb:'read')
-@add_unified_permission(app:'rbac', resource:'management', verb:'admin')
+@add_unified_permission(app:'rbac', resource:'management', verb:'read')
+@add_unified_permission(app:'rbac', resource:'management', verb:'write')
+@add_unified_permission(app:'rbac', resource:'roles', verb:'read')
+@add_unified_permission(app:'rbac', resource:'roles', verb:'write')
+@add_unified_permission(app:'rbac', resource:'groups', verb:'read')
+@add_unified_permission(app:'rbac', resource:'groups', verb:'write')
 
 public type principal {} //public for now since the [bool] type requires rbac/principal to be accessible
 
@@ -50,6 +55,15 @@ public type workspace { //Workspace is public so services can place resources in
 
     @add_v1_based_permission(app:'inventory', resource:'groups', verb:'write', v2_perm:'rbac_workspace_move')
     relation move: rbac_workspace_move
+
+    @add_unified_permission(app:'rbac', resource:'workspaces', verb:'role_binding_view')
+    relation role_binding_view: rbac_workspaces_role_binding_view
+
+    @add_unified_permission(app:'rbac', resource:'workspaces', verb:'role_binding_grant')
+    relation role_binding_grant: rbac_workspaces_role_binding_grant
+
+    @add_unified_permission(app:'rbac', resource:'workspaces', verb:'role_binding_revoke')
+    relation role_binding_revoke: rbac_workspaces_role_binding_revoke
 }
 
 // Adds a permission that's checkable at the workspace but granted by assigning a different, V1 permission to the role

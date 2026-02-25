@@ -6,7 +6,26 @@
     ],
     "management": [
         {
-            "verb": "admin"
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
+    "groups": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
+        }
+    ],
+    "roles": [
+        {
+            "verb": "read"
+        },
+        {
+            "verb": "write"
         }
     ],
     "workspaces": [
