@@ -833,7 +833,7 @@ definition rbac/workspace {
 	permission advisor_weekly_report_auto_subscribe_edit = t_binding->advisor_weekly_report_auto_subscribe_edit + t_parent->advisor_weekly_report_auto_subscribe_edit
 	permission advisor_weekly_report_auto_subscribe_view = t_binding->advisor_weekly_report_auto_subscribe_view + t_parent->advisor_weekly_report_auto_subscribe_view
 	permission advisor_weekly_report_view = t_binding->advisor_weekly_report_view + t_parent->advisor_weekly_report_view
-	permission binding = t_binding
+	permission binding = t_binding + t_parent->binding
 	relation t_binding: rbac/role_binding
 	permission compliance_policy_edit = t_binding->compliance_policy_edit + t_parent->compliance_policy_edit
 	permission compliance_policy_new = t_binding->compliance_policy_new + t_parent->compliance_policy_new
