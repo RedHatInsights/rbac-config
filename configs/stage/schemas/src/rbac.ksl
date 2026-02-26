@@ -8,8 +8,8 @@ namespace rbac
 
 // RBAC service permissions
 @add_unified_permission(app:'rbac', resource:'principal', verb:'read')
-@add_unified_permission(app:'rbac', resource:'management', verb:'read')
-@add_unified_permission(app:'rbac', resource:'management', verb:'write')
+@add_unified_permission(app:'rbac', resource:'assignments', verb:'read')
+@add_unified_permission(app:'rbac', resource:'assignments', verb:'write')
 @add_unified_permission(app:'rbac', resource:'roles', verb:'read')
 @add_unified_permission(app:'rbac', resource:'roles', verb:'write')
 @add_unified_permission(app:'rbac', resource:'groups', verb:'read')
