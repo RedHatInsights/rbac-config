@@ -1,6 +1,5 @@
 notifications
 integrations
-rbac
 inventory
 staleness
 config-manager
