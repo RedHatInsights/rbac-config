@@ -493,6 +493,30 @@ objects:
                   "verb": "read"
               }
           ],
+          "assignments": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ],
+          "groups": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ],
+          "roles": [
+              {
+                  "verb": "read"
+              },
+              {
+                  "verb": "write"
+              }
+          ],
           "workspaces": [
               {
                   "verb": "role_binding_view"
