@@ -58,15 +58,6 @@
         },
         {
           "permission": "inventory:groups:read"
-        },
-        {
-          "permission": "rbac:workspaces:role_binding_view"
-        },
-        {
-          "permission": "rbac:workspaces:role_binding_grant"
-        },
-        {
-          "permission": "rbac:workspaces:role_binding_revoke"
         }
       ]
     },
@@ -81,9 +72,6 @@
       "access": [
         {
           "permission": "inventory:groups:read"
-        },
-        {
-          "permission": "rbac:workspaces:role_binding_view"
         }
       ]
     }
