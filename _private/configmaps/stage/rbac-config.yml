@@ -797,11 +797,11 @@ objects:
           {
             "name": "User Access administrator",
             "display_name": "User Access administrator",
-            "description": "Perform most delegated access operations for users and service accounts. This includes managing standard groups, assigning/revoking non-admin roles, and inviting users. Cannot assign the Org Admin role or manage any group that contains the User Access Administrator role (to prevent privilege escalation).",
+            "description": "Perform most delegated access operations for users and service accounts. This includes managing standard groups and assigning/revoking non-admin roles. Cannot invite new users, assign the Org Admin role or manage any group that contains the User Access Administrator role (to prevent privilege escalation).",
             "system": true,
             "admin_default": true,
             "platform_default": false,
-            "version": 5,
+            "version": 6,
             "access": [
               {
                 "permission": "rbac:*:*"
