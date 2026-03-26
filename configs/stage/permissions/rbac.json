@@ -30,13 +30,13 @@
     ],
     "role_binding": [
         {
-            "verb": "role_binding_view"
+            "verb": "view"
         },
         {
-            "verb": "role_binding_grant"
+            "verb": "grant"
         },
         {
-            "verb": "role_binding_revoke"
+            "verb": "revoke"
         }
     ],
     "*": [
