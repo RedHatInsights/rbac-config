@@ -517,6 +517,17 @@ objects:
                   "verb": "write"
               }
           ],
+          "role_binding": [
+              {
+                  "verb": "view"
+              },
+              {
+                  "verb": "grant"
+              },
+              {
+                  "verb": "revoke"
+              }
+          ],
           "*": [
               {
                   "verb": "*"
