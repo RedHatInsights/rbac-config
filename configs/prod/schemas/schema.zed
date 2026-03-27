@@ -1,4 +1,6 @@
 definition hbi/host {
+	permission advisor_recommendation_results_edit = (view & t_workspace->advisor_recommendation_results_edit)
+	permission advisor_recommendation_results_view = (view & t_workspace->advisor_recommendation_results_view)
 	permission delete = t_workspace->inventory_host_delete
 	permission move = t_workspace->inventory_host_move
 	permission patch_system_edit = (view & t_workspace->patch_system_edit)
@@ -27,6 +29,17 @@ definition rbac/group {
 }
 
 definition rbac/platform {
+	permission advisor_disable_recommendations_edit = t_binding->advisor_disable_recommendations_edit
+	permission advisor_disable_recommendations_view = t_binding->advisor_disable_recommendations_view
+	permission advisor_exports_view = t_binding->advisor_exports_view
+	permission advisor_recommendation_results_edit = (inventory_host_view & advisor_recommendation_results_edit_assigned)
+	permission advisor_recommendation_results_edit_assigned = t_binding->advisor_recommendation_results_edit_assigned
+	permission advisor_recommendation_results_view = (inventory_host_view & advisor_recommendation_results_view_assigned)
+	permission advisor_recommendation_results_view_assigned = t_binding->advisor_recommendation_results_view_assigned
+	permission advisor_weekly_email_view = t_binding->advisor_weekly_email_view
+	permission advisor_weekly_report_auto_subscribe_edit = t_binding->advisor_weekly_report_auto_subscribe_edit
+	permission advisor_weekly_report_auto_subscribe_view = t_binding->advisor_weekly_report_auto_subscribe_view
+	permission advisor_weekly_report_view = t_binding->advisor_weekly_report_view
 	permission binding = t_binding
 	relation t_binding: rbac/role_binding
 	permission config_manager_activation_keys_edit = t_binding->config_manager_activation_keys_edit
@@ -77,6 +90,8 @@ definition rbac/platform {
 	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view
+	permission tasks_task_edit = t_binding->tasks_task_edit
+	permission tasks_task_view = t_binding->tasks_task_view
 }
 
 definition rbac/principal {}
@@ -86,14 +101,47 @@ definition rbac/role {
 	relation t_advisor_all_all: rbac/principal:*
 	permission advisor_all_read = t_advisor_all_read
 	relation t_advisor_all_read: rbac/principal:*
+	permission advisor_all_write = t_advisor_all_write
+	relation t_advisor_all_write: rbac/principal:*
+	permission advisor_disable_recommendations_all = t_advisor_disable_recommendations_all
+	relation t_advisor_disable_recommendations_all: rbac/principal:*
+	permission advisor_disable_recommendations_edit = advisor_disable_recommendations_write + advisor_disable_recommendations_all + advisor_all_write + advisor_all_all + all_all_all + t_child->advisor_disable_recommendations_edit
+	permission advisor_disable_recommendations_read = t_advisor_disable_recommendations_read
+	relation t_advisor_disable_recommendations_read: rbac/principal:*
+	permission advisor_disable_recommendations_view = advisor_disable_recommendations_read + advisor_disable_recommendations_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_disable_recommendations_view
 	permission advisor_disable_recommendations_write = t_advisor_disable_recommendations_write
 	relation t_advisor_disable_recommendations_write: rbac/principal:*
+	permission advisor_exports_all = t_advisor_exports_all
+	relation t_advisor_exports_all: rbac/principal:*
 	permission advisor_exports_read = t_advisor_exports_read
 	relation t_advisor_exports_read: rbac/principal:*
+	permission advisor_exports_view = advisor_exports_read + advisor_exports_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_exports_view
+	permission advisor_recommendation_results_all = t_advisor_recommendation_results_all
+	relation t_advisor_recommendation_results_all: rbac/principal:*
+	permission advisor_recommendation_results_edit_assigned = advisor_recommendation_results_write + advisor_recommendation_results_all + advisor_all_write + advisor_all_all + all_all_all + t_child->advisor_recommendation_results_edit_assigned
 	permission advisor_recommendation_results_read = t_advisor_recommendation_results_read
 	relation t_advisor_recommendation_results_read: rbac/principal:*
+	permission advisor_recommendation_results_view_assigned = advisor_recommendation_results_read + advisor_recommendation_results_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_recommendation_results_view_assigned
+	permission advisor_recommendation_results_write = t_advisor_recommendation_results_write
+	relation t_advisor_recommendation_results_write: rbac/principal:*
+	permission advisor_weekly_email_all = t_advisor_weekly_email_all
+	relation t_advisor_weekly_email_all: rbac/principal:*
 	permission advisor_weekly_email_read = t_advisor_weekly_email_read
 	relation t_advisor_weekly_email_read: rbac/principal:*
+	permission advisor_weekly_email_view = advisor_weekly_email_read + advisor_weekly_email_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_weekly_email_view
+	permission advisor_weekly_report_all = t_advisor_weekly_report_all
+	relation t_advisor_weekly_report_all: rbac/principal:*
+	permission advisor_weekly_report_auto_subscribe_all = t_advisor_weekly_report_auto_subscribe_all
+	relation t_advisor_weekly_report_auto_subscribe_all: rbac/principal:*
+	permission advisor_weekly_report_auto_subscribe_edit = advisor_weekly_report_auto_subscribe_write + advisor_weekly_report_auto_subscribe_all + advisor_all_write + advisor_all_all + all_all_all + t_child->advisor_weekly_report_auto_subscribe_edit
+	permission advisor_weekly_report_auto_subscribe_read = t_advisor_weekly_report_auto_subscribe_read
+	relation t_advisor_weekly_report_auto_subscribe_read: rbac/principal:*
+	permission advisor_weekly_report_auto_subscribe_view = advisor_weekly_report_auto_subscribe_read + advisor_weekly_report_auto_subscribe_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_weekly_report_auto_subscribe_view
+	permission advisor_weekly_report_auto_subscribe_write = t_advisor_weekly_report_auto_subscribe_write
+	relation t_advisor_weekly_report_auto_subscribe_write: rbac/principal:*
+	permission advisor_weekly_report_read = t_advisor_weekly_report_read
+	relation t_advisor_weekly_report_read: rbac/principal:*
+	permission advisor_weekly_report_view = advisor_weekly_report_read + advisor_weekly_report_all + advisor_all_read + advisor_all_all + all_all_all + t_child->advisor_weekly_report_view
 	permission all_all_all = t_all_all_all
 	relation t_all_all_all: rbac/principal:*
 	permission ansible_wisdom_admin_dashboard_chart_active_users_read = t_ansible_wisdom_admin_dashboard_chart_active_users_read
@@ -460,6 +508,18 @@ definition rbac/role {
 	relation t_subscriptions_reports_read: rbac/principal:*
 	permission tasks_all_all = t_tasks_all_all
 	relation t_tasks_all_all: rbac/principal:*
+	permission tasks_all_read = t_tasks_all_read
+	relation t_tasks_all_read: rbac/principal:*
+	permission tasks_all_write = t_tasks_all_write
+	relation t_tasks_all_write: rbac/principal:*
+	permission tasks_task_all = t_tasks_task_all
+	relation t_tasks_task_all: rbac/principal:*
+	permission tasks_task_edit = tasks_task_write + tasks_task_all + tasks_all_write + tasks_all_all + all_all_all + t_child->tasks_task_edit
+	permission tasks_task_read = t_tasks_task_read
+	relation t_tasks_task_read: rbac/principal:*
+	permission tasks_task_view = tasks_task_read + tasks_task_all + tasks_all_read + tasks_all_all + all_all_all + t_child->tasks_task_view
+	permission tasks_task_write = t_tasks_task_write
+	relation t_tasks_task_write: rbac/principal:*
 	permission vulnerability_advanced_report_read = t_vulnerability_advanced_report_read
 	relation t_vulnerability_advanced_report_read: rbac/principal:*
 	permission vulnerability_all_all = t_vulnerability_all_all
@@ -485,6 +545,15 @@ definition rbac/role {
 }
 
 definition rbac/role_binding {
+	permission advisor_disable_recommendations_edit = (subject & t_role->advisor_disable_recommendations_edit)
+	permission advisor_disable_recommendations_view = (subject & t_role->advisor_disable_recommendations_view)
+	permission advisor_exports_view = (subject & t_role->advisor_exports_view)
+	permission advisor_recommendation_results_edit_assigned = (subject & t_role->advisor_recommendation_results_edit_assigned)
+	permission advisor_recommendation_results_view_assigned = (subject & t_role->advisor_recommendation_results_view_assigned)
+	permission advisor_weekly_email_view = (subject & t_role->advisor_weekly_email_view)
+	permission advisor_weekly_report_auto_subscribe_edit = (subject & t_role->advisor_weekly_report_auto_subscribe_edit)
+	permission advisor_weekly_report_auto_subscribe_view = (subject & t_role->advisor_weekly_report_auto_subscribe_view)
+	permission advisor_weekly_report_view = (subject & t_role->advisor_weekly_report_view)
 	permission config_manager_activation_keys_edit = (subject & t_role->config_manager_activation_keys_edit)
 	permission config_manager_activation_keys_view = (subject & t_role->config_manager_activation_keys_view)
 	permission config_manager_profile_edit = (subject & t_role->config_manager_profile_edit)
@@ -532,9 +601,22 @@ definition rbac/role_binding {
 	permission staleness_staleness_view = (subject & t_role->staleness_staleness_view)
 	permission subject = t_subject
 	relation t_subject: rbac/principal | rbac/group#member
+	permission tasks_task_edit = (subject & t_role->tasks_task_edit)
+	permission tasks_task_view = (subject & t_role->tasks_task_view)
 }
 
 definition rbac/tenant {
+	permission advisor_disable_recommendations_edit = t_binding->advisor_disable_recommendations_edit + t_platform->advisor_disable_recommendations_edit
+	permission advisor_disable_recommendations_view = t_binding->advisor_disable_recommendations_view + t_platform->advisor_disable_recommendations_view
+	permission advisor_exports_view = t_binding->advisor_exports_view + t_platform->advisor_exports_view
+	permission advisor_recommendation_results_edit = (inventory_host_view & advisor_recommendation_results_edit_assigned)
+	permission advisor_recommendation_results_edit_assigned = t_binding->advisor_recommendation_results_edit_assigned + t_platform->advisor_recommendation_results_edit_assigned
+	permission advisor_recommendation_results_view = (inventory_host_view & advisor_recommendation_results_view_assigned)
+	permission advisor_recommendation_results_view_assigned = t_binding->advisor_recommendation_results_view_assigned + t_platform->advisor_recommendation_results_view_assigned
+	permission advisor_weekly_email_view = t_binding->advisor_weekly_email_view + t_platform->advisor_weekly_email_view
+	permission advisor_weekly_report_auto_subscribe_edit = t_binding->advisor_weekly_report_auto_subscribe_edit + t_platform->advisor_weekly_report_auto_subscribe_edit
+	permission advisor_weekly_report_auto_subscribe_view = t_binding->advisor_weekly_report_auto_subscribe_view + t_platform->advisor_weekly_report_auto_subscribe_view
+	permission advisor_weekly_report_view = t_binding->advisor_weekly_report_view + t_platform->advisor_weekly_report_view
 	permission binding = t_binding
 	relation t_binding: rbac/role_binding
 	permission config_manager_activation_keys_edit = t_binding->config_manager_activation_keys_edit + t_platform->config_manager_activation_keys_edit
@@ -587,10 +669,23 @@ definition rbac/tenant {
 	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_platform->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_platform->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_platform->staleness_staleness_view
+	permission tasks_task_edit = t_binding->tasks_task_edit + t_platform->tasks_task_edit
+	permission tasks_task_view = t_binding->tasks_task_view + t_platform->tasks_task_view
 }
 
 definition rbac/workspace {
-	permission binding = t_binding
+	permission advisor_disable_recommendations_edit = t_binding->advisor_disable_recommendations_edit + t_parent->advisor_disable_recommendations_edit
+	permission advisor_disable_recommendations_view = t_binding->advisor_disable_recommendations_view + t_parent->advisor_disable_recommendations_view
+	permission advisor_exports_view = t_binding->advisor_exports_view + t_parent->advisor_exports_view
+	permission advisor_recommendation_results_edit = (inventory_host_view & advisor_recommendation_results_edit_assigned)
+	permission advisor_recommendation_results_edit_assigned = t_binding->advisor_recommendation_results_edit_assigned + t_parent->advisor_recommendation_results_edit_assigned
+	permission advisor_recommendation_results_view = (inventory_host_view & advisor_recommendation_results_view_assigned)
+	permission advisor_recommendation_results_view_assigned = t_binding->advisor_recommendation_results_view_assigned + t_parent->advisor_recommendation_results_view_assigned
+	permission advisor_weekly_email_view = t_binding->advisor_weekly_email_view + t_parent->advisor_weekly_email_view
+	permission advisor_weekly_report_auto_subscribe_edit = t_binding->advisor_weekly_report_auto_subscribe_edit + t_parent->advisor_weekly_report_auto_subscribe_edit
+	permission advisor_weekly_report_auto_subscribe_view = t_binding->advisor_weekly_report_auto_subscribe_view + t_parent->advisor_weekly_report_auto_subscribe_view
+	permission advisor_weekly_report_view = t_binding->advisor_weekly_report_view + t_parent->advisor_weekly_report_view
+	permission binding = t_binding + t_parent->binding
 	relation t_binding: rbac/role_binding
 	permission config_manager_activation_keys_edit = t_binding->config_manager_activation_keys_edit + t_parent->config_manager_activation_keys_edit
 	permission config_manager_activation_keys_view = t_binding->config_manager_activation_keys_view + t_parent->config_manager_activation_keys_view
@@ -646,5 +741,7 @@ definition rbac/workspace {
 	permission ros_read_analysis_assigned = t_binding->ros_read_analysis_assigned + t_parent->ros_read_analysis_assigned
 	permission staleness_staleness_update = t_binding->staleness_staleness_update + t_parent->staleness_staleness_update
 	permission staleness_staleness_view = t_binding->staleness_staleness_view + t_parent->staleness_staleness_view
+	permission tasks_task_edit = t_binding->tasks_task_edit + t_parent->tasks_task_edit
+	permission tasks_task_view = t_binding->tasks_task_view + t_parent->tasks_task_view
 	permission view = rbac_workspace_view
 }
