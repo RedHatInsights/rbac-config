@@ -21,9 +21,7 @@
               "unlink",
               "order",
               "execute",
-              "role_binding_view",
-              "role_binding_grant",
-              "role_binding_revoke"
+              "role_binding_view"
             ]
           },
           "description": {
