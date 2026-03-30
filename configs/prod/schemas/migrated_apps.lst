@@ -8,3 +8,5 @@ content-sources
 remediations
 playbook-dispatcher
 patch
+advisor
+tasks
