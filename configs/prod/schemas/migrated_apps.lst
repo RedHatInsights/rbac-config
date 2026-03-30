@@ -8,6 +8,8 @@ content-sources
 remediations
 playbook-dispatcher
 patch
+advisor
+tasks
 compliance
 vulnerability
 malware
