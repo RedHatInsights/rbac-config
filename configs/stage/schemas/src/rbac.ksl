@@ -37,6 +37,7 @@ internal type group {
 internal type role {
     private relation all_all_all: [bool]
     private relation child: [Any role]
+    relation owner: [ExactlyOne tenant]
 }
 
 internal type role_binding { // TODO: revisit cardinality based on clamping decisions
@@ -134,7 +135,7 @@ public extension add_unified_permission(app, resource, verb) {
         allow_duplicates private relation `${app}_${resource}_all`: [bool]
         allow_duplicates private relation `${app}_all_${verb}`: [bool]
 
-        relation `${app}_${resource}_${verb}`: [bool] or `${app}_${resource}_all` or `${app}_all_${verb}` or `${app}_all_all` or all_all_all or child.`${app}_${resource}_${verb}`
+        relation `${app}_${resource}_${verb}`: [bool] or `${app}_${resource}_all` or `${app}_all_${verb}` or `${app}_all_all` or all_all_all or child.`${app}_${resource}_${verb}` or owner.`${app}_${resource}_${verb}`
     }
 
     type role_binding {
