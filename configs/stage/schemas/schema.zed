@@ -436,6 +436,8 @@ definition rbac/role {
 	relation t_ocp_advisor_recommendation_results_read: rbac/principal:*
 	permission ocp_advisor_toggle_recommendations_write = t_ocp_advisor_toggle_recommendations_write
 	relation t_ocp_advisor_toggle_recommendations_write: rbac/principal:*
+	permission owner = t_owner
+	relation t_owner: rbac/tenant
 	permission patch_all_all = t_patch_all_all
 	relation t_patch_all_all: rbac/principal:*
 	permission patch_all_read = t_patch_all_read
@@ -534,6 +536,7 @@ definition rbac/role {
 	permission rbac_workspace_edit = inventory_groups_write + inventory_groups_all + inventory_all_write + inventory_all_all + all_all_all + t_child->rbac_workspace_edit
 	permission rbac_workspace_move = inventory_groups_write + inventory_groups_all + inventory_all_write + inventory_all_all + all_all_all + t_child->rbac_workspace_move
 	permission rbac_workspace_view = inventory_groups_read + inventory_groups_all + inventory_all_read + inventory_all_all + all_all_all + t_child->rbac_workspace_view
+	permission read = t_owner->rbac_roles_read
 	permission remediations_all_all = t_remediations_all_all
 	relation t_remediations_all_all: rbac/principal:*
 	permission remediations_all_execute = t_remediations_all_execute
@@ -679,6 +682,7 @@ definition rbac/role {
 	permission vulnerability_vulnerability_results_read = t_vulnerability_vulnerability_results_read
 	relation t_vulnerability_vulnerability_results_read: rbac/principal:*
 	permission vulnerability_vulnerability_results_view_assigned = vulnerability_vulnerability_results_read + vulnerability_vulnerability_results_all + vulnerability_all_read + vulnerability_all_all + all_all_all + t_child->vulnerability_vulnerability_results_view_assigned
+	permission write = t_owner->rbac_roles_write
 }
 
 definition rbac/role_binding {
