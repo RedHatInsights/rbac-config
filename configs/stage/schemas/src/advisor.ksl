@@ -14,7 +14,7 @@ import hbi
 @rbac.add_v1_based_permission(app:'advisor', resource:'weekly_report_auto_subscribe', verb:'read', v2_perm:'advisor_weekly_report_auto_subscribe_view');
 @rbac.add_v1_based_permission(app:'advisor', resource:'weekly_report_auto_subscribe', verb:'write', v2_perm:'advisor_weekly_report_auto_subscribe_edit');
 
-@rbac.add_v1_based_permission(app:'advisor', resource:'recommendation_results', verb:'read', v2_perm:'advisor_recommendation_results_view_assigned');
-@rbac.add_v1_based_permission(app:'advisor', resource:'recommendation_results', verb:'write', v2_perm:'advisor_recommendation_results_edit_assigned');
+@rbac.add_v1_based_permission(app:'advisor', resource:'recommendation_results', verb:'read', v2_perm:'advisor_recommendation_results_view');
+@rbac.add_v1_based_permission(app:'advisor', resource:'recommendation_results', verb:'write', v2_perm:'advisor_recommendation_results_edit');
 
 @rbac.add_v1_based_permission(app:'advisor', resource:'exports', verb:'read', v2_perm:'advisor_exports_view');
