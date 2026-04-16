@@ -32,6 +32,9 @@ internal type group {
 internal type role {
     private relation all_all_all: [bool]
     private relation child: [Any role]
+    relation owner: [ExactlyOne tenant]
+    relation read: owner.rbac_roles_read
+    relation write: owner.rbac_roles_write
 }
 
 internal type role_binding { // TODO: revisit cardinality based on clamping decisions
