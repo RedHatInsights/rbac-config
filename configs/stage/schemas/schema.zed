@@ -866,6 +866,8 @@ definition rbac/tenant {
 	permission subscriptions_report_view = t_binding->subscriptions_report_view + t_platform->subscriptions_report_view
 	permission tasks_task_edit = t_binding->tasks_task_edit + t_platform->tasks_task_edit
 	permission tasks_task_view = t_binding->tasks_task_view + t_platform->tasks_task_view
+	permission tenant = t_tenant
+	relation t_tenant: rbac/tenant
 	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
 	permission vulnerability_advanced_report_view_assigned = t_binding->vulnerability_advanced_report_view_assigned + t_platform->vulnerability_advanced_report_view_assigned
 	permission vulnerability_cve_business_risk_and_status_edit = t_binding->vulnerability_cve_business_risk_and_status_edit + t_platform->vulnerability_cve_business_risk_and_status_edit
@@ -980,6 +982,8 @@ definition rbac/workspace {
 	permission subscriptions_report_view = t_binding->subscriptions_report_view + t_parent->subscriptions_report_view
 	permission tasks_task_edit = t_binding->tasks_task_edit + t_parent->tasks_task_edit
 	permission tasks_task_view = t_binding->tasks_task_view + t_parent->tasks_task_view
+	permission tenant = t_tenant + t_parent->tenant
+	relation t_tenant: rbac/tenant
 	permission view = rbac_workspace_view
 	permission vulnerability_advanced_report_view = (inventory_host_view & vulnerability_advanced_report_view_assigned)
 	permission vulnerability_advanced_report_view_assigned = t_binding->vulnerability_advanced_report_view_assigned + t_parent->vulnerability_advanced_report_view_assigned
