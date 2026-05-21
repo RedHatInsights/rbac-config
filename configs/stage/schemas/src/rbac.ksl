@@ -58,7 +58,6 @@ public type workspace { //Workspace is public so services can place resources in
     // Explicitly defined on root workspaces, otherwise inherited from the parent workspace.
     relation tenant: [AtMostOne tenant] or parent.tenant
 
-
     @add_v1_based_permission(app:'inventory', resource:'groups', verb:'read', v2_perm:'rbac_workspace_view')
     relation view: rbac_workspace_view
 
