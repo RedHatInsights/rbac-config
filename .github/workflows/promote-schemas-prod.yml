@@ -1,5 +1,4 @@
 name: Promote Schemas to Prod
-# Fork CI exercises this selectable promotion workflow independently.
 
 on:
   workflow_dispatch:
@@ -29,7 +28,7 @@ jobs:
     env:
       SCHEMA_REPO: project-kessel/starlark-unified-schema
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # Reviewed release outputs only. Add future provider files here explicitly.
+      # Add future provider files here explicitly.
       PROMOTABLE_FILES: |-
         features.json
     steps:
@@ -153,11 +152,7 @@ jobs:
                           f"found {len(matches)}"
                       )
                   member = matches[0]
-                  if (
-                      not member.isreg()
-                      or member.issym()
-                      or member.islnk()
-                  ):
+                  if not member.isreg():
                       raise SystemExit(
                           f"Archive member {name!r} is not a regular file"
                       )

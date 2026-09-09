@@ -20,7 +20,7 @@ Reviews and deployments happen on the same day. All changes go to stage first.
 
 ### Manual production schema promotion
 
-After stage validation, `.github/workflows/promote-schemas-prod.yml` promotes selected named root-level JSON files from an exact `starlark-unified-schema` release. Dispatch it with the release tag and comma-separated `files` input; each file must be explicitly reviewed in the workflow allowlist. The workflow opens or updates a review PR only—it does not auto-merge or deploy. See the [Integration Guidelines](docs/integration-guidelines.md) for the access boundary and full procedure.
+After stage validation, the manual `.github/workflows/promote-schemas-prod.yml` flow opens or updates a review PR for selected production schema files. It does not auto-merge or deploy; see the [Integration Guidelines](docs/integration-guidelines.md) for the procedure and access boundary.
 
 ## Documentation
 

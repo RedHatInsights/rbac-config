@@ -88,7 +88,7 @@ Reviews and deployments happen on the same day: stage on Tuesdays, prod on Thurs
 
 ### Schema sync versus prod promotion
 
-`.github/workflows/schema-sync.yml` is the stage-first flow: it syncs the selected release into `configs/stage/schemas/src/` for validation and does not modify prod. After stage testing, `.github/workflows/promote-schemas-prod.yml` is the controlled prod flow. Dispatch it with the exact upstream release tag and comma-separated named root-level JSON `files`; every requested file must be explicitly present in its reviewed allowlist. It opens or updates a bot-created review PR and does not auto-merge, deploy, or update `app-interface`. Dispatching requires repository **Write** access or higher; the workflow job's YAML `GITHUB_TOKEN` permissions do not grant dispatch access.
+`.github/workflows/schema-sync.yml` is the stage-first flow: it syncs the selected release into `configs/stage/schemas/src/` for validation and does not modify prod. After stage testing, `.github/workflows/promote-schemas-prod.yml` is the controlled prod flow; it accepts only reviewed allowlisted selections and opens or updates a review PR without auto-merging, deploying, or updating `app-interface`. See the [Integration Guidelines](docs/integration-guidelines.md) for the procedure and access boundary. Dispatching requires repository **Write** access or higher.
 
 ## Local Development
 

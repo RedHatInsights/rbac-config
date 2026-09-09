@@ -65,9 +65,7 @@ Before opening a PR, verify:
 
 ### Controlled prod schema promotion
 
-Schema changes follow the stage-first process. After the stage schema sync and validation have completed, use `.github/workflows/promote-schemas-prod.yml` for the controlled prod promotion rather than copying files from stage. Dispatch it with the exact upstream `starlark-unified-schema` release tag and the comma-separated named root-level JSON `files` to promote. Requested files must be in the workflow's reviewed allowlist; adding a provider file requires an explicit workflow change and review.
-
-The workflow creates or updates a bot-created review PR and does not auto-merge, deploy, or update `app-interface`. Normal prod schema CI and the standard merge-to-deploy process still apply. Dispatching requires repository **Write** access or higher; the workflow job's YAML `GITHUB_TOKEN` `contents` and `pull-requests` permissions do not grant dispatch access.
+Schema changes follow the stage-first process. After stage sync and validation, use `.github/workflows/promote-schemas-prod.yml` rather than copying files from stage. It creates or updates a review PR only; it does not auto-merge, deploy, or update `app-interface`. Follow the [Integration Guidelines](docs/integration-guidelines.md) for the controlled promotion procedure. Dispatching requires repository **Write** access or higher.
 
 ### 4. Open a Pull Request
 
