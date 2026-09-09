@@ -73,6 +73,8 @@ make ksl-test-schema-stage
 
 The current pin is the `KSIL_SCHEMA_VERSION=` line in the Makefile (empty until the first sync). Automated sync is `.github/workflows/schema-sync.yml`.
 
+The manual `.github/workflows/promote-schemas-prod.yml` workflow takes a required upstream release tag, downloads that exact release's `ksl.tar.gz`, extracts only its root-level JSON artifacts, and stages only `configs/prod/schemas/src/*.json`. It never copies stage files or modifies prod `.ksl` sources. It opens a PR to `master` only when one does not already exist; merging and deployment remain separate operations.
+
 ### Build Dependency Chain
 
 The Makefile encodes a dependency chain for production schema targets:
