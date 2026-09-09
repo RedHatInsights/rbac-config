@@ -827,16 +827,13 @@ objects:
             "description": "Grants read-only access to workspace pages (lists, hierarchy, names, descriptions), but can't perform actions related to granting access or asset management.",
             "system": true,
             "platform_default": true,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "rbac:workspace:view"
               },
               {
                 "permission": "rbac:role_binding:view"
-              },
-              {
-                "permission": "inventory:hosts:read"
               }
             ]
           },
@@ -847,7 +844,7 @@ objects:
             "system": true,
             "platform_default": false,
             "admin_default": true,
-            "version": 1,
+            "version": 2,
             "access": [
               {
                 "permission": "rbac:workspace:view"
@@ -878,9 +875,6 @@ objects:
               },
               {
                 "permission": "rbac:audit_log:read"
-              },
-              {
-                "permission": "inventory:hosts:read"
               }
             ]
           }
