@@ -73,7 +73,14 @@ make ksl-test-schema-stage
 
 The current pin is the `KSIL_SCHEMA_VERSION=` line in the Makefile (empty until the first sync). Automated sync is `.github/workflows/schema-sync.yml`.
 
-The manual `.github/workflows/promote-schemas-prod.yml` workflow takes a required upstream release tag, downloads that exact release's `ksl.tar.gz`, extracts only its root-level JSON artifacts, and stages only `configs/prod/schemas/src/*.json`. It never copies stage files or modifies prod `.ksl` sources. It opens a PR to `master` only when one does not already exist; merging and deployment remain separate operations.
+The manual `.github/workflows/promote-schemas-prod.yml` workflow takes a required upstream release tag and comma-separated named `files` input. Requested files must be root-level JSON members and must be explicitly present in the workflow's reviewed allowlist (currently `features.json`). Before opening or updating its bot-created PR, verify:
+
+- [ ] The requested paths are exactly the intended `configs/prod/schemas/src/<name>` destinations.
+- [ ] Unselected JSON files and every prod `.ksl` source are unchanged.
+- [ ] Normal prod schema CI passes on the promotion PR.
+- [ ] No merge, deployment, or `app-interface` update is performed by the workflow.
+
+The workflow downloads the exact release asset, validates and copies only the requested members, and updates an existing selection-specific PR on reruns. Stage files are never copied to prod; merging and deployment remain separate operations. Dispatching requires repository Write access or higher. The workflow job's YAML `GITHUB_TOKEN` `contents` and `pull-requests` permissions do not grant dispatch access.
 
 ### Build Dependency Chain
 

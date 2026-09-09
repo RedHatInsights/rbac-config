@@ -18,6 +18,10 @@ There is no application code here -- only JSON configs, KSL schemas, and CI auto
 
 Reviews and deployments happen on the same day. All changes go to stage first.
 
+### Manual production schema promotion
+
+After stage validation, `.github/workflows/promote-schemas-prod.yml` promotes selected named root-level JSON files from an exact `starlark-unified-schema` release. Dispatch it with the release tag and comma-separated `files` input; each file must be explicitly reviewed in the workflow allowlist. The workflow opens or updates a review PR only—it does not auto-merge or deploy. See the [Integration Guidelines](docs/integration-guidelines.md) for the access boundary and full procedure.
+
 ## Documentation
 
 Detailed guidance lives in dedicated files -- the README covers only getting started and high-level reference.

@@ -143,7 +143,11 @@ Detects new [starlark-unified-schema](https://github.com/project-kessel/starlark
 
 ### Prod Schema Promotion Pipeline (`.github/workflows/promote-schemas-prod.yml`)
 
-Run this workflow manually with the exact upstream `starlark-unified-schema` release `tag` to promote a tested KSIL artifact. It downloads that release's `ksl.tar.gz` and extracts only the known root-level JSON artifacts into `configs/prod/schemas/src/`, preserving `.ksl` sources. The deterministic `promote-schemas-prod/<tag>` branch is reused on reruns, and an existing open PR is not duplicated. The workflow only opens a PR to `master`—it does not merge, deploy, or update app-interface.
+Run this workflow manually after a schema has been tested in stage. Provide the exact upstream `starlark-unified-schema` release tag and the required comma-separated `files` input containing the named root-level JSON files to promote (for example, `features.json`). Every requested file must pass the filename and archive checks and must be in the reviewed allowlist in the workflow; adding a future provider file requires an explicit workflow review and change.
+
+The workflow downloads that release's `ksl.tar.gz`, validates and copies only the requested members into `configs/prod/schemas/src/`, and preserves `.ksl` sources and unselected JSON. It creates or updates a bot-created review PR on `master` with the selected files, tag, asset SHA256, and validation notes. Reruns use a selection-specific branch and refresh the existing PR rather than leaving stale metadata. The workflow does not auto-merge, deploy, or update `app-interface`; the normal prod schema CI and deployment process remain required.
+
+**Access boundary:** Dispatching this workflow requires repository **Write** access or higher. The YAML `GITHUB_TOKEN` `contents` and `pull-requests` permissions apply only to the workflow job; they do not determine who is allowed to dispatch it.
 
 ### External Actions Used
 
@@ -176,7 +180,7 @@ make update-schemas KSIL_SCHEMA_VERSION=vYYYYMMDD.N
 # Optional: SCHEMA_REPO=owner/repo to download from a fork
 ```
 
-This overlays `*.json` into `configs/stage/schemas/src/` without modifying `.ksl` files or `configs/prod`. When soak/purge is ready, trigger `promote-schemas-prod.yml` with the tested release tag to open the separate prod PR. After the schema-sync PR is merged, `master.yml` regenerates `schema.zed`; clusters go live on the existing Tuesday/Thursday deploy cadence.
+This overlays `*.json` into `configs/stage/schemas/src/` without modifying `.ksl` files or `configs/prod`. When soak/purge is ready, trigger `promote-schemas-prod.yml` with the tested release tag and selected allowlisted `files` to open or update the separate prod PR. After the schema-sync PR is merged, `master.yml` regenerates `schema.zed`; clusters go live on the existing Tuesday/Thursday deploy cadence.
 
 For the controlled prod promotion, use `promote-schemas-prod.yml` with the upstream release tag rather than copying arbitrary contents from stage. After its PR is merged, `master.yml` regenerates the prod `schema.zed`; deployment still requires the normal app-interface `ref` bump.
 
