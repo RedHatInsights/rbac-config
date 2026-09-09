@@ -1,4 +1,5 @@
 name: Promote Schemas to Prod
+# Fork CI exercises this selectable promotion workflow independently.
 
 on:
   workflow_dispatch:
