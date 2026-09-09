@@ -141,6 +141,10 @@ Runs on push to `master`:
 
 Detects new [starlark-unified-schema](https://github.com/project-kessel/starlark-unified-schema) GitHub Releases and opens a PR that pins `KSIL_SCHEMA_VERSION` and overlays KSIL JSON into `configs/stage/schemas/src/` only. Runs daily and via `workflow_dispatch` (optional `tag` input for a specific release or rollback). Uses `make update-schemas`. Does not regenerate `schema.zed` — that remains the master workflow's job after merge. Prod KSIL is a later copy of named JSON (e.g. `features.json`) when an SP is ready; live clusters still follow Tuesday/Thursday app-interface `ref` bumps.
 
+### Prod Schema Promotion Pipeline (`.github/workflows/promote-schemas-prod.yml`)
+
+Run this workflow manually with the exact upstream `starlark-unified-schema` release `tag` to promote a tested KSIL artifact. It downloads that release's `ksl.tar.gz` and extracts only the known root-level JSON artifacts into `configs/prod/schemas/src/`, preserving `.ksl` sources. The deterministic `promote-schemas-prod/<tag>` branch is reused on reruns, and an existing open PR is not duplicated. The workflow only opens a PR to `master`—it does not merge, deploy, or update app-interface.
+
 ### External Actions Used
 
 | Action | Purpose |
@@ -172,7 +176,9 @@ make update-schemas KSIL_SCHEMA_VERSION=vYYYYMMDD.N
 # Optional: SCHEMA_REPO=owner/repo to download from a fork
 ```
 
-This overlays `*.json` into `configs/stage/schemas/src/` without modifying `.ksl` files or `configs/prod`. Copy named JSON (e.g. `features.json`) to prod in a separate PR when soak/purge is ready. After the schema-sync PR is merged, `master.yml` regenerates `schema.zed`; clusters go live on the existing Tuesday/Thursday deploy cadence.
+This overlays `*.json` into `configs/stage/schemas/src/` without modifying `.ksl` files or `configs/prod`. When soak/purge is ready, trigger `promote-schemas-prod.yml` with the tested release tag to open the separate prod PR. After the schema-sync PR is merged, `master.yml` regenerates `schema.zed`; clusters go live on the existing Tuesday/Thursday deploy cadence.
+
+For the controlled prod promotion, use `promote-schemas-prod.yml` with the upstream release tag rather than copying arbitrary contents from stage. After its PR is merged, `master.yml` regenerates the prod `schema.zed`; deployment still requires the normal app-interface `ref` bump.
 
 ## Environment Consistency Rules
 

@@ -1,0 +1,104 @@
+name: Promote Schemas to Prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to promote (e.g. v20260804.3)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: promote-schemas-prod
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    name: Promote schema release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SCHEMA_REPO: project-kessel/starlark-unified-schema
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true
+
+      - name: Resolve target release tag
+        id: resolve
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          TAG_RE='^v[0-9]{8}\.[0-9]+$'
+          if [[ ! "${INPUT_TAG}" =~ ${TAG_RE} ]]; then
+            echo "Invalid schema release tag: ${INPUT_TAG}"
+            echo "Expected format: vYYYYMMDD.N (e.g. v20260804.3)"
+            exit 1
+          fi
+          echo "target=${INPUT_TAG}" >> "${GITHUB_OUTPUT}"
+          echo "Target release tag: ${INPUT_TAG}"
+
+      - name: Promote schemas and open PR
+        env:
+          TARGET: ${{ steps.resolve.outputs.target }}
+        run: |
+          set -euo pipefail
+          BRANCH="promote-schemas-prod/${TARGET}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin master
+          git checkout -B "${BRANCH}" origin/master
+
+          gh release download "${TARGET}" \
+            --repo "${SCHEMA_REPO}" \
+            --pattern 'ksl.tar.gz' \
+            --clobber
+
+          # The current release archive contains root-level JSON artifacts.
+          # Extract only JSON so the hand-authored prod .ksl files are preserved.
+          tar xzf ksl.tar.gz \
+            -C configs/prod/schemas/src \
+            --wildcards '*.json'
+          rm -f ksl.tar.gz
+
+          git add configs/prod/schemas/src/*.json
+
+          if git diff --cached --quiet; then
+            echo "No file changes after promotion; skipping commit/PR."
+            exit 0
+          fi
+
+          git commit -m "chore: promote schemas to prod from ${SCHEMA_REPO}@${TARGET}"
+          git push -u origin HEAD --force
+
+          PR_BODY=$(cat <<EOF
+          ## Summary
+
+          Automated schema promotion from [\`${SCHEMA_REPO}\`](https://github.com/${SCHEMA_REPO}) release \`${TARGET}\`.
+
+          - Downloads the exact \`ksl.tar.gz\` release asset.
+          - Extracts JSON artifacts into prod \`schemas/src/\` only.
+          - Preserves hand-authored \`.ksl\` files.
+
+          ## Test plan
+
+          - [ ] \`pr.yml\` validation passes
+          - [ ] No merge, deployment, or app-interface action is performed
+          EOF
+          )
+          if [ -z "$(gh pr list --head "${BRANCH}" --state open --json number -q '.[0].number')" ]; then
+            gh pr create \
+              --base master \
+              --head "${BRANCH}" \
+              --title "chore: promote schemas to prod from ${TARGET}" \
+              --body "${PR_BODY}"
+          fi
