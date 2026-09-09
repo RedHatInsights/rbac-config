@@ -29,7 +29,7 @@ jobs:
       SCHEMA_REPO: project-kessel/starlark-unified-schema
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Add future provider files here explicitly.
-      PROMOTABLE_FILES: |-
+      PROMOTABLE_SCHEMA_FILES: |-
         features.json
     steps:
       - name: Checkout
@@ -81,7 +81,7 @@ jobs:
 
           promotable = {
               entry.strip()
-              for entry in os.environ["PROMOTABLE_FILES"].splitlines()
+              for entry in os.environ["PROMOTABLE_SCHEMA_FILES"].splitlines()
               if entry.strip()
           }
           not_promotable = [entry for entry in entries if entry not in promotable]
@@ -129,56 +129,21 @@ jobs:
           fi
           ASSET_SHA256="$(sha256sum "${ARCHIVE}" | cut -d' ' -f1)"
 
-          # Validate every requested member before writing any destination. Do
-          # not extract unrequested archive members, including nested files.
-          ARCHIVE_PATH="${ARCHIVE}" SELECTED_FILES="${SELECTED_FILES}" python3 - <<'PY'
-          import json
-          import os
-          import pathlib
-          import tarfile
-
-          archive_path = pathlib.Path(os.environ["ARCHIVE_PATH"])
-          destination_root = pathlib.Path("configs/prod/schemas/src")
-          selected = os.environ["SELECTED_FILES"].split(",")
-
-          with tarfile.open(archive_path, mode="r:gz") as archive:
-              members = archive.getmembers()
-              validated = []
-              for name in selected:
-                  matches = [member for member in members if member.name == name]
-                  if len(matches) != 1:
-                      raise SystemExit(
-                          f"Archive member {name!r} must occur exactly once; "
-                          f"found {len(matches)}"
-                      )
-                  member = matches[0]
-                  if not member.isreg():
-                      raise SystemExit(
-                          f"Archive member {name!r} is not a regular file"
-                      )
-                  source = archive.extractfile(member)
-                  if source is None:
-                      raise SystemExit(f"Could not read archive member {name!r}")
-                  data = source.read()
-                  try:
-                      json.loads(data.decode("utf-8"))
-                  except (UnicodeDecodeError, json.JSONDecodeError) as error:
-                      raise SystemExit(f"Archive member {name!r} is not valid JSON: {error}")
-                  validated.append((name, data))
-
-          destinations = [(destination_root / name, data) for name, data in validated]
-          for destination, _ in destinations:
-              if destination.is_symlink():
-                  raise SystemExit(f"Refusing symlink destination: {destination}")
-          for destination, data in destinations:
-              destination.write_bytes(data)
-          PY
-
           IFS=',' read -r -a SELECTED_ARRAY <<< "${SELECTED_FILES}"
           DESTINATIONS=()
           for name in "${SELECTED_ARRAY[@]}"; do
-            DESTINATIONS+=("configs/prod/schemas/src/${name}")
+            destination="configs/prod/schemas/src/${name}"
+            if [[ -L "${destination}" ]]; then
+              echo "Refusing symlink destination: ${destination}"
+              exit 1
+            fi
+            DESTINATIONS+=("${destination}")
           done
+          # The fixed upstream release asset is trusted. Extract only the
+          # canonical selected names; tar fails if any requested member is absent.
+          tar -xzf "${ARCHIVE}" \
+            -C configs/prod/schemas/src \
+            -- "${SELECTED_ARRAY[@]}"
           git add -- "${DESTINATIONS[@]}"
 
           EXPECTED_PATHS="$(printf '%s\n' "${DESTINATIONS[@]}")" \
@@ -215,8 +180,8 @@ jobs:
           - Requested root-level JSON files: \`${SELECTED_FILES}\`
           - Exact release tag: \`${TARGET}\`
           - \`ksl.tar.gz\` asset SHA256: \`${ASSET_SHA256}\`
-          - Validates names, unique exact root members, regular-file types, and JSON before copying.
-          - Extracts only the requested members and preserves hand-authored \`.ksl\` files and unrequested JSON.
+          - Validates names, count/duplicates, and the reviewed allowlist before extraction.
+          - Extracts only the requested names from the trusted fixed release asset and preserves hand-authored \`.ksl\` files and unrequested JSON.
 
           ## Test plan
 
