@@ -7,6 +7,10 @@ on:
         description: 'Release tag to promote (e.g. v20260804.3)'
         required: true
         type: string
+      files:
+        description: 'Comma-separated named root-level JSON files (e.g. features.json,tasks.json)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -45,12 +49,51 @@ jobs:
           echo "target=${INPUT_TAG}" >> "${GITHUB_OUTPUT}"
           echo "Target release tag: ${INPUT_TAG}"
 
+      - name: Validate requested schema files
+        id: selection
+        env:
+          INPUT_FILES: ${{ inputs.files }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import os
+          import re
+
+          raw = os.environ["INPUT_FILES"]
+          entries = [entry.strip() for entry in raw.split(",")]
+          if any(not entry for entry in entries):
+              raise SystemExit("The files input must not contain empty entries")
+          if len(entries) > 50:
+              raise SystemExit("The files input must contain no more than 50 entries")
+
+          name_pattern = re.compile(r"^[a-z0-9][a-z0-9._-]*\.json$")
+          invalid = [entry for entry in entries if not name_pattern.fullmatch(entry)]
+          if invalid:
+              raise SystemExit(
+                  "Invalid root-level JSON file name(s): " + ", ".join(invalid)
+              )
+          if len(set(entries)) != len(entries):
+              raise SystemExit("The files input must not contain duplicate entries")
+
+          selected = sorted(entries)
+          canonical = ",".join(selected)
+          selection_hash = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:12]
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+              output.write(f"files={canonical}\n")
+              output.write(f"hash={selection_hash}\n")
+          print(f"Canonical selection: {canonical}")
+          print(f"Selection hash: {selection_hash}")
+          PY
+
       - name: Promote schemas and open PR
         env:
           TARGET: ${{ steps.resolve.outputs.target }}
+          SELECTED_FILES: ${{ steps.selection.outputs.files }}
+          SELECTION_HASH: ${{ steps.selection.outputs.hash }}
         run: |
           set -euo pipefail
-          BRANCH="promote-schemas-prod/${TARGET}"
+          BRANCH="promote-schemas-prod/${TARGET}-${SELECTION_HASH}"
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -58,19 +101,91 @@ jobs:
           git fetch origin master
           git checkout -B "${BRANCH}" origin/master
 
+          ARCHIVE="${RUNNER_TEMP}/ksl.tar.gz"
+          rm -f "${ARCHIVE}"
           gh release download "${TARGET}" \
             --repo "${SCHEMA_REPO}" \
             --pattern 'ksl.tar.gz' \
+            --dir "${RUNNER_TEMP}" \
             --clobber
+          if [[ ! -f "${ARCHIVE}" || -L "${ARCHIVE}" ]]; then
+            echo "Expected release asset was not downloaded to ${ARCHIVE}"
+            exit 1
+          fi
+          ASSET_SHA256="$(sha256sum "${ARCHIVE}" | cut -d' ' -f1)"
 
-          # The current release archive contains root-level JSON artifacts.
-          # Extract only JSON so the hand-authored prod .ksl files are preserved.
-          tar xzf ksl.tar.gz \
-            -C configs/prod/schemas/src \
-            --wildcards '*.json'
-          rm -f ksl.tar.gz
+          # Validate every requested member before writing any destination. Do
+          # not extract unrequested archive members, including nested files.
+          ARCHIVE_PATH="${ARCHIVE}" SELECTED_FILES="${SELECTED_FILES}" python3 - <<'PY'
+          import json
+          import os
+          import pathlib
+          import tarfile
 
-          git add configs/prod/schemas/src/*.json
+          archive_path = pathlib.Path(os.environ["ARCHIVE_PATH"])
+          destination_root = pathlib.Path("configs/prod/schemas/src")
+          selected = os.environ["SELECTED_FILES"].split(",")
+
+          with tarfile.open(archive_path, mode="r:gz") as archive:
+              members = archive.getmembers()
+              validated = []
+              for name in selected:
+                  matches = [member for member in members if member.name == name]
+                  if len(matches) != 1:
+                      raise SystemExit(
+                          f"Archive member {name!r} must occur exactly once; "
+                          f"found {len(matches)}"
+                      )
+                  member = matches[0]
+                  if (
+                      not member.isreg()
+                      or member.issym()
+                      or member.islnk()
+                  ):
+                      raise SystemExit(
+                          f"Archive member {name!r} is not a regular file"
+                      )
+                  source = archive.extractfile(member)
+                  if source is None:
+                      raise SystemExit(f"Could not read archive member {name!r}")
+                  data = source.read()
+                  try:
+                      json.loads(data.decode("utf-8"))
+                  except (UnicodeDecodeError, json.JSONDecodeError) as error:
+                      raise SystemExit(f"Archive member {name!r} is not valid JSON: {error}")
+                  validated.append((name, data))
+
+          destinations = [(destination_root / name, data) for name, data in validated]
+          for destination, _ in destinations:
+              if destination.is_symlink():
+                  raise SystemExit(f"Refusing symlink destination: {destination}")
+          for destination, data in destinations:
+              destination.write_bytes(data)
+          PY
+
+          IFS=',' read -r -a SELECTED_ARRAY <<< "${SELECTED_FILES}"
+          DESTINATIONS=()
+          for name in "${SELECTED_ARRAY[@]}"; do
+            DESTINATIONS+=("configs/prod/schemas/src/${name}")
+          done
+          git add -- "${DESTINATIONS[@]}"
+
+          EXPECTED_PATHS="$(printf '%s\n' "${DESTINATIONS[@]}")" \
+            python3 - <<'PY'
+          import os
+          import subprocess
+
+          expected = set(os.environ["EXPECTED_PATHS"].splitlines())
+          staged = subprocess.check_output(
+              ["git", "diff", "--cached", "--name-only", "-z"]
+          ).decode("utf-8").split("\0")
+          staged = {path for path in staged if path}
+          unexpected = sorted(staged - expected)
+          if unexpected:
+              raise SystemExit(
+                  "Unexpected staged path(s): " + ", ".join(unexpected)
+              )
+          PY
 
           if git diff --cached --quiet; then
             echo "No file changes after promotion; skipping commit/PR."
@@ -80,25 +195,28 @@ jobs:
           git commit -m "chore: promote schemas to prod from ${SCHEMA_REPO}@${TARGET}"
           git push -u origin HEAD --force
 
+          TITLE="chore: promote selected schemas to prod from ${TARGET}"
           PR_BODY=$(cat <<EOF
           ## Summary
 
           Automated schema promotion from [\`${SCHEMA_REPO}\`](https://github.com/${SCHEMA_REPO}) release \`${TARGET}\`.
 
-          - Downloads the exact \`ksl.tar.gz\` release asset.
-          - Extracts JSON artifacts into prod \`schemas/src/\` only.
-          - Preserves hand-authored \`.ksl\` files.
+          - Requested root-level JSON files: \`${SELECTED_FILES}\`
+          - Exact release tag: \`${TARGET}\`
+          - \`ksl.tar.gz\` asset SHA256: \`${ASSET_SHA256}\`
+          - Validates names, unique exact root members, regular-file types, and JSON before copying.
+          - Extracts only the requested members and preserves hand-authored \`.ksl\` files and unrequested JSON.
 
           ## Test plan
 
-          - [ ] \`pr.yml\` validation passes
-          - [ ] No merge, deployment, or app-interface action is performed
+          - [ ] Standard CI validation passes
+          - [ ] No auto-merge, deployment, or app-interface action is performed
           EOF
           )
           if [ -z "$(gh pr list --head "${BRANCH}" --state open --json number -q '.[0].number')" ]; then
             gh pr create \
               --base master \
               --head "${BRANCH}" \
-              --title "chore: promote schemas to prod from ${TARGET}" \
+              --title "${TITLE}" \
               --body "${PR_BODY}"
           fi
