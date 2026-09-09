@@ -28,6 +28,9 @@ jobs:
     env:
       SCHEMA_REPO: project-kessel/starlark-unified-schema
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Reviewed release outputs only. Add future provider files here explicitly.
+      PROMOTABLE_FILES: |-
+        features.json
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -75,6 +78,18 @@ jobs:
               )
           if len(set(entries)) != len(entries):
               raise SystemExit("The files input must not contain duplicate entries")
+
+          promotable = {
+              entry.strip()
+              for entry in os.environ["PROMOTABLE_FILES"].splitlines()
+              if entry.strip()
+          }
+          not_promotable = [entry for entry in entries if entry not in promotable]
+          if not_promotable:
+              raise SystemExit(
+                  "File(s) are not in the reviewed promotable-file allowlist: "
+                  + ", ".join(not_promotable)
+              )
 
           selected = sorted(entries)
           canonical = ",".join(selected)
@@ -213,10 +228,15 @@ jobs:
           - [ ] No auto-merge, deployment, or app-interface action is performed
           EOF
           )
-          if [ -z "$(gh pr list --head "${BRANCH}" --state open --json number -q '.[0].number')" ]; then
+          PR_NUMBER="$(gh pr list --head "${BRANCH}" --state open --limit 1 --json number -q '.[0].number')"
+          if [ -z "${PR_NUMBER}" ]; then
             gh pr create \
               --base master \
               --head "${BRANCH}" \
+              --title "${TITLE}" \
+              --body "${PR_BODY}"
+          else
+            gh pr edit "${PR_NUMBER}" \
               --title "${TITLE}" \
               --body "${PR_BODY}"
           fi
