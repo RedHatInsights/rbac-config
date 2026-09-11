@@ -54,6 +54,24 @@
       "version": 9,
       "access": [
         {
+          "permission": "rbac:workspace:view"
+        },
+        {
+          "permission": "rbac:workspace:create"
+        },
+        {
+          "permission": "rbac:workspace:edit"
+        },
+        {
+          "permission": "rbac:workspace:delete"
+        },
+        {
+          "permission": "rbac:workspace:delete_child"
+        },
+        {
+          "permission": "rbac:workspace:move"
+        },
+        {
           "permission": "inventory:groups:write"
         },
         {
@@ -67,6 +85,9 @@
         },
         {
           "permission": "rbac:role_binding:revoke"
+        },
+        {
+          "permission": "rbac:audit_log:read"
         }
       ]
     },
@@ -79,6 +100,9 @@
       "admin_default": false,
       "version": 10,
       "access": [
+        {
+          "permission": "rbac:workspace:view"
+        },
         {
           "permission": "inventory:groups:read"
         },
